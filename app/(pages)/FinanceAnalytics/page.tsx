@@ -2,7 +2,7 @@
 import { useState } from "react";
 import CustomSelect from "@/app/components/CustomSelect";
 import Link from "next/link";
-import Button from "@/app/ui/Button";
+import Button from "@/app/components/ui/Button";
 import RevenueChart from "@/app/components/RevenueChart";
 import ExpensePieChart from "@/app/components/ExpensePieChart";
 import BarChart2 from "@/app/components/BarChart2";

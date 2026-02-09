@@ -1,62 +1,54 @@
-"use client"; // Needed for Next.js 13+ app directory
+"use client";
 
 import { Bar } from "react-chartjs-2";
 import {
-     Chart as ChartJS,
-     CategoryScale,
-     LinearScale,
-     BarElement,
-     Title,
-     Tooltip,
-     Legend,
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
 } from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-interface BarChartProps {
-     labels: string[];
-     blueData: number[];
-     orangeData: number[];
+interface Dataset {
+  key: string;       
+  label: string;  
+  color: string;    
 }
 
-const BarChart: React.FC<BarChartProps> = ({ labels, blueData, orangeData }) => {
-     const data = {
-          labels,
-          datasets: [
-               {
-                    label: "Blue",
-                    data: blueData,
-                    backgroundColor: "#2196f3", // blue
-               },
-               {
-                    label: "Orange",
-                    data: orangeData,
-                    backgroundColor: "#ff9800", // orange
-               },
-          ],
-     };
+interface BarChartProps {
+  data: { [key: string]: string | number }[];
+  datasets: Dataset[];                     
+  xKey?: string;                       
+}
 
-     const options = {
-          responsive: true,
-          plugins: {
-               legend: {
-                    position: "top" as const,
-               },
-               title: {
-                    display: false,
-               },
-          },
-          scales: {
-               y: {
-                    beginAtZero: true,
-                    ticks: {
-                         stepSize: 65, // similar to your chart
-                    },
-               },
-          },
-     };
+const BarChart: React.FC<BarChartProps> = ({ data, datasets, xKey = "month" }) => {
+  const chartData = {
+    labels: data.map((d) => d[xKey]),
+    datasets: datasets.map((ds) => ({
+      label: ds.label,
+      data: data.map((d) => d[ds.key]),
+      backgroundColor: ds.color,
+    })),
+  };
 
-     return <Bar data={data} options={options} />;
+  const options = {
+    responsive: true,
+    plugins: {
+     legend: { display: false },
+      title: { display: false },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
+
+  return <Bar data={chartData} options={options} />;
 };
 
 export default BarChart;

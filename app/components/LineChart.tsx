@@ -1,72 +1,74 @@
-"use client"; // Next.js 13+ app directory, required for client components
+"use client";
 
 import { Line } from "react-chartjs-2";
 import {
-     Chart as ChartJS,
-     CategoryScale,
-     LinearScale,
-     PointElement,
-     LineElement,
-     Title,
-     Tooltip,
-     Legend,
-     ChartOptions,
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
 } from "chart.js";
 
-ChartJS.register(
-     CategoryScale,
-     LinearScale,
-     PointElement,
-     LineElement,
-     Title,
-     Tooltip,
-     Legend
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-interface LineChartProps {
-     labels: string[];
-     data: number[];
+interface Dataset {
+  key: string;    
+  label: string;  
+  borderColor: string;
+  backgroundColor?: string;
+  tension?: number;
 }
 
-const LineChart: React.FC<LineChartProps> = ({ labels, data }) => {
-     const chartData = {
-          labels,
-          datasets: [
-               {
-                    label: "Revenue",
-                    data,
-                    borderColor: "#2563EB", // blue line
-                    backgroundColor: "#2563EB33", // transparent blue fill
-                    tension: 0.3, // smooth curve
-                    fill: false,
-               },
-          ],
-     };
+interface LineChartProps {
+  data: { [key: string]: number | string }[]; 
+  datasets: Dataset[];
+  xKey?: string;                          
+}
 
-     const options: ChartOptions<"line"> = {
-          responsive: true,
-          plugins: {
-               legend: {
-                    display: false,
-               },
-          },
-          scales: {
-               y: {
-                    beginAtZero: true,
-                    ticks: {
-                         callback: function (tickValue: string | number) {
-                              // ensure tickValue is number before dividing
-                              if (typeof tickValue === "number") {
-                                   return `€${tickValue / 1000}K`;
-                              }
-                              return tickValue;
-                         },
-                    },
-               },
-          },
-     };
+const LineChart: React.FC<LineChartProps> = ({ data, datasets, xKey = "month" }) => {
+  const chartData = {
+    labels: data.map((d) => d[xKey]),
+    datasets: datasets.map((ds) => ({
+      label: ds.label,
+      data: data.map((d) => d[ds.key]),
+      borderColor: ds.borderColor,
+      backgroundColor: ds.backgroundColor || ds.borderColor + "33",
+      tension: ds.tension ?? 0.3,
+      fill: ds.backgroundColor ? true : false,
+    })),
+  };
 
-     return <Line data={chartData} options={options} />;
+  const options: ChartOptions<"line"> = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            return `€${tooltipItem.raw}`;
+          },
+        },
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: function (tickValue) {
+            if (typeof tickValue === "number") return `€${tickValue / 1000}K`;
+            return tickValue;
+          },
+        },
+      },
+    },
+  };
+
+  return <Line data={chartData} options={options} />;
 };
 
 export default LineChart;

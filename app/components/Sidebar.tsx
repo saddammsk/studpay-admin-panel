@@ -3,20 +3,14 @@
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { useSidebarStore } from "@/app/store/zustand/useSidebarStore";
 
-/* ================= TYPES ================= */
 
 type MenuItem = {
      label: string;
      icon: string;
      href: string;
 };
-
-/* ================= DATA ================= */
-interface SidebarProps {
-     isOpen: boolean;
-     onClose: () => void;
-}
 
 const mainMenu: MenuItem[] = [
      { label: "Dashboard", icon: "/images/dashboard-icon.svg", href: "/" },
@@ -52,10 +46,10 @@ const salesMenu: MenuItem[] = [
      { label: "Marketing Campaigns", icon: "/images/megaphone-icon.svg", href: "/marketing" },
 ];
 
-/* ================= COMPONENT ================= */
 
-const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+const Sidebar = () => {
      const pathname = usePathname();
+     const { isOpen, close } = useSidebarStore();
 
      const renderMenu = (menu: MenuItem[]) => {
           return menu.map((item) => {
@@ -79,14 +73,14 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
      return (
           <div
-               className={`fixed top-0 z-99 h-screen lg:left-0 w-full max-w-[256px] bg-white border-r border-gray-1000
+               className={`fixed top-0 overflow-y-auto scrollbar-hide z-99 h-screen lg:left-0 w-full max-w-[256px] bg-white border-r border-gray-1000
         transition-all duration-500 ease-in-out
         ${isOpen ? "left-0" : "-left-full"}`}
           >  <div className="flex items-center justify-between p-4 border-b border-gray-1000">
-                    <Link href="/">
+                    <Link href="/" onClick={close}>
                          <img src="/images/logo.svg" alt="Logo" />
                     </Link>
-                    <button onClick={onClose}>
+                    <button onClick={close}>
                          <img src="/images/left-arrow.svg" alt="Close sidebar" />
                     </button>
                </div>
