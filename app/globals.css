@@ -11,9 +11,11 @@
   --color-gray-1400: #64748B;
   --color-gray-1500: #F9FAFB;
   --color-gray-1600: #F3F4F6;
+  --color-gray-1700: #374151;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
   --color-red-1100: #FEE2E2;
+  --color-red-1200: #DC2626;
   --color-white-1000: #DBEAFE;
   --color-white-1100: #FAFAFA;
   --color-purple-1000: #93C5FD;
@@ -23,6 +25,7 @@
   --color-green-1000: #16A34A;
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
+  --color-green-1300: #10B981;
   --color-yellow-1000: #FEF9C3;
   --color-brown-1000: #854D0E;
   /******* 4-2-2028 ******/ 
@@ -65,6 +68,7 @@
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   /******* 4-2-2028 ******/
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-5xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
@@ -154,6 +158,9 @@
 .gray-icon {
   filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
 
+}
+.flag-bg {
+  background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
 }
 /******/
 input[type="date"]::-webkit-calendar-picker-indicator {
