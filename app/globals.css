@@ -3,6 +3,7 @@
 @theme inline { 
    --font-neulis-sans: "Neulis Sans";
   --font-segoe: "Segoe UI";
+  --font-inter: "Inter", sans-serif;;
   --color-gray-1000: #E5E7EB;
   --color-gray-1100: #4B5563;
   --color-gray-1200: #6B7280;
@@ -28,16 +29,44 @@
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
   --color-gray1700: #F1F5F9;
+  --color-gray1800: #374151;
+  --color-gray1900: #475569;
   --color-green12: #166534;
+  --color-green13: #065F46;
+  --color-green14: #15803D;
   --color-lightgreen12: #DCFCE7;
+  --color-lightgreen13: #BBF7D0;
+  --color-lightgreen14: #D1FAE5;
+  --color-lightgreen15: #A7F3D0;
+  --color-lightgreen16: #F0FDF4;
   --color-brown1200: #854D0E;
   --color-yellow1200: #FEF9C3;
+  --color-yellow1300: #FEF08A;
+  --color-yellow1400: #FFEDD5;
   --color-red1200: #991B1B;
-  --color-lightred1200: #FEE2E2;
+  --color-red1300: #DC2626;
+  --color-red1400: #FECACA;
+  --color-red1500: #B91C1C;
+  --color-lightred1200: #FEE2E2; 
+  --color-lightred1300: #FEF2F2; 
+  --color-blue200: #1E40AF;
+  --color-blue300: #BFDBFE;
+  --color-blue400: #3730A3;
+  --color-blue500: #C7D2FE;
+  --color-blue600: #2563EB;
+  --color-blue700: #E6F4FF;
+  --color-blue800: #1D4ED8;
+  --color-brown2000: #9A3412;
+  --color-purpal12: #E9D5FF;
+  --color-orange83: #FED7AA;
+  --color-violet39: #6B21A8;
+  --color-blueNexus: #F3E8FF;
   /******* 4-2-2028 ******/
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   /******* 4-2-2028 ******/
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
+  --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
 
 
@@ -125,4 +154,15 @@
 .gray-icon {
   filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
 
+}
+/******/
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+/* For Firefox */
+input[type="date"] {
+    -moz-appearance: textfield;
 }

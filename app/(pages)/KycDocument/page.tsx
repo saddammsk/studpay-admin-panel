@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from 'react'
+
 import Image from "next/image";
 import Link from "next/link"
 import KycDocumentTable from "@/app/components/KycDocumentsTable"
+import CustomSelect from "@/app/components/CustomSelect"
 
 
 const KycDocumentPage = () => {
+      const [status, setStatus] = useState<string>("All Statuses");
       return (
             <div>
                  <div>
@@ -26,20 +32,18 @@ const KycDocumentPage = () => {
                               <div className="flex sm:flex-row flex-col items-center gap-4 md:w-auto w-full">
                                     <div className="flex items-center gap-4 sm:w-auto w-full md:flex-none flex-1"> 
                                           <div className="relative xl:w-48 md:w-34 w-full">
-                                                <select className='appearance-none text-sm font-normal leading-5 font-neulis-sans text-black13 xl:pr-11 pr-8 pl-4 h-10 bg-white border border-gray1600 rounded-md w-full outline-0'>
-                                                      <option>All Status</option>
-                                                </select>
-                                                <div className='w-4 h-4 opacity-50 flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-3'>
-                                                      <Image
-                                                            src="../images/down-arrow.svg"
-                                                            width='10'
-                                                            height='10'
-                                                            alt=""
-                                                      />
-                                                </div>
+                                                <CustomSelect
+                                                value={status}
+                                                onChange={(e) => setStatus(e.target.value)}
+                                                options={[
+                                                      { label: "All Status", value: "Status" },
+                                                      { label: "Approved", value: "Approved" },
+                                                      { label: "Rejected", value: "Rejected" },
+                                                ]}
+                                          />
                                           </div>
                                     </div>
-                                    <Link href={"#"} className="sm:w-auto w-full inline-flex items-center justify-center px-4.25 text-black13 font-medium text-sm leading-5 gap-2 border border-gray1600 rounded-md h-10">
+                                    <Link href={"#"} className="sm:w-auto hover:bg-gray-1600 transition-all duration-500 ease-in-out w-full inline-flex items-center justify-center px-4.25 text-black13 font-medium text-sm leading-5 gap-2 border border-gray1600 rounded-md h-10">
                                           <Image
                                                 src="../images/filter.svg"
                                                 width='16'
