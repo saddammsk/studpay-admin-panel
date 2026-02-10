@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import StudentDiscountsOffersTable from "@/app/components/StudentDiscountsOffersTable";
 import CustomSelect from "@/app/components/CustomSelect"
-import Button from "@/app/ui/Button"
+import Button from "@/app/components/ui/Button";
 
 
 const KycDocumentPage = () => {

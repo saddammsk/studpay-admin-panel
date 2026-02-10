@@ -62,7 +62,7 @@ const mainMenu: MenuItem[] = [
   {
     label: "Referrals & Rewards",
     icon: "/images/gift-icon.svg",
-    href: "/referrals",
+    href: "/referrals_rewards",
   },
   {
     label: "Cashback Management",

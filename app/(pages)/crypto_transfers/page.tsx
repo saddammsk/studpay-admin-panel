@@ -10,13 +10,10 @@ import CryptoTransfersTable from "@/app/components/CryptoTransfersTable"
 const CryptoTransfers = () => {
       const [active, setActive] = useState("EUR");
       const tabs = ["EUR", "USD", "Crypto"];
-      /*****/
       const [active2, setActive2] = useState("All");
       const tabs2 = ["All", "Send", "Receive", "Convert"];
-      /*****/
       const [active3, setActive3] = useState("All");
       const tabs3 = ["All", "Success", "Pending", "Failed"];
-      /*****/
       const [active4, setActive4] = useState("All");
       const tabs4 = [
             { name: "All" },

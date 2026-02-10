@@ -9,7 +9,8 @@ function page() {
      const [status, setStatus] = useState<string>("all");
      const [status2, setStatus2] = useState<string>("All Countries");
      const [status3, setStatus3] = useState<string>("EUR (€)");
-     const [status4, setStatus4] = useState<string>("All Types");
+
+     
      return (
           <div className='md:p-6'>
                <h6 className='text-[30px] font-bold leading-8 text-black-1200 mb-2'>Country-Based Statistics</h6>
