@@ -49,6 +49,7 @@
   --color-yellow1200: #FEF9C3;
   --color-yellow1300: #FEF08A;
   --color-yellow1400: #FFEDD5;
+  --color-yellow1500: #FEFCE8;
   --color-red1200: #991B1B;
   --color-red1300: #DC2626;
   --color-red1400: #FECACA;
@@ -63,10 +64,15 @@
   --color-blue700: #E6F4FF;
   --color-blue800: #1D4ED8;
   --color-brown2000: #9A3412;
+  --color-brown2100: #A16207;
+  --color-brown2200: #CA8A04;
   --color-purpal12: #E9D5FF;
   --color-orange83: #FED7AA;
   --color-violet39: #6B21A8;
   --color-blueNexus: #F3E8FF;
+  --color-darkgreen2300: #14532D;
+  --color-purpal13: #9333EA;
+  --color-purpal14: #7E22CE;
   /******* 4-2-2028 ******/
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   /******* 4-2-2028 ******/

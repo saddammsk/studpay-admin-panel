@@ -27,7 +27,7 @@ const tabs: TabItem[] = [
      },
      {
           label: "Transactions",
-          href: "/transactions",
+          href: "/Identification/Transactions",
           icon: "/images/transaction-icon.svg",
      },
      {

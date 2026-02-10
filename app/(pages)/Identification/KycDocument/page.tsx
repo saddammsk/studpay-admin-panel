@@ -91,9 +91,9 @@ export default function page() {
                               <span className="text-green-1000 block font-segoe sm:text-2xl text-xl font-normal leading-8 text-center">1</span>
                               <h5 className="text-green-1000 font-segoe text-[13.67px] font-normal leading-5 text-center">Approved</h5>
                          </div>
-                         <div className="bg-yellow-1100 rounded-lg p-4">
-                              <span className="text-yellow-1200 block font-segoe sm:text-2xl text-xl font-normal leading-8 text-center">1</span>
-                              <h5 className="text-brownNx14 font-segoe text-sm font-normal leading-5 text-center">Pending Review</h5>
+                         <div className="bg-yellow1500 rounded-lg p-4">
+                              <span className="text-brown2100 block font-segoe sm:text-2xl text-xl font-normal leading-8 text-center">1</span>
+                              <h5 className="text-brown2200 font-segoe text-sm font-normal leading-5 text-center">Pending Review</h5>
                          </div>
                          <div className="bg-gray-1300 rounded-lg p-4">
                               <span className="text-red-1200 block font-segoe sm:text-2xl text-xl font-normal leading-8 text-center">1</span>
