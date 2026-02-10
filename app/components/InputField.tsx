@@ -9,6 +9,7 @@ interface InputFieldProps {
      value?: string;
      onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
      iconSrc?: string; // optional left icon
+     passwordToggleIconSrc?: { show: string; hide: string };
      wrapperClassName?: string;
      inputClassName?: string;
 }
@@ -20,6 +21,7 @@ const InputField: React.FC<InputFieldProps> = ({
      value,
      onChange,
      iconSrc,
+     passwordToggleIconSrc,
      wrapperClassName = "",
      inputClassName = "",
 }) => {
