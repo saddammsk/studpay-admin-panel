@@ -1,8 +1,9 @@
 "use client";
 
-import Sidebar from "@/app/components/Sidebar";
-import TopBar from "@/app/components/TopBar";
+
 import { usePathname } from "next/navigation";
+import Sidebar from "../components/common/Sidebar";
+import TopBar from "../components/common/TopBar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();

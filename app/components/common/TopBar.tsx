@@ -1,9 +1,9 @@
 'use client'
 import { useSidebarStore } from "@/app/store/zustand/useSidebarStore";
-import { LanguageSelector } from "./LanguageSelector";
-import { NotificationsDropdown } from "./NotificationsDropdown";
-import { TopUserDropdown } from "./TopUserDropdown";
-import { GlobalSearchbox } from "./ui/GlobalSearchbox";
+import { GlobalSearchbox } from "../ui/GlobalSearchbox";
+import { LanguageSelector } from "../LanguageSelector";
+import { NotificationsDropdown } from "../NotificationsDropdown";
+import { TopUserDropdown } from "../TopUserDropdown";
 
 const TopBar = () => {
      const toggleSidebar = useSidebarStore((state: any) => state.toggle);
