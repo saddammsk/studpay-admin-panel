@@ -29,7 +29,7 @@ const LoginPage = () => {
           <h4 className='font-inter text-[30px] font-bold leading-9 mb-2 text-blue-1300'>Welcome Back</h4>
           <p className="text-base font-normal leading-6 text-gray-1900">Sign in to access your admin dashboard</p>
           <form action="" className='mt-8'>
-            <div></div>
+            <div className='text-2xl'></div>
           </form>
         </div>
       </div>

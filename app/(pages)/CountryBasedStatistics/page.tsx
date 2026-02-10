@@ -1,11 +1,9 @@
 
 'use client'
 import { useState } from "react";
-import CustomSelect from '@/app/components/CustomSelect'
-import { LineChart2 } from "@/app/components/LineChart2";
+import CustomSelect from '@/app/components/CustomSelect' 
 import CountryChart from "@/app/components/CountryChart";
-import DonutChart from "@/app/components/DonutChart";
-import Funnel from "@/app/components/Funnel";
+import DonutChart from "@/app/components/DonutChart"; 
 import CountryBarChart from "@/app/components/CountryBarChart";
 function page() {
      const [status, setStatus] = useState<string>("all");
@@ -16,7 +14,7 @@ function page() {
           <div className='md:p-6'>
                <h6 className='text-[30px] font-bold leading-8 text-black-1200 mb-2'>Country-Based Statistics</h6>
                <p className='text-base font-normal leading-6 text-gray-1100'>Monitor platform usage, financial activity, and user trends across different countries and regions.</p>
-               <div className="border border-gray-1000 my-8 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+               <div className="border border-gray-1000 my-8 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                     <div className="grid  sm:grid-cols-3 gap-4">
                          <div>
                               <label htmlFor="" className="text-sm font-normal leading-5 block text-gray-1700 mb-2">Region</label>
@@ -99,21 +97,21 @@ function page() {
                          <img src="/images/CurrencyEur.svg" alt="" />
                     </div>
                </div>
-               <div className="border border-gray-1000 my-8 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+               <div className="border border-gray-1000 my-8 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                     <h4 className="text-2xl font-segoe font-normal leading-6 mb-6 text-black13">Global User Activity Heatmap</h4>
                     <CountryChart></CountryChart>
                </div>
                <div className="grid xl:grid-cols-2 xl:gap-6">
-                    <div className="border border-gray-1000 md:my-8 my-2 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+                    <div className="border border-gray-1000 md:my-8 my-2 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                          <h4 className="text-2xl font-segoe font-normal leading-6 mb-6 text-black13">Country Transaction Volume</h4>
                          <CountryBarChart></CountryBarChart>
                     </div>
-                    <div className="border border-gray-1000 md:my-8 my-2 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+                    <div className="border border-gray-1000 md:my-8 my-2 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                          <h4 className="text-2xl font-segoe font-normal leading-6 mb-6 text-black13">Feature Usage Distribution</h4>
                          <DonutChart></DonutChart>
                     </div>
                </div>
-               <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+               <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                     <h4 className="text-2xl font-segoe font-normal leading-6 mb-6 text-black13">Onboarding Completion Funnel</h4>
 
                </div>
