@@ -13,7 +13,7 @@ type MenuItem = {
 
 const mainMenu: MenuItem[] = [
   { label: "Dashboard", icon: "/images/dashboard-icon.svg", href: "/" },
-  { label: "Users / Students", icon: "/images/user-icon.svg", href: "/users" },
+  { label: "Users / Students", icon: "/images/user-icon.svg", href: "/UsersStudents" },
   { label: "KYC & Documents", icon: "/images/kyc-icon.svg", href: "/kyc" },
   {
     label: "Identification",
@@ -127,7 +127,8 @@ const Sidebar = () => {
 
   const renderMenu = (menu: MenuItem[]) => {
     return menu.map((item) => {
-      const isActive = pathname.startsWith(item.href);
+       const isActive =
+      item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
       return (
         <li key={item.href}>
