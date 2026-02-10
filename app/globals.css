@@ -156,6 +156,18 @@ html{
   background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
 }
 
+.line-bg-2{
+  background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
+
+}
+
+.line-bg-3{
+ background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
+
+}
+
+
+
 .gray-icon {
   filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
 

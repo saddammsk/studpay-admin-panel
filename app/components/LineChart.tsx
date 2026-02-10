@@ -7,38 +7,52 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Legend,
   ChartOptions,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend
+);
 
-interface Dataset {
-  key: string;    
-  label: string;  
+
+export interface Dataset<T> {
+  key: keyof T;
+  label: string;
   borderColor: string;
   backgroundColor?: string;
   tension?: number;
 }
 
-interface LineChartProps {
-  data: { [key: string]: number | string }[]; 
-  datasets: Dataset[];
-  xKey?: string;                          
+export interface LineChartProps<T extends object> {
+  data: T[];
+  datasets: Dataset<T>[];
+  xKey?: keyof T;
 }
 
-const LineChart: React.FC<LineChartProps> = ({ data, datasets, xKey = "month" }) => {
+
+function LineChart<T extends object>({
+  data,
+  datasets,
+  xKey,
+}: LineChartProps<T>) {
+  const resolvedXKey = xKey ?? (Object.keys(data[0])[0] as keyof T);
+
   const chartData = {
-    labels: data.map((d) => d[xKey]),
+    labels: data.map((d) => String(d[resolvedXKey])),
     datasets: datasets.map((ds) => ({
       label: ds.label,
-      data: data.map((d) => d[ds.key]),
+      data: data.map((d) => d[ds.key] as number),
       borderColor: ds.borderColor,
-      backgroundColor: ds.backgroundColor || ds.borderColor + "33",
+      backgroundColor: ds.backgroundColor ?? ds.borderColor + "33",
       tension: ds.tension ?? 0.3,
-      fill: ds.backgroundColor ? true : false,
+      fill: Boolean(ds.backgroundColor),
     })),
   };
 
@@ -46,12 +60,9 @@ const LineChart: React.FC<LineChartProps> = ({ data, datasets, xKey = "month" })
     responsive: true,
     plugins: {
       legend: { display: false },
-      title: { display: false },
       tooltip: {
         callbacks: {
-          label: function (tooltipItem) {
-            return `€${tooltipItem.raw}`;
-          },
+          label: (ctx) => `€${ctx.raw}`,
         },
       },
     },
@@ -59,16 +70,14 @@ const LineChart: React.FC<LineChartProps> = ({ data, datasets, xKey = "month" })
       y: {
         beginAtZero: true,
         ticks: {
-          callback: function (tickValue) {
-            if (typeof tickValue === "number") return `€${tickValue / 1000}K`;
-            return tickValue;
-          },
+          callback: (value) =>
+            typeof value === "number" ? `€${value / 1000}K` : value,
         },
       },
     },
   };
 
   return <Line data={chartData} options={options} />;
-};
+}
 
 export default LineChart;

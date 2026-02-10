@@ -13,24 +13,34 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-interface Dataset {
-  key: string;       
-  label: string;  
-  color: string;    
+
+export interface Dataset<T> {
+  key: keyof T;
+  label: string;
+  color: string;
 }
 
-interface BarChartProps {
-  data: { [key: string]: string | number }[];
-  datasets: Dataset[];                     
-  xKey?: string;                       
+export interface BarChartProps<T extends object> {
+  data: T[];
+  datasets: Dataset<T>[];
+  xKey?: keyof T;
 }
 
-const BarChart: React.FC<BarChartProps> = ({ data, datasets, xKey = "month" }) => {
+
+function BarChart<T extends object>({
+  data,
+  datasets,
+  xKey,
+}: BarChartProps<T>) {
+  if (!data || data.length === 0) return null;
+
+  const resolvedXKey = xKey ?? (Object.keys(data[0])[0] as keyof T);
+
   const chartData = {
-    labels: data.map((d) => d[xKey]),
+    labels: data.map((d) => String(d[resolvedXKey])),
     datasets: datasets.map((ds) => ({
       label: ds.label,
-      data: data.map((d) => d[ds.key]),
+      data: data.map((d) => d[ds.key] as number),
       backgroundColor: ds.color,
     })),
   };
@@ -38,7 +48,7 @@ const BarChart: React.FC<BarChartProps> = ({ data, datasets, xKey = "month" }) =
   const options = {
     responsive: true,
     plugins: {
-     legend: { display: false },
+      legend: { display: false },
       title: { display: false },
     },
     scales: {
@@ -49,6 +59,6 @@ const BarChart: React.FC<BarChartProps> = ({ data, datasets, xKey = "month" }) =
   };
 
   return <Bar data={chartData} options={options} />;
-};
+}
 
 export default BarChart;
