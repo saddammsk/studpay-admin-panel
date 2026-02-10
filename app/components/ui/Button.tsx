@@ -8,6 +8,7 @@ type ButtonProps = {
      type?: "button" | "submit" | "reset";
      disabled?: boolean;
      className?: string;
+     iconPosition?: "start" | "end"; // new prop
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,22 +19,22 @@ const Button: React.FC<ButtonProps> = ({
      type = "button",
      disabled = false,
      className = "",
+     iconPosition = "start", // default icon before label
 }) => {
      return (
           <button
                type={type}
                onClick={onClick}
                disabled={disabled}
-               className={`flex items-center cursor-pointer gap-4 py-3 px-4 text-sm font-normal leading-5 rounded-[10px] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+               className={`flex items-center cursor-pointer gap-2 py-3 px-4 text-sm font-normal leading-5 rounded-[10px] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
           >
-               {iconSrc && (
-                    <img
-                         src={iconSrc}
-                         alt={iconAlt}
-                         className="shrink-0"
-                    />
+               {iconSrc && iconPosition === "start" && (
+                    <img src={iconSrc} alt={iconAlt} className="shrink-0" />
                )}
                {label}
+               {iconSrc && iconPosition === "end" && (
+                    <img src={iconSrc} alt={iconAlt} className="shrink-0" />
+               )}
           </button>
      );
 };

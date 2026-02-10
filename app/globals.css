@@ -14,6 +14,10 @@
   --color-gray-1700: #374151;
   --color-gray-1800: #F6F7F9;
   --color-gray-1900: #65758B;
+  --color-gray-2000: #F3F5F7;
+  --color-gray-2100: #E8EAED;
+  --color-gray-2200: #DADCE2;
+  --color-gray-2300: #6A7181;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
   --color-red-1100: #FEE2E2;
@@ -24,7 +28,13 @@
   --color-blue-1100: #1F2937;
   --color-blue-1200: #0F172A;
   --color-black-1200: #111827;
+  --color-black-1300: #1C1E21;
+  --color-black-1400: #1D212B;
   --color-blue-1300: #0F1729;
+  --color-blue-1400: #0B64F4;
+  --color-blue-1500: #0A91FF;
+  --color-blue-1600: #0B91FE;
+  --color-blue-1700: #3B82F6;
   --color-green-1000: #16A34A;
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
@@ -72,6 +82,8 @@
   /******* 4-2-2028 ******/
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-5xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
+  --shadow-6xl: 0 0 40px 0 rgba(11, 100, 244, 0.15);
+  --shadow-7xl: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10);
   --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
@@ -188,4 +200,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type="date"] {
   -moz-appearance: textfield;
+}
+
+.text-gradient {
+  background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
