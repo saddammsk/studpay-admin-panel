@@ -11,7 +11,7 @@ interface InputFieldProps {
      iconSrc?: string; // optional left icon
      passwordToggleIconSrc?: { show: string; hide: string };
      wrapperClassName?: string;
-     inputClassName?: string;
+     ClassName?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -23,7 +23,7 @@ const InputField: React.FC<InputFieldProps> = ({
      iconSrc,
      passwordToggleIconSrc,
      wrapperClassName = "",
-     inputClassName = "",
+     ClassName = "",
 }) => {
      const [showPassword, setShowPassword] = useState(false);
 
@@ -53,7 +53,7 @@ const InputField: React.FC<InputFieldProps> = ({
                          onChange={onChange}
                          className={`font-segoe text-sm font-normal leading-normal text-gray-1400 
           placeholder:text-gray-1400 w-full pl-10 h-10 rounded-md 
-          border border-gray-1000 block ${inputClassName}`}
+          border border-gray-1000 block ${ClassName}`}
                     />
 
                     {/* Eye icon for password toggle */}
