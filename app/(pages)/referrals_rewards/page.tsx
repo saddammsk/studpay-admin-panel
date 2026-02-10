@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link"
 import ReferralRewardTable from "@/app/components/ReferralRewardTable"
 import CustomSelect from "@/app/components/CustomSelect"
-import Button from "@/app/ui/Button"
+import Button from "@/app/components/ui/Button";
 
 
 const KycDocumentPage = () => {
