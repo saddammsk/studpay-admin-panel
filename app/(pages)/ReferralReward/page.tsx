@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link"
 import ReferralRewardTable from "@/app/components/ReferralRewardTable"
 import CustomSelect from "@/app/components/CustomSelect"
+import Button from "@/app/ui/Button"
 
 
 const KycDocumentPage = () => {
@@ -16,38 +17,35 @@ const KycDocumentPage = () => {
 
       return (
             <div className="max-w-309.5 w-full mx-auto">
-                  <div className="flex items-center justify-between mb-8">
-                        <div>
+                  <div className="flex md:flex-row flex-col md:items-center justify-between mb-8">
+                        <div className="md:w-auto w-full">
                               <h4 className="text-black-1200 font-bold md:text-[30px] text-2xl leading-9 mb-2">Referrals & Rewards</h4>
-                              <p className="text-gray-1100 font-normal md:text-base text-sm leading-6">Track referral usage, manage rewards, and monitor payout statuses</p>
+                              <p className="text-gray-1100 font-normal md:text-base text-sm leading-6 xl:max-w-full w-full md:max-w-87.5 max-w-full">Track referral usage, manage rewards, and monitor payout statuses</p>
                         </div>
-                        <ul className='flex items-center gap-4'>
+                        <ul className='md:flex md:mt-0 mt-4 grid grid-cols-2 items-center gap-4 md:w-auto w-full'>
                               <li>
-                                    <Link href={"#"} className="hover:bg-blue-1000/90 bg-blue-1000 transition-all duration-500 ease-in-out sm:w-auto w-full inline-flex items-center justify-center px-4.25 text-white font-normal text-sm leading-5 gap-4 border border-blue-1000 rounded-md h-10">
-                                          <Image
-                                                src="../images/download-icon.svg"
-                                                width='16'
-                                                height='16'
-                                                alt=""
-                                          />
-                                          Export CSV
-                                    </Link>
+                                    <Button
+                                          label=" Export CSV"
+                                          iconSrc="/images/download-icon.svg"
+                                          className="text-white bg-blue-1000 md:w-auto w-full justify-center h-10 px-4 hover:bg-blue-1000/90 font-segoe"
+                                          onClick={() => {
+                                                console.log("Export clicked");
+                                          }}
+                                    />
                               </li>
                               <li>
-                                    <Link href={"#"} className="hover:bg-gray-1600 transition-all duration-500 ease-in-out sm:w-auto w-full inline-flex items-center justify-center px-4 text-blue-1000 font-medium text-sm leading-5 gap-4 border border-blue-1000 bg-blue-1000/10 rounded-md h-10">
-                                          <Image
-                                                src="../images/file-blue.svg"
-                                                width='16'
-                                                height='16'
-                                                alt=""
-                                          />
-                                          Export PDF
-                                    </Link>
-                              </li>
-
+                                    <Button
+                                          label="Export PDF"
+                                          iconSrc="/images/file-blue.svg"
+                                          className="text-blue-1000 md:w-auto w-full justify-center bg-blue-1000/10 h-10 px-4 border border-blue-1000 bg-blue-1000/10font-medium font-segoe"
+                                          onClick={() => {
+                                                console.log("Export clicked");
+                                          }}
+                                    />
+                              </li>  
                         </ul>
                   </div>
-                  <div className="grid grid-cols-3 gap-6">
+                  <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                         <div className="shadow-44xl border border-solid border-gray1600 rounded-xl bg-white p-6.25">
                               <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
@@ -142,12 +140,16 @@ const KycDocumentPage = () => {
                                           />
                                           Filters
                                     </h4>
-                                    <Link href={"#"} className="sm:w-auto hover:bg-blue-1000/90 pt-0.5 transition-all duration-500 ease-in-out w-full inline-flex items-center justify-center px-3.25 text-white font-medium text-sm leading-5 gap-2 border border-blue-1000 bg-blue-1000 rounded-md h-9">
-                                          Clear All
-                                    </Link>
+                                    <Button
+                                          label="Clear All" 
+                                          className="text-white  justify-center h-9 px-3.25 py-0 border border-solid border-blue-1000 bg-blue-1000 font-segoe font-medium rounded-md"
+                                          onClick={() => {
+                                                console.log("Clear All clicked");
+                                          }}
+                                    /> 
                               </div>
-                              <div className='flex items-center gap-4 mt-5'>
-                                    <div className="max-w-48 w-full">
+                              <div className='xl:flex items-center grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 mt-5'>
+                                    <div className="2xl:max-w-48 xl:max-w-32.5 max-w-full w-full">
                                           <label className='text-gray1800 font-neulis-sans font-normal text-sm leading-6 block mb-2'>Status</label>
                                           <div className="w-full">
                                                 <CustomSelect
@@ -161,7 +163,7 @@ const KycDocumentPage = () => {
                                                 />
                                           </div>
                                     </div>
-                                    <div className="max-w-48 w-full">
+                                    <div className="xl:max-w-48 max-w-full w-full">
                                           <label className='text-gray1800 font-neulis-sans font-normal text-sm leading-6 block mb-2'>Date Range</label>
                                           <div className="w-full">
                                                 <CustomSelect
@@ -175,7 +177,7 @@ const KycDocumentPage = () => {
                                                 />
                                           </div>
                                     </div>
-                                    <div className="max-w-48 w-full">
+                                    <div className="2xl:max-w-48 xl:max-w-32.5 max-w-full w-full">
                                           <label className='text-gray1800 font-neulis-sans font-normal text-sm leading-6 block mb-2'>Filter By</label>
                                           <div className="w-full">
                                                 <CustomSelect
@@ -189,7 +191,7 @@ const KycDocumentPage = () => {
                                                 />
                                           </div>
                                     </div>
-                                    <div className="max-w-48 w-full">
+                                    <div className="2xl:max-w-48 xl:max-w-32.5 max-w-full w-full">
                                           <label className='text-gray1800 font-neulis-sans font-normal text-sm leading-6 block mb-2'>Filter By</label>
                                           <div className="w-full">
                                                 <CustomSelect
@@ -203,7 +205,7 @@ const KycDocumentPage = () => {
                                                 />
                                           </div>
                                     </div>
-                                    <div className="max-w-99.75 flex-1 w-full">
+                                    <div className="xl:max-w-99.75 max-w-full md:col-span-4 sm:col-span-2 col-span-1 w-full">
                                           <label className='text-gray1800 font-neulis-sans font-normal text-sm leading-6 block mb-2'>Search</label>
                                           <div className="relative flex-1 w-full">
                                                 <input type="text" className='text-sm font-normal font-neulis-sans text-gray-1400 placeholder:text-gray-1400 px-4 pl-10 h-10 bg-white border border-gray1600 rounded-md w-full outline-0' placeholder='Search by name or email...' />

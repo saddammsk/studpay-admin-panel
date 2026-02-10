@@ -2,7 +2,7 @@
 import { useState } from "react";
 import CustomSelect from "@/app/components/CustomSelect";
 import Link from "next/link";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/ui/Button";
 import RevenueChart from "@/app/components/RevenueChart";
 import ExpensePieChart from "@/app/components/ExpensePieChart";
 import BarChart2 from "@/app/components/BarChart2";
@@ -22,7 +22,7 @@ export default function Home() {
      const [status3, setStatus3] = useState<string>("EUR (€)");
      const [status4, setStatus4] = useState<string>("All Types");
      return (
-          <div className="max-w-[1280px] mx-auto">
+          <div className="max-w-7xl mx-auto">
                <div className="flex items-center justify-between xl:flex-nowrap flex-wrap gap-4">
                     <div>
                          <h4 className="text-[30px] font-bold leading-9 text-black12 mb-2">Finance Analytics</h4>
@@ -40,11 +40,11 @@ export default function Home() {
                               />
                          </li>
                          <li>
-                              <Link href="" className="py-[3px] px-2.5 text-xs font-normal leading-5 text-blue-1000 bg-blue-1000/10 border border-blue-1000/20 rounded-[10px]">Live Data</Link>
+                              <Link href="" className="py-0.75 px-2.5 text-xs font-normal leading-5 text-blue-1000 bg-blue-1000/10 border border-blue-1000/20 rounded-[10px]">Live Data</Link>
                          </li>
                     </ul>
                </div>
-               <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+               <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                     <div className="flex items-center gap-2 text-lg font-normal leading-7 text-black-1200">
                          <img src="/images/filter-icon.svg" alt="" />Filters & Controls
                     </div>
@@ -127,7 +127,7 @@ export default function Home() {
                     <div className="border border-gray-1600 bg-white rounded-xl shadow-5xl p-6">
                          <div className="flex mb-4 items-center justify-between">
                               <div className="bg-blue-1000/10 w-10 h-10 rounded-xl flex items-center justify-center">
-                                   <img src="/images/up-arrow.svg" className="rotate-[180deg]" alt="" />
+                                   <img src="/images/up-arrow.svg" className="rotate-180" alt="" />
                               </div>
                               <img src="/images/grapgh-img2.svg" alt="" />
                          </div>
@@ -177,18 +177,18 @@ export default function Home() {
                          </h6>
                     </div>
                </div>
-               <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+               <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                     <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Daily Transaction Volume Trend</h4>
                     <RevenueChart></RevenueChart>
                </div>
                <div className="grid xl:grid-cols-2 gap-4 mt-6">
-                    <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl p-[25px]">
+                    <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl p-6.25">
                          <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Spending Categories Breakdown</h4>
                          <div className="text-center mx-auto w-fit">
                               <ExpensePieChart />
                          </div>
                     </div>
-                    <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl p-[25px]">
+                    <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl p-6.25">
                          <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Recharge vs Withdrawal Trends</h4>
                          <div className="text-center mx-auto ">
                               <BarChart2></BarChart2>
@@ -196,7 +196,7 @@ export default function Home() {
                     </div>
                </div>
                <div className="space-y-4">
-                    <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-[25px] p-4">
+                    <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
                          <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Country-wise Financial Volume</h4>
                          <CountryStats countries={countries} />
                     </div>

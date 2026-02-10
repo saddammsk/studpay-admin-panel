@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@theme inline { 
-   --font-neulis-sans: "Neulis Sans";
+@theme inline {
+  --font-neulis-sans: "Neulis Sans";
   --font-segoe: "Segoe UI";
-  --font-inter: "Inter", sans-serif;;
+  --font-inter: "Inter", sans-serif;
   --color-gray-1000: #E5E7EB;
   --color-gray-1100: #4B5563;
   --color-gray-1200: #6B7280;
@@ -26,9 +26,13 @@
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
   --color-green-1300: #10B981;
+  --color-green-1400: #22C55E;
   --color-yellow-1000: #FEF9C3;
+  --color-yellow-1100: #FEFCE8;
+  --color-yellow-1200: #CA8A04;
   --color-brown-1000: #854D0E;
-  /******* 4-2-2028 ******/ 
+  --color-brown-1100: #EAB308;
+  /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
   --color-gray1700: #F1F5F9;
@@ -50,8 +54,8 @@
   --color-red1300: #DC2626;
   --color-red1400: #FECACA;
   --color-red1500: #B91C1C;
-  --color-lightred1200: #FEE2E2; 
-  --color-lightred1300: #FEF2F2; 
+  --color-lightred1200: #FEE2E2;
+  --color-lightred1300: #FEF2F2;
   --color-blue200: #1E40AF;
   --color-blue300: #BFDBFE;
   --color-blue400: #3730A3;
@@ -64,6 +68,16 @@
   --color-orange83: #FED7AA;
   --color-violet39: #6B21A8;
   --color-blueNexus: #F3E8FF;
+  /****/
+  --color-gray2000: #F8FAFC;
+  --color-gray2100: #9CA3AF;
+  --color-blueNexus12: #334155;
+  --color-blueNexus13: #1E293B;
+  --color-purple12: #7E22CE;
+  --color-purple13: #FAF5FF;
+  --color-brownNx12: #C2410C;
+  --color-brownNx13: #FFF7ED;
+  --color-brownNx14: #A16207;
   /******* 4-2-2028 ******/
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   /******* 4-2-2028 ******/
@@ -129,18 +143,17 @@
   font-display: swap;
 }
 
-html{
-  overflow: auto !important;
-  padding-right: 0px !important;
-}
-
+/* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
+/* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
   -ms-overflow-style: none;
+  /* IE and Edge */
   scrollbar-width: none;
+  /* Firefox */
 }
 
 .dashboard-bg {
@@ -156,35 +169,34 @@ html{
   background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
 }
 
-.line-bg-2{
-  background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
-
-}
-
-.line-bg-3{
- background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
-
-}
-
-
-
 .gray-icon {
   filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
 
 }
+
 .flag-bg {
   background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
 }
 
+/******/
 input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-    cursor: pointer;
+  display: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
 
+/* For Firefox */
 input[type="date"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
+/******/
+.gradient-bg {
+  background: linear-gradient(104deg, #0D8CFF 0%, #085499 100%);
+}
 
-
+.calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  -webkit-appearance: auto;
+  cursor: pointer;
+}

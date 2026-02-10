@@ -76,8 +76,7 @@ const KycDocumentPage = () => {
                                           />
                                     </div>
                                     <div className="w-full">
-                                          <div
-                                                onClick={openFromCalendar}
+                                          <div onClick={openFromCalendar}
                                                 className="relative cursor-pointer"
                                           >
                                                 <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none">
