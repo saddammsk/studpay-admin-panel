@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useAppSelector } from "../store/hooks";
+import { useState } from "react";
 
 type PaymentStatus = "Verified" | "Pending" | "Rejected";
 
@@ -117,10 +119,37 @@ const payments: Payment[] = [
 ];
 
 export default function KycDocumentTable() {
+   const {payments, filters} = useAppSelector((state)=> state.kycDocuments);
+   const [currentPage, setCurrentPage] = useState(1);
+   const itemsPerPage = 6;
+
+   const filteredPayments = payments.filter((payment)=>{
+      const search = filters.search.toLowerCase().trim();
+      const matchesSearch = 
+      !search ||
+      payment.name.toLowerCase().includes(search) ||
+      payment.email.toLowerCase().includes(search) ||
+      payment.document.toLowerCase().includes(search);
+
+      const matchesStatus = 
+      filters.status === "All Status" || payment.status === filters.status;
+
+      return matchesSearch && matchesStatus;
+
+   })
+
+
+   const totalPages = Math.ceil(filteredPayments.length / itemsPerPage);
+   const paginatedItems = filteredPayments.slice(
+     (currentPage - 1) * itemsPerPage,
+     currentPage * itemsPerPage
+   );
+
+
   return (
     <div className="bg-white border border-gray-1600 rounded-xl shadow-4xl">
       <div className="md:p-6 p-4 border-b border-gray-1600">
-        <h4 className="text-blue-1200 font-semibold text-lg">Documents (6)</h4>
+        <h4 className="text-blue-1200 font-semibold text-lg">Documents ({filteredPayments.length})</h4>
       </div>
 
       <div className="overflow-x-auto">
@@ -137,13 +166,13 @@ export default function KycDocumentTable() {
           </thead>
 
           <tbody>
-            {payments.map((item) => (
+            {paginatedItems.map((item) => (
               <tr key={item.id} className="border-b border-gray1600 hover:bg-gray1700/50 transition">
                 <td className="p-4">{item.name}</td>
                 <td className="p-4 text-gray-1100">{item.email}</td>
 
                 <td className="p-4 flex items-center gap-2">
-                  <Image src={item.documenticon} alt="" width={16} height={16} />
+                  <Image src={"/images/document-icon.svg"} alt="" width={16} height={16} />
                   {item.document}
                 </td>
 
@@ -168,27 +197,24 @@ export default function KycDocumentTable() {
                 <td className="p-4">
                   <ul className="flex items-center gap-2">
 
-                    {/* Eye */}
                     <li>
                       <Link href="#" className="w-10 h-9 flex items-center justify-center rounded-md hover:bg-gray-1600 transition">
-                        <Image src={item.actions.eyesimg} alt="" width={16} height={16} />
+                        <Image src={"/images/eyes-icon.svg"} alt="" width={16} height={16} />
                       </Link>
                     </li>
 
-                    {/* Check */}
-                    {item.actions.checkimg && (
+                    {item.status === "Pending" && (
                       <li>
                         <Link href="#" className="w-10 h-9 flex items-center justify-center rounded-md hover:bg-gray-1300 transition">
-                          <Image src={item.actions.checkimg} alt="" width={16} height={16} />
+                          <Image src={"/images/checkgreen-icon.svg"} alt="" width={16} height={16} />
                         </Link>
                       </li>
                     )}
 
-                    {/* Close */}
-                    {item.actions.closeimg && (
+                    {item.status === "Pending" && (
                       <li>
                         <Link href="#" className="w-10 h-9 flex items-center justify-center rounded-md hover:bg-gray-1300 transition">
-                          <Image src={item.actions.closeimg} alt="" width={16} height={16} />
+                          <Image src={"/images/closeRed.svg"} alt="" width={16} height={16} />
                         </Link>
                       </li>
                     )}
@@ -200,6 +226,68 @@ export default function KycDocumentTable() {
           </tbody>
 
         </table>
+        {payments.length > 0 && (
+                    <div className="p-6">
+                         <ul className="flex items-center justify-center gap-1">
+                              <li>
+                                   <button
+                                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                        disabled={currentPage === 1}
+                                        className={`flex items-center pl-2.5 pr-4 md:h-10 h-8 gap-1 rounded-md text-black13 font-medium text-sm leading-5 border border-solid border-transparent hover:border-gray1600 transition-all duration-500 ease-in-out ${currentPage === 1 ? "opacity-50 pointer-events-none" : ""}`}
+                                   >
+                                        <span className="flex items-center justify-center w-4 h-4">
+                                             <Image
+                                                  src="../images/left-arrow2.svg"
+                                                  width='6'
+                                                  height='6'
+                                                  alt="" 
+                                             />
+                                        </span>
+                                        Previous
+                                   </button>
+                              </li>
+                              {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => (
+                                   <li key={page}>
+                                        <button
+                                             onClick={() => setCurrentPage(page)}
+                                             className={`flex items-center justify-center border border-solid ${currentPage === page ? "border-gray1600" : "border-transparent hover:border-gray1600"} rounded-md md:w-10 w-8 md:h-10 h-8 text-black13 font-medium text-sm leading-5 transition-all duration-500 ease-in-out ${currentPage === page ? "" : ""}`}
+                                        >
+                                             {page}
+                                        </button>
+                                   </li>
+                              ))}
+                              {totalPages > 3 && currentPage < totalPages - 1 && (
+                                   <li>
+                                        <span className="flex items-center justify-center border border-solid border-transparent hover:border-gray1600 rounded-md md:w-10 w-8 md:h-10 h-8 text-black13 font-medium text-sm leading-5 transition-all duration-500 ease-in-out">
+                                             <Image
+                                                  src="../images/dots-icon.svg"
+                                                  width='16'
+                                                  height='16'
+                                                  alt=""
+                                             />
+                                        </span>
+                                   </li>
+                              )}
+                              <li>
+                                   <button
+                                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                                        disabled={currentPage === totalPages}
+                                        className={`flex items-center pl-4 pr-2.5 md:h-10 h-8 gap-1 rounded-md text-black13 font-medium text-sm leading-5 border border-solid border-transparent hover:border-gray1600  transition-all duration-500 ease-in-out ${currentPage === totalPages ? "opacity-50 pointer-events-none" : ""}`}
+                                   >
+                                        Next
+                                        <span className="flex items-center justify-center w-4 h-4">
+                                             <Image
+                                                  src="../images/right-arrow.svg"
+                                                  width='6'
+                                                  height='6'
+                                                  alt=""
+                                             />
+                                        </span>
+                                   </button>
+                              </li>
+                         </ul>
+                    </div>
+               )}
       </div>
     </div>
   );
