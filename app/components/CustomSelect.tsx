@@ -1,4 +1,3 @@
-// components/CustomSelect.tsx
 import React from "react";
 import Image from "next/image";
 type SelectOption = {
@@ -24,7 +23,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                <select
                     value={value}
                     onChange={onChange}
-                    className={`appearance-none text-sm font-normal leading-5 font-neulis-sans text-black13 xl:pr-11 pr-8 pl-4 h-10 bg-white border border-gray1600 rounded-md w-full outline-0 ${className}`}
+                    className={`appearance-none cursor-pointer text-sm font-normal leading-5 font-neulis-sans text-black13 xl:pr-11 pr-8 pl-4 h-10 bg-white border border-gray1600 rounded-md w-full outline-0 ${className}`}
                >
                     {options.map((option) => (
                          <option key={option.value} value={option.value}>
