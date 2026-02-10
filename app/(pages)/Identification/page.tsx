@@ -2,7 +2,7 @@
 
 import CustomSelect from "@/app/components/CustomSelect";
 import InputField from "@/app/components/InputField";
-import Button from "@/app/ui/Button";
+import Button from "@/app/components/ui/Button";
 
 export default function page() {
      return (
