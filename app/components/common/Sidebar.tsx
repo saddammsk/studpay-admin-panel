@@ -11,60 +11,73 @@ type MenuItem = {
 };
 
 const mainMenu: MenuItem[] = [
-  { label: "Dashboard", icon: "/images/dashboard-icon.svg", href: "/" },
-  { label: "Users / Students", icon: "/images/user-icon.svg", href: "/users" },
-  { label: "KYC & Documents", icon: "/images/kyc-icon.svg", href: "/kyc" },
+  { label: "Dashboard", 
+    icon: "/images/dashboard-icon.svg", 
+    href: "/" 
+  },
+  { label: "Users / Students", 
+    icon: "/images/user-icon.svg",
+     href: "/users_students" 
+    },
+  { label: "KYC & Documents", 
+    icon: "/images/kyc-icon.svg", 
+    href: "/kyc_documents" 
+  },
   {
     label: "Identification",
     icon: "/images/user-icon.svg",
     href: "/Identification",
   },
-  { label: "User Wallets", icon: "/images/wallet-icon.svg", href: "/wallets" },
+  { label: "User Wallets", 
+    icon: "/images/wallet-icon.svg", 
+    href: "/user_wallets" },
   {
     label: "Blocked AVI Accounts",
     icon: "/images/shield-icon.svg",
-    href: "/blocked-accounts",
+    href: "/blocked_avi",
   },
   {
     label: "Transactions History",
     icon: "/images/timer-icon.svg",
-    href: "/transactions",
+    href: "/transactions_history",
   },
   {
     label: "Recharge & Withdraw Logs",
     icon: "/images/dashboard-icon.svg",
-    href: "/recharge-withdraw",
+    href: "/recharge_withdraw_logs",
   },
-  { label: "Crypto Transfers", icon: "/images/btc-icon.svg", href: "/crypto" },
+  { label: "Crypto Transfers", 
+    icon: "/images/btc-icon.svg", 
+    href: "/crypto_transfers" },
   {
     label: "Monthly AVI Disburseme…",
     icon: "/images/dollar-icon.svg",
-    href: "/monthly-disbursement",
+    href: "/monthly_avi_disbursement",
   },
   {
     label: "Refund Requests",
     icon: "/images/recycle-icon.svg",
-    href: "/refunds",
+    href: "/refund_requests",
   },
   {
     label: "Referrals & Rewards",
     icon: "/images/gift-icon.svg",
-    href: "/ReferralReward",
+    href: "/referrals",
   },
   {
     label: "Cashback Management",
     icon: "/images/percentage-icon.svg",
-    href: "/cashback",
+    href: "/cashback_management",
   },
   {
     label: "Student Discounts & Offers",
     icon: "/images/percentage-icon.svg",
-    href: "/discounts",
+    href: "/student_discount_offers",
   },
   {
     label: "Housing & Insurance Part…",
     icon: "/images/home-icon.svg",
-    href: "/housing",
+    href: "/housing_insurance_partners",
   },
   {
     label: "AVI Finance Guarantee",
@@ -176,3 +189,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+ 
