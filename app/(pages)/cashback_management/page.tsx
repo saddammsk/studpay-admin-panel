@@ -20,7 +20,7 @@ const KycDocumentPage = () => {
       const [toDate, setToDate] = useState("");
 
       const openFromCalendar = () => {
-            fromRef.current?.showPicker(); // open calendar
+            fromRef.current?.showPicker(); 
       };
 
       const openToCalendar = () => {

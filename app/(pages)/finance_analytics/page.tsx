@@ -2,11 +2,13 @@
 import { useState } from "react";
 import CustomSelect from "@/app/components/CustomSelect";
 import Link from "next/link";
-import Button from "@/app/ui/Button";
 import RevenueChart from "@/app/components/RevenueChart";
 import ExpensePieChart from "@/app/components/ExpensePieChart";
 import BarChart2 from "@/app/components/BarChart2";
 import CountryStats from "@/app/components/CountryStats";
+import Button from "@/app/components/ui/Button";
+
+
 const countries = [
      { code: "GE", name: "Germany", students: 1240, amount: 285000, progress: 100 },
      { code: "FR", name: "France", students: 890, amount: 198000, progress: 80 },
@@ -16,11 +18,15 @@ const countries = [
      { code: "OT", name: "Others", students: 290, amount: 82000, progress: 20 },
 ];
 
-export default function Home() {
+
+
+export default function FinanceAnalytics() {
      const [status, setStatus] = useState<string>("all");
      const [status2, setStatus2] = useState<string>("All Countries");
      const [status3, setStatus3] = useState<string>("EUR (€)");
      const [status4, setStatus4] = useState<string>("All Types");
+
+
      return (
           <div className="max-w-7xl mx-auto">
                <div className="flex items-center justify-between xl:flex-nowrap flex-wrap gap-4">
