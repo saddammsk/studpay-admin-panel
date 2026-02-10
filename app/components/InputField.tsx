@@ -9,7 +9,7 @@ interface InputFieldProps {
      onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
      iconSrc?: string;
      wrapperClassName?: string;
-     inputClassName?: string;
+     ClassName?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -20,7 +20,7 @@ const InputField: React.FC<InputFieldProps> = ({
      onChange,
      iconSrc,
      wrapperClassName = "",
-     inputClassName = "",
+     ClassName = "",
 }) => {
      return (
           <div className={wrapperClassName}>
@@ -38,7 +38,7 @@ const InputField: React.FC<InputFieldProps> = ({
                          onChange={onChange}
                          className={`font-segoe text-sm font-normal leading-normal text-gray-1400 
           placeholder:text-gray-1400 w-full pl-10 h-10 rounded-md 
-          border border-gray-1000 block ${inputClassName}`}
+          border border-gray-1000 block ${ClassName}`}
                     />
 
                     {iconSrc && (

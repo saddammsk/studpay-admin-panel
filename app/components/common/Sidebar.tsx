@@ -26,7 +26,7 @@ const mainMenu: MenuItem[] = [
   {
     label: "Identification",
     icon: "/images/user-icon.svg",
-    href: "/Identification",
+    href: "/identification",
   },
   { label: "User Wallets", 
     icon: "/images/wallet-icon.svg", 

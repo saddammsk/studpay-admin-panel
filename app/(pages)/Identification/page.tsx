@@ -1,6 +1,6 @@
 'use client'
 
-import CustomSelect from "@/app/components/CustomSelect";
+
 import InputField from "@/app/components/InputField";
 import Button from "@/app/components/ui/Button";
 
@@ -66,7 +66,7 @@ export default function page() {
                               <div className="relative calendar-input">
                                    <input
                                         type="date"
-                                        className="font-segoe max-w-[173px] pr-3 text-sm font-normal leading-normal h-10 text-gray-1400 w-full border border-gray1600 rounded-md pl-10 block"
+                                        className="font-segoe max-w-43.25 pr-3 text-sm font-normal leading-normal h-10 text-gray-1400 w-full border border-gray1600 rounded-md pl-10 block"
                                    />
 
                                    <div className="absolute top-1/2 -translate-y-1/2 left-3">

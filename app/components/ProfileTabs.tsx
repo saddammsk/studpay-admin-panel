@@ -12,42 +12,42 @@ type TabItem = {
 const tabs: TabItem[] = [
      {
           label: "Personal Info",
-          href: "/Identification/PersonalInfo",
+          href: "/identification/personal_info",
           icon: "/images/user-icon3.svg",
      },
      {
           label: "KYC & Documents",
-          href: "/Identification/KycDocument",
+          href: "/identification/kyc_document",
           icon: "/images/document-icon.svg",
      },
      {
           label: "Linked Products",
-          href: "/Identification/LinkedProducts",
+          href: "/identification/linked_products",
           icon: "/images/wallet-icon3.svg",
      },
      {
           label: "Transactions",
-          href: "/Identification/Transactions",
+          href: "/identification/transaction_summary",
           icon: "/images/transaction-icon.svg",
      },
      {
           label: "Contracts",
-          href: "/contracts",
+          href: "/identification/contract_signatures",
           icon: "/images/document-icon.svg",
      },
      {
           label: "CRM Notes",
-          href: "/crm-notes",
+          href: "/identification/crm_notes",
           icon: "/images/msg-icon2.svg",
      },
      {
           label: "Interview Reports",
-          href: "/interview-reports",
+          href: "/identification/interview_report",
           icon: "/images/pencile-icon.svg",
      },
      {
           label: "Appointments",
-          href: "/appointments",
+          href: "/identification/appointments",
           icon: "/images/calendar-icon3.svg",
      },
 ];

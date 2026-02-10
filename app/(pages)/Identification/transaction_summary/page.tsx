@@ -1,71 +1,11 @@
 'use client'
 
-import ProfileTabs from "@/app/components/ProfileTabs";;
+import ProfileTabs from "@/app/components/ProfileTabs";
+import TransectionHistoryTable from "@/app/components/TransectionHistoryTable";
 import Link from "next/link";
 import Image from "next/image";
 
-
-type PaymentStatus = "approved" | "Pending" | "rejected";
-
-interface Payment {
-     id: number;
-     Mainicon: string;
-     name: string;
-     pdf: string;
-     date: string;
-     status: PaymentStatus;
-     eyesImg: string;
-     downloadImg: string;
-     quality: string;
-}
-const statusConfig = {
-     approved: {
-          classes: "bg-green-1200 text-green-1100",
-     },
-     Pending: {
-          classes: "bg-yellow1200 text-brown-1000",
-     },
-     rejected: {
-          classes: "bg-lightred1200 text-red1200",
-     },
-} as const;
-
-const payments: Payment[] = [
-     {
-          id: 1,
-          Mainicon: "/images/checkgreendark.svg",
-          name: "Passport",
-          pdf: "passport_scan.pdf",
-          date: "Uploaded: 12/10/2024",
-          status: "approved",
-          eyesImg: "/images/eyes-icon.svg",
-          downloadImg: "/images/download-icon.svg",
-          quality: "",
-     },
-     {
-          id: 2,
-          Mainicon: "/images/checkgreendark.svg",
-          name: "Student Visa",
-          pdf: "student_visa.pdf",
-          date: "Uploaded: 12/10/2024",
-          status: "Pending",
-          eyesImg: "/images/eyes-icon.svg",
-          downloadImg: "/images/download-icon.svg",
-          quality: ""
-     },
-     {
-          id: 3,
-          Mainicon: "/images/info-red.svg",
-          name: "Enrollment Letter",
-          pdf: "enrollment_letter.pdf",
-          date: "Uploaded: 12/8/2024",
-          status: "rejected",
-          eyesImg: "/images/eyes-icon.svg",
-          downloadImg: "/images/download-icon.svg",
-          quality: "Document quality too low",
-     },
-];
-
+ 
 
 export default function page() {
      return (
@@ -84,9 +24,9 @@ export default function page() {
                     </div>
                </div>
                <ProfileTabs />
-               <div className="bg-white mt-2 border border-solid border-gray-1000 rounded-lg shadow-4xl p-6.25">
+               <div className="bg-white mb-6.25 mt-2 border border-solid border-gray-1000 rounded-lg shadow-4xl sm:p-6.25 p-4">
                     <h4 className="text-black13 font-segoe sm:text-2xl text-xl font-normal leading-6 tracking-[-0.6px]">Transaction Summary</h4>
-                    <div className="grid sm:grid-cols-4 grid-cols-1 gap-4 mt-6">
+                    <div className="grid md:grid-cols-4 grid-cols-2 gap-4 mt-6">
                          <div className="bg-gray-1300 rounded-lg p-4">
                               <span className="text-blue-1000 block font-segoe sm:text-2xl text-xl font-normal leading-8 text-center">$2,450</span>
                               <h5 className="text-blue-1000 font-segoe text-[13.67px] font-normal leading-5 text-center">Total Balance</h5>
@@ -105,7 +45,7 @@ export default function page() {
                          </div>
                     </div>
                </div>
-                
+                <TransectionHistoryTable />
           </div>
      );
 }
