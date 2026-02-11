@@ -18,10 +18,15 @@
   --color-gray-2100: #E8EAED;
   --color-gray-2200: #DADCE2;
   --color-gray-2300: #6A7181;
+  --color-gray-2400: #4F5664;
+  --color-gray-2500: #333;
+  --color-gray-2600: #737373;
+  --color-gray-2700: #E0E6EB;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
   --color-red-1100: #FEE2E2;
   --color-red-1200: #DC2626;
+  --color-red-1300: #EF4343;
   --color-white-1000: #DBEAFE;
   --color-white-1100: #FAFAFA;
   --color-purple-1000: #93C5FD;
@@ -30,17 +35,25 @@
   --color-black-1200: #111827;
   --color-black-1300: #1C1E21;
   --color-black-1400: #1D212B;
+  --color-black-1500: #161A23;
   --color-blue-1300: #0F1729;
   --color-blue-1400: #0B64F4;
   --color-blue-1500: #0A91FF;
   --color-blue-1600: #0B91FE;
   --color-blue-1700: #3B82F6;
+  --color-blue-1800: #1587F9;
   --color-green-1000: #16A34A;
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
   --color-green-1300: #10B981;
+  --color-green-1400: #F2FDF6;
+  --color-green-1500: #21C45D;
+  --color-green-1600: #16A249;
   --color-yellow-1000: #FEF9C3;
+  --color-yellow-1100: #F59F0A;
   --color-brown-1000: #854D0E;
+  --color-brown-1100: #EAB308;
+  --color-brown-1200: #4D3700;
   /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
@@ -213,4 +226,12 @@ input[type="date"] {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  position: absolute;
+  left: 11px;
 }
