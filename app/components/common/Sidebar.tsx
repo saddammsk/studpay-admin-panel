@@ -115,7 +115,7 @@ const analyticsMenu: MenuItem[] = [
   {
     label: "Admin Settings / Roles",
     icon: "/images/setting-icon.svg",
-    href: "/admin_settings",
+    href: "/admin_setting_roles",
   },
 ];
 
