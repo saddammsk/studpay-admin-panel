@@ -1,95 +1,278 @@
-import InputField from '@/app/components/InputField'
-import Button from '@/app/components/ui/Button'
-import Link from 'next/link'
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import {
+  updateFormField,
+  setErrors,
+} from '@/app/store/slices/Loginslice';
+import { useBiometric } from '@/app/hooks/useBiometric';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import InputField from '@/app/components/InputField';
+import Button from '@/app/components/ui/Button';
+import TwoFactorModal from '@/app/components/TwoFactorModal';
 
 const LoginPage = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { formData, errors, isLoading, successMessage, biometricStatus } =
+    useAppSelector((state) => state.login);
+  const { authenticate } = useBiometric();
+  const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
+
+  useEffect(() => {
+    const rememberedEmail = localStorage.getItem('rememberedEmail');
+    if (rememberedEmail) {
+      dispatch(updateFormField({ field: 'email', value: rememberedEmail }));
+    }
+  }, [dispatch]);
+
+
+
+const handleInputChange = <K extends keyof typeof formData>(
+  field: K,
+  value: typeof formData[K]
+) => {
+  dispatch(updateFormField({ field, value }));
+};
+
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  dispatch(setErrors({}));
+
+  const newErrors: Record<string, string> = {};
+
+  if (!formData.email) {
+    newErrors.email = 'Email is required';
+  } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    newErrors.email = 'Email is invalid';
+  }
+
+  if (!formData.password) {
+    newErrors.password = 'Password is required';
+  } else if (formData.password.length < 6) {
+    newErrors.password = 'Password must be at least 6 characters';
+  }
+
+  if (Object.keys(newErrors).length > 0) {
+    dispatch(setErrors(newErrors));
+    return;
+  }
+
+
+  try {
+
+
+    const loginSuccess = true; // pretend API response
+
+    if (loginSuccess) {
+      setShowTwoFactorModal(true)
+     
+    } else {
+      dispatch(setErrors({ submit: 'Invalid email or password' }));
+    }
+  } catch (err: any) {
+    dispatch(setErrors({ submit: err.message || 'Login failed' }));
+  } 
+};
+
+
+  const handleBiometricLogin = async () => {
+    try {
+      const authenticated = await authenticate();
+      if (authenticated) {
+        const success = await loginWithBiometric(() => {
+          setTimeout(() => {
+            router.push('/dashboard');
+          }, 1500);
+        });
+      } else {
+        dispatch(setErrors({ biometric: 'Biometric authentication failed' }));
+      }
+    } catch (error) {
+      dispatch(
+        setErrors({
+          biometric: 'Biometric authentication is not available',
+        })
+      );
+    }
+  };
+
   return (
-    <div className='grid md:grid-cols-2 gap-5 font-inter h-screen flex items-center justify-center bg-gray-1800'>
-      <div className='bg-[url(/images/login-bg.png)]  hidden bg-cover bg-no-repeat lg:p-12 p-4 h-screen md:flex flex-col justify-between'>
-        <div className='flex items-center gap-3'>
-          <div className='bg-white/10 w-12 h-12 rounded-2xl flex items-center justify-center'>
-            <img src="/images/shield-icon3.svg" alt="" /></div>
-          <div>
-            <h6 className='font-inter text-2xl font-bold leading-8 text-white'>StudPay</h6>
-            <span className='block text-sm font-normal leading-5 text-white/60'>Admin Panel</span>
-          </div>
-        </div>
-        <div className="text-center">
-          <img src="/images/login-img.svg" className='inline-block' alt="" />
-        </div>
-        <div>
-          <h6 className='text-white/80 text-sm font-inter leading-5 mb-4'>Enterprise-Grade Security</h6>
-          <div className='flex items-center flex-wrap gap-3'>
-            <div className='text-xs font-normal leading-4 text-white/80 py-1.5 px-3 rounded-full bg-white/10'>Multi-Factor Auth</div>
-            <div className='text-xs font-normal leading-4 text-white/80 py-1.5 px-3 rounded-full bg-white/10'>Session Management</div>
-            <div className='text-xs font-normal leading-4 text-white/80 py-1.5 px-3 rounded-full bg-white/10'>Encrypted Data</div>
-          </div>
-        </div>
-      </div>
-      <div className='h-screen overflow-auto scroll-hide pb-4'>
-        <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
-          <div className='max-w-[448px] px-4 w-full mx-auto'>
-            <h4 className='font-inter text-[30px] font-bold leading-9 mb-2 text-blue-1300'>Welcome Back</h4>
-            <p className="text-base font-normal leading-6 text-gray-1900">Sign in to access your admin dashboard</p>
-            <form action="" className='mt-8'>
-              <div className='space-y-[27px]'>
-                <InputField
-                  label="Admin Email" ClassName='bg-white rounded-2xl! h-[59px] border-2'
-                  type="text"
-                  placeholder="admin@studpay.com"
-                  iconSrc="/images/msg-icon.svg"
-                />
-                <InputField
-                  label="Password" ClassName='bg-white rounded-2xl! h-[59px] border-2'
-                  type="password"
-                  placeholder="Enter your password"
-                  iconSrc="/images/lock-icon.svg"
-                  passwordToggleIconSrc={{
-                    show: "/images/eye-icon.svg",
-                    hide: "/images/eye-icon.svg",
-                  }}
-                />
-              </div>
-              <Link href="" className='text-sm font-normal leading-5 text-gray-1900 gap-3 flex items-center my-6 justify-center rounded-[16px] py-[14px] border-dotted border-2 border-gray-1000'><img src="/images/finger-print.svg" alt="" /> Use Biometric Authentication</Link>
-              <div className='flex items-center justify-between mb-6'>
-                <div className='flex items-center gap-2'>
-                  <input
-                    type="radio"
-                    id="secure-session"
-                    name="session"
-                    className='appearance-none cursor-pointer w-4 h-4 rounded-full border border-blue-1400 checked:bg-blue-1400 checked:border-blue-1400'
+    <div className="h-screen overflow-auto scroll-hide pb-4">
+      <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
+        <div className="max-w-[448px] px-4 w-full mx-auto">
+          {successMessage ? (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center bg-green-100">
+                <svg
+                  className="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
                   />
-                  <label htmlFor="secure-session" className='text-sm font-normal leading-5 text-gray-1900 block'>
-                    Secure Session (24h)
-                  </label>
+                </svg>
+              </div>
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                {successMessage}
+              </h4>
+              <p className="text-sm text-gray-600">
+                Redirecting to your dashboard...
+              </p>
+            </div>
+          ) : (
+            <>
+              <h4 className="text-3xl font-bold leading-9 mb-2 text-blue-1400">
+                Welcome Back
+              </h4>
+              <p className="text-base font-normal leading-6 text-gray-700">
+                Sign in to access your admin dashboard
+              </p>
+
+              <form onSubmit={handleSubmit} className="mt-8">
+                <div className="space-y-[27px]">
+                  <InputField
+                    label="Admin Email"
+                    type="email"
+                    placeholder="admin@studpay.com"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    iconSrc="/images/msg-icon.svg"
+                    ClassName="rounded-2xl border-2 bg-white h-[59px]"
+                  />
+                    {errors.email && (
+                    <p className="text-xs font-normal leading-4 text-red-600 -mt-6 mb-4">
+                      {errors.email}
+                    </p>
+                  )}
+
+                  <InputField
+                    label="Password"
+                    type="password"
+                    placeholder="Enter your password"
+                    value={formData.password}
+                    onChange={(e) => handleInputChange('password', e.target.value)}
+                    iconSrc="/images/lock-icon.svg"
+                    passwordToggleIconSrc={{
+                      show: '/images/eye-icon.svg',
+                      hide: '/images/eye-icon.svg',
+                    }}
+                    ClassName="rounded-2xl border-2 bg-white h-[59px]"
+                  />
+                    {errors.password && (
+                    <p className="text-xs font-normal leading-4 text-red-600 -mt-6 mb-4">
+                      {errors.password}
+                    </p>
+                  )}
                 </div>
 
-                <Link href="/" className="text-sm font-normal leading-5 text-blue-1400 block">Forgot Password?</Link>
-              </div>
-              <Button
-                iconPosition="end"
-                label="Sign In Securely"
-                iconSrc="/images/right-arrow-white.svg"
-                className="text-white w-full  justify-center bg-blue-1400 shadow-6xl"
-              />
-              <h6 className='text-sm font-normal leading-5 mt-8 text-center text-gray-1900'>Don't have an account? <Link href="/" className="text-blue-1400">Admin access is invite-only</Link></h6>
-            </form>
-          </div>
-        </div>
-        <div className='flex items-center flex-wrap justify-center xl:gap-[52px] gap-4'>
-          <div className='flex items-center gap-1.5'>
-            <img src="/images/globe-icon2.svg" alt="" />
-            <h6 className='text-xs font-normal leading-4 text-gray-1900'>Your IP (192.168.1.45) is being logged for security purposes</h6>
-          </div>
-          <div className='flex items-center gap-1.5'>
-            <img src="/images/sheild-block.svg" alt="" />
-            <h6 className='text-xs font-normal leading-4 text-gray-1900'>256-bit SSL Encrypted</h6>
-          </div>
+                  <button
+                    type="button"
+                    // onClick={handleBiometricLogin}
+                    disabled={isLoading}
+                    className="text-sm cursor-pointer font-normal leading-5 text-gray-700 gap-3 flex items-center my-6 justify-center rounded-2xl py-[14px] border-dotted border-2 border-gray-300 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                  >
+                    <img src="/images/finger-print.svg" alt="Biometric" />
+                    Use Biometric Authentication
+                  </button>
+
+                {errors.biometric && (
+                  <p className="text-xs text-red-600 mb-4">{errors.biometric}</p>
+                )}
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      id="secure-session"
+                      name="session"
+                      checked={formData.secureSession}
+                      onChange={(e) =>
+                        handleInputChange('secureSession', e.target.checked)
+                      }
+                      className="appearance-none cursor-pointer w-4 h-4 rounded-full border-2 border-blue-1400 checked:bg-blue-1400 checked:border-blue-1400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+                    />
+                    <label
+                      htmlFor="secure-session"
+                      className="text-sm font-normal leading-5 text-gray-700 block cursor-pointer"
+                    >
+                      Secure Session (24h)
+                    </label>
+                  </div>
+
+                  <Link
+                    href="/forgot-password"
+                    className="text-sm font-semibold leading-5 text-blue-1400 hover:text-blue-1400 block"
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
+
+                {errors.submit && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+                    {errors.submit}
+                  </div>
+                )}
+
+                  <button
+                   onClick={handleSubmit}
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-white cursor-pointer flex items-center gap-2 py-3 rounded-2xl w-full justify-center bg-blue-1400 hover:bg-blue-700 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed transition-all"
+                >Sign In Securely
+                  <img src="/images/right-arrow-white.svg" alt="" />
+                </button>
+
+                <h6 className="text-sm font-normal leading-5 mt-8 text-center text-gray-700">
+                  {"Don't"} have an account?{' '}
+                  <Link
+                    href="/contact-admin"
+                    className="text-blue-1400 font-semibold hover:text-blue-1400"
+                  >
+                    Admin access is invite-only
+                  </Link>
+                </h6>
+              </form>
+            </>
+          )}
         </div>
       </div>
-    </div>
-  )
-}
 
-export default LoginPage
+      <div className="flex items-center flex-wrap justify-center xl:gap-12 gap-4 px-4">
+        <div className="flex items-center gap-1.5">
+          <img src="/images/globe-icon2.svg" alt="Globe" className="w-4 h-4" />
+          <h6 className="text-xs font-normal leading-4 text-gray-700">
+            Your IP (192.168.1.45) is being logged for security purposes
+          </h6>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <img src="/images/sheild-block.svg" alt="Shield" className="w-4 h-4" />
+          <h6 className="text-xs font-normal leading-4 text-gray-700">
+            256-bit SSL Encrypted
+          </h6>
+        </div>
+      </div>
+
+      <TwoFactorModal
+        isOpen={showTwoFactorModal}
+        onClose={() => setShowTwoFactorModal(false)}
+      />
+    </div>
+  );
+};
+
+export default LoginPage;
+
+function loginWithBiometric(arg0: () => void) {
+  throw new Error('Function not implemented.');
+}
