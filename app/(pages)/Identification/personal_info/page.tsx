@@ -1,6 +1,6 @@
 'use client'
 
-import ProfileTabs from "@/app/components/ProfileTabs"; ;
+import ProfileTabs from "@/app/components/ProfileTabs";;
 import Link from "next/link";
 
 export default function page() {

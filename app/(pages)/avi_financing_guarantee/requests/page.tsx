@@ -1,10 +1,8 @@
 'use client'
-import BlockedTable from "@/app/components/BlockedTable";
 import CustomSelect from "@/app/components/CustomSelect";
 import FinancingTable from "@/app/components/FinancingTable";
 import InputField from "@/app/components/InputField";
 import Button from "@/app/components/ui/Button";
-import { Dropdown } from "@/app/components/ui/Dropdown";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -12,6 +10,7 @@ import { useState } from "react";
 export default function FinanceAnalytics() {
      const [status, setStatus] = useState<string>("all");
      const [status2, setStatus2] = useState<string>("all");
+     const [status3, setStatus3] = useState<string>("all");
      return (
           <div className="font-inter">
                <ul className="flex items-center gap-2 mb-6">
@@ -33,8 +32,8 @@ export default function FinanceAnalytics() {
                </ul>
                <h2 className="text-[30px] font-bold leading-9 text-black-1500 mb-2">AVI Financing Guarantee — Overview</h2>
                <p className="text-lg font-normal leading-7 text-gray-2600">Manage and review student financing guarantee requests</p>
-               <div className="flex mt-6">
-                    <div className="w-[17%]">
+               <div className="flex xl:flex-nowrap flex-wrap gap-5 mt-6">
+                    <div className="4xl:w-[17%] xl:w-3/12 w-full">
                          <div className="border-r border-gray-2700 bg-white">
                               <div className="flex items-center justify-between border-b border-gray-2700 px-4 py-6">
                                    <div className="flex items-center gap-2 text-sm font-medium leading-5 text-gray-2500">
@@ -117,7 +116,7 @@ export default function FinanceAnalytics() {
                               </div>
                          </div>
                     </div>
-                    <div className="w-[83%]">
+                    <div className="4xl:w-[83%] xl:w-9/12 w-full">
                          <div className="bg-white p-4">
                               <div className="flex items-center justify-between mb-4">
                                    <div className="max-w-[320px] w-full">
@@ -133,7 +132,7 @@ export default function FinanceAnalytics() {
                                         iconSrc="/images/export-icon4.svg"
                                    />
                               </div>
-                              <div className="flex items-center gap-3 max-w-[802px]">
+                              <div className="2xl:flex grid grid-cols-3 items-center gap-3 max-w-[802px]">
                                    <div className="w-full">
                                         <CustomSelect
                                              value={status}
@@ -182,8 +181,58 @@ export default function FinanceAnalytics() {
                                    </div>
                               </div>
                          </div>
-                         <div className="p-6">
-                              <FinancingTable></FinancingTable>
+                         <div className="md:p-6">
+                              <div className="mb-10">
+                                   <FinancingTable></FinancingTable>
+                              </div>
+                              <div className="bg-white flex flex-wrap gap-5 items-center justify-between md:px-6 px-3 py-4">
+                                   <div className="flex items-center flex-wrap gap-6">
+                                        <h6 className="text-sm font-normal leading-5 text-gray-2600">Showing 1 to 25 of 847 results</h6>
+                                        <div className="flex items-center gap-2">
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2600">Show</h6>
+                                             <CustomSelect className="py-1.5!"
+                                                  value={status3}
+                                                  onChange={(e) => setStatus3(e.target.value)}
+                                                  options={[
+                                                       { label: "25", value: "25" },
+                                                       { label: "26", value: "26" },
+                                                       { label: "27", value: "27" },
+                                                  ]}
+                                             />
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2600">per page</h6>
+                                        </div>
+                                   </div>
+
+                                   <ul className="flex items-center gap-1">
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md border border-gray-2700 flex items-center justify-center"><img src="/images/double-left-arrow.svg" alt="" /></Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md border border-gray-2700 flex items-center justify-center"><img src="/images/left-arrow5.svg" alt="" /></Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md text-sm font-medium leading-5 text-gray-2500 border border-gray-2700 flex items-center justify-center">1</Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md text-sm font-medium leading-5 text-gray-2500 border border-gray-2700 flex items-center justify-center">2</Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md text-sm font-medium leading-5 text-gray-2500 border border-gray-2700 flex items-center justify-center">3</Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md text-sm font-medium leading-5 text-gray-2500 flex items-center justify-center">...</Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md text-sm font-medium leading-5 text-gray-2500 border border-gray-2700 flex items-center justify-center">34</Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md border border-gray-2700 flex items-center justify-center"><img src="/images/right-arrow2.svg" alt="" /></Link>
+                                        </li>
+                                        <li>
+                                             <Link href="/" className="w-8 h-8 rounded-md border border-gray-2700 flex items-center justify-center"><img src="/images/right-arrow-double.svg" alt="" /></Link>
+                                        </li>
+                                   </ul>
+                              </div>
                          </div>
                     </div>
                </div>
