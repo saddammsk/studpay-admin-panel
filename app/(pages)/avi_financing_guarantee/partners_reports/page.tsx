@@ -1,5 +1,6 @@
 'use client'
 import CustomSelect from '@/app/components/CustomSelect';
+import MonthlyBarChart from '@/app/components/MonthlyBarChart';
 import PartnerCard from '@/app/components/PartnerCard';
 import ProgressBar from '@/app/components/ProgressBar';
 import Button from '@/app/components/ui/Button';
@@ -133,80 +134,93 @@ export default function FinanceAnalytics() {
                     <div className="2xl:w-3/12 w-full">
                          <div className='border mb-4 border-gray-1000 bg-white rounded-lg shadow-4xl 4xl:p-6 p-3'>
                               <h4 className='text-lg font-bold leading-7 text-gray-2500 mb-6'>Performance Metrics</h4>
-                              <div>
-                                   <div className='flex items-center justify-between'></div>
-                                   <ProgressBar value={70}></ProgressBar>
+                              <div className='space-y-4'>
+                                   <div>
+                                        <div className='flex items-center justify-between mb-2'>
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2600">Files Sent</h6>
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2500">145</h6>
+                                        </div>
+                                        <ProgressBar value={70}></ProgressBar>
+                                        <h6 className="text-xs font-normal leading-5 mt-1 text-gray-2600">This month</h6>
+                                   </div>
+                                   <div>
+                                        <div className='flex items-center justify-between mb-2'>
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2600">Acceptance Rate</h6>
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2500">82%</h6>
+                                        </div>
+                                        <ProgressBar value={70}></ProgressBar>
+                                        <h6 className="text-xs font-normal leading-5 mt-1 text-gray-2600">Last 30 days</h6>
+                                   </div>
+                                   <div>
+                                        <div className='flex items-center justify-between mb-2'>
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2600">Avg Response Time</h6>
+                                             <h6 className="text-sm font-normal leading-5 text-gray-2500">2.3h</h6>
+                                        </div>
+                                        <div className='flex items-center gap-2'>
+                                             <img src="/images/timer-gray.svg" alt="" />
+                                             <h6 className="text-xs font-normal leading-5 text-gray-2600">Target: &lt; 4h</h6>
+                                        </div>
+                                   </div>
+                                   <div>
+                                        <h6 className="text-sm font-normal leading-5 text-gray-2500">Monthly Trend</h6>
+                                        <MonthlyBarChart></MonthlyBarChart>
+                                   </div>
                               </div>
                          </div>
-                         <div className='border border-gray-1000 bg-white rounded-lg shadow-4xl 4xl:p-6 p-3'>
+                         <div className='border border-gray-1000 bg-white rounded-lg shadow-4xl 4xl:p-6 p-3 mb-4'>
                               <div className='flex items-center gap-2.5 mb-6'>
                                    <h4 className='text-lg font-bold leading-7 text-gray-2500'>Quick Actions</h4>
                               </div>
                               <div className="space-y-2">
                                    <Button
-                                        label="Bulk Review"
-                                        className="text-gray-2500 w-full py-2.5! justify-start font-medium bg-transparent border border-gray1600"
-                                        iconSrc="/images/flash-icon.svg"
+                                        label="Send Test Package"
+                                        className="text-gray-2500 w-full py-2.5! hover:bg-blue-2000 transition-all ease-in-out duration-500 hover:text-white justify-start font-medium bg-transparent border border-gray1600"
+                                        iconSrc="/images/transfer-icon.svg"
                                    />
                                    <Button
-                                        label="SLA Report"
-                                        className="text-gray-2500 w-full py-2.5! justify-start font-medium bg-transparent border border-gray1600"
-                                        iconSrc="/images/timer-icon4.svg"
+                                        label="Generate Report (PDF)"
+                                        className="text-gray-2500 w-full py-2.5! hover:bg-blue-2000 transition-all ease-in-out duration-500 hover:text-white justify-start font-medium bg-transparent border border-gray1600"
+                                        iconSrc="/images/file-icon3.svg"
                                    />
                                    <Button
-                                        label="Workflow Rules"
-                                        className="text-gray-2500 w-full py-2.5! justify-start font-medium bg-transparent border border-gray1600"
-                                        iconSrc="/images/setting-icon2.svg"
+                                        label="Export Data (CSV)"
+                                        className="text-gray-2500 w-full py-2.5! hover:bg-blue-2000 transition-all ease-in-out duration-500 hover:text-white justify-start font-medium bg-transparent border border-gray1600"
+                                        iconSrc="/images/export-icon4.svg"
+                                   />
+                                   <Button
+                                        label="View Full Analytics"
+                                        className="text-gray-2500 w-full py-2.5! hover:bg-blue-2000 transition-all ease-in-out duration-500 hover:text-white justify-start font-medium bg-transparent border border-gray1600"
+                                        iconSrc="/images/grapgh-icon6.svg"
                                    />
                               </div>
                          </div>
-                    </div>
-               </div>
-               <div className='border border-gray-1000 bg-white rounded-lg shadow-4xl md:p-6 p-3'>
-                    <h4 className='text-lg font-bold leading-7 mb-6 text-gray-2500'>Automated Send Log</h4>
-                    <div className='flex items-center flex-wrap gap-2 justify-between py-3 border-b border-gray-1000'>
-                         <div className='flex items-start justify-between mb-2'>
-                              <div className='flex items-center gap-3'>
-                                   <img src="/images/tick-circle6.svg" className='w-4 h-4' alt="" />
-                                   <div>
-                                        <h6 className="text-xs font-normal leading-4 text-gray-2500">Partner API Call</h6>
-                                        <span className="text-xs font-normal leading-4 block text-gray-2600">Sent AVI-2024-001 to Lending Partner A</span>
+                         <div className='border border-gray-1000 bg-white rounded-lg shadow-4xl 4xl:p-6 p-3'>
+                              <div className='flex items-center gap-2.5 mb-6'>
+                                   <h4 className='text-lg font-bold leading-7 text-gray-2500'>Scheduled Reports</h4>
+                              </div>
+                              <div className="space-y-2">
+                                   <div className='flex items-start justify-between'>
+                                        <div>
+                                             <h6 className="text-sm font-normal text-gray-2500 mb-1">Weekly Summary</h6>
+                                             <span className="text-xs font-normal leading-4 text-gray-2600">Every Monday at 9:00 AM</span>
+                                        </div>
+                                        <div className="text-xs font-bold leading-4 text-gray-2500  rounded-full py-[3px] px-[11px] bg-gray-1600">
+                                             Active
+                                        </div>
+                                   </div>
+                                   <div className='flex items-start justify-between'>
+                                        <div>
+                                             <h6 className="text-sm font-normal text-gray-2500 mb-1">Monthly Report</h6>
+                                             <span className="text-xs font-normal leading-4 text-gray-2600">1st of each month</span>
+                                        </div>
+                                        <div className="text-xs font-bold leading-4 text-gray-2500  rounded-full py-[3px] px-[11px] bg-gray-1600">
+                                             Active
+                                        </div>
+                                   </div>
+                                   <div className="flex items-center justify-center gap-4 py-2.5 text-xs font-normal leading-4 text-gray-2500">
+                                        <img src="/images/calendar-icon4.svg" alt="" />        Manage Schedules
                                    </div>
                               </div>
-                         </div>
-                         <div className='flex items-center gap-3'>
-                              <span className="text-xs font-normal leading-4 block text-gray-2600">2 minutes ago</span>
-                              <div className="text-xs font-bold leading-4 py-0.5 px-2.5 rounded-full text-green-1500 bg-green-1700">success</div>
-                         </div>
-                    </div>
-                    <div className='flex items-center flex-wrap gap-2 justify-between py-3 border-b border-gray-1000'>
-                         <div className='flex items-start justify-between mb-2'>
-                              <div className='flex items-center gap-3'>
-                                   <img src="/images/tick-circle6.svg" className='w-4 h-4' alt="" />
-                                   <div>
-                                        <h6 className="text-xs font-normal leading-4 text-gray-2500">Partner API Call</h6>
-                                        <span className="text-xs font-normal leading-4 block text-gray-2600">Sent AVI-2024-001 to Lending Partner A</span>
-                                   </div>
-                              </div>
-                         </div>
-                         <div className='flex items-center gap-3'>
-                              <span className="text-xs font-normal leading-4 block text-gray-2600">2 minutes ago</span>
-                              <div className="text-xs font-bold leading-4 py-0.5 px-2.5 rounded-full text-green-1500 bg-green-1700">success</div>
-                         </div>
-                    </div>
-                    <div className='flex items-center flex-wrap gap-2 justify-between py-3'>
-                         <div className='flex items-start justify-between mb-2'>
-                              <div className='flex items-center gap-3'>
-                                   <img src="/images/caution-icon4.svg" className='w-4 h-4' alt="" />
-                                   <div>
-                                        <h6 className="text-xs font-normal leading-4 text-gray-2500">Partner API Error</h6>
-                                        <span className="text-xs font-normal leading-4 block text-gray-2600">Failed to send AVI-2024-003 - timeout error</span>
-                                   </div>
-                              </div>
-                         </div>
-                         <div className='flex items-center gap-3'>
-                              <span className="text-xs font-normal leading-4 block text-gray-2600">2 minutes ago</span>
-                              <div className="text-xs font-bold leading-4 py-0.5 px-2.5 rounded-full text-red-1300 bg-gray-3500">error</div>
                          </div>
                     </div>
                </div>

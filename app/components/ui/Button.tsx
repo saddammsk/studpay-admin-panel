@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
                type={type}
                onClick={onClick}
                disabled={disabled}
-               className={`flex items-center cursor-pointer gap-2 py-3 px-4 text-sm font-normal leading-5 rounded-[10px] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+               className={`flex items-center btn-primary cursor-pointer gap-2 py-3 px-4 text-sm font-normal leading-5 rounded-[10px] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
           >
                {iconSrc && iconPosition === "start" && (
                     <img src={iconSrc} alt={iconAlt} className="shrink-0" />
