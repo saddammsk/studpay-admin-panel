@@ -136,7 +136,7 @@ const page = () => {
                   <div className="bg-white border border-solid  border-gray1600 md:p-6.25 p-4 rounded-lg">
                     <h4 className="text-black13 mb-6 gap-2 flex items-center font-neulis-sans font-normal md:text-2xl text-lg leading-6 tracking-[-0.6px]">
                       <Image
-                        src="../images/setting-icon2.svg"
+                        src="..3xl:/images/setting-icon3.svg"
                         alt="Edit"
                         width={20}
                         height={20}

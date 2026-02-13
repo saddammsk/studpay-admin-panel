@@ -36,7 +36,7 @@ export default function FinanceAnalytics() {
                     <ul className="flex items-center md:flex-nowrap flex-wrap gap-3">
 
                          <li>
-                              <Link href="/" className="flex items-center gap-[18px] text-sm font-medium leading-5 text-gray-2500 py-1.5 px-3 border border-gray-1000 rounded-[10px]"><img className="w-4 h-4" src="/images/setting-icon2.svg" alt="" /> Auto-assign Rules</Link>
+                              <Link href="/" className="flex items-center gap-[18px] text-sm font-medium leading-5 text-gray-2500 py-1.5 px-3 border border-gray-1000 rounded-[10px]"><img className="w-4 h-4" src="3xl:/images/setting-icon3.svg" alt="" /> Auto-assign Rules</Link>
                          </li>
                          <li>
                               <Link href="/" className="flex items-center gap-[18px] text-sm font-medium leading-5 text-white bg-blue-1900 py-1.5 px-3  rounded-[10px]"><img className="w-4 h-4" src="/images/plus-icon.svg" alt="" /> Create Task</Link>
@@ -167,7 +167,7 @@ export default function FinanceAnalytics() {
                                    <Button
                                         label="Workflow Rules"
                                         className="text-gray-2500 w-full py-2.5! justify-start font-medium bg-transparent border border-gray1600"
-                                        iconSrc="/images/setting-icon2.svg"
+                                        iconSrc="3xl:/images/setting-icon3.svg"
                                    />
                               </div>
                          </div>
