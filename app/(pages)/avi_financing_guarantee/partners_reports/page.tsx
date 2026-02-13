@@ -47,7 +47,7 @@ export default function FinanceAnalytics() {
                               <Link href="/" className="flex items-center gap-4 text-sm font-medium leading-5 text-gray-2500 py-1.5 px-3 border border-gray-1000 rounded-[10px]"><img className="w-4 h-4" src="/images/filter.svg" alt="" /> Reports Dashboard</Link>
                          </li>
                          <li>
-                              <Link href="/" className="flex items-center gap-[18px] text-sm font-medium leading-5 text-white bg-blue-1900 py-1.5 px-3  rounded-[10px]"><img className="w-4 h-4" src="/images/export-icon.svg" alt="" /> Export All</Link>
+                              <Link href="/" className="flex items-center gap-4.5 text-sm font-medium leading-5 text-white bg-blue-1900 py-1.5 px-3  rounded-[10px]"><img className="w-4 h-4" src="/images/export-icon.svg" alt="" /> Export All</Link>
                          </li>
                     </ul>
                </div>
@@ -57,7 +57,7 @@ export default function FinanceAnalytics() {
                               <div className='flex items-center justify-between mb-6'>
                                    <h4 className='text-2xl font-bold leading-6 text-gray-2500'>Lending Partners</h4>
                                    <div className='flex items-center gap-2'>
-                                        <div className='text-xs font-bold text-gray-2500 leading-4 py-[3px] px-[11px] rounded-full bg-gray-1600'>4</div>
+                                        <div className='text-xs font-bold text-gray-2500 leading-4 py-0.75 px-2.75 rounded-full bg-gray-1600'>4</div>
                                    </div>
                               </div>
                               <PartnerCard></PartnerCard>

@@ -9,8 +9,8 @@ const LoginPage = () => {
 
      return (
           <div className='h-screen overflow-auto scroll-hide pb-4'>
-               <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
-                    <div className='max-w-[448px] px-4 w-full mx-auto'>
+               <div className="flex md:min-h-[calc(100vh-40px)] min-h-[calc(100vh-80px)] items-center justify-center">
+                    <div className='max-w-md px-4 w-full mx-auto'>
                          <div className="text-center">
                               <img src="/images/logo-2.svg" className='inline-block' alt="" />
                               <p className="text-base font-normal leading-6 text-gray-1900">Admin Portal</p>
