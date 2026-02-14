@@ -31,7 +31,7 @@ export default function FinanceAnalytics() {
                     </div>
                     <div className='bg-white border border-gray-1000/50 rounded-2xl shadow-8xl md:p-5 p-3 flex items-center gap-3'>
                          <div className='bg-green-1500/10 rounded-xl w-11 h-11 flex items-center justify-center'>
-                              <img src="/images/user-green.svg" className='w-5' alt="" />
+                              <img src="/images/user-green2.svg" className='w-5' alt="" />
                          </div>
                          <div className='flex-1'>
                               <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-blue-1300 block">4</span>
