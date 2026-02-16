@@ -22,11 +22,22 @@
   --color-gray-2500: #333;
   --color-gray-2600: #737373;
   --color-gray-2700: #E0E6EB;
+  --color-gray-2800: #DFE3E7;
+  --color-gray-2900: #666666;
+  --color-gray-3000: #F6F7F8;
+  --color-gray-3100: #DAE0E7;
+  --color-gray-3200: #363D49;
+  --color-gray-3300: #6C727F;
+  --colro-gray-3400: #F8F7FC;
+  --color-gray-3500: #FDECEC;
+  --color-gray-3600: #E1E7EF;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
   --color-red-1100: #FEE2E2;
   --color-red-1200: #DC2626;
   --color-red-1300: #EF4343;
+  --color-red-1400: #BE123C;
+  --color-red-1500: #F43F5E;
   --color-white-1000: #DBEAFE;
   --color-white-1100: #FAFAFA;
   --color-purple-1000: #93C5FD;
@@ -42,6 +53,10 @@
   --color-blue-1600: #0B91FE;
   --color-blue-1700: #3B82F6;
   --color-blue-1800: #1587F9;
+  --color-blue-1900: #0F8FFF;
+  --color-blue-2000: #0F87FF;
+  --color-blue-2100: #EBF5FF;
+  --color-blue-2200: #2463EB;
   --color-green-1000: #16A34A;
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
@@ -49,11 +64,18 @@
   --color-green-1400: #F2FDF6;
   --color-green-1500: #21C45D;
   --color-green-1600: #16A249;
+  --color-green-1700: #EEFCF3;
+  --color-green-1800: #047857;
+  --color-green-1900: #E9FCF0;
   --color-yellow-1000: #FEF9C3;
   --color-yellow-1100: #F59F0A;
+  --color-yellow-1200: #FEF7EB;
+  --color-yellow-1300: #F59E0B;
   --color-brown-1000: #854D0E;
   --color-brown-1100: #EAB308;
   --color-brown-1200: #4D3700;
+  --color-orange-1000: #F97316;
+  --color-purple-1100: #A855F7;
   /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
@@ -96,13 +118,23 @@
   --color-darkgreen2300: #14532D;
   --color-purpal13: #9333EA;
   --color-purpal14: #7E22CE;
-  /******* 4-2-2028 ******/
+  /******* 12-2-2028 ******/
+  --color-gray20: #D1D5DB;
+  --color-yellow1600: #FDE047;
+  --color-lightgreen17: #86EFAC;
+  --color-blueNexus12: #D8B4FE;
+  --color-blueNexus13: #F0F5FD;
+  --color-orange12: #EA580C;
+  /******* 12-2-2028 ******/
+
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
-  /******* 4-2-2028 ******/
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-5xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-6xl: 0 0 40px 0 rgba(11, 100, 244, 0.15);
   --shadow-7xl: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10);
+  --shadow-8xl: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
+  --shadow-9xl: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+  --shadow-10xl: 0 4px 6px -1px rgba(20, 25, 31, 0.07), 0 2px 4px -2px rgba(20, 25, 31, 0.05);
   --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
@@ -234,4 +266,12 @@ input[type="date"] {
   cursor: pointer;
   position: absolute;
   left: 11px;
+}
+.sale-date input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  -webkit-appearance: auto;
+  cursor: pointer;
+}
+.btn-primary:hover img {
+    filter: brightness(300);
 }

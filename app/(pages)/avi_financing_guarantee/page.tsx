@@ -26,7 +26,7 @@ export default function FinanceAnalytics() {
                <h2 className="text-[30px] font-bold leading-9 text-black-1500 mb-2">AVI Financing Guarantee — Overview</h2>
                <p className="text-lg font-normal leading-7 text-gray-2400">Monitor and manage student financing guarantee applications</p>
                <div className="grid xl:grid-cols-4 md:grid-cols-2 xl:gap-6 gap-3 my-6">
-                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 3xl:p-6 p-4">
+                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 2xl:p-6 p-4">
                          <div className="flex items-center justify-between mb-4">
                               <div className="w-12 h-12 flex items-center justify-center bg-green-1400 rounded-lg">
                                    <img src="/images/file-icon-blue.svg" alt="" />
@@ -38,7 +38,7 @@ export default function FinanceAnalytics() {
                          <h4 className="text-2xl font-bold leading-8 text-black-1500 mb-1">47</h4>
                          <p className='text-sm font-normal leading-5 text-gray-2400'>Applications In Progress</p>
                     </div>
-                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 3xl:p-6 p-4">
+                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 2xl:p-6 p-4">
                          <div className="flex items-center justify-between mb-4">
                               <div className="w-12 h-12 flex items-center justify-center bg-green-1400 rounded-lg">
                                    <img src="/images/tick-circle2.svg" alt="" />
@@ -50,7 +50,7 @@ export default function FinanceAnalytics() {
                          <h4 className="text-2xl font-bold leading-8 text-black-1500 mb-1">23</h4>
                          <p className='text-sm font-normal leading-5 text-gray-2400'>Accepted Today/Week</p>
                     </div>
-                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 3xl:p-6 p-4">
+                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 2xl:p-6 p-4">
                          <div className="flex items-center justify-between mb-4">
                               <div className="w-12 h-12 flex items-center justify-center bg-green-1400 rounded-lg">
                                    <img src="/images/cross-circle.svg" alt="" />
@@ -62,7 +62,7 @@ export default function FinanceAnalytics() {
                          <h4 className="text-2xl font-bold leading-8 text-black-1500 mb-1">8</h4>
                          <p className='text-sm font-normal leading-5 text-gray-2400'>Denied</p>
                     </div>
-                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 3xl:p-6 p-4">
+                    <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 2xl:p-6 p-4">
                          <div className="flex items-center justify-between mb-4">
                               <div className="w-12 h-12 flex items-center justify-center bg-green-1400 rounded-lg">
                                    <img src="/images/doller-icon.svg" alt="" />
@@ -75,8 +75,8 @@ export default function FinanceAnalytics() {
                          <p className='text-sm font-normal leading-5 text-gray-2400'>Guaranteed Funding Volume</p>
                     </div>
                </div>
-               <div className="flex flex-wrap gap-6">
-                    <div className="3xl:w-3/12 lg:w-[48%] w-full">
+               <div className="flex 2xl:flex-nowrap flex-wrap gap-6">
+                    <div className="2xl:w-3/12 lg:w-[48%] w-full">
                          <div className="bg-white border rounded-lg shadow-4xl border-gray-1600 p-6">
                               <div className="flex items-center gap-2 mb-4">
                                    <img src="/images/caution-icon.svg" alt="" />
@@ -108,7 +108,7 @@ export default function FinanceAnalytics() {
                               <Link href="/" className="flex items-center justify-center rounded-md border border-blue-1800 bg-white flex gap-4 text-sm font-medium leading-5 text-blue-1800 py-2.5">View All Alerts <img src="/images/timer-icon2.svg" alt="" /></Link>
                          </div>
                     </div>
-                    <div className="3xl:w-6/12 lg:w-[48%]  w-full">
+                    <div className="2xl:w-6/12 lg:w-[48%]  w-full">
                          <div className="bg-white border rounded-lg mb-6 shadow-4xl border-gray-1600 p-6">
                               <h4 className="text-lg font-semibold leading-7 text-black-1500 mb-7">Acceptance Rate by Country</h4>
                               <div className="text-center mb-2">
@@ -156,7 +156,7 @@ export default function FinanceAnalytics() {
                               </div>
                          </div>
                     </div>
-                    <div className="3xl:w-3/12 w-full">
+                    <div className="2xl:w-3/12 w-full">
                          <div className="bg-white mb-6 border rounded-lg shadow-4xl border-gray-1600 p-6">
                               <div className="flex items-center gap-2 mb-4">
                                    <h6 className="text-lg font-semibold leading-7 text-black-1500">Quick Actions</h6>

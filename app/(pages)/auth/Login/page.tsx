@@ -103,8 +103,8 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <div className="h-screen overflow-auto scroll-hide pb-4">
-      <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
-        <div className="max-w-[448px] px-4 w-full mx-auto">
+      <div className="flex md:min-h-[calc(100vh-40px)] min-h-[calc(100vh-80px)] items-center justify-center">
+        <div className="max-w-md px-4 w-full mx-auto">
           {successMessage ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center bg-green-100">
@@ -139,7 +139,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               </p>
 
               <form onSubmit={handleSubmit} className="mt-8">
-                <div className="space-y-[27px]">
+                <div className="space-y-6.75">
                   <InputField
                     label="Admin Email"
                     type="email"
@@ -147,7 +147,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     iconSrc="/images/msg-icon.svg"
-                    ClassName="rounded-2xl border-2 bg-white h-[59px]"
+                    ClassName="rounded-2xl border-2 bg-white h-14.75"
                   />
                     {errors.email && (
                     <p className="text-xs font-normal leading-4 text-red-600 -mt-6 mb-4">
@@ -166,7 +166,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       show: '/images/eye-icon.svg',
                       hide: '/images/eye-icon.svg',
                     }}
-                    ClassName="rounded-2xl border-2 bg-white h-[59px]"
+                    ClassName="rounded-2xl border-2 bg-white h-14.75"
                   />
                     {errors.password && (
                     <p className="text-xs font-normal leading-4 text-red-600 -mt-6 mb-4">
@@ -179,7 +179,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     type="button"
                     // onClick={handleBiometricLogin}
                     disabled={isLoading}
-                    className="text-sm cursor-pointer font-normal leading-5 text-gray-700 gap-3 flex items-center my-6 justify-center rounded-2xl py-[14px] border-dotted border-2 border-gray-300 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                    className="text-sm cursor-pointer font-normal leading-5 text-gray-700 gap-3 flex items-center my-6 justify-center rounded-2xl py-3.5 border-dotted border-2 border-gray-300 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
                   >
                     <img src="/images/finger-print.svg" alt="Biometric" />
                     Use Biometric Authentication

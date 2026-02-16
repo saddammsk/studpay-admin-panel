@@ -7,11 +7,12 @@ interface InputFieldProps {
   type?: string;
   placeholder?: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   iconSrc?: string;
   passwordToggleIconSrc?: { show: string; hide: string };
   wrapperClassName?: string;
   ClassName?: string;
+  rows?: number; // for textarea
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -24,11 +25,13 @@ const InputField: React.FC<InputFieldProps> = ({
   passwordToggleIconSrc,
   wrapperClassName = "",
   ClassName = "",
+  rows,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const isPassword = type === "password";
   const inputType = isPassword ? (showPassword ? "text" : "password") : type;
+  const isTextarea = rows && rows > 1; // If rows prop exists, render textarea
 
   return (
     <div className={wrapperClassName}>
@@ -45,27 +48,35 @@ const InputField: React.FC<InputFieldProps> = ({
           </div>
         )}
 
-        <input
-          type={inputType}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={`font-segoe text-sm outline-blue-1000 font-normal leading-normal text-gray-1400 
-                                   placeholder:text-gray-1400 w-full pl-10 h-10 rounded-2xl 
-                                   border border-gray-1000 block ${ClassName}`}
-        />
+        {isTextarea ? (
+          <textarea
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            rows={rows}
+            className={`font-segoe text-sm outline-blue-1000 font-normal leading-normal text-gray-1400 
+                         placeholder:text-gray-1400 w-full pl-10 py-2 rounded-2xl 
+                         border border-gray-1000 block resize-none ${ClassName}`}
+          />
+        ) : (
+          <input
+            type={inputType}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            className={`font-segoe text-sm outline-blue-1000 font-normal leading-normal text-gray-1400 
+                         placeholder:text-gray-1400 w-full pl-10 h-10 rounded-2xl 
+                         border border-gray-1000 block ${ClassName}`}
+          />
+        )}
 
-        {isPassword && passwordToggleIconSrc && (
+        {!isTextarea && isPassword && passwordToggleIconSrc && (
           <div
             className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
             onClick={() => setShowPassword(!showPassword)}
           >
             <Image
-              src={
-                showPassword
-                  ? passwordToggleIconSrc.hide
-                  : passwordToggleIconSrc.show
-              }
+              src={showPassword ? passwordToggleIconSrc.hide : passwordToggleIconSrc.show}
               alt="toggle password visibility"
               width={16}
               height={16}
