@@ -30,20 +30,22 @@ const page = () => {
         </div>
 
       </div>
-      <div className="flex items-center gap-4 border border-solid border-gray1600 bg-white rounded-lg shadow-4xl p-6.25">
-        <span>
-          <Image
-            src={"/images/email-blue2.svg"}
-            alt=""
-            width={32}
-            height={32}
-          />
-        </span>
-        <div className="">
-          <h4 className="text-black13 font-segoe font-normal text-xl leading-7">Campaign :id</h4>
-          <p className="text-gray-1100 font-segoe font-normal text-base leading-7">Email Campaign • Sent on 2024-05-30</p>
+      <div className=" flex items-center justify-between border border-solid border-gray1600 bg-white rounded-lg shadow-4xl p-6.25">
+        <div className="flex items-center gap-4 ">
+          <span>
+            <Image
+              src={"/images/email-blue2.svg"}
+              alt=""
+              width={32}
+              height={32}
+            />
+          </span>
+          <div className="">
+            <h4 className="text-black13 font-segoe font-normal text-xl leading-7">Campaign :id</h4>
+            <p className="text-gray-1100 font-segoe font-normal text-base leading-7">Email Campaign • Sent on 2024-05-30</p>
+          </div>
         </div>
-
+        <span className=" text-green-1100 font-segoe font-normal text-xs leading-4 rounded-full h-5.5 px-2.75 bg-green-1200 inline-flex items-center justify-center">Completed</span>
       </div>
       <div className='grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-4 sm:mt-8 mt-6'>
         <div className='flex items-center justify-between shadow-4xl bg-white border border-solid border-gray-1600 p-6.25 rounded-xl'>

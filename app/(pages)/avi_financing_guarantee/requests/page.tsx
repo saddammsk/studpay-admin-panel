@@ -46,27 +46,27 @@ export default function FinanceAnalytics() {
                                    <div className="mb-6 space-y-2">
                                         <div className="flex items-center justify-between p-2">
                                              <h6 className="text-sm font-normal leading-7 text-gray-2500">Near SLA</h6>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full bg-gray-2000">12</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full bg-gray-2000">12</div>
                                         </div>
                                         <div className="flex items-center justify-between p-2">
                                              <h6 className="text-sm font-normal leading-7 text-gray-2500">High Amount</h6>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full bg-gray-2000">8</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full bg-gray-2000">8</div>
                                         </div>
                                         <div className="flex items-center justify-between p-2">
                                              <h6 className="text-sm font-normal leading-7 text-gray-2500">Country: France</h6>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full bg-gray-2000">24</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full bg-gray-2000">24</div>
                                         </div>
                                         <div className="flex items-center justify-between p-2">
                                              <h6 className="text-sm font-normal leading-7 text-gray-2500">AI Risk  70%</h6>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full bg-gray-2000">6</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full bg-gray-2000">6</div>
                                         </div>
                                         <div className="flex items-center justify-between p-2">
                                              <h6 className="text-sm font-normal leading-7 text-gray-2500">Pending Review</h6>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full bg-gray-2000">45</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full bg-gray-2000">45</div>
                                         </div>
                                         <div className="flex items-center justify-between p-2">
                                              <h6 className="text-sm font-normal leading-7 text-gray-2500">New This Week</h6>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full bg-gray-2000">18</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full bg-gray-2000">18</div>
                                         </div>
                                    </div>
                                    <h4 className="text-sm font-medium leading-5 mb-3 text-gray-2500">Quick Segments</h4>
@@ -78,7 +78,7 @@ export default function FinanceAnalytics() {
                                                        SLA &lt; 24h
                                                   </h6>
                                              </div>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full border border-gray-2000">12</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full border border-gray-2000">12</div>
                                         </div>
                                         <div className="flex items-center justify-between p-3 border border-gray-2700 rounded-md">
                                              <div>
@@ -87,7 +87,7 @@ export default function FinanceAnalytics() {
                                                        AI Score &gt; 80%
                                                   </h6>
                                              </div>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full border border-gray-2000">4</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full border border-gray-2000">4</div>
                                         </div>
                                         <div className="flex items-center justify-between p-3 border border-gray-2700 rounded-md">
                                              <div>
@@ -96,7 +96,7 @@ export default function FinanceAnalytics() {
                                                        &lt; $50K
                                                   </h6>
                                              </div>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full border border-gray-2000">12</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full border border-gray-2000">12</div>
                                         </div>
                                         <div className="flex items-center justify-between p-3 border border-gray-2700 rounded-md">
                                              <div>
@@ -105,7 +105,7 @@ export default function FinanceAnalytics() {
                                                        European Union
                                                   </h6>
                                              </div>
-                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-[3px] px-[11px] rounded-full border border-gray-2000">12</div>
+                                             <div className="text-xs font-semibold leading-4 text-gray-2500 py-0.75 px-2.75 rounded-full border border-gray-2000">12</div>
                                         </div>
                                    </div>
                                    <h4 className="text-sm font-medium leading-5  text-gray-2500">  Starred Views</h4>
@@ -132,7 +132,7 @@ export default function FinanceAnalytics() {
                                         iconSrc="/images/export-icon4.svg"
                                    />
                               </div>
-                              <div className="2xl:flex grid grid-cols-3 items-center gap-3 max-w-[802px]">
+                              <div className="2xl:flex grid grid-cols-3 items-center gap-3 max-w-200.5">
                                    <div className="w-full">
                                         <CustomSelect
                                              value={status}

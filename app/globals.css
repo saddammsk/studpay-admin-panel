@@ -123,6 +123,7 @@
   --color-yellow1600: #FDE047;
   --color-lightgreen17: #86EFAC;
   --color-blueNexus12: #D8B4FE;
+  --color-blueNexus13: #F0F5FD;
   --color-orange12: #EA580C;
   /******* 12-2-2028 ******/
 
@@ -272,6 +273,5 @@ input[type="date"] {
   cursor: pointer;
 }
 .btn-primary:hover img {
-  filter: brightness(26);
- 
+    filter: brightness(300);
 }

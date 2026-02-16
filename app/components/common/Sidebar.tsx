@@ -82,7 +82,7 @@ const mainMenu: MenuItem[] = [
   {
     label: "AVI Finance Guarantee",
     icon: "/images/shield-icon2.svg",
-    href: "/avi_finance_guarantee",
+    href: "/avi_financing_guarantee",
   },
 ];
 
