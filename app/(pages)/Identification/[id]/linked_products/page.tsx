@@ -1,32 +1,16 @@
-'use client'
 
-import ProfileTabs from "@/app/components/ProfileTabs";;
 import Link from "next/link";
 import Image from "next/image";
 
 export default function page() {
      return (
-          <div className="">
-               <div className="flex md:flex-row flex-col md:items-center items-start gap-4">
-                    <Link href="/" className="flex items-center gap-2 py-1.5 px-3 bg-white rounded-md border border-gray1600 text-sm font-normal leading-5 font-segoe text-black13"><img src="/images/left-arrow3.svg" alt="" /> Back to Search</Link>
-                    <div className="flex items-center sm:gap-4 gap-2.5">
-                         <div className="flex items-center sm:gap-4 gap-2.5">
-                              <img src="/images/profile-img.png" alt="" />
-                              <div>
-                                   <h6 className="sm:text-2xl text-xl font-segoe font-normal leading-8 text-black-1200">Sarah Johnson</h6>
-                                   <span className="block font-segoe font-normal leading-6 sm:text-base text-sm text-gray-1200">sarah.johnson@email.com • ID: 2345234</span>
-                              </div>
-                         </div>
-                         <div className="font-segoe font-normal leading-5 sm:text-[13.78px] text-xs text-green-1100 py-1 px-3 bg-green-1200 rounded-full">verified</div>
-                    </div>
-               </div>
-               <ProfileTabs />
+          <div className="flex-1">
                <div className="mt-2 grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-4">
                     <div className="bg-white border border-solid border-gray-1000 rounded-lg">
                          <div className="md:p-6.25 p-4">
                               <h4 className="text-black13 justify-center font-segoe font-normal text-2xl leading-6 flex items-center gap-2">
                                    <Image
-                                        src="../images/wallet-black.svg"
+                                        src="/images/wallet-black.svg"
                                         width='20'
                                         height='20'
                                         alt=""
@@ -56,7 +40,7 @@ export default function page() {
                          <div className="md:p-6.25 p-4">
                               <h4 className="text-black13 justify-center font-segoe font-normal text-2xl leading-6 flex items-center gap-2">
                                    <Image
-                                        src="../images/sheild-block.svg"
+                                        src="/images/sheild-block.svg"
                                         width='20'
                                         height='20'
                                         alt=""
@@ -86,7 +70,7 @@ export default function page() {
                          <div className="md:p-6.25 p-4">
                               <h4 className="text-black13 justify-center font-segoe font-normal text-2xl leading-6 flex items-center gap-2">
                                    <Image
-                                        src="../images/card-black.svg"
+                                        src="/images/card-black.svg"
                                         width='20'
                                         height='20'
                                         alt=""
@@ -116,7 +100,7 @@ export default function page() {
                          <div className="md:p-6.25 p-4">
                               <h4 className="text-black13 justify-center font-segoe font-normal text-2xl leading-6 flex items-center gap-2">
                                    <Image
-                                        src="../images/home-icon.svg"
+                                        src="/images/home-icon.svg"
                                         width='20'
                                         height='20'
                                         alt=""

@@ -11,7 +11,6 @@ import {
 import { useBiometric } from '@/app/hooks/useBiometric';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import InputField from '@/app/components/InputField';
-import Button from '@/app/components/ui/Button';
 import TwoFactorModal from '@/app/components/TwoFactorModal';
 
 const LoginPage = () => {
@@ -132,7 +131,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             </div>
           ) : (
             <>
-              <h4 className="text-3xl font-bold leading-9 mb-2 text-blue-1400">
+              <h4 className="text-3xl font-bold leading-9 mb-2 text-blue-1000">
                 Welcome Back
               </h4>
               <p className="text-base font-normal leading-6 text-gray-700">
@@ -193,14 +192,14 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
                     <input
-                      type="radio"
+                      type="checkbox"
                       id="secure-session"
                       name="session"
                       checked={formData.secureSession}
                       onChange={(e) =>
                         handleInputChange('secureSession', e.target.checked)
                       }
-                      className="appearance-none cursor-pointer w-4 h-4 rounded-full border-2 border-blue-1400 checked:bg-blue-1400 checked:border-blue-1400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+                      className="appearance-none cursor-pointer w-4 h-4 rounded-full checked:border-4 border-2 border-gray-1400  checked:border-blue-1000 focus:outline-none"
                     />
                     <label
                       htmlFor="secure-session"
@@ -211,15 +210,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
 
                   <Link
-                    href="/forgot-password"
-                    className="text-sm font-semibold leading-5 text-blue-1400 hover:text-blue-1400 block"
+                    href="/auth/forget"
+                    className="text-sm hover:underline leading-5 text-blue-1000 block"
                   >
                     Forgot Password?
                   </Link>
                 </div>
 
                 {errors.submit && (
-                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+                  <div className="text-xs text-red-700">
                     {errors.submit}
                   </div>
                 )}
@@ -228,7 +227,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                    onClick={handleSubmit}
                   type="submit"
                   disabled={isLoading}
-                  className="text-white cursor-pointer flex items-center gap-2 py-3 rounded-2xl w-full justify-center bg-blue-1400 hover:bg-blue-700 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed transition-all"
+                  className="text-white cursor-pointer flex items-center gap-2 py-3 rounded-2xl w-full justify-center bg-blue-1000 hover:bg-blue-700 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed transition-all"
                 >Sign In Securely
                   <img src="/images/right-arrow-white.svg" alt="" />
                 </button>
@@ -237,7 +236,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   {"Don't"} have an account?{' '}
                   <Link
                     href="/contact-admin"
-                    className="text-blue-1400 font-semibold hover:text-blue-1400"
+                    className="text-blue-1000 font-semibold hover:text-blue-1000"
                   >
                     Admin access is invite-only
                   </Link>

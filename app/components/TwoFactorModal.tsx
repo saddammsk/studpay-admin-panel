@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { setTwoFactorCode, setTwoFactorRequired } from '@/app/store/slices/Loginslice';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { useRouter } from 'next/navigation';
 
 interface TwoFactorModalProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({
   );
   const [resendCountdown, setResendCountdown] = useState(0);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const route = useRouter();
 
   useEffect(() => {
     if (resendCountdown > 0) {
@@ -56,6 +58,9 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    onClose();
+    route.push('/')
     
   };
 
@@ -139,6 +144,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({
 
           <button
             type="submit"
+            onClick={handleSubmit}
             disabled={isLoading || twoFactorCode.length !== 6}
             className="w-full mt-4 bg-blue-1000 text-white cursor-pointer text-sm font-semibold py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition-colors disabled:cursor-not-allowed"
           >
