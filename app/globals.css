@@ -125,7 +125,8 @@
   --color-blueNexus12: #D8B4FE;
   --color-blueNexus13: #F0F5FD;
   --color-orange12: #EA580C;
-  /******* 12-2-2028 ******/
+  /******* New ******/
+    --color-skyblue23: #0DA2E7; 
 
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
