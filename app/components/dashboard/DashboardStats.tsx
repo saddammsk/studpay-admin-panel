@@ -7,16 +7,12 @@ import { fetchData } from "@/app/lib/useFetch";
   
     return (
     <div className="w-full">
-        <div className="flex items-center gap-2 mb-4">
-        <div className="line-bg rounded-full h-8 w-1 block"></div>
-        <h4 className="text-2xl font-normal leading-8 text-blue-1100">Key Performance Indicators</h4>
-      </div>
-
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
+         
+      <div className="grid xl:grid-cols-6 md:grid-cols-2 gap-6">
         {stats.map((item) => (
           <div
             key={item.id}
-            className="shadow-4xl border border-gray-1600 rounded-xl bg-white 2xl:p-6 p-4 flex items-start justify-between"
+            className="shadow-48xl rounded-2xl bg-white 2xl:p-6 p-4 flex items-start justify-between"
           >
             <div>
               <h6 className="text-sm font-medium leading-5 mb-2 text-gray-1100">

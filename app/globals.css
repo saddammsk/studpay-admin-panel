@@ -126,7 +126,11 @@
   --color-blueNexus13: #F0F5FD;
   --color-orange12: #EA580C;
   /******* New ******/
-    --color-skyblue23: #0DA2E7; 
+  --color-skyblue23: #0DA2E7;
+  --color-gray22: #F8FAFC;
+  --color-gradient1: #487BFF;
+  --color-gradient2: #6672FF;
+  --color-gradient3: #10BDFF;
 
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -139,6 +143,10 @@
   --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
+  /**** LATEST *****/
+  --shadow-46xl: 0 0 0 2px #FFF;
+  --shadow-47xl: 0 4px 6px -1px rgba(59, 130, 246, 0.20), 0 2px 4px -2px rgba(59, 130, 246, 0.20);
+  --shadow-48xl: 0 0 0 1px #E2E8F0, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
 
   --breakpoint-xs: 390px;
@@ -268,11 +276,13 @@ input[type="date"] {
   position: absolute;
   left: 11px;
 }
+
 .sale-date input[type="date"]::-webkit-calendar-picker-indicator {
   display: block;
   -webkit-appearance: auto;
   cursor: pointer;
 }
+
 .btn-primary:hover img {
-    filter: brightness(300);
+  filter: brightness(300);
 }

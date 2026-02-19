@@ -17,10 +17,8 @@ export const LanguageSelector: React.FC = () => {
 
   return (
     <Menu>
-      <MenuButton className="flex outline-0 items-center cursor-pointer gap-3 py-2 md:px-3 px-1 transition-all ease-in-out duration-500 hover:bg-gray-1600 rounded-md text-sm font-medium leading-5 text-gray-1100">
-        <img src="/images/globe-icon2.svg" className="md:block hidden" alt="" />
-        <span>{currentLang}</span>
-        <img src="/images/droparrow.svg" className="md:block hidden" alt="" />
+      <MenuButton className="flex outline-0 border border-solid border-gray1600 items-center cursor-pointer gap-3 h-7.5 md:px-3 px-1 transition-all ease-in-out duration-500 hover:bg-gray22 rounded-lg font-inter text-xs font-medium leading-5 text-gray1900">
+        <span>{currentLang}</span> 
       </MenuButton>
 
       <MenuItems

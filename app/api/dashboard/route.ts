@@ -7,8 +7,8 @@ export async function GET() {
     data: [
       {
         id: "active_students",
-        title: "Total Active Students",
-        value: 24563,
+        title: "Total Accounts",
+        value: "145,092",
         change: "+12% from last month",
         color: "text-green-1000",
         icon: "/images/user-icon.svg",

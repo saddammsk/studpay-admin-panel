@@ -14,13 +14,11 @@ export const TopUserDropdown = () => {
   return (
     <>
       <Menu>
-        <MenuButton className="flex items-center cursor-pointer outline-0 gap-4 md:px-3 px-2 rounded-md text-sm font-medium text-gray-1100">
-          <img src="/images/user-avatar.png" alt="" />
-          <div className="text-start md:block hidden">
-            Admin
-            <span className="block text-gray-1200">Super Admin</span>
-          </div>
-          <img src="/images/droparrow.svg" className="md:block hidden" alt="" />
+        <MenuButton className="flex items-center cursor-pointer outline-0 gap-4">
+          <img src="/images/avatar.png" alt="" className="shadow-4xl border border-solid border-gray1600 rounded-full" />
+          <span className="flex items-center w-4 h-4">
+            <img src="/images/user-dropfown.svg" className="md:block hidden" alt="" />
+          </span>
         </MenuButton>
 
         <MenuItems
@@ -30,9 +28,8 @@ export const TopUserDropdown = () => {
           <MenuItem>
             {({ active }) => (
               <button
-                className={`w-full rounded-lg px-3 py-1.5 text-left ${
-                  active ? "bg-gray-1300" : ""
-                }`}
+                className={`w-full rounded-lg px-3 py-1.5 text-left ${active ? "bg-gray-1300" : ""
+                  }`}
               >
                 View profile
               </button>
@@ -42,9 +39,8 @@ export const TopUserDropdown = () => {
           <MenuItem>
             {({ active }) => (
               <button
-                className={`w-full rounded-lg px-3 py-1.5 text-left ${
-                  active ? "bg-gray-1300" : ""
-                }`}
+                className={`w-full rounded-lg px-3 py-1.5 text-left ${active ? "bg-gray-1300" : ""
+                  }`}
               >
                 Account settings
               </button>
@@ -57,9 +53,8 @@ export const TopUserDropdown = () => {
             {({ active }) => (
               <button
                 onClick={() => setOpenLogout(true)}
-                className={`w-full rounded-lg px-3 py-1.5 text-left text-red-600 ${
-                  active ? "bg-gray-1300" : ""
-                }`}
+                className={`w-full rounded-lg px-3 py-1.5 text-left text-red-600 ${active ? "bg-gray-1300" : ""
+                  }`}
               >
                 Log out
               </button>
