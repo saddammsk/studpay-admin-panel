@@ -1,3 +1,4 @@
+import TopBar from "./components/common/TopBar";
 import { AnalyticsOverview } from "./components/dashboard/AnalyticsOverview";
 import DashboardStats from "./components/dashboard/DashboardStats";
 import { RecentActivity } from "./components/dashboard/RecentActivity";
@@ -10,7 +11,7 @@ const today = new Date().toLocaleDateString('en-US');
 
   return (
     <div className="dashboard-bg">
-      
+       <TopBar />
 
       <DashboardStats/>
 

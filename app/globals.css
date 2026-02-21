@@ -121,16 +121,26 @@
   /******* 12-2-2028 ******/
   --color-gray20: #D1D5DB;
   --color-yellow1600: #FDE047;
-  --color-lightgreen17: #86EFAC;
   --color-blueNexus12: #D8B4FE;
   --color-blueNexus13: #F0F5FD;
   --color-orange12: #EA580C;
   /******* New ******/
   --color-skyblue23: #0DA2E7;
+  --color-skyblue2434: #E3FDF4;
   --color-gray22: #F8FAFC;
+  --color-lightgreen17: #10B77F;
+  --color-lightgreen18: #EBFAF5;
   --color-gradient1: #487BFF;
   --color-gradient2: #6672FF;
   --color-gradient3: #10BDFF;
+  --color-red1600: #F43E5C;
+  --color-blue1400: #3C83F6;
+  --color-darkblue2: #344256;
+  --color-black14: #312002;
+  --color-purpal115: #9234EA;
+  --color-red1700: #E21D4B;
+  --color-red1800: #FCE8ED;
+
 
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
   --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -147,6 +157,8 @@
   --shadow-46xl: 0 0 0 2px #FFF;
   --shadow-47xl: 0 4px 6px -1px rgba(59, 130, 246, 0.20), 0 2px 4px -2px rgba(59, 130, 246, 0.20);
   --shadow-48xl: 0 0 0 1px #E2E8F0, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-49xl: 0 0 0 2px #DAE0E7;
+  --shadow-50xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
 
 
   --breakpoint-xs: 390px;
