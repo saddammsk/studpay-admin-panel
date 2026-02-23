@@ -31,6 +31,10 @@
   --colro-gray-3400: #F8F7FC;
   --color-gray-3500: #FDECEC;
   --color-gray-3600: #E1E7EF;
+  --color-gray-3700: #EAEDF0;
+  --color-gray-3800: #676F7E;
+  --color-gray-3900: #E2E4E9;
+  --color-gray-4000: #D4D7DE;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
   --color-red-1100: #FEE2E2;
@@ -38,6 +42,7 @@
   --color-red-1300: #EF4343;
   --color-red-1400: #BE123C;
   --color-red-1500: #F43F5E;
+  --color-red-1600: #FF3B00;
   --color-white-1000: #DBEAFE;
   --color-white-1100: #FAFAFA;
   --color-purple-1000: #93C5FD;
@@ -67,15 +72,24 @@
   --color-green-1700: #EEFCF3;
   --color-green-1800: #047857;
   --color-green-1900: #E9FCF0;
+  --color-green-2000: #1EAE53;
+  --color-green-2100: #FCFBF8;
+  --color-green-2200: #25A777;
+  --color-green-2300: #1D97A5;
   --color-yellow-1000: #FEF9C3;
   --color-yellow-1100: #F59F0A;
   --color-yellow-1200: #FEF7EB;
   --color-yellow-1300: #F59E0B;
+  --color-yellow-1400: #FE7B02;
+  --color-yellow-1500: #DC8F09;
   --color-brown-1000: #854D0E;
   --color-brown-1100: #EAB308;
   --color-brown-1200: #4D3700;
   --color-orange-1000: #F97316;
   --color-purple-1100: #A855F7;
+  --color-golden-1000: #D9A520;
+  --color-black-2000: #14181F;
+  --color-black-2100: #090B21;
   /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
@@ -140,6 +154,7 @@
   --shadow-8xl: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
   --shadow-9xl: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
   --shadow-10xl: 0 4px 6px -1px rgba(20, 25, 31, 0.07), 0 2px 4px -2px rgba(20, 25, 31, 0.05);
+  --shadow-11xl: 0 1px 3px 0 rgba(15, 23, 41, 0.05), 0 4px 12px 0 rgba(15, 23, 41, 0.03);
   --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
@@ -285,4 +300,16 @@ input[type="date"] {
 
 .btn-primary:hover img {
   filter: brightness(300);
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
+}
+
+.bg-gradient4 {
+  background: linear-gradient(116deg, var(--color-cyan-388, rgba(29, 151, 165, 0.08)) 0%, var(--color-azure-453, rgba(23, 145, 207, 0.03)) 100%);
+}
+
+.bg-gradient5 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
 }
