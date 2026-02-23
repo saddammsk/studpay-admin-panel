@@ -1,232 +1,411 @@
- "use client";
+"use client";
+import { useState } from 'react'
 
 import Link from "next/link";
 import Image from "next/image";
-import { useAppSelector } from "@/app/store/hooks";
-import { useState } from "react";
+import ProgressBar from "@/app/components/ProgressBar";
+import { Checkbox } from '@headlessui/react'
+
+type PaymentStatus = "Verified" | "Pending" | "Rejected";
+type PlanStatus = "Premium" | "Free";
+
+interface UserInfo {
+     info: string;
+     name: string;
+     mail: string;
+}
+interface RouteInfo {
+     arrowicon: string;
+     pkimg: string;
+     ausimg: string;
+}
+
+interface Payment {
+     id: number;
+     userid: string;
+     userinfo: UserInfo;
+     route: RouteInfo;
+     status: PaymentStatus;
+     risk: number;
+     onboardingPercent: number;
+     ltv: string;
+     plan: PlanStatus;
+     actions: string;
+}
 
 const statusConfig = {
      Verified: {
-          classes: "bg-lightgreen12 text-green12",
+          classes: "bg-lightgreen18 border-lightgreen17/20 text-lightgreen17",
      },
      Pending: {
-          classes: "bg-yellow1200 text-brown1200",
-     },
-     Subscribed: {
-          classes: "bg-white-1000 text-blue-1000",
-     },
-     Approved: {
-          classes: "bg-lightgreen12 text-green12",
-     },
-     "Not Subscribed": {
-          classes: "bg-gray-1600 text-blue-1100",
-     },
-     "Under Review": {
-          classes: "bg-yellow1200 text-brown1200",
+          classes: "bg-lightgreen18 border-yellow-1100/20 text-yellow-1100",
      },
      Rejected: {
-          classes: "bg-lightred1200 text-red1200",
+          classes: "bg-lightgreen18 border-red1600/20 text-red1600",
      },
-
 } as const;
 
-export default function UserStudentTable() {
-     const { students, filters } = useAppSelector((state) => state.usersStudents);
-     const [currentPage, setCurrentPage] = useState(1);
-     const itemsPerPage = 6;
+const planConfig = {
+     Premium: {
+          classes: "bg-gray1700 border-blue1400/20 text-blue1400",
+     },
+     Free: {
+          classes: "bg-gray1700  border-transparent text-gray-1900",
+     },
+} as const;
 
-     const filteredStudents = students.filter((student) => {
-          const search = filters.search.toLowerCase().trim();
+const getRiskClass = (risk: number) => {
+     if (risk >= 80) return "bg-red1600 text-white";
+     if (risk <= 30) return "bg-lightgreen17 text-white";
+     return "bg-yellow-1100 text-black14";
+};
+const payments: Payment[] = [
+     {
+          id: 1,
+          userid: "USRQH3MQ",
+          userinfo: {
+               info: "AB",
+               name: "Ahmed Butt",
+               mail: "ahmed_butt69@gmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇵🇰.png",
+               ausimg: "/images/🇦🇺.png",
+          },
+          status: "Pending",
+          risk: 88,
+          onboardingPercent: 81,
+          ltv: "£13,561",
+          plan: "Premium",
+          actions: "/icons/dots-icon.svg",
+     },
+     {
+          id: 2,
+          userid: "USRA0FD2",
+          userinfo: {
+               info: "AC",
+               name: "Adnan Chaudhry",
+               mail: "adnan.chaudhry59@gmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇵🇰.png",
+               ausimg: "/images/🇨🇦.png",
+          },
+          status: "Verified",
+          risk: 43,
+          onboardingPercent: 59,
+          ltv: "£885",
+          plan: "Premium",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 3,
+          userid: "USR5VBAW",
+          userinfo: {
+               info: "AC",
+               name: "Ali Chaudhry",
+               mail: "ali_chaudhry53@yahoo.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇧🇩.png",
+               ausimg: "/images/🇬🇧.png",
+          },
+          status: "Rejected",
+          risk: 40,
+          onboardingPercent: 29,
+          ltv: "£5,760",
+          plan: "Free",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 4,
+          userid: "USR8JIII",
+          userinfo: {
+               info: "HH",
+               name: "Hamza Hussain",
+               mail: "hamza_hussain54@gmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇬🇭.png",
+               ausimg: "/images/🇳🇱.png",
+          },
+          status: "Verified",
+          risk: 41,
+          onboardingPercent: 80,
+          ltv: "£2,698",
+          plan: "Free",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 5,
+          userid: "USR8MO1Y",
+          userinfo: {
+               info: "IM",
+               name: "Ibrahim Mirza",
+               mail: "ibrahim_mirza39@gmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇬🇭.png",
+               ausimg: "/images/🇳🇿.png",
+          },
+          status: "Rejected",
+          risk: 56,
+          onboardingPercent: 84,
+          ltv: "£1,454",
+          plan: "Premium",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 6,
+          userid: "USRU83FM",
+          userinfo: {
+               info: "HC",
+               name: "Hamza Chaudhry",
+               mail: "hamza.chaudhry70@icloud.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇵🇰.png",
+               ausimg: "/images/🇬🇧.png",
+          },
+          status: "Verified",
+          risk: 43,
+          onboardingPercent: 83,
+          ltv: "£7,738",
+          plan: "Free",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 7,
+          userid: "USR4STLU",
+          userinfo: {
+               info: "AS",
+               name: "Adnan Syed",
+               mail: "adnansyed60@yahoo.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇰🇪.png",
+               ausimg: "/images/🇮🇪.png",
+          },
+          status: "Rejected",
+          risk: 52,
+          onboardingPercent: 82,
+          ltv: "£9,122",
+          plan: "Premium",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 8,
+          userid: "USRVJ19P",
+          userinfo: {
+               info: "KA",
+               name: "Khadija Ali",
+               mail: "khadijaali55@gmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇧🇩.png",
+               ausimg: "/images/🇺🇸.png",
+          },
+          status: "Verified",
+          risk: 35,
+          onboardingPercent: 66,
+          ltv: "£3,035",
+          plan: "Free",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 9,
+          userid: "USR3EAY4",
+          userinfo: {
+               info: "FA",
+               name: "Fatima Aslam",
+               mail: "fatima.aslam86@hotmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇵🇰.png",
+               ausimg: "/images/🇬🇧.png",
+          },
+          status: "Verified",
+          risk: 21,
+          onboardingPercent: 37,
+          ltv: "£5,576",
+          plan: "Free",
+          actions: "/icons/dots-icon.svg",
+     }, {
+          id: 10,
+          userid: "USR7PKUW",
+          userinfo: {
+               info: "AA",
+               name: "Amina Aslam",
+               mail: "amina_aslam35@gmail.com",
+          },
+          route: {
+               arrowicon: "/icons/right-arrow.svg",
+               pkimg: "/images/🇳🇬.png",
+               ausimg: "/images/🇩🇪.png",
+          },
+          status: "Verified",
+          risk: 66,
+          onboardingPercent: 74,
+          ltv: "£9,277",
+          plan: "Premium",
+          actions: "/icons/dots-icon.svg",
+     },
+];
 
-          const matchesSearch =
-               !search ||
-               student.name.toLowerCase().includes(search) ||
-               student.email.toLowerCase().includes(search) ||
-               student.country.toLowerCase().includes(search);
+export default function UserWalletTable() {
 
-          const matchesCountry =
-               filters.country === "All Countries" || student.country === filters.country;
+     const [checkedRows, setCheckedRows] = useState<{ [key: number]: boolean }>({});
 
-          const matchesStatus =
-               filters.status === "All Status" || student.status === filters.status;
+     const allChecked = payments.length > 0 && payments.every(item => checkedRows[item.id]);
+     const someChecked = payments.some(item => checkedRows[item.id]) && !allChecked;
 
-          return matchesSearch && matchesCountry && matchesStatus;
-     });
+     const toggleAll = () => {
+          if (allChecked) {
+               setCheckedRows({});
+          } else {
+               const newState: { [key: number]: boolean } = {};
+               payments.forEach(item => newState[item.id] = true);
+               setCheckedRows(newState);
+          }
+     };
 
-          const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
-
-          const paginatedStudents = filteredStudents.slice(
-               (currentPage - 1) * itemsPerPage,
-               currentPage * itemsPerPage
-          );
-
+     const toggleRow = (id: number) => {
+          setCheckedRows(prev => ({ ...prev, [id]: !prev[id] }));
+     };
 
      return (
-          <div className="bg-white border border-gray-1600 rounded-xl shadow-4xl">
-               <div className="md:p-6 p-4 border-b border-solid border-gray-1600">
-                    <h4 className="text-blue-1200 font-neulis-sans font-semibold text-lg leading-7">
-                         Users ({filteredStudents.length})
-                    </h4>
-               </div>
-               <div className="overflow-x-auto">
-                    <table className="2xl:w-full w-341.25">
-                         <thead className="bg-white text-left">
-                              <tr className="group">
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">Name</th>
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">Email</th>
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">Country</th>
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">Account Status</th>
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">AVI Status</th>
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">KYC Status</th>
-                                   <th className="group-hover:bg-gray1700 text-gray-1400 font-medium text-sm leading-5 border-b border-solid border-gray1600 px-4 py-3.5">Actions</th>
+          <div>
+               <p className="text-gray-1900 text-sm">87 users</p>
+               <div className="mt-6 bg-white border border-gray-3600 rounded-lg overflow-x-auto">
+                    <table className="xl:w-full w-275">
+                         <thead>
+                              <tr className="bg-gray1700 border-b border-gray1600">
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">
+                                        <div className='flex items-center'>
+                                             <input
+                                                  type="checkbox"
+                                                  checked={allChecked}
+                                                  ref={el => {
+                                                       if (el) el.indeterminate = someChecked;
+                                                  }}
+                                                  onChange={toggleAll}
+                                                  className="w-4 h-4 cursor-pointer bg-transparent border border-darkblue2 rounded data-[checked=true]:bg-darkblue2 data-[checked=true]:border-darkblue2"
+                                             />
+                                        </div>
+                                   </th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">User ID</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">User Info</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">Route</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">Status</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">Risk</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">Onboarding</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">LTV</th>
+                                   <th className="lg:p-4 p-2.5 text-left text-gray-1900 font-inter font-normal text-xs leading-4">Plan</th>
+                                   <th className="lg:p-4 p-2.5"></th>
                               </tr>
                          </thead>
 
                          <tbody>
-                              {paginatedStudents.map((item) => (
-                                   <tr key={item.id} className="group border-b border-gray1600">
-                                        <td className="p-4 group-hover:bg-gray1700">
-                                             <span className="text-black13 font-medium text-sm leading-5 flex items-center">
-                                                  {item.name}
-                                             </span>
+                              {payments.map((item) => (
+                                   <tr
+                                        key={item.id}
+                                        className="border-b border-gray1600 hover:bg-gray1700/50 transition last:border-b-0"
+                                   >
+                                        <td className="lg:px-4 px-2.5 py-6 font-inter text-gray-1900 font-normal text-[9.9px] leading-4">
+                                             <div className='flex items-center'>
+                                                  <input
+                                                       type="checkbox"
+                                                       checked={!!checkedRows[item.id]}
+                                                       onChange={() => toggleRow(item.id)}
+                                                       className="w-4 h-4 bg-transparent cursor-pointer border border-darkblue2 rounded data-[checked=true]:bg-darkblue2 data-[checked=true]:border-darkblue2"
+                                                  />
+                                             </div>
                                         </td>
-                                        <td className="p-4 group-hover:bg-gray1700">
-                                             <span className="text-gray-1100 font-normal text-sm leading-5 flex items-center">
-                                                  {item.email}
-                                             </span>
+                                        <td className="lg:px-4 px-2.5 py-6 font-inter text-gray-1900 font-normal text-[9.9px] leading-4">{item.userid}</td>
+
+                                        <td className="lg:px-4 px-2.5 py-6">
+                                             <div className="flex items-center gap-3">
+                                                  <span className="text-darkblue2 font-inter text-xs leading-6 bg-darkblue2/10 rounded-full w-8 h-8 flex items-center justify-center">{item.userinfo.info}</span>
+                                                  <div className="flex-1 w-full">
+                                                       <span className="text-blue-1300 font-inter font-normal text-sm leading-5 block">{item.userinfo.name}</span>
+                                                       <span className="text-gray-1900 font-inter font-normal text-xs leading-4 block">
+                                                            {item.userinfo.mail}
+                                                       </span>
+                                                  </div>
+                                             </div>
                                         </td>
-                                        <td className="p-4 group-hover:bg-gray1700">
-                                             <span className="text-black13 font-normal text-sm leading-5 flex items-center">
-                                                  {item.country}
-                                             </span>
+                                        <td className="lg:px-4 px-2.5 py-6">
+                                             <div className="flex items-center gap-1.5">
+                                                  <span className="flex items-center justify-center w-4 h-4">
+                                                       <Image src={item.route.pkimg} width={16} height={16} alt="route" />
+                                                  </span>
+                                                  <Image src={item.route.arrowicon} width={16} height={16} alt="route" />
+                                                  <span className="flex items-center justify-center w-4 h-4">
+                                                       <Image src={item.route.ausimg} width={16} height={16} alt="route" />
+                                                  </span>
+                                             </div>
                                         </td>
-                                        <td className="p-4 group-hover:bg-gray1700">
+                                        <td className="lg:px-4 px-2.5 py-6">
                                              <span
-                                                  className={`px-2.75 h-5.5 w-fit rounded-full font-semibold text-xs leading-4 flex items-center ${statusConfig[item.status].classes
-                                                       }`}
+                                                  className={`border border-solid inline-flex items-center rounded-full justify-center font-inter font-normal text-xs leading-4 px-2 h-5.5 ${statusConfig[item.status].classes}`}
                                              >
                                                   {item.status}
                                              </span>
                                         </td>
-                                        <td className="p-4 group-hover:bg-gray1700">
+
+                                        <td className="lg:px-4 px-2.5 py-6">
                                              <span
-                                                  className={`px-2.75 h-5.5 w-fit rounded-full font-semibold text-xs leading-4 flex items-center ${statusConfig[item.avistatus].classes
-                                                       }`}
+                                                  className={`font-inter font-bold text-xs leading-12 rounded-full w-8 h-8 flex items-center justify-center  ${getRiskClass(item.risk)}`}
                                              >
-                                                  {item.avistatus}
-                                             </span>
-                                        </td>
-                                        <td className="p-4 group-hover:bg-gray1700">
-                                             <span
-                                                  className={`px-2.75 h-5.5 w-fit rounded-full font-semibold text-xs leading-4 flex items-center ${statusConfig[item.kycstatus].classes
-                                                       }`}
-                                             >
-                                                  {item.kycstatus}
+                                                  {item.risk}
                                              </span>
                                         </td>
 
-                                        <td className="p-4 group-hover:bg-gray1700">
-                                             <ul className="flex items-center gap-2">
-                                                  <li>
-                                                       <Link href={"#"} className="w-10 h-9 flex items-center justify-center">
-                                                            <Image
-                                                                 src={"/images/eyes-icon.svg"}
-                                                                 alt=""
-                                                                 width='16'
-                                                                 height='16'
-                                                            />
-                                                       </Link>
-                                                  </li>
-                                                  <li>
-                                                       <Link href={"#"} className="w-10 h-9 flex items-center justify-center">
-                                                            <Image
-                                                                 src={"/images/userx.svg"}
-                                                                 alt=""
-                                                                 width='16'
-                                                                 height='16'
-                                                            />
-                                                       </Link>
-                                                  </li>
-                                                  <li>
-                                                       <Link href={"#"} className="w-10 h-9 flex items-center justify-center">
-                                                            <Image
-                                                                 src={"/images/chat-icon.svg"}
-                                                                 alt=""
-                                                                 width='16'
-                                                                 height='16'
-                                                            />
-                                                       </Link>
-                                                  </li>
-                                             </ul>
+                                        <td className="lg:px-4 px-2.5 py-6">
+                                             <div className="flex items-center gap-2">
+                                                  <ProgressBar
+                                                       value={item.onboardingPercent}
+                                                       barColor={
+                                                            item.onboardingPercent >= 80
+                                                                 ? "bg-yellow-1100"
+                                                                 : item.onboardingPercent >= 50
+                                                                      ? "bg-yellow-1100"
+                                                                      : "bg-gray-1900"
+                                                       }
+                                                       className="flex-1 w-full"
+                                                  />
+                                                  <span className="w-6 flex items-center justify-center text-gray-1900 font-inter font-normal text-xs leading-4">
+                                                       {item.onboardingPercent}%
+                                                  </span>
+                                             </div>
+                                        </td>
+                                        <td className="lg:px-4 px-2.5 py-6 text-blue-1300 font-inter font-normal text-sm leading-5">{item.ltv}</td>
+
+                                        <td className="lg:px-4 px-2.5 py-6">
+                                             <span
+                                                  className={`inline-flex items-center border border-solid justify-center rounded-full h-5.5 px-2 text-xs font-normal leading-4 ${planConfig[item.plan].classes}`}
+                                             >
+                                                  {item.plan}
+                                             </span>
+                                        </td>
+
+                                        <td className="lg:px-4 px-2.5 py-6">
+                                             <Link href="#">
+                                                  <Image
+                                                       src={item.actions}
+                                                       width={16}
+                                                       height={16}
+                                                       alt="actions"
+                                                  />
+                                             </Link>
                                         </td>
                                    </tr>
                               ))}
                          </tbody>
                     </table>
                </div>
-               {/* Functional Pagination */}
-               {students.length > 0 && (
-                    <div className="p-6">
-                         <ul className="flex items-center justify-center gap-1">
-                              <li>
-                                   <button
-                                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                                        disabled={currentPage === 1}
-                                        className={`flex items-center pl-2.5 pr-4 md:h-10 h-8 gap-1 rounded-md text-black13 font-medium text-sm leading-5 border border-solid border-transparent hover:border-gray1600 transition-all duration-500 ease-in-out ${currentPage === 1 ? "opacity-50 pointer-events-none" : ""}`}
-                                   >
-                                        <span className="flex items-center justify-center w-4 h-4">
-                                             <Image
-                                                  src="../images/left-arrow2.svg"
-                                                  width='6'
-                                                  height='6'
-                                                  alt="" 
-                                             />
-                                        </span>
-                                        Previous
-                                   </button>
-                              </li>
-                              {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => (
-                                   <li key={page}>
-                                        <button
-                                             onClick={() => setCurrentPage(page)}
-                                             className={`flex items-center justify-center border border-solid ${currentPage === page ? "border-gray1600" : "border-transparent hover:border-gray1600"} rounded-md md:w-10 w-8 md:h-10 h-8 text-black13 font-medium text-sm leading-5 transition-all duration-500 ease-in-out ${currentPage === page ? "" : ""}`}
-                                        >
-                                             {page}
-                                        </button>
-                                   </li>
-                              ))}
-                              {totalPages > 3 && currentPage < totalPages - 1 && (
-                                   <li>
-                                        <span className="flex items-center justify-center border border-solid border-transparent hover:border-gray1600 rounded-md md:w-10 w-8 md:h-10 h-8 text-black13 font-medium text-sm leading-5 transition-all duration-500 ease-in-out">
-                                             <Image
-                                                  src="../images/dots-icon.svg"
-                                                  width='16'
-                                                  height='16'
-                                                  alt=""
-                                             />
-                                        </span>
-                                   </li>
-                              )}
-                              <li>
-                                   <button
-                                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                                        disabled={currentPage === totalPages}
-                                        className={`flex items-center pl-4 pr-2.5 md:h-10 h-8 gap-1 rounded-md text-black13 font-medium text-sm leading-5 border border-solid border-transparent hover:border-gray1600  transition-all duration-500 ease-in-out ${currentPage === totalPages ? "opacity-50 pointer-events-none" : ""}`}
-                                   >
-                                        Next
-                                        <span className="flex items-center justify-center w-4 h-4">
-                                             <Image
-                                                  src="../images/right-arrow.svg"
-                                                  width='6'
-                                                  height='6'
-                                                  alt=""
-                                             />
-                                        </span>
-                                   </button>
-                              </li>
-                         </ul>
-                    </div>
-               )}
           </div>
      );
 }

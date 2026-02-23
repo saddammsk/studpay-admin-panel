@@ -199,11 +199,11 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed top-0 overflow-y-auto scrollbar-hide z-99 h-screen lg:left-0 w-full max-w-[288px] bg-white border-r border-gray-1000
+      className={`fixed top-0 overflow-y-auto scrollbar-hide z-1000 h-screen lg:left-0 w-full xl:max-w-[288px] max-w-62.5 bg-white border-r border-gray-1000
         transition-all duration-500 ease-in-out
         ${isOpen ? "left-0" : "-left-full"}`}>
       {" "}
-      <div className="px-5">
+      <div className="xl:px-5 px-2">
         <div className="flex items-center justify-between pt-4.5 pb-4 pl-4 pr-2 border-b border-gray-1000">
           <Link href="/" onClick={close}>
             <img src="/images/logo.svg" alt="Logo" className="h-7.5" />
@@ -213,7 +213,7 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-      <div className="py-10 px-5">
+      <div className="py-10 xl:px-5 px-2">
         <div className="">
           <div className="flex items-center justify-between mb-1.5">
             <h6 className="font-segoe text-gray-1900 text-[11px] font-medium tracking-[0.55px] uppercase py-1.75 leading-4">

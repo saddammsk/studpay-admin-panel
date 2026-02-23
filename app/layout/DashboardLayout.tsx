@@ -16,9 +16,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       ) : (
         <div className="flex-1">
           <Sidebar />
-          <div className="font-neulis-sans lg:pl-72 pt-19.25">
-            <div className="md:p-8 p-4">
-              <TopBar />
+          <div className="font-neulis-sans xl:pl-72 lg:pl-62.5 pt-22.5">
+            <div className="xl:p-8 p-4"> 
               {children}
             </div>
           </div>

@@ -23,7 +23,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                <select
                     value={value}
                     onChange={onChange}
-                    className={`appearance-none cursor-pointer text-sm font-normal leading-5 font-neulis-sans text-black13 xl:pr-11 pr-8 pl-4 h-10 bg-white border border-gray1600 rounded-md w-full outline-0 ${className}`}
+                    className={`appearance-none cursor-pointer text-sm font-normal leading-5 font-neulis-sans text-black13 px-3 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0 ${className}`}
                >
                     {options.map((option) => (
                          <option key={option.value} value={option.value}>
@@ -31,7 +31,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                          </option>
                     ))}
                </select>
-               <div className='w-4 h-4 opacity-50 flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-3'>
+               <div className='w-4 h-4 opacity-50 flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-1.5'>
                     <Image
                          src="../images/down-arrow.svg"
                          width='10'
