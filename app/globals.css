@@ -128,18 +128,24 @@
   --color-skyblue23: #0DA2E7;
   --color-skyblue2434: #E3FDF4;
   --color-gray22: #F8FAFC;
+  --color-gray23: #E2E4E9;
+  --color-gray24: #F0F2F4;
   --color-lightgreen17: #10B77F;
   --color-lightgreen18: #EBFAF5;
+  --color-lightgreen19: #30A66F;
+  --color-lightgreen20: #EDF8F3;
   --color-gradient1: #487BFF;
   --color-gradient2: #6672FF;
   --color-gradient3: #10BDFF;
   --color-red1600: #F43E5C;
   --color-blue1400: #3C83F6;
+  --color-blue1500: #246ADB;
   --color-darkblue2: #344256;
   --color-black14: #312002;
   --color-purpal115: #9234EA;
   --color-red1700: #E21D4B;
   --color-red1800: #FCE8ED;
+  --color-red1900: #D45C54;
 
 
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
@@ -159,6 +165,7 @@
   --shadow-48xl: 0 0 0 1px #E2E8F0, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-49xl: 0 0 0 2px #DAE0E7;
   --shadow-50xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
+  --shadow-51xl: 0 0 16px 0 rgba(36, 106, 219, 0.25), 0 0 4px 0 rgba(36, 106, 219, 0.15);
 
 
   --breakpoint-xs: 390px;
@@ -168,6 +175,7 @@
   --breakpoint-xl: 1199px;
   --breakpoint-2xl: 1365px;
   --breakpoint-4xl: 1600px;
+  --breakpoint-5xl: 1800px;
 }
 
 
@@ -297,4 +305,9 @@ input[type="date"] {
 
 .btn-primary:hover img {
   filter: brightness(300);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
+
 }
