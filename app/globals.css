@@ -4,6 +4,8 @@
   --font-neulis-sans: "Neulis Sans";
   --font-segoe: "Segoe UI";
   --font-inter: "Inter", sans-serif;
+  --font-Graphik: "Graphik";
+  --font-publicSans: "Public Sans", sans-serif;
   --color-gray-1000: #E5E7EB;
   --color-gray-1100: #4B5563;
   --color-gray-1200: #6B7280;
@@ -90,7 +92,6 @@
   --color-golden-1000: #D9A520;
   --color-black-2000: #14181F;
   --color-black-2100: #090B21;
-  /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
   --color-gray1700: #F1F5F9;
@@ -132,13 +133,11 @@
   --color-darkgreen2300: #14532D;
   --color-purpal13: #9333EA;
   --color-purpal14: #7E22CE;
-  /******* 12-2-2028 ******/
   --color-gray20: #D1D5DB;
   --color-yellow1600: #FDE047;
   --color-blueNexus12: #D8B4FE;
   --color-blueNexus13: #F0F5FD;
   --color-orange12: #EA580C;
-  /******* New ******/
   --color-skyblue23: #0DA2E7;
   --color-skyblue2434: #E3FDF4;
   --color-gray22: #F8FAFC;
@@ -160,6 +159,23 @@
   --color-red1700: #E21D4B;
   --color-red1800: #FCE8ED;
   --color-red1900: #D45C54;
+  --color-sky-5000: #ECFDF5;
+  --color-grey-5000: #94A3B8;
+  --color-green-5000: #059669;
+  --color-purple-5000: #AF57DB;
+  --color-black-5000: #1F1B32;
+  --color-grey-5100: #676284;
+  --color-sky-5100: #22C55E;
+  --color-black-5100: #1E293B;
+  --color-grey-5200: #E2E0EB;
+  /****** 25-2-2026 ******/
+  --color-blue1600: #2F2F2F;
+  --color-darkgreen57: #00715D;
+  --color-darkgreen58: #95C7AF;
+  --color-lightgreenNew: #C0FFE1;
+  --color-grey-5300: #686C75;
+  --color-lighrgrey34: #CBD5E1;
+  --color-yellow1700: #FEF3C7;
 
 
   --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
@@ -181,6 +197,10 @@
   --shadow-49xl: 0 0 0 2px #DAE0E7;
   --shadow-50xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
   --shadow-51xl: 0 0 16px 0 rgba(36, 106, 219, 0.25), 0 0 4px 0 rgba(36, 106, 219, 0.15);
+  --shadow-52xl: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
+  --shadow-53xl: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
+  --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
 
 
   --breakpoint-xs: 390px;
@@ -238,6 +258,21 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/fonts/Graphik.eot');
+  src: url('/fonts/Graphik.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Graphik.woff2') format('woff2'),
+    url('/fonts/Graphik.woff') format('woff'),
+    url('/fonts/Graphik.ttf') format('truetype'),
+    url('/fonts/Graphik.svg#Graphik') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 
 html {
   overflow: auto !important;
@@ -322,7 +357,6 @@ input[type="date"] {
   filter: brightness(300);
 }
 
-<<<<<<< HEAD
 .bg-gradient {
   background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
 }
@@ -333,7 +367,8 @@ input[type="date"] {
 
 .bg-gradient5 {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
-=======
+}
+
 .gradient-bg {
   background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
 }

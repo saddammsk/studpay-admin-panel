@@ -55,13 +55,15 @@ const TopBar = () => {
                                    {pageData.description}
                               </p>
                          </div>
-                         {pageData.showSearch && <GlobalSearchbox />}
+                         <div className='md:block hidden'>
+                              {pageData.showSearch && <GlobalSearchbox />}
+                         </div>
                     </div>
                     <div className='flex items-center md:gap-4 gap-1'>
                          <Button onClick={() => { }}
                               iconSrc="/images/user-white.svg"
                               label="Impersonate User"
-                              className="text-white text-sm font-medium gap-1 h-10 px-4! bg-blue-1000 hover:bg-blue800 rounded-lg border border-solid border-gray1600 m-0!"
+                              className="text-white text-sm font-medium md:flex hidden gap-1 h-10 px-4! bg-blue-1000 hover:bg-blue800 rounded-lg border border-solid border-gray1600 m-0!"
                          />
                          <NotificationsDropdown />
                          <span className='bg-gray1600 w-px h-8 flex items-center justify-center'></span>

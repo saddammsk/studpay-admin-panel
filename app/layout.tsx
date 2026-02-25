@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Public_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import DashboardLayout from "./layout/DashboardLayout";
 import ReduxProvider from "./store/ReduxProvider";
@@ -24,6 +24,13 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
+  subsets: ["latin"],
+});
+
+
+
 export default function RootLayout({
   children,
 }: {
@@ -31,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body  className={`bg-gray-1500 ${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
+      <body  className={`bg-gray-1500 ${geistSans.variable} ${geistMono.variable} ${inter.variable} ${publicSans.variable} antialiased`}
       >
         <ReduxProvider>
         <DashboardLayout>{children}</DashboardLayout>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import RecentAuditTable from '@/app/components/RecentAuditTable';
-import UserAccountTable from '@/app/components/UserAccountTable'; 
+import UserAccountTable from '@/app/components/UserAccountTable';
 
 interface MenuItem {
   name: string;
@@ -26,14 +26,14 @@ const menuItems = [
     href: "user_account",
     icon: "../images/wallet-icon3.svg",
     iconActive: "../images/account-wallet.svg",
-    active: true,
+    active: false,
   },
   {
     name: "Cards",
-    href: "/cards",
+    href: "/user_card",
     icon: "../images/avi-card.svg",
-    iconActive: "../images/avi-card-blue.svg",
-    active: false,
+    iconActive: "../icons/card-blue.svg",
+    active: true,
   },
   {
     name: "Transactions",
@@ -258,147 +258,73 @@ const UsersStudentsPage = () => {
         </ul>
       </div>
       <div className='flex xl:flex-row flex-col items-start gap-4'>
-        <div className='xl:w-[calc(100%-300px)] w-full'>
-          <div className='grid 5xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4'>
-            <div className='flex items-start justify-between gradient-bg border border-solid border-blue1400/20 shadow-4xl rounded-lg p-6'>
-              <div className=''>
-                <span className='text-gray-1900 font-inter font-medium text-sm leading-5 tracking-[-0.35px] block'>Total Balance</span>
-                <div className='flex items-center mt-2 mb-1'>
-                  <h4 className='text-blue-1300 font-inter font-bold md:text-2xl text-lg leading-8'>€30.905,88</h4>
-                </div>
-                <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>Across 4 accounts</p>
-              </div>
-              <span className='w-6 h-6 flex items-center justify-center'>
-                <Image src="../images/eye-icon.svg" width="24" height="24" alt="" />
-              </span>
+        <div className='xl:w-[calc(100%-300px)] w-full p-6'>
+          <div className='flex items-center justify-between mb-6'>
+            <div className=''>
+              <h4 className='text-blue-1300 font-inter font-bold text-xl leading-7'>Card Inventory</h4>
+              <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Manage physical and virtual cards for this customer</p>
             </div>
-            <div className='bg-white border border-solid border-gray-3100 shadow-4xl rounded-lg p-6'>
-              <span className='text-gray-1900 font-inter font-medium text-sm leading-5 block tracking-[-0.35px]'>Active Accounts</span>
-              <h4 className='text-blue-1300 font-inter font-bold md:text-2xl text-lg leading-8 mt-2 mb-1'>3</h4>
-              <p className='text-lightgreen17 font-inter font-normal text-xs leading-4 flex items-center gap-1'><Image src="../images/price-arrow-green.svg" width="12" height="12" alt="" /> All accounts in good standing</p>
-            </div>
-            <div className='bg-white border border-solid border-gray-3100 shadow-4xl rounded-lg p-6'>
-              <span className='text-gray-1900 font-inter font-medium text-sm leading-5 block tracking-[-0.35px]'>Monthly Inflow</span>
-              <h4 className='text-lightgreen17 font-inter font-bold md:text-2xl text-lg leading-8 mt-2 mb-1'>+€3,450.00</h4>
-              <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>+12% from last month</p>
-            </div>
-            <div className='bg-white border border-solid border-gray-3100 shadow-4xl rounded-lg p-6'>
-              <span className='text-gray-1900 font-inter font-medium text-sm leading-5 block tracking-[-0.35px]'>Monthly Outflow</span>
-              <h4 className='text-red1700 font-inter font-bold md:text-2xl text-lg leading-8 mt-2 mb-1'>-€1,892.45</h4>
-              <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>-5% from last month</p>
-            </div>
+            <ul className='flex items-center gap-2'>
+              <li>
+                <Link href={"#"} className='group inline-flex items-center justify-center text-blue-1300 font-medium text-sm leading-5 gap-2 hover:bg-blue1400 hover:border-blue1400 hover:text-white bg-gray-1500 border border-solid border-gray-3600 rounded-md h-10 px-4'>
+                  <Image src="../images/card-black.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                    className='group-hover:brightness-10750'
+                  />
+                  Order Physical Card
+                </Link>
+              </li>
+              <li>
+                <Link href={"#"} className='group inline-flex items-center justify-center font-medium text-sm leading-5 gap-2 bg-blue1400 hover:bg-blue1400/90 border-blue1400 text-white border border-solid  rounded-md h-10 px-4'>
+                  <Image src="../images/mobile-icon.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                  Create Virtual Card
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className='bg-white pb-6 border border-solid border-gray-3100 shadow-4xl mt-6 rounded-lg'>
-            <div className='flex items-center justify-between 5xl:px-6 xl:px-3 px-4 pt-6 pb-4'>
-              <h4 className='text-blue-1300 font-inter font-semibold text-lg leading-7 tracking-[-0.45px]'>User Accounts</h4>
-              <Button onClick={() => { }}
-                iconSrc="/images/plus-icon.svg"
-                label="Add Account"
-                className="text-white text-sm font-normal gap-2 h-9 px-3! bg-blue-1000 hover:bg-blue800 rounded-md border border-solid border-gray1600 m-0!"
+          <div className='bg-white shadow-53xl p-6 gap-6 flex items-start'>
+            <div className='max-w-[256px] w-full'>
+              <Image src="/images/visa-card.png"
+                width="256"
+                height="160"
+                alt=""
               />
             </div>
-            <UserAccountTable />
-          </div>
-          <div className='bg-white pb-6 border border-solid border-gray-3100 shadow-4xl mt-6 rounded-lg'>
-            <div className='flex items-center justify-between xl:px-6 px-4 xl:pt-6 pt-4 pb-4'>
-              <h4 className='text-blue-1300 font-inter font-semibold text-lg leading-7 tracking-[-0.45px]'>Recent Transactions</h4>
-              <Link href={'#'} className='inline-flex items-center justify-center text-blue-1300 font-inter font-medium text-sm leading-5 bg-gray-1600 border border-solid border-gray-3100 rounded-md px-3 h-9'>View All</Link>
-            </div>
-            <div className='xl:px-6 px-4'>
-              <div className='flex items-center mb-3 gap-3 px-3 py-4 relative z-50 bg-gray-1600/50 rounded-lg hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
-                <span className='bg-lightgreen17/10 w-8 h-8 flex items-center justify-center rounded-full'>
-                  <Image src="../icons/left-down-arrow.svg"
+            <div className='flex-1 w-full'>
+              <div className='flex items-center justify-between'>
+                <div className=''>
+                  <h4 className='text-blue-1300 font-inter font-bold text-base leading-6'>Physical Visa Card</h4>
+                  <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>•••• •••• •••• 4589</p>
+                </div>
+                <div className='inline-flex items-center bg-green-1900 rounded-full h-5 px-2.5 gap-1.5 text-green-1600 font-inter font-medium text-xs leading-4'>
+                  <span className='flex items-center bg-green-1600 rounded-full w-1.5 h-1.5'></span>
+                  Active
+                </div>
+              </div>
+              <div className='flex items-center gap-4 mt-[18px]'>
+                <span className='text-gray-1900 font-normal text-sm leading-5 flex items-center gap-2'>
+                  <Image src="../images/mobile-dark.svg"
                     width="16"
                     height="16"
                     alt=""
                   />
+                  Tokenization:
                 </span>
-                <div className='flex-1 w-full flex items-center justify-between'>
-                  <div className=''>
-                    <h4 className='text-blue-1300 font-inter font-medium text-sm leading-5'>Salary Payment</h4>
-                    <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>2024-01-28</p>
-                  </div>
-                  <span className='text-lightgreen17 font-inter font-semibold sm:text-sm text-xs leading-5 block'>+€2,450.00</span>
-                </div>
+                <ul className='flex items-center gap-2'>
+                  <li>
+                    <Link href={"#"} className='text-green-1600 bg-green-1900 font-normal text-xs leading-4 inline-flex items-center h-6 px-2 rounded-md'>Apple Pay</Link>
+                  </li>
+                  <li>
+                    <Link href={"#"} className='text-green-1600 bg-green-1900 font-normal text-xs leading-4 inline-flex items-center h-6 px-2 rounded-md'>Google Pay</Link>
+                  </li>
+                </ul>
               </div>
-              <div className='flex items-center mb-3 gap-3 px-3 py-4 relative z-50 bg-gray-1600/50 rounded-lg hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
-                <span className='bg-red1700/10 w-8 h-8 flex items-center justify-center rounded-full'>
-                  <Image src="../images/payment-red-arrow.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                </span>
-                <div className='flex-1 w-full flex items-center justify-between'>
-                  <div className=''>
-                    <h4 className='text-blue-1300 font-inter font-medium text-sm leading-5'>Rent Payment</h4>
-                    <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>2024-01-27</p>
-                  </div>
-                  <span className='text-red1700 font-inter font-semibold sm:text-sm text-xs leading-5 block'>€850,00</span>
-                </div>
-              </div>
-              <div className='flex items-center mb-3 gap-3 px-3 py-4 relative z-50 bg-gray-1600/50 rounded-lg hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
-                <span className='bg-lightgreen17/10 w-8 h-8 flex items-center justify-center rounded-full'>
-                  <Image src="/icons/left-down-arrow.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                </span>
-                <div className='flex-1 w-full flex items-center justify-between'>
-                  <div className=''>
-                    <h4 className='text-blue-1300 font-inter font-medium text-sm leading-5'>Transfer from Savings</h4>
-                    <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>2024-01-26</p>
-                  </div>
-                  <span className='text-lightgreen17 font-inter font-semibold sm:text-sm text-xs leading-5 block'>+€500,00</span>
-                </div>
-              </div>
-              <div className='flex items-center mb-3 gap-3 px-3 py-4 relative z-50 bg-gray-1600/50 rounded-lg hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
-                <span className='bg-red1700/10 w-8 h-8 flex items-center justify-center rounded-full'>
-                  <Image src="../images/payment-red-arrow.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                </span>
-                <div className='flex-1 w-full flex items-center justify-between'>
-                  <div className=''>
-                    <h4 className='text-blue-1300 font-inter font-medium text-sm leading-5'>Grocery Store</h4>
-                    <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>2024-01-26</p>
-                  </div>
-                  <span className='text-red1700 font-inter font-semibold sm:text-sm text-xs leading-5 block'>€67,45</span>
-                </div>
-              </div>
-              <div className='flex items-center gap-3 px-3 py-4 relative z-50 bg-gray-1600/50 rounded-lg hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
-                <span className='bg-red1700/10 w-8 h-8 flex items-center justify-center rounded-full'>
-                  <Image src="../images/payment-red-arrow.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                </span>
-                <div className='flex-1 w-full flex items-center justify-between'>
-                  <div className=''>
-                    <h4 className='text-blue-1300 font-inter font-medium text-sm leading-5'>Netflix Subscription</h4>
-                    <p className='text-gray-1900 font-inter font-normal text-xs leading-4'>2024-01-25</p>
-                  </div>
-                  <span className='text-red1700 font-inter font-semibold sm:text-sm text-xs leading-5 block'>€15,99</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='bg-white border border-solid border-gray-3100 shadow-4xl 2xl:p-6 p-4 mt-4 rounded-lg'>
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="text-blue-1300 font-inter font-semibold text-base leading-6 tracking-[-0.4px] flex items-center gap-2">
-                <Image src="../images/clock-gray.svg" width="16" height="16" alt="" />
-                Recent Audit Trail
-              </h4>
-              <Link className="inline-flex items-center hover:underline text-blue1400 font-inter font-normal text-sm leading-5" href="#">
-                View full log
-              </Link>
-            </div>
-            <div className=''>
-              <RecentAuditTable />
             </div>
           </div>
         </div>

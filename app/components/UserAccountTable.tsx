@@ -113,9 +113,9 @@ const payments: Payment[] = [
 
 export default function KycDocumentTable() {
   return (
-    <div className="px-6">
+    <div className="5xl:px-6 xl:px-3 px-4">
       <div className="overflow-x-auto">
-        <table className="2xl:w-full w-162.5">
+        <table className="4xl:w-full w-257.5">
           <thead>
             <tr className="border-b border-gray1600">
               <th className="px-3 py-2 text-left text-xs font-medium text-gray-1900">

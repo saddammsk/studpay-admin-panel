@@ -294,7 +294,7 @@ export default function FlowMatchTable() {
                   ) : (
                     <Link
                       href="#"
-                      className="inline-flex items-center gap-1 text-white bg-blue1500 rounded-lg h-6 px-3 text-[11px] font-bold"
+                      className="inline-flex items-center gap-1 text-white shadow-51xl bg-blue1500 rounded-lg h-6 px-3 text-[11px] font-bold"
                     >
                       <Image src={item.action!.icon} width={16} height={16} alt="" />
                       {item.action!.name}
