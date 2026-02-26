@@ -20,17 +20,17 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
       type="button"
       onClick={() => !disabled && onChange(!checked)}
       className={`
-        relative w-14 h-8 flex items-center rounded-full transition-colors duration-300
-        ${checked ? "bg-blue-600" : "bg-gray-300"}
+        relative w-11 h-6 flex items-center rounded-full transition-colors duration-300
+        ${checked ? "bg-blue-1000" : "bg-gray-300"}
         ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
         ${className}
       `}
     >
       <span
         className={`
-          absolute left-1 w-6 h-6 bg-white rounded-full shadow-md
+          absolute left-1 w-5 h-5 bg-white rounded-full shadow-md
           transform transition-transform duration-300
-          ${checked ? "translate-x-6" : "translate-x-0"}
+          ${checked ? "translate-x-4.25" : "translate-x-0"}
         `}
       />
     </button>

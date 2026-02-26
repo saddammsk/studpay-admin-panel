@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import ProgressBar from '@/app/components/ProgressBar';
-import RecentAuditTable from '@/app/components/RecentAuditTable';
+import RecentAuditTable from '@/app/components/UsersStudent/RecentAuditTable';
 import FlowMatchTable from '@/app/components/FlowMatchTable';
 
 interface MenuItem {
@@ -31,7 +31,7 @@ const menuItems = [
   },
   {
     name: "Cards",
-    href: "/cards",
+    href: "user_card",
     icon: "../images/avi-card.svg",
     iconActive: "../images/avi-card-blue.svg",
     active: false,
@@ -112,6 +112,7 @@ const menuItems = [
 const UsersStudentsPage = () => {
 
   return (
+    <>
     <div className='font-inter'>
       <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>
         <li>
@@ -604,6 +605,7 @@ const UsersStudentsPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

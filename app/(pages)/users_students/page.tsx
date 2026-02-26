@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
-import UserStudentTable from "@/app/components/UserStudentTable";
+import UserStudentTable from "@/app/components/UsersStudent/UserStudentTable";
 import CustomSelect from "@/app/components/CustomSelect";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import {
