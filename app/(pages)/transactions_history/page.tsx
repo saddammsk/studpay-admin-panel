@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 
 import Image from "next/image";
-import Link from "next/link"; 
+import Link from "next/link";
 import TransectionTable from "@/app/components/TransectionTable"
 import CustomSelect from "@/app/components/CustomSelect"
 
@@ -58,8 +58,8 @@ const TransectionPage = () => {
                                                             alt=""
                                                             width={16}
                                                             height={16}
-                                                      /> 
-                                                </div> 
+                                                      />
+                                                </div>
                                                 <input
                                                       ref={fromRef}
                                                       type="date"
