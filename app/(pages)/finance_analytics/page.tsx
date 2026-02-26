@@ -1,210 +1,321 @@
 'use client'
 import { useState } from "react";
-import CustomSelect from "@/app/components/CustomSelect";
+import Image from "next/image";
 import Link from "next/link";
-import RevenueChart from "@/app/components/RevenueChart";
-import ExpensePieChart from "@/app/components/ExpensePieChart";
-import BarChart2 from "@/app/components/BarChart2";
-import CountryStats from "@/app/components/CountryStats";
 import Button from "@/app/components/ui/Button";
-
-
-const countries = [
-     { code: "GE", name: "Germany", students: 1240, amount: 285000, progress: 100 },
-     { code: "FR", name: "France", students: 890, amount: 198000, progress: 80 },
-     { code: "NE", name: "Netherlands", students: 670, amount: 167000, progress: 50 },
-     { code: "IT", name: "Italy", students: 560, amount: 285000, progress: 40 },
-     { code: "SP", name: "Spain", students: 480, amount: 123000, progress: 25 },
-     { code: "OT", name: "Others", students: 290, amount: 82000, progress: 20 },
-];
+import SparklineChart from "@/app/components/SparklineChart";
+import ToggleSwitch from "@/app/components/ui/ToggleSwitch";
+import TopBar from "@/app/components/common/TopBar";
+import RevenueChart2 from "@/app/components/RevenueChart2";
+import FinanceDonutChart from "@/app/components/FinanceDonutChart";
+import ProgressBar from "@/app/components/ProgressBar";
+import UniversityTable from "@/app/components/UniversityTable";
 
 
 
 export default function FinanceAnalytics() {
-     const [status, setStatus] = useState<string>("all");
-     const [status2, setStatus2] = useState<string>("All Countries");
-     const [status3, setStatus3] = useState<string>("EUR (€)");
-     const [status4, setStatus4] = useState<string>("All Types");
-
-
+     const [switch1, setSwitch1] = useState(false)
      return (
-          <div className="max-w-7xl mx-auto">
-               <div className="flex items-center justify-between xl:flex-nowrap flex-wrap gap-4">
-                    <div>
-                         <h4 className="text-[30px] font-bold leading-9 text-black12 mb-2">Finance Analytics</h4>
-                         <p className="text-base font-normal leading-6 text-gray-1100">Comprehensive financial insights and performance metrics</p>
+          <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
+               <TopBar></TopBar>
+               <div className="flex xl:flex-nowrap flex-wrap xl:gap-0 gap-4 items-center bg-white justify-between 2xl:p-8 p-4">
+                    <div className="xl:flex-1">
+                         <h6 className="text-xl font-bold leading-7 text-blue-1300">Finance Analytics</h6>
+                         <p className="text-sm font-normal leading-5 text-gray-1900">Executive Dashboard • Real-time Insights</p>
                     </div>
-                    <ul className="flex items-center gap-3">
-                         <li>
-                              <Button
-                                   label="Export Report"
-                                   iconSrc="/images/export-icon.svg"
-                                   className="text-white bg-blue-1000"
-                                   onClick={() => {
-                                        console.log("Export clicked");
-                                   }}
-                              />
-                         </li>
-                         <li>
-                              <Link href="" className="py-0.75 px-2.5 text-xs font-normal leading-5 text-blue-1000 bg-blue-1000/10 border border-blue-1000/20 rounded-[10px]">Live Data</Link>
-                         </li>
-                    </ul>
-               </div>
-               <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
-                    <div className="flex items-center gap-2 text-lg font-normal leading-7 text-black-1200">
-                         <img src="/images/filter-icon.svg" alt="" />Filters & Controls
-                    </div>
-                    <div className="grid xl:grid-cols-5 sm:grid-cols-3 gap-4 mt-6">
-                         <div>
-                              <label htmlFor="" className="text-sm font-normal leading-5 block text-gray-1700 mb-2">Date Range</label>
-                              <CustomSelect
-                                   value={status}
-                                   onChange={(e) => setStatus(e.target.value)}
-                                   options={[
-                                        { label: "All Status", value: "all" },
-                                        { label: "Active", value: "active" },
-                                        { label: "Inactive", value: "inactive" },
-                                   ]}
-                              />
-                         </div>
-                         <div>
-                              <label htmlFor="" className="text-sm font-normal leading-5 block text-gray-1700 mb-2">Country</label>
-                              <CustomSelect
-                                   value={status2}
-                                   onChange={(e) => setStatus2(e.target.value)}
-                                   options={[
-                                        { label: "All Countries", value: "All Countries" },
-                                        { label: "Active", value: "active" },
-                                        { label: "Inactive", value: "inactive" },
-                                   ]}
-                              />
-                         </div>
-                         <div>
-                              <label htmlFor="" className="text-sm font-normal leading-5 block text-gray-1700 mb-2">Currency</label>
-                              <CustomSelect
-                                   value={status3}
-                                   onChange={(e) => setStatus3(e.target.value)}
-                                   options={[
-                                        { label: "EUR (€)", value: "EUR (€)" },
-                                        { label: "Active", value: "active" },
-                                        { label: "Inactive", value: "inactive" },
-                                   ]}
-                              />
-                         </div>
-                         <div>
-                              <label htmlFor="" className="text-sm font-normal leading-5 block text-gray-1700 mb-2">Transaction Type</label>
-                              <CustomSelect
-                                   value={status4}
-                                   onChange={(e) => setStatus4(e.target.value)}
-                                   options={[
-                                        { label: "All Types", value: "All Types" },
-                                        { label: "Active", value: "active" },
-                                        { label: "Inactive", value: "inactive" },
-                                   ]}
-                              />
-                         </div>
-                         <div>
-                              <label htmlFor="" className="text-sm font-normal leading-5 block text-gray-1700 mb-2">Quick Actions</label>
-                              <Button
-                                   label="Refresh Data"
-                                   iconSrc="/images/calendar-icon.svg"
-                                   className="text-white bg-blue-1000 w-full justify-center py-2.5!"
-                                   onClick={() => {
-                                        console.log("Export clicked");
-                                   }}
-                              />
-                         </div>
-                    </div>
-               </div>
-               <div className="grid 2xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-6 mt-6">
-                    <div className="border border-gray-1600 bg-white rounded-xl shadow-5xl p-6">
-                         <div className="flex mb-4 items-center justify-between">
-                              <div className="bg-blue-1000/10 w-10 h-10 rounded-xl flex items-center justify-center">
-                                   <img src="/images/up-arrow.svg" alt="" />
+                    <form action="" className="flex flex-wrap items-center gap-3">
+                         <div className="relative">
+                              <input type="text" className='text-sm font-normal font-neulis-sans text-gray-1400 placeholder:text-gray-1400 px-4 pl-10 h-9 bg-white border border-gray1600 rounded-xl w-full outline-0' placeholder='Search metrics...' />
+                              <div className='absolute top-1/2 -translate-y-1/2 left-3'>
+                                   <Image
+                                        src="../images/search-icon.svg"
+                                        width='16'
+                                        height='16'
+                                        alt=""
+                                   />
                               </div>
-                              <img src="/images/grapgh-img.svg" alt="" />
                          </div>
-                         <h6 className="text-sm font-normal leading-5 text-gray-1100">Total Wallet Balance</h6>
-                         <span className="text-2xl font-normal leadin-8 text-black-1200 block mt-1 mb-2">€12.4M</span>
-                         <h6 className="flex items-center text-sm font-normal text-gray-1200">
-                              <span className="text-green-1000">+12.5%</span>vs last month
-                         </h6>
-                    </div>
-                    <div className="border border-gray-1600 bg-white rounded-xl shadow-5xl p-6">
-                         <div className="flex mb-4 items-center justify-between">
-                              <div className="bg-blue-1000/10 w-10 h-10 rounded-xl flex items-center justify-center">
-                                   <img src="/images/up-arrow.svg" className="rotate-180" alt="" />
+                         <div
+                              className="relative cursor-pointer"
+                         >
+                              <div className="absolute left-3 block top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none">
+                                   <Image
+                                        src="../images/calendar.svg"
+                                        alt=""
+                                        width={16}
+                                        height={16}
+                                   />
                               </div>
-                              <img src="/images/grapgh-img2.svg" alt="" />
+                              <input
+                                   type="date"
+                                   className="w-full appearance-none bg-gray-1800 pl-10 pr-3 border border-solid border-gray1600 rounded-md font-neulis-sans font-normal text-sm leading-5 h-9 cursor-pointer outline-0 focus:ring-0 focus:ring-transparent"
+                              />
                          </div>
-                         <h6 className="text-sm font-normal leading-5 text-gray-1100">AVI Blocked Funds</h6>
-                         <span className="text-2xl font-normal leadin-8 text-black-1200 block mt-1 mb-2">€2.8M</span>
-                         <h6 className="flex items-center text-sm font-normal text-gray-1200">
-                              <span className="text-green-1000">+5.2%</span>vs last month
-                         </h6>
-                    </div>
-                    <div className="border border-gray-1600 bg-white rounded-xl shadow-5xl p-6">
-                         <div className="flex mb-4 items-center justify-between">
-                              <div className="bg-blue-1000/10 w-10 h-10 rounded-xl flex items-center justify-center">
-                                   <img src="/images/signal-icon.svg" alt="" />
-                              </div>
-                              <img src="/images/grapgh-img3.svg" alt="" />
-                         </div>
-                         <h6 className="text-sm font-normal leading-5 text-gray-1100">Monthly Disbursements</h6>
-                         <span className="text-2xl font-normal leadin-8 text-black-1200 block mt-1 mb-2">€1.9M</span>
-                         <h6 className="flex items-center text-sm font-normal text-gray-1200">
-                              <span className="text-green-1000">+8.7%</span>vs last month
-                         </h6>
-                    </div>
-                    <div className="border border-gray-1600 bg-white rounded-xl shadow-5xl p-6">
-                         <div className="flex mb-4 items-center justify-between">
-                              <div className="bg-blue-1000/10 w-10 h-10 rounded-xl flex items-center justify-center">
-                                   <img src="/images/grapgh-icon.svg" alt="" />
-                              </div>
-                              <img src="/images/grapgh-img4.svg" alt="" />
-                         </div>
-                         <h6 className="text-sm font-normal leading-5 text-gray-1100">Recharge & Withdraw</h6>
-                         <span className="text-2xl font-normal leadin-8 text-black-1200 block mt-1 mb-2">€967K</span>
-                         <h6 className="flex items-center text-sm font-normal text-gray-1200">
-                              <span className="text-red-1200">3.1%</span>vs last month
-                         </h6>
-                    </div>
-                    <div className="border border-gray-1600 bg-white rounded-xl shadow-5xl p-6">
-                         <div className="flex mb-4 items-center justify-between">
-                              <div className="bg-blue-1000/10 w-10 h-10 rounded-xl flex items-center justify-center">
-                                   <img src="/images/globe-icon3.svg" alt="" />
-                              </div>
-                              <img src="/images/grapgh-img5.svg" alt="" />
-                         </div>
-                         <h6 className="text-sm font-normal leading-5 text-gray-1100">Crypto Holdings</h6>
-                         <span className="text-2xl font-normal leadin-8 text-black-1200 block mt-1 mb-2">€456K</span>
-                         <h6 className="flex items-center text-sm font-normal text-gray-1200">
-                              <span className="text-green-1000">+15.3%</span>vs last month
-                         </h6>
-                    </div>
+                         <Link href="/" className="bg-gray-1800 border border-gray-1000 w-10 h-10 rounded-xl flex items-center justify-center">
+                              <img src="/images/recycle-icon2.svg" alt="" />
+                         </Link>
+                         <Button
+                              label="Export Report"
+                              className="text-white justify-center font-medium bg-lightgreen17 py-2.5!"
+                              iconSrc="/images/export-icon.svg"
+                         />
+                    </form>
                </div>
-               <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
-                    <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Daily Transaction Volume Trend</h4>
-                    <RevenueChart></RevenueChart>
-               </div>
-               <div className="grid xl:grid-cols-2 gap-4 mt-6">
-                    <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl p-6.25">
-                         <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Spending Categories Breakdown</h4>
-                         <div className="text-center mx-auto w-fit">
-                              <ExpensePieChart />
+               <div className="xl:p-8 p-4">
+                    <div className="flex items-center gap-2">
+                         <span className="bg-lightgreen17 rounded-full block w-1 h-5"></span>
+                         <h6 className="text-lg font-bold leading-7 text-blue-1300">Golden Metrics</h6>
+                         <span className="text-xs font-normal leading-4 text-gray-1900 block">Updated 2 min ago</span>
+                    </div>
+                    <div className="grid 2xl:grid-cols-4 md:grid-cols-2 gap-4 mt-4 mb-6">
+                         <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
+                              <div className="">
+                                   <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Gross Merchandise Value</span>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">€12.4M</h4>
+                                   <div className="flex items-center gap-1.5">
+                                        <img src="/images/trend-up.svg" alt="" />
+                                        <h6 className="text-sm font-semibold leading-5 text-green-2600">+18.5% vs last month</h6>
+                                   </div>
+                              </div>
+                              <div>
+                                   <SparklineChart
+                                        dataPoints={[5, 6, 7, 6.5, 8, 7.5, 9]}
+                                        color="#22c55e"
+                                   />
+                              </div>
+                         </div>
+                         <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
+                              <div className="">
+                                   <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Net Revenue</span>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">€2.8M</h4>
+                                   <div className="flex items-center gap-1.5">
+                                        <img src="/images/trend-up.svg" alt="" />
+                                        <h6 className="text-sm font-semibold leading-5 text-green-2600">+12.3% vs last month</h6>
+                                   </div>
+                              </div>
+                              <div>
+                                   <SparklineChart
+                                        dataPoints={[3, 4, 3.5, 5, 5.5, 6, 7]}
+                                        color="#22c55e"
+                                   />
+                              </div>
+                         </div>
+                         <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
+                              <div className="">
+                                   <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Burn Rate vs Runway</span>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">18 months</h4>
+                                   <div className="flex items-center gap-1.5">
+                                        <img src="/images/minus-icon2.svg" alt="" />
+                                        <h6 className="text-sm font-semibold leading-5 text-gray-1900">€420K/mo burn rate</h6>
+                                   </div>
+                              </div>
+                              <div>
+                                   <SparklineChart
+                                        dataPoints={[8, 7, 7.5, 6.8, 7, 6.5, 6]}
+                                        color="#94a3b8"
+                                   />
+                              </div>
+                         </div>
+                         <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
+                              <div className="">
+                                   <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Default Rate</span>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">2.4%</h4>
+                                   <div className="flex items-center gap-1.5">
+                                        <img src="/images/trend-up.svg" alt="" />
+                                        <h6 className="text-sm font-semibold leading-5 text-green-2600">-0.3% improvement</h6>
+                                   </div>
+                              </div>
+                              <div>
+                                   <SparklineChart
+                                        dataPoints={[4, 3.8, 3.5, 3.2, 3, 2.8, 2.4]}
+                                        color="#22c55e"
+                                   />
+                              </div>
                          </div>
                     </div>
-                    <div className="border border-gray-1000  rounded-xl bg-white shadow-4xl p-6.25">
-                         <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Recharge vs Withdrawal Trends</h4>
-                         <div className="text-center mx-auto ">
-                              <BarChart2></BarChart2>
+                    <div className="bg-white/80 border border-white/20 shadow-13xl rounded-2xl py-8 px-6">
+                         <div className="flex items-start justify-between">
+                              <div>
+                                   <div className="flex items-center gap-1.5 mb-2">
+                                        <img src="/images/trend-up.svg" className="w-5 h-5" alt="" />
+                                        <h4 className="text-lg font-bold leading-7 text-blue-1300">Interactive Cash Flow</h4>
+                                   </div>
+                                   <p className="text-sm font-normal text-gray-1900">Inflow vs Outflow Analysis</p>
+                              </div>
+                              <div className="flex items-start gap-14">
+                                   <div className="text-end">
+                                        <h6 className="text-xs leading-4 font-normal text-gray-1900">Net Cash Flow</h6>
+                                        <span className="block text-lg font-bold leading-7 text-green-2600">€4.9M</span>
+                                   </div>
+                                   <div className="flex items-center gap-[14px]">
+                                        <h6 className="text-xs leading-4 font-medium text-gray-1900">Forecast</h6>
+                                        <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                                   </div>
+                              </div>
+                         </div>
+                         <div>
+                              <RevenueChart2></RevenueChart2>
+                              <div className="flex items-center justify-center gap-2.5">
+                                   <div className="flex items-center gap-1">
+                                        <img src="/images/inflow.svg" alt="" />
+                                        <h6 className="text-sm font-medium leading-5 text-blue-1300">Inflow (Rent, Insurance, Marketplace)</h6>
+                                   </div>
+                                   <div className="flex items-center gap-1">
+                                        <img src="/images/outflow.svg" alt="" />
+                                        <h6 className="text-sm font-medium leading-5 text-blue-1300">Outflow (Vendor Payments, Refunds)</h6>
+                                   </div>
+                              </div>
                          </div>
                     </div>
-               </div>
-               <div className="space-y-4">
-                    <div className="border border-gray-1000 mt-6 rounded-xl bg-white shadow-4xl sm:p-6.25 p-4">
-                         <h4 className="text-2xl font-normal leading-6 mb-6 text-blue-1200">Country-wise Financial Volume</h4>
-                         <CountryStats countries={countries} />
+                    <div className="grid 2xl:grid-cols-2 gap-4 mt-4 mb-6">
+                         <div className="bg-white/80 border border-white/20 shadow-13xl rounded-2xl 4xl:p-6 p-4">
+                              <div className="flex items-center mb-6 gap-2">
+                                   <img src="/images/chart-icon.svg" alt="" />
+                                   <h6 className="text-lg font-bold leading-7 text-blue-1300">Geographic Transaction Heatmap</h6>
+                              </div>
+                              <FinanceDonutChart></FinanceDonutChart>
+                         </div>
+                         <div className="bg-white/80 border border-white/20 shadow-13xl rounded-2xl 4xl:p-6 p-4">
+                              <div className="flex items-center justify-between mb-6">
+                                   <div>
+                                        <div className="flex items-center gap-2">
+                                             <img src="/images/globe-green.svg" alt="" />
+                                             <h6 className="text-lg font-bold leading-7 text-blue-1300">Revenue Distribution</h6>
+                                        </div>
+                                        <p className="text-sm font-normal leading-5 text-gray-1900">Transaction volume by country</p>
+                                   </div>
+                                   <div className="text-end">
+                                        <h6 className="text-xs leading-4 font-normal text-gray-1900">Total Volume</h6>
+                                        <h6 className="text-xl font-bold leading-7 text-blue-1300">€10.1M</h6>
+                                   </div>
+                              </div>
+                              <div className="card-bg rounded-2xl 4xl:p-6 p-3 grid md:grid-cols-3 gap-3">
+                                   <div className="bg-lightgreen17/20 border-2 border-green-2700 rounded-xl 4xl:p-4 p-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">DE</span>
+                                             <div className="flex items-center gap-1">
+                                                  <img src="/images/trend-up.svg" alt="" />
+                                                  <h6 className="text-xs font-semibold leading-[18px] text-green-2600">
+                                                       18.5%
+                                                  </h6>
+                                             </div>
+                                        </div>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Germany</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€4.3M</span>
+                                        <ProgressBar value={100} className="h-1.5" barColor="bg-lightgreen17" bgColor="bg-white/80"></ProgressBar>
+                                   </div>
+                                   <div className="bg-lightgreen17/20 border-2 border-green-2700 rounded-xl 4xl:p-4 p-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">FR</span>
+                                             <div className="flex items-center gap-1">
+                                                  <img src="/images/trend-up.svg" alt="" />
+                                                  <h6 className="text-xs font-semibold leading-[18px] text-green-2600">
+                                                       24.2%
+                                                  </h6>
+                                             </div>
+                                        </div>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">France</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€2.2M</span>
+                                        <ProgressBar value={50} className="h-1.5" barColor="bg-lightgreen17" bgColor="bg-white/80"></ProgressBar>
+                                   </div>
+                                   <div className="bg-yellow-1100/20 border-2 border-yellow-1800 rounded-xl 4xl:p-4 p-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">AT</span>
+                                             <div className="flex items-center gap-1">
+                                                  <img src="/images/trend-up3.svg" alt="" />
+                                                  <h6 className="text-xs font-semibold leading-[18px] text-yellow-1900">
+                                                       24.2%
+                                                  </h6>
+                                             </div>
+                                        </div>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Austria</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€1.4M</span>
+                                        <ProgressBar value={50} className="h-1.5" barColor="bg-yellow-1800" bgColor="bg-white/80"></ProgressBar>
+                                   </div>
+                                   <div className="bg-yellow-1100/20 border-2 border-yellow-1800 rounded-xl 4xl:p-4 p-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">NL</span>
+                                             <div className="flex items-center gap-1">
+                                                  <img src="/images/trend-up3.svg" alt="" />
+                                                  <h6 className="text-xs font-semibold leading-[18px] text-yellow-1900">
+                                                       31.5%
+                                                  </h6>
+                                             </div>
+                                        </div>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Netherlands</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€980K</span>
+                                        <ProgressBar value={20} className="h-1.5" barColor="bg-yellow-1800" bgColor="bg-white/80"></ProgressBar>
+                                   </div>
+                                   <div className="bg-gray-1900/20 border-2 border-green-2800 rounded-xl 4xl:p-4 p-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">ES</span>
+                                             <div className="flex items-center gap-1">
+                                                  <img src="/images/trend-up4.svg" alt="" />
+                                                  <h6 className="text-xs font-semibold leading-[18px] text-green-2900">
+                                                       45.2%
+                                                  </h6>
+                                             </div>
+                                        </div>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Spain</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€720K</span>
+                                        <ProgressBar value={20} className="h-1.5" barColor="bg-gray-1900" bgColor="bg-white/80"></ProgressBar>
+                                   </div>
+                                   <div className="bg-gray-1900/20 border-2 border-green-2800 rounded-xl 4xl:p-4 p-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">IT</span>
+                                             <div className="flex items-center gap-1">
+                                                  <img src="/images/trend-up4.svg" alt="" />
+                                                  <h6 className="text-xs font-semibold leading-[18px] text-green-2900">
+                                                       28.9%
+                                                  </h6>
+                                             </div>
+                                        </div>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Italy</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€540K</span>
+                                        <ProgressBar value={20} className="h-1.5" barColor="bg-gray-1900" bgColor="bg-white/80"></ProgressBar>
+                                   </div>
+                              </div>
+                              <div className="flex mt-6 items-center justify-center 4xl:gap-8 gap-2">
+                                   <div className="flex items-center gap-2">
+                                        <div className="bg-lightgreen17 w-4 h-4 rounded-full block"></div>
+                                        <h6 className="text-sm font-normal leading-5 text-gray-1900">  High Volume (&gt;€2M)</h6>
+                                   </div>
+                                   <div className="flex items-center gap-2">
+                                        <div className="bg-yellow-1800 w-4 h-4 rounded-full block"></div>
+                                        <h6 className="text-sm font-normal leading-5 text-gray-1900">  Medium (€1-2M)</h6>
+                                   </div>
+                                   <div className="flex items-center gap-2">
+                                        <div className="bg-green-2800 w-4 h-4 rounded-full block"></div>
+                                        <h6 className="text-sm font-normal leading-5 text-gray-1900">  Emerging (&lt;€1M)</h6>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div className="bg-white/80 border border-white/20 shadow-13xl rounded-2xl p-6">
+                         <div className="flex md:flex-nowrap flex-wrap gap-4 items-center justify-between mb-6">
+                              <div>
+                                   <div className="flex items-center gap-2">
+                                        <img src="/images/users-green.svg" alt="" />
+                                        <h6 className="text-lg font-bold leading-7 text-blue-1300">Unit Economics by University</h6>
+                                   </div>
+                                   <p className="text-sm font-normal leading-5 text-gray-1900">LTV (Lifetime Value) vs CAC (Customer Acquisition Cost)</p>
+                              </div>
+                              <div className=" bg-gray-1600 rounded-xl py-2 px-4 flex items-center">
+                                   <div className="text-center border-r border-gray-1000 pr-6">
+                                        <h6 className="text-xs leading-4 font-normal text-gray-1900">Avg LTV</h6>
+                                        <h6 className="text-lg font-bold leading-7 text-green-2600">€10.1M</h6>
+                                   </div>
+                                   <div className="text-center  border-r border-gray-1000 px-6 ">
+                                        <h6 className="text-xs leading-4 font-normal text-gray-1900">Avg CAC</h6>
+                                        <h6 className="text-lg font-bold leading-7 text-red-1300">€157</h6>
+                                   </div>
+                                   <div className="text-center pl-6">
+                                        <h6 className="text-xs leading-4 font-normal text-gray-1900">LTV:CAC</h6>
+                                        <h6 className="text-lg font-bold leading-7 text-blue-1300">4.84x</h6>
+                                   </div>
+                              </div>
+                         </div>
+                         <UniversityTable></UniversityTable>
                     </div>
                </div>
           </div>

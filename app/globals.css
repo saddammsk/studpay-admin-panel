@@ -31,6 +31,13 @@
   --colro-gray-3400: #F8F7FC;
   --color-gray-3500: #FDECEC;
   --color-gray-3600: #E1E7EF;
+  --color-gray-5000: #6C7C93;
+  --color-gray-5100: #E0E4EB;
+  --color-gray-5200: #EAECF1;
+  --color-gray-5300: #E8F1FC;
+  --color-gray-5400: #6E7D91;
+  --color-gray-5500: #E1E4EA;
+  --color-gray-5600: #DCDFE5;
   --color-blue-1000: #0D8CFF;
   --color-red-1000: #EF4444;
   --color-red-1100: #FEE2E2;
@@ -38,6 +45,11 @@
   --color-red-1300: #EF4343;
   --color-red-1400: #BE123C;
   --color-red-1500: #F43F5E;
+  --color-red-2000: #DF3A3A;
+  --color-red-2100: #E93535;
+  --color-red-2200: #ED2C2C;
+  --color-red-2300: #FEF1F1;
+  --color-red-2400: #F0C2C2;
   --color-white-1000: #DBEAFE;
   --color-white-1100: #FAFAFA;
   --color-purple-1000: #93C5FD;
@@ -47,6 +59,10 @@
   --color-black-1300: #1C1E21;
   --color-black-1400: #1D212B;
   --color-black-1500: #161A23;
+  --color-black-2500: #1B294B;
+  --color-black-2600: #17171C;
+  --color-black-2700: #262F40;
+  --color-black-2800: #151C28;
   --color-blue-1300: #0F1729;
   --color-blue-1400: #0B64F4;
   --color-blue-1500: #0A91FF;
@@ -57,6 +73,10 @@
   --color-blue-2000: #0F87FF;
   --color-blue-2100: #EBF5FF;
   --color-blue-2200: #2463EB;
+  --color-blue-3000: #7C3BED;
+  --color-blue-3100: #1672F3;
+  --color-blue-3200: #14325D;
+  --color-blue-3300: #19222E;
   --color-green-1000: #16A34A;
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
@@ -67,15 +87,29 @@
   --color-green-1700: #EEFCF3;
   --color-green-1800: #047857;
   --color-green-1900: #E9FCF0;
+  --color-green-2600: #059467;
+  --color-green-2700: #36D399;
+  --color-green-2800: #94A3B8;
+  --color-green-2900: #48566A;
+  --color-green-3000: #047756;
+  --color-green-3100: #EDFDF5;
+  --color-green-3200: #2BAB6F;
   --color-yellow-1000: #FEF9C3;
   --color-yellow-1100: #F59F0A;
   --color-yellow-1200: #FEF7EB;
   --color-yellow-1300: #F59E0B;
+  --color-yellow-1800: #FE7B02;
+  --color-yellow-1900: #DB7706;
+  --color-yellow-2000: #FEF3C8;
+  --color-yellow-2100: #B35309;
+  --color-yellow-2200: #F3B116;
   --color-brown-1000: #854D0E;
   --color-brown-1100: #EAB308;
   --color-brown-1200: #4D3700;
   --color-orange-1000: #F97316;
+  --color-orange-2000: #D97706;
   --color-purple-1100: #A855F7;
+  --color-purple-2000: #5914D2;
   /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
@@ -150,6 +184,9 @@
   --shadow-8xl: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
   --shadow-9xl: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
   --shadow-10xl: 0 4px 6px -1px rgba(20, 25, 31, 0.07), 0 2px 4px -2px rgba(20, 25, 31, 0.05);
+  --shadow-13xl: 0 4px 30px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.03), 0 1px 0 1px rgba(255, 255, 255, 0.60) inset;
+  --shadow-14xl: 0 1px 2px 0 rgba(24, 20, 31, 0.03);
+  --shadow-15xl: 0 0 16px 4px rgba(233, 53, 53, 0.40), 0 0 32px 8px rgba(233, 53, 53, 0.15);
   --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
   --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
 
@@ -297,4 +334,54 @@ input[type="date"] {
 
 .btn-primary:hover img {
   filter: brightness(300);
+}
+
+.card-bg {
+  background: linear-gradient(135deg, var(--color-grey-96, #EDFDF5) 0%, var(--color-grey-96, #EDFDF5) 100%);
+}
+
+.card-bg2 {
+  background: linear-gradient(135deg, var(--color-red-605, rgba(239, 67, 67, 0.05)) 0%, var(--color-red-6010, rgba(239, 67, 67, 0.10)) 100%);
+}
+
+.card-bg3 {
+  background: linear-gradient(135deg, var(--color-spring-green-395, rgba(16, 183, 127, 0.05)) 0%, var(--color-spring-green-3910, rgba(16, 183, 127, 0.10)) 100%);
+
+}
+
+.card-bg4 {
+  background: linear-gradient(135deg, var(--color-azure-605, rgba(60, 131, 246, 0.05)) 0%, var(--color-azure-6010, rgba(60, 131, 246, 0.10)) 100%);
+}
+
+.card-bg5 {
+  background: linear-gradient(135deg, var(--color-azure-485, rgba(13, 162, 231, 0.05)) 0%, var(--color-azure-4810, rgba(13, 162, 231, 0.10)) 100%);
+
+}
+
+.icon-bg1 {
+  background: linear-gradient(135deg, var(--color-azure-6015, rgba(60, 131, 246, 0.15)) 0%, var(--color-azure-605, rgba(60, 131, 246, 0.05)) 100%);
+
+}
+
+.icon-bg2 {
+  background: linear-gradient(135deg, var(--color-spring-green-3915, rgba(16, 183, 127, 0.15)) 0%, var(--color-spring-green-395, rgba(16, 183, 127, 0.05)) 100%);
+}
+
+.icon-bg3 {
+  background: linear-gradient(135deg, var(--color-orange-5015, rgba(245, 159, 10, 0.15)) 0%, var(--color-orange-505, rgba(245, 159, 10, 0.05)) 100%);
+}
+
+.icon-bg4 {
+  background: linear-gradient(135deg, var(--color-red-6015, rgba(239, 67, 67, 0.15)) 0%, var(--color-red-605, rgba(239, 67, 67, 0.05)) 100%);
+}
+
+.circle-bg1 {
+  background: linear-gradient(90deg, var(--color-azure-60, #3C83F6) 0%, var(--color-azure-48, #0DA2E7) 100%);
+}
+
+.text-gradient10 {
+  background: linear-gradient(94deg, var(--color-azure-60, #3C83F6) 0%, var(--color-azure-48, #0DA2E7) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
