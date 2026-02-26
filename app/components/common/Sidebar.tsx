@@ -199,7 +199,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed top-0 overflow-y-auto scrollbar-hide z-99 h-screen lg:left-0 w-full xl:max-w-[288px] max-w-62.5 bg-white border-r border-gray-1000
+      className={`fixed top-0 overflow-y-auto scrollbar-hide z-1000 h-screen lg:left-0 w-full xl:max-w-[288px] max-w-62.5 bg-white border-r border-gray-1000
         transition-all duration-500 ease-in-out
         ${isOpen ? "left-0" : "-left-full"}`}>
       {" "}

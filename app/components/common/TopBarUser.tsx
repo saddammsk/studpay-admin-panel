@@ -14,7 +14,7 @@ const TopBar = () => {
      const toggleSidebar = useSidebarStore((state: any) => state.toggle);
      return (
 
-          <div className='bg-white/80 border-b border-solid border-gray1600/50 backdrop-blur-md fixed w-full z-50 top-0 right-0 xl:pl-72 lg:pl-62.5'>
+          <div className='bg-white/80 border-b border-solid border-gray1600/50 backdrop-blur-md fixed w-full z-100 top-0 right-0 xl:pl-72 lg:pl-62.5'>
                <div className='flex items-center justify-between md:gap-0 gap-4 py-4.5 xl:px-8 px-4 bg-white border-b border-gray-1000'>
                     <div className="flex-1 flex items-center gap-4">
                          <div className=''>
