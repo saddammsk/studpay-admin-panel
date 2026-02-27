@@ -85,12 +85,12 @@ export default function ApprovalStats() {
                                    </div>
 
                                    <div>
-                                        <div className="text-sm font-normal leading-5 text-blue-1300">{item.label}</div>
+                                        <div className="text-sm font-normal leading-5 text-black-1600">{item.label}</div>
                                         <div style={{ fontSize: 12, color: "#6B7280" }}>{item.percentage}% of total</div>
                                    </div>
                               </div>
 
-                              <div className="tetx-lg font-bold leading-7 text-blue-1300">{item.value}</div>
+                              <div className="tetx-lg font-bold leading-7 text-black-1600">{item.value}</div>
                          </div>
                     ))}
                </div>

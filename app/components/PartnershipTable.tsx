@@ -47,14 +47,14 @@ export default function PartnerTable() {
                <table className="w-full">
                     <thead>
                          <tr className=" border-b border-gray-5600">
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Partner ID</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Partner Name</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Category</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Country</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Active Students</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Conversion %</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Commission</th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">Status</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Partner ID</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Partner Name</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Category</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Country</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Active Students</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Conversion %</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Commission</th>
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">Status</th>
                          </tr>
                     </thead>
 
@@ -64,7 +64,7 @@ export default function PartnerTable() {
                                    <td className="px-4 py-6 text-sm text-gray-1900">{item.id}</td>
 
                                    <td className="px-4 py-6 text-sm">
-                                        <div className="flex items-center gap-3 text-blue-1300">
+                                        <div className="flex items-center gap-3 text-black-1600">
                                              <Image
                                                   src={item.logo}
                                                   alt={item.name}
@@ -80,7 +80,7 @@ export default function PartnerTable() {
                                         <span className="py-0.5 px-2.5 border border-gray-3600 rounded-full inline-block">{item.category}</span>
                                    </td>
                                    <td className="px-4 py-6 text-sm text-gray-1900">{item.country}</td>
-                                   <td className="px-4 py-6 text-sm text-blue-1300">{item.activeStudents}</td>
+                                   <td className="px-4 py-6 text-sm text-black-1600">{item.activeStudents}</td>
 
                                    <td className={`px-4 py-6 text-sm font-medium ${parseFloat(item.conversion) > 60
                                         ? "text-green-1500"

@@ -24,7 +24,7 @@ export default function AlertItem({
                     <button
                          onClick={() => setChecked(!checked)}
                          className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition
-          ${checked ? "bg-black border-blue-1300" : "border-blue-1300"}`}
+          ${checked ? "bg-black border-black-1600" : "border-black-1600"}`}
                     >
                          {checked && <div className="w-2 h-2 bg-white rounded-full" />}
                     </button>
@@ -34,7 +34,7 @@ export default function AlertItem({
                          <div className="text-orange-500 mt-1">{icon}</div>
 
                          <div>
-                              <h4 className="font-normal leading-5 text-sm text-blue-1300">{title}</h4>
+                              <h4 className="font-normal leading-5 text-sm text-black-1600">{title}</h4>
                               <p className="text-xs leading-4 font-normal text-gray-1200">{description}</p>
                          </div>
                     </div>

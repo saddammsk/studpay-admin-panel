@@ -131,10 +131,10 @@ const handleSubmit = async (e: React.FormEvent) => {
             </div>
           ) : (
             <>
-              <h4 className="text-3xl font-bold leading-9 mb-2 text-blue-1000">
+              <h4 className="text-3xl font-bold leading-9 mb-2 text-black-1600">
                 Welcome Back
               </h4>
-              <p className="text-base font-normal leading-6 text-gray-700">
+              <p className="text-base font-normal leading-6 text-gray-1900">
                 Sign in to access your admin dashboard
               </p>
 
@@ -164,7 +164,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     iconSrc="/images/lock-icon.svg"
                     passwordToggleIconSrc={{
                       show: '/images/eye-icon.svg',
-                      hide: '/images/eye-icon.svg',
+                      hide: '/images/eye-off-icon.svg',
                     }}
                     ClassName="rounded-2xl border-2 bg-white h-14.75"
                   />
@@ -199,7 +199,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       onChange={(e) =>
                         handleInputChange('secureSession', e.target.checked)
                       }
-                      className="appearance-none cursor-pointer w-4 h-4 rounded-full checked:border-4 border-2 border-gray-1400  checked:border-blue-1000 focus:outline-none"
+                      className="appearance-none cursor-pointer w-4 h-4 rounded-full checked:border-4 border border-blue-1400  checked:border-blue-1000 focus:outline-none"
                     />
                     <label
                       htmlFor="secure-session"
@@ -227,7 +227,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                    onClick={handleSubmit}
                   type="submit"
                   disabled={isLoading}
-                  className="text-white cursor-pointer flex items-center gap-2 py-3 rounded-2xl w-full justify-center bg-blue-1000 hover:bg-blue-700 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed transition-all"
+                  className="text-white cursor-pointer flex items-center gap-2 py-3 rounded-2xl w-full justify-center bg-blue-1400 hover:bg-blue-700 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed transition-all"
                 >Sign In Securely
                   <img src="/images/right-arrow-white.svg" alt="" />
                 </button>

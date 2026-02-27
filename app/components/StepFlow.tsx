@@ -39,7 +39,7 @@ export default function StepFlow({ steps }: StepFlowProps) {
                                    <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
                                              <div className="text-blue-600">{step.icon}</div>
-                                             <h3 className="font-bold text-sm text-blue-1300">
+                                             <h3 className="font-bold text-sm text-black-1600">
                                                   {step.title}
                                              </h3>
                                         </div>

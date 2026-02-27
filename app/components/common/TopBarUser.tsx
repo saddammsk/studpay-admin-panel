@@ -30,7 +30,7 @@ const TopBar = () => {
                     <div className='flex items-center md:gap-4 gap-1'>
                          <ul className='md:flex hidden items-center md:gap-4 gap-1'>
                               <li>
-                                   <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+                                   <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
                                         <Image
                                              src="/images/refresh-icon.svg"
                                              width="16"
@@ -41,7 +41,7 @@ const TopBar = () => {
                                    </Link>
                               </li>
                               <li>
-                                   <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+                                   <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
                                         <Image
                                              src="/images/export-icon4.svg"
                                              width="16"

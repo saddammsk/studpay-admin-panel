@@ -101,7 +101,7 @@ export default function UniversityTable() {
                                    key={item.id}
                                    className="border-b border-gray-1000"
                               >
-                                   <td className="px-4 py-6 text-blue-1300  font-normal text-sm leading-5">
+                                   <td className="px-4 py-6 text-black-1600  font-normal text-sm leading-5">
                                         {item.university}
                                    </td>
 

@@ -20,7 +20,7 @@ export default function FinanceAnalytics() {
                <TopBar></TopBar>
                <div className="flex xl:flex-nowrap flex-wrap xl:gap-0 gap-4 items-center bg-white justify-between 2xl:p-8 p-4">
                     <div className="xl:flex-1">
-                         <h6 className="text-xl font-bold leading-7 text-blue-1300">Finance Analytics</h6>
+                         <h6 className="text-xl font-bold leading-7 text-black-1600">Finance Analytics</h6>
                          <p className="text-sm font-normal leading-5 text-gray-1900">Executive Dashboard • Real-time Insights</p>
                     </div>
                     <form action="" className="flex flex-wrap items-center gap-3">
@@ -64,14 +64,14 @@ export default function FinanceAnalytics() {
                <div className="xl:p-8 p-4">
                     <div className="flex items-center gap-2">
                          <span className="bg-lightgreen17 rounded-full block w-1 h-5"></span>
-                         <h6 className="text-lg font-bold leading-7 text-blue-1300">Golden Metrics</h6>
+                         <h6 className="text-lg font-bold leading-7 text-black-1600">Golden Metrics</h6>
                          <span className="text-xs font-normal leading-4 text-gray-1900 block">Updated 2 min ago</span>
                     </div>
                     <div className="grid 2xl:grid-cols-4 md:grid-cols-2 gap-4 mt-4 mb-6">
                          <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
                               <div className="">
                                    <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Gross Merchandise Value</span>
-                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">€12.4M</h4>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-black-1600">€12.4M</h4>
                                    <div className="flex items-center gap-1.5">
                                         <img src="/images/trend-up.svg" alt="" />
                                         <h6 className="text-sm font-semibold leading-5 text-green-2600">+18.5% vs last month</h6>
@@ -87,7 +87,7 @@ export default function FinanceAnalytics() {
                          <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
                               <div className="">
                                    <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Net Revenue</span>
-                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">€2.8M</h4>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-black-1600">€2.8M</h4>
                                    <div className="flex items-center gap-1.5">
                                         <img src="/images/trend-up.svg" alt="" />
                                         <h6 className="text-sm font-semibold leading-5 text-green-2600">+12.3% vs last month</h6>
@@ -103,7 +103,7 @@ export default function FinanceAnalytics() {
                          <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
                               <div className="">
                                    <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Burn Rate vs Runway</span>
-                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">18 months</h4>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-black-1600">18 months</h4>
                                    <div className="flex items-center gap-1.5">
                                         <img src="/images/minus-icon2.svg" alt="" />
                                         <h6 className="text-sm font-semibold leading-5 text-gray-1900">€420K/mo burn rate</h6>
@@ -119,7 +119,7 @@ export default function FinanceAnalytics() {
                          <div className="bg-white/80 border justify-between border-white/20 shadow-13xl rounded-2xl 4xl:p-5 p-3  flex items-start">
                               <div className="">
                                    <span className="block text-sm font-medium leading-5 text-gray-1900 mb-1">Default Rate</span>
-                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-blue-1300">2.4%</h4>
+                                   <h4 className="4xl:text-[30px] text-[20px] font-bold mt-1 mb-2 leading-9 text-black-1600">2.4%</h4>
                                    <div className="flex items-center gap-1.5">
                                         <img src="/images/trend-up.svg" alt="" />
                                         <h6 className="text-sm font-semibold leading-5 text-green-2600">-0.3% improvement</h6>
@@ -138,7 +138,7 @@ export default function FinanceAnalytics() {
                               <div>
                                    <div className="flex items-center gap-1.5 mb-2">
                                         <img src="/images/trend-up.svg" className="w-5 h-5" alt="" />
-                                        <h4 className="text-lg font-bold leading-7 text-blue-1300">Interactive Cash Flow</h4>
+                                        <h4 className="text-lg font-bold leading-7 text-black-1600">Interactive Cash Flow</h4>
                                    </div>
                                    <p className="text-sm font-normal text-gray-1900">Inflow vs Outflow Analysis</p>
                               </div>
@@ -158,11 +158,11 @@ export default function FinanceAnalytics() {
                               <div className="flex items-center justify-center gap-2.5">
                                    <div className="flex items-center gap-1">
                                         <img src="/images/inflow.svg" alt="" />
-                                        <h6 className="text-sm font-medium leading-5 text-blue-1300">Inflow (Rent, Insurance, Marketplace)</h6>
+                                        <h6 className="text-sm font-medium leading-5 text-black-1600">Inflow (Rent, Insurance, Marketplace)</h6>
                                    </div>
                                    <div className="flex items-center gap-1">
                                         <img src="/images/outflow.svg" alt="" />
-                                        <h6 className="text-sm font-medium leading-5 text-blue-1300">Outflow (Vendor Payments, Refunds)</h6>
+                                        <h6 className="text-sm font-medium leading-5 text-black-1600">Outflow (Vendor Payments, Refunds)</h6>
                                    </div>
                               </div>
                          </div>
@@ -171,7 +171,7 @@ export default function FinanceAnalytics() {
                          <div className="bg-white/80 border border-white/20 shadow-13xl rounded-2xl 4xl:p-6 p-4">
                               <div className="flex items-center mb-6 gap-2">
                                    <img src="/images/chart-icon.svg" alt="" />
-                                   <h6 className="text-lg font-bold leading-7 text-blue-1300">Geographic Transaction Heatmap</h6>
+                                   <h6 className="text-lg font-bold leading-7 text-black-1600">Geographic Transaction Heatmap</h6>
                               </div>
                               <FinanceDonutChart></FinanceDonutChart>
                          </div>
@@ -180,19 +180,19 @@ export default function FinanceAnalytics() {
                                    <div>
                                         <div className="flex items-center gap-2">
                                              <img src="/images/globe-green.svg" alt="" />
-                                             <h6 className="text-lg font-bold leading-7 text-blue-1300">Revenue Distribution</h6>
+                                             <h6 className="text-lg font-bold leading-7 text-black-1600">Revenue Distribution</h6>
                                         </div>
                                         <p className="text-sm font-normal leading-5 text-gray-1900">Transaction volume by country</p>
                                    </div>
                                    <div className="text-end">
                                         <h6 className="text-xs leading-4 font-normal text-gray-1900">Total Volume</h6>
-                                        <h6 className="text-xl font-bold leading-7 text-blue-1300">€10.1M</h6>
+                                        <h6 className="text-xl font-bold leading-7 text-black-1600">€10.1M</h6>
                                    </div>
                               </div>
                               <div className="card-bg rounded-2xl 4xl:p-6 p-3 grid md:grid-cols-3 gap-3">
                                    <div className="bg-lightgreen17/20 border-2 border-green-2700 rounded-xl 4xl:p-4 p-2">
                                         <div className="flex items-center justify-between mb-2">
-                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">DE</span>
+                                             <span className="text-2xl font-bold leading-8 block text-black-1600">DE</span>
                                              <div className="flex items-center gap-1">
                                                   <img src="/images/trend-up.svg" alt="" />
                                                   <h6 className="text-xs font-semibold leading-[18px] text-green-2600">
@@ -200,13 +200,13 @@ export default function FinanceAnalytics() {
                                                   </h6>
                                              </div>
                                         </div>
-                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Germany</h6>
-                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€4.3M</span>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-black-1600">Germany</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-black-1600">€4.3M</span>
                                         <ProgressBar value={100} className="h-1.5" barColor="bg-lightgreen17" bgColor="bg-white/80"></ProgressBar>
                                    </div>
                                    <div className="bg-lightgreen17/20 border-2 border-green-2700 rounded-xl 4xl:p-4 p-2">
                                         <div className="flex items-center justify-between mb-2">
-                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">FR</span>
+                                             <span className="text-2xl font-bold leading-8 block text-black-1600">FR</span>
                                              <div className="flex items-center gap-1">
                                                   <img src="/images/trend-up.svg" alt="" />
                                                   <h6 className="text-xs font-semibold leading-[18px] text-green-2600">
@@ -214,13 +214,13 @@ export default function FinanceAnalytics() {
                                                   </h6>
                                              </div>
                                         </div>
-                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">France</h6>
-                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€2.2M</span>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-black-1600">France</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-black-1600">€2.2M</span>
                                         <ProgressBar value={50} className="h-1.5" barColor="bg-lightgreen17" bgColor="bg-white/80"></ProgressBar>
                                    </div>
                                    <div className="bg-yellow-1100/20 border-2 border-yellow-1800 rounded-xl 4xl:p-4 p-2">
                                         <div className="flex items-center justify-between mb-2">
-                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">AT</span>
+                                             <span className="text-2xl font-bold leading-8 block text-black-1600">AT</span>
                                              <div className="flex items-center gap-1">
                                                   <img src="/images/trend-up3.svg" alt="" />
                                                   <h6 className="text-xs font-semibold leading-[18px] text-yellow-1900">
@@ -228,13 +228,13 @@ export default function FinanceAnalytics() {
                                                   </h6>
                                              </div>
                                         </div>
-                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Austria</h6>
-                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€1.4M</span>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-black-1600">Austria</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-black-1600">€1.4M</span>
                                         <ProgressBar value={50} className="h-1.5" barColor="bg-yellow-1800" bgColor="bg-white/80"></ProgressBar>
                                    </div>
                                    <div className="bg-yellow-1100/20 border-2 border-yellow-1800 rounded-xl 4xl:p-4 p-2">
                                         <div className="flex items-center justify-between mb-2">
-                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">NL</span>
+                                             <span className="text-2xl font-bold leading-8 block text-black-1600">NL</span>
                                              <div className="flex items-center gap-1">
                                                   <img src="/images/trend-up3.svg" alt="" />
                                                   <h6 className="text-xs font-semibold leading-[18px] text-yellow-1900">
@@ -242,13 +242,13 @@ export default function FinanceAnalytics() {
                                                   </h6>
                                              </div>
                                         </div>
-                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Netherlands</h6>
-                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€980K</span>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-black-1600">Netherlands</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-black-1600">€980K</span>
                                         <ProgressBar value={20} className="h-1.5" barColor="bg-yellow-1800" bgColor="bg-white/80"></ProgressBar>
                                    </div>
                                    <div className="bg-gray-1900/20 border-2 border-green-2800 rounded-xl 4xl:p-4 p-2">
                                         <div className="flex items-center justify-between mb-2">
-                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">ES</span>
+                                             <span className="text-2xl font-bold leading-8 block text-black-1600">ES</span>
                                              <div className="flex items-center gap-1">
                                                   <img src="/images/trend-up4.svg" alt="" />
                                                   <h6 className="text-xs font-semibold leading-[18px] text-green-2900">
@@ -256,13 +256,13 @@ export default function FinanceAnalytics() {
                                                   </h6>
                                              </div>
                                         </div>
-                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Spain</h6>
-                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€720K</span>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-black-1600">Spain</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-black-1600">€720K</span>
                                         <ProgressBar value={20} className="h-1.5" barColor="bg-gray-1900" bgColor="bg-white/80"></ProgressBar>
                                    </div>
                                    <div className="bg-gray-1900/20 border-2 border-green-2800 rounded-xl 4xl:p-4 p-2">
                                         <div className="flex items-center justify-between mb-2">
-                                             <span className="text-2xl font-bold leading-8 block text-blue-1300">IT</span>
+                                             <span className="text-2xl font-bold leading-8 block text-black-1600">IT</span>
                                              <div className="flex items-center gap-1">
                                                   <img src="/images/trend-up4.svg" alt="" />
                                                   <h6 className="text-xs font-semibold leading-[18px] text-green-2900">
@@ -270,8 +270,8 @@ export default function FinanceAnalytics() {
                                                   </h6>
                                              </div>
                                         </div>
-                                        <h6 className="text-sm font-medium leading-5 mb-1 text-blue-1300">Italy</h6>
-                                        <span className="text-lg mb-2 font-bold leading-8 block text-blue-1300">€540K</span>
+                                        <h6 className="text-sm font-medium leading-5 mb-1 text-black-1600">Italy</h6>
+                                        <span className="text-lg mb-2 font-bold leading-8 block text-black-1600">€540K</span>
                                         <ProgressBar value={20} className="h-1.5" barColor="bg-gray-1900" bgColor="bg-white/80"></ProgressBar>
                                    </div>
                               </div>
@@ -296,7 +296,7 @@ export default function FinanceAnalytics() {
                               <div>
                                    <div className="flex items-center gap-2">
                                         <img src="/images/users-green.svg" alt="" />
-                                        <h6 className="text-lg font-bold leading-7 text-blue-1300">Unit Economics by University</h6>
+                                        <h6 className="text-lg font-bold leading-7 text-black-1600">Unit Economics by University</h6>
                                    </div>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">LTV (Lifetime Value) vs CAC (Customer Acquisition Cost)</p>
                               </div>
@@ -311,7 +311,7 @@ export default function FinanceAnalytics() {
                                    </div>
                                    <div className="text-center pl-6">
                                         <h6 className="text-xs leading-4 font-normal text-gray-1900">LTV:CAC</h6>
-                                        <h6 className="text-lg font-bold leading-7 text-blue-1300">4.84x</h6>
+                                        <h6 className="text-lg font-bold leading-7 text-black-1600">4.84x</h6>
                                    </div>
                               </div>
                          </div>

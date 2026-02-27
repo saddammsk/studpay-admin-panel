@@ -329,7 +329,7 @@ export default function UserWalletTable() {
                                              <div className="flex items-center gap-3">
                                                   <span className="text-darkblue2 font-inter text-xs leading-6 bg-darkblue2/10 rounded-full w-8 h-8 flex items-center justify-center">{item.userinfo.info}</span>
                                                   <div className="flex-1 w-full">
-                                                       <span className="text-blue-1300 font-inter font-normal text-sm leading-5 block">{item.userinfo.name}</span>
+                                                       <span className="text-black-1600 font-inter font-normal text-sm leading-5 block">{item.userinfo.name}</span>
                                                        <span className="text-gray-1900 font-inter font-normal text-xs leading-4 block">
                                                             {item.userinfo.mail}
                                                        </span>
@@ -381,7 +381,7 @@ export default function UserWalletTable() {
                                                   </span>
                                              </div>
                                         </td>
-                                        <td className="lg:px-4 px-2.5 py-6 text-blue-1300 font-inter font-normal text-sm leading-5">{item.ltv}</td>
+                                        <td className="lg:px-4 px-2.5 py-6 text-black-1600 font-inter font-normal text-sm leading-5">{item.ltv}</td>
 
                                         <td className="lg:px-4 px-2.5 py-6">
                                              <span

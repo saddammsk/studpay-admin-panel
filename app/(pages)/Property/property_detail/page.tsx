@@ -22,7 +22,7 @@ export default function propertydetail() {
                               />
                          </span>
                          <div className="flex-1 w-full">
-                              <h2 className="text-blue-1300 text-2xl font-bold leading-8">4</h2>
+                              <h2 className="text-black-1600 text-2xl font-bold leading-8">4</h2>
                               <span className="text-gray-1200 text-sm font-normal leading-5 block">Total Properties</span>
 
                          </div>
@@ -38,7 +38,7 @@ export default function propertydetail() {
                               />
                          </span>
                          <div className="flex-1 w-full">
-                              <h2 className="text-blue-1300 text-2xl font-bold leading-8">30</h2>
+                              <h2 className="text-black-1600 text-2xl font-bold leading-8">30</h2>
                               <span className="text-gray-1200 text-sm font-normal leading-5 block">Total Units</span>
                          </div>
 
@@ -53,7 +53,7 @@ export default function propertydetail() {
                               />
                          </span>
                          <div className="flex-1 w-full">
-                              <h2 className="text-blue-1300 text-2xl font-bold leading-8">90%</h2>
+                              <h2 className="text-black-1600 text-2xl font-bold leading-8">90%</h2>
                               <span className="text-gray-1200 text-sm font-normal leading-5 block">Avg Occupancy</span>
                          </div>
 
@@ -68,7 +68,7 @@ export default function propertydetail() {
                               />
                          </span>
                          <div className="flex-1 w-full">
-                              <h2 className="text-blue-1300 text-2xl font-bold leading-8">€45,200</h2>
+                              <h2 className="text-black-1600 text-2xl font-bold leading-8">€45,200</h2>
                               <span className="text-gray-1200 text-sm font-normal leading-5 block">Deposits Held</span>
                          </div>
 
@@ -78,25 +78,25 @@ export default function propertydetail() {
                     <div className="flex-1 w-full">
                          <div className="bg-white mb-6 border border-solid border-gray-3600 rounded-[14px] shadow-10xl p-6">
                               <div className="flex items-center justify-between border-b border-solid border-gray-1000">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7 pb-4">Company Information</h4>
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7 pb-4">Company Information</h4>
                               </div>
                               <div className="pt-10">
                                    <div className="grid grid-cols-2 gap-y-4">
                                         <div className="">
                                              <span className="text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 tracking-[0.3px] block uppercase">Company Name</span>
-                                             <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5">Berlin Student Housing GmbH</h4>
+                                             <h4 className="text-black-1600 font-inter font-normal text-sm leading-5">Berlin Student Housing GmbH</h4>
                                         </div>
                                         <div className="">
                                              <span className="text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 tracking-[0.3px] block uppercase">Registration Number</span>
-                                             <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5">HRB 123456 B</h4>
+                                             <h4 className="text-black-1600 font-inter font-normal text-sm leading-5">HRB 123456 B</h4>
                                         </div>
                                         <div className="">
                                              <span className="text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 tracking-[0.3px] block uppercase">Tax ID</span>
-                                             <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5">DE123456789</h4>
+                                             <h4 className="text-black-1600 font-inter font-normal text-sm leading-5">DE123456789</h4>
                                         </div>
                                         <div className="">
                                              <span className="text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 tracking-[0.3px] block uppercase">Registered</span>
-                                             <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5">Mar 15, 2023</h4>
+                                             <h4 className="text-black-1600 font-inter font-normal text-sm leading-5">Mar 15, 2023</h4>
                                         </div>
 
                                    </div>
@@ -104,13 +104,13 @@ export default function propertydetail() {
                          </div>
                          <div className="bg-white mb-6 border border-solid border-gray-3600 rounded-[14px] shadow-10xl p-6">
                               <div className="flex items-center justify-between border-b border-solid border-gray-1000">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7 pb-4">
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7 pb-4">
                                         Contact Information
                                    </h4>
                               </div>
                               <div className="mt-4 p-6">
                                    <ul>
-                                        <li className="text-blue-1300 mb-4 flex items-center gap-3 font-inter font-normal text-sm leading-5">
+                                        <li className="text-black-1600 mb-4 flex items-center gap-3 font-inter font-normal text-sm leading-5">
                                              <Image
                                                   src="/images/email-gray.svg"
                                                   alt=""
@@ -119,7 +119,7 @@ export default function propertydetail() {
                                              />
                                              contact@berlinstudenthousing.de
                                         </li>
-                                        <li className="text-blue-1300 mb-4 flex items-center gap-3 font-inter font-normal text-sm leading-5">
+                                        <li className="text-black-1600 mb-4 flex items-center gap-3 font-inter font-normal text-sm leading-5">
                                              <Image
                                                   src="/images/phone-gray.svg"
                                                   alt=""
@@ -128,7 +128,7 @@ export default function propertydetail() {
                                              />
                                              +49 30 1234 5678
                                         </li>
-                                        <li className="text-blue-1300 flex items-center gap-3 font-inter font-normal text-sm leading-5">
+                                        <li className="text-black-1600 flex items-center gap-3 font-inter font-normal text-sm leading-5">
                                              <Image
                                                   src="/images/location-gray.svg"
                                                   alt=""
@@ -140,7 +140,7 @@ export default function propertydetail() {
                                    </ul>
                                    <div className="mt-4 border-t border-solid border-gray-1000 pt-4">
                                         <span className="text-gray-1200 font-normal text-sm block mb-2 leading-4 tracking-[-0.3px]">Primary Contact</span>
-                                        <h4 className="text-blue-1300 font-normal text-sm leading-5">Hans Müller</h4>
+                                        <h4 className="text-black-1600 font-normal text-sm leading-5">Hans Müller</h4>
                                         <p className="text-gray-1200 font-normal text-sm leading-4">Property Manager</p>
                                    </div>
                               </div>
@@ -153,7 +153,7 @@ export default function propertydetail() {
                          </div>
                          <div className="bg-white border border-solid border-gray-1000 rounded-xl p-6">
                               <div className="border-b border-solid border-gray-1000 pb-4">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7 pb-1">Admin Notes</h4>
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7 pb-1">Admin Notes</h4>
                                    <p className="text-gray-1200 font-normal text-sm leading-5">Internal notes - not visible to owners</p>
 
                               </div>
@@ -166,7 +166,7 @@ export default function propertydetail() {
                                    </div>
                                    <div className="bg-gray-1600/50 mb-3 rounded-xl p-3 mt-4">
                                         <div className="flex items-center justify-between mb-1">
-                                             <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5">Admin User
+                                             <h4 className="text-black-1600 font-inter font-normal text-sm leading-5">Admin User
                                              </h4>
                                              <span className="text-gray-1200 font-inter font-normal text-xs leading-4">Jan 16, 2024 at 14:32</span>
                                         </div>
@@ -174,7 +174,7 @@ export default function propertydetail() {
                                    </div>
                                    <div className="bg-gray-1600/50 rounded-xl p-3">
                                         <div className="flex items-center justify-between mb-1">
-                                             <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5">Admin User
+                                             <h4 className="text-black-1600 font-inter font-normal text-sm leading-5">Admin User
                                              </h4>
                                              <span className="text-gray-1200 font-inter font-normal text-xs leading-4">Dec 20, 2023 at 09:15</span>
                                         </div>
@@ -186,26 +186,26 @@ export default function propertydetail() {
                     <div className="max-w-108.75 w-full">
                          <div className="bg-white mb-6 border border-solid border-gray-3600 rounded-[14px] shadow-10xl p-6">
                               <div className="flex items-center justify-between border-b border-solid border-gray-1000 pb-4">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7">Financial Summary</h4>
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7">Financial Summary</h4>
                               </div>
                               <div className="p-6 mt-4">
                                    <ul>
-                                        <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between border-b border-solid border-gray-1000 py-2 mb-4">Total Revenue <span className="text-blue-1300 font-black">€128,400</span></li>
-                                        <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between border-b border-solid border-gray-1000 py-2 mb-4">Deposits Held <span className="text-blue-1300 font-black">€45,200</span></li>
+                                        <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between border-b border-solid border-gray-1000 py-2 mb-4">Total Revenue <span className="text-black-1600 font-black">€128,400</span></li>
+                                        <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between border-b border-solid border-gray-1000 py-2 mb-4">Deposits Held <span className="text-black-1600 font-black">€45,200</span></li>
                                         <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between border-b border-solid border-gray-1000 py-2 mb-4">Completed Payouts <span className="text-green-1600 font-black">€82,500</span></li>
                                         <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between border-b border-solid border-gray-1000 py-2 mb-4">Pending Payouts <span className="text-yellow-1100 font-black">€3,150</span></li>
-                                        <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between py-2 mb-4">Average Rent <span className="text-blue-1300 font-black">€1,080</span></li>
+                                        <li className="text-gray-1200 font-inter font-normal text-sm leading-5 flex items-center justify-between py-2 mb-4">Average Rent <span className="text-black-1600 font-black">€1,080</span></li>
                                    </ul>
-                                   <Link href={"#"} className="text-sm font-normal leading-5 text-blue-1300 h-10 px-3 flex items-center justify-center gap-2 bg-gray-1600 border border-gray-1000 transition-all duration-500 ease-in-out hover:bg-gray-1600 rounded-[10px]">View All Transactions</Link>
+                                   <Link href={"#"} className="text-sm font-normal leading-5 text-black-1600 h-10 px-3 flex items-center justify-center gap-2 bg-gray-1600 border border-gray-1000 transition-all duration-500 ease-in-out hover:bg-gray-1600 rounded-[10px]">View All Transactions</Link>
                               </div>
                          </div>
                          <div className="bg-white mb-6 border border-solid border-gray-1000 rounded-xl p-6">
                               <div className="flex items-center justify-between border-b border-solid border-gray-1000 pb-4">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7">Verification Status</h4>
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7">Verification Status</h4>
                               </div>
                               <div className="p-6 mt-4">
                                    <ul>
-                                        <li className="text-blue-1300 font-inter font-normal text-sm leading-5 border-b border-solid border-gray-1000 py-3 flex items-center justify-between">
+                                        <li className="text-black-1600 font-inter font-normal text-sm leading-5 border-b border-solid border-gray-1000 py-3 flex items-center justify-between">
                                              Business Registration
                                              <p className="text-green-1600 flex items-center gap-2 font-inter font-normal text-xs leading-4">
                                                   <span className="bg-green-1600/10 rounded-full w-6 h-6 flex items-center justify-center">
@@ -219,7 +219,7 @@ export default function propertydetail() {
                                                   approved
                                              </p>
                                         </li>
-                                        <li className="text-blue-1300 font-inter font-normal text-sm leading-5 border-b border-solid border-gray-1000 py-3 flex items-center justify-between">
+                                        <li className="text-black-1600 font-inter font-normal text-sm leading-5 border-b border-solid border-gray-1000 py-3 flex items-center justify-between">
                                              Tax Documentation
                                              <p className="text-green-1600 flex items-center gap-2 font-inter font-normal text-xs leading-4">
                                                   <span className="bg-green-1600/10 rounded-full w-6 h-6 flex items-center justify-center">
@@ -233,7 +233,7 @@ export default function propertydetail() {
                                                   approved
                                              </p>
                                         </li>
-                                        <li className="text-blue-1300 font-inter font-normal text-sm leading-5 border-b border-solid border-gray-1000 py-3 flex items-center justify-between">
+                                        <li className="text-black-1600 font-inter font-normal text-sm leading-5 border-b border-solid border-gray-1000 py-3 flex items-center justify-between">
                                              Identity Verification
                                              <p className="text-green-1600 flex items-center gap-2 font-inter font-normal text-xs leading-4">
                                                   <span className="bg-green-1600/10 rounded-full w-6 h-6 flex items-center justify-center">
@@ -247,7 +247,7 @@ export default function propertydetail() {
                                                   approved
                                              </p>
                                         </li>
-                                        <li className="text-blue-1300 font-inter font-normal text-sm leading-5 py-3 flex items-center justify-between">
+                                        <li className="text-black-1600 font-inter font-normal text-sm leading-5 py-3 flex items-center justify-between">
                                              Bank Account
                                              <p className="text-green-1600 flex items-center gap-2 font-inter font-normal text-xs leading-4">
                                                   <span className="bg-green-1600/10 rounded-full w-6 h-6 flex items-center justify-center">
@@ -261,7 +261,7 @@ export default function propertydetail() {
                                                   approved
                                              </p>
                                         </li>
-                                        <li className="text-blue-1300 font-inter font-normal text-sm leading-5 py-3 flex items-center justify-between">
+                                        <li className="text-black-1600 font-inter font-normal text-sm leading-5 py-3 flex items-center justify-between">
                                              Background Check
                                              <p className="text-green-1600 flex items-center gap-2 font-inter font-normal text-xs leading-4">
                                                   <span className="bg-green-1600/10 rounded-full w-6 h-6 flex items-center justify-center">
@@ -280,7 +280,7 @@ export default function propertydetail() {
                          </div>
                          <div className="bg-white mb-6 border border-solid border-gray-1000 rounded-xl p-6">
                               <div className="flex items-center justify-between border-b border-solid border-gray-1000 pb-4">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7">Account Status</h4>
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7">Account Status</h4>
                               </div>
                               <div className="p-6 mt-4">
                                    <ul>
@@ -290,60 +290,60 @@ export default function propertydetail() {
                                         </li>
                                         <li className="text-gray-1200 mb-4 font-normal text-sm leading-5 flex items-center justify-between">
                                              Registered On
-                                             <span className="text-blue-1300">Mar 15, 2023</span>
+                                             <span className="text-black-1600">Mar 15, 2023</span>
                                         </li>
                                         <li className="text-gray-1200 font-normal text-sm leading-5 flex items-center justify-between">
                                              Last Active
-                                             <span className="text-blue-1300">Jan 20, 2024</span>
+                                             <span className="text-black-1600">Jan 20, 2024</span>
                                         </li>
                                    </ul>
                               </div>
                          </div>
                          <div className="bg-white border border-solid border-gray-1000 rounded-xl p-6">
                               <div className="flex items-center justify-between border-b border-solid border-gray-1000 pb-4">
-                                   <h4 className="text-blue-1300 font-inter font-bold text-lg leading-7">Recent Activity</h4>
+                                   <h4 className="text-black-1600 font-inter font-bold text-lg leading-7">Recent Activity</h4>
                               </div>
                               <div className="p-6 mt-4">
                                    <ul className="relative after:absolute after:content='' after:left-[4.5px] after:top-0 after:bg-gray-1000 after:w-0.5 after:h-[85%]">
                                         <li className="flex items-start gap-8 pb-6 z-10 relative">
                                              <span className="bg-blue-2200 rounded-full flex items-center w-3 h-3"></span>
                                              <div className="">
-                                                  <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5 mb-1 ">New listing added to Mitte Residences</h4>
+                                                  <h4 className="text-black-1600 font-inter font-normal text-sm leading-5 mb-1 ">New listing added to Mitte Residences</h4>
                                                   <p className="text-gray-1200 font-inter font-normal text-xs leading-4">Jan 20, 2024</p>
                                              </div>
                                         </li>
                                         <li className="flex items-start gap-8 pb-6 z-10 relative">
                                              <span className="bg-blue-2200 rounded-full flex items-center w-3 h-3"></span>
                                              <div>
-                                                  <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5 mb-1 ">Payout processed (€4,200)</h4>
+                                                  <h4 className="text-black-1600 font-inter font-normal text-sm leading-5 mb-1 ">Payout processed (€4,200)</h4>
                                                   <p className="text-gray-1200 font-inter font-normal text-xs leading-4">Jan 15, 2024</p>
                                              </div>
                                         </li>
                                         <li className="flex items-start gap-8 pb-6 z-10 relative">
                                              <span className="bg-blue-2200 rounded-full flex items-center w-3 h-3"></span>
                                              <div className="">
-                                                  <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5 mb-1 ">Profile updated by owner</h4>
+                                                  <h4 className="text-black-1600 font-inter font-normal text-sm leading-5 mb-1 ">Profile updated by owner</h4>
                                                   <p className="text-gray-1200 font-inter font-normal text-xs leading-4">Jan 10, 2024</p>
                                              </div>
                                         </li>
                                         <li className="flex items-start gap-8 pb-6 z-10 relative">
                                              <span className="bg-blue-2200 rounded-full flex items-center w-3 h-3"></span>
                                              <div className="">
-                                                  <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5 mb-1 ">New property added: Charlottenburg Flats</h4>
+                                                  <h4 className="text-black-1600 font-inter font-normal text-sm leading-5 mb-1 ">New property added: Charlottenburg Flats</h4>
                                                   <p className="text-gray-1200 font-inter font-normal text-xs leading-4">Dec 28, 2023</p>
                                              </div>
                                         </li>
                                         <li className="flex items-start gap-8 pb-6 z-10 relative">
                                              <span className="bg-blue-2200 rounded-full flex items-center w-3 h-3"></span>
                                              <div className="">
-                                                  <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5 mb-1 ">Payout processed (€8,400)</h4>
+                                                  <h4 className="text-black-1600 font-inter font-normal text-sm leading-5 mb-1 ">Payout processed (€8,400)</h4>
                                                   <p className="text-gray-1200 font-inter font-normal text-xs leading-4">Dec 15, 2023</p>
                                              </div>
                                         </li>
                                         <li className="flex items-start gap-8 z-10 relative">
                                              <span className="bg-blue-2200 rounded-full flex items-center w-3 h-3"></span>
                                              <div className="">
-                                                  <h4 className="text-blue-1300 font-inter font-normal text-sm leading-5 mb-1 ">Verification completed</h4>
+                                                  <h4 className="text-black-1600 font-inter font-normal text-sm leading-5 mb-1 ">Verification completed</h4>
                                                   <p className="text-gray-1200 font-inter font-normal text-xs leading-4">Nov 20, 2023</p>
                                              </div>
                                         </li>

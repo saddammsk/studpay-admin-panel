@@ -12,7 +12,7 @@ function page() {
                <div className="p-6">
                     <div className="flex items-center justify-between flex-wrap gap-5 mb-6">
                          <div className="xl:flex-1">
-                              <h6 className="text-xl font-bold leading-7 text-blue-1300">Safety Command Center</h6>
+                              <h6 className="text-xl font-bold leading-7 text-black-1600">Safety Command Center</h6>
                               <p className="text-sm font-normal leading-5 text-gray-1900">Real-time student safety monitoring</p>
                          </div>
                          <div className="text-sm font-normal leading-5 text-gray-5000 flex items-center gap-2">
@@ -222,7 +222,7 @@ function page() {
                     <div className="grid md:grid-cols-2 gap-4">
                          <div className="border py-5 px-4 border-gray-5100 bg-white rounded-xl shadow-14xl">
                               <div className="">
-                                   <h6 className="text-xl font-bold leading-7 text-blue-1300">Trust Network Health</h6>
+                                   <h6 className="text-xl font-bold leading-7 text-black-1600">Trust Network Health</h6>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Trusted contacts setup completion</p>
                               </div>
                               <div className="flex justify-center my-4">
@@ -241,7 +241,7 @@ function page() {
                          </div>
                          <div className="border py-5 px-4 border-gray-5100 bg-white rounded-xl shadow-14xl">
                               <div className="mb-4">
-                                   <h6 className="text-xl font-bold leading-7 text-blue-1300">GPS Compliance Status</h6>
+                                   <h6 className="text-xl font-bold leading-7 text-black-1600">GPS Compliance Status</h6>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Permission distribution</p>
                               </div>
                               <div className="mb-3">

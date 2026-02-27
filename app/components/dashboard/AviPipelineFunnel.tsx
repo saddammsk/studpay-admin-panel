@@ -7,7 +7,7 @@ export default async function AviPipelineFunnel() {
     <div className="w-full font-inter"> 
       <div className="border border-solid border-gray-3600 p-4 mb-8 bg-white rounded-lg shadow-80xl">
         <div className="flex items-center justify-between pb-4">
-          <p className="text-sm font-semibold leading-5 text-blue-1300">
+          <p className="text-sm font-semibold leading-5 text-black-1600">
             AVI Pipeline Funnel
           </p>
           <p className="text-gray-1900 text-xs font-normal leading-4 flex items-center gap-1.5">

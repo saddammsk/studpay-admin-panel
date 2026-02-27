@@ -53,7 +53,7 @@ function page() {
                                         <img src="/images/shield-icon3.svg" className="w-6 h-6" alt="" />
                                    </div>
                                    <div className="flex-1">
-                                        <h6 className="md:text-2xl text-xl font-bold leading-8 text-blue-1300">StudSafe — Inactivity Rules</h6>
+                                        <h6 className="md:text-2xl text-xl font-bold leading-8 text-black-1600">StudSafe — Inactivity Rules</h6>
                                         <p className="text-sm font-normal leading-5 text-gray-1200">Smart Safety Automation Engine</p>
                                    </div>
                               </div>
@@ -66,8 +66,8 @@ function page() {
                          <div className="flex mt-6 flex-wrap items-center justify-start md:gap-3 gap-1">
                               <h6 className="text-sm font-normal leading-5 text-gray-1200">Active Policy:</h6>
                               <div className="bg-white border border-gray-1000 rounded-xl py-2 px-4 flex items-center gap-3">
-                                   <h6 className="text-sm font-normal leading-5 text-blue-1300">Standard Europe Policy</h6>
-                                   <div className="text-xs font-bold leading-4 text-blue-1300 py-0.5 px-2.5 rounded-full border border-gray-1000 rounded-full">4 rules</div>
+                                   <h6 className="text-sm font-normal leading-5 text-black-1600">Standard Europe Policy</h6>
+                                   <div className="text-xs font-bold leading-4 text-black-1600 py-0.5 px-2.5 rounded-full border border-gray-1000 rounded-full">4 rules</div>
                                    <img src="/images/droparrow.svg" alt="" />
                               </div>
                               <Link href="/" className="w-10 h-10 flex items-center justify-center"><img src="/images/setting-icon.svg" alt="" /></Link>
@@ -80,7 +80,7 @@ function page() {
                                         <img src="/images/timer-yellow.svg" alt="" />
                                    </div>
                                    <div>
-                                        <h6 className="text-lg font-bold leading-7 text-blue-1300">Rule Configuration</h6>
+                                        <h6 className="text-lg font-bold leading-7 text-black-1600">Rule Configuration</h6>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Define inactivity thresholds and trigger conditions</p>
                                    </div>
                               </div>
@@ -88,8 +88,8 @@ function page() {
                                    <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                              <img src="/images/sun-icon2.svg" alt="" />
-                                             <h6 className="text-sm font-normal text-blue-1300 leading-5">Day Mode</h6>
-                                             <div className="text-xs font-bold leading-4 text-blue-1300 py-0.5 px-2.5 rounded-full border border-gray-1000">6:00 AM — 10:00 PM</div>
+                                             <h6 className="text-sm font-normal text-black-1600 leading-5">Day Mode</h6>
+                                             <div className="text-xs font-bold leading-4 text-black-1600 py-0.5 px-2.5 rounded-full border border-gray-1000">6:00 AM — 10:00 PM</div>
                                         </div>
                                         <span className="md:text-2xl text-xl font-bold leading-8 text-yellow-2500">1h</span>
                                    </div>
@@ -99,14 +99,14 @@ function page() {
                                    <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                              <img src="/images/moon-icon-blue.svg" alt="" />
-                                             <h6 className="text-sm font-normal text-blue-1300 leading-5">Night Mode</h6>
-                                             <div className="text-xs font-bold leading-4 text-blue-1300 py-0.5 px-2.5 rounded-full border border-gray-1000">10:00 PM — 6:00 AM</div>
+                                             <h6 className="text-sm font-normal text-black-1600 leading-5">Night Mode</h6>
+                                             <div className="text-xs font-bold leading-4 text-black-1600 py-0.5 px-2.5 rounded-full border border-gray-1000">10:00 PM — 6:00 AM</div>
                                         </div>
                                         <span className="md:text-2xl text-xl font-bold leading-8 text-yellow-2500">15 min</span>
                                    </div>
                                    <TimeRangeSlider></TimeRangeSlider>
                               </div>
-                              <h6 className="text-sm font-normal mb-4 text-blue-1300">Trigger Conditions</h6>
+                              <h6 className="text-sm font-normal mb-4 text-black-1600">Trigger Conditions</h6>
                               <div className="space-y-3">
                                    <AlertItem title="No GPS Movement"
                                         description="No location change detected within threshold"
@@ -131,7 +131,7 @@ function page() {
                                              <img src="/images/tick-blue.svg" alt="" />
                                         </div>
                                         <div>
-                                             <h6 className="text-lg font-bold leading-7 text-blue-1300">Escalation Workflow</h6>
+                                             <h6 className="text-lg font-bold leading-7 text-black-1600">Escalation Workflow</h6>
                                              <p className="text-xs font-normal leading-4 text-gray-1200">Step-by-step response when a rule is triggered</p>
                                         </div>
                                    </div>
@@ -145,12 +145,12 @@ function page() {
                                              <img src="/images/filter-icon3.svg" alt="" />
                                         </div>
                                         <div>
-                                             <h6 className="text-lg font-bold leading-7 text-blue-1300">Rule Simulator</h6>
+                                             <h6 className="text-lg font-bold leading-7 text-black-1600">Rule Simulator</h6>
                                              <p className="text-xs font-normal leading-4 text-gray-1200">Test your rules before deploying to production</p>
                                         </div>
                                    </div>
                                    <div className="rounded-xl bg-gray-1600/50 border border-gray-1000 p-4">
-                                        <h6 className="text-sm font-normal leading-5 mb-3 text-blue-1300">Scenario Injector</h6>
+                                        <h6 className="text-sm font-normal leading-5 mb-3 text-black-1600">Scenario Injector</h6>
                                         <div className="grid md:grid-cols-2 mb-4 gap-3 max-w-[452px]">
                                              <div>
                                                   <label htmlFor="" className="block mb-1.5 text-xs font-normal leading-4 text-gray-1200">Scenario</label>

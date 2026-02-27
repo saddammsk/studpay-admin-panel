@@ -20,7 +20,7 @@ function page() {
                               <img src="/images/location-blue.svg" className="w-5 h-5" alt="" />
                          </div>
                          <div className="flex-1">
-                              <h6 className="text-xl font-bold leading-8 text-blue-1300">History & Positions</h6>
+                              <h6 className="text-xl font-bold leading-8 text-black-1600">History & Positions</h6>
                               <p className="text-sm font-normal leading-5 text-gray-1200">Audit trail · Last known positions · Movement playback</p>
                          </div>
                     </div>
@@ -42,7 +42,7 @@ function page() {
                               <div className="flex mb-4 items-start justify-between">
                                    <div>
                                         <h6 className="text-xs font-bold text-gray-1200 uppercase mb-1">Last Known Position</h6>
-                                        <h4 className="text-lg font-bold leading-7 text-blue-1300">Marie Dupont</h4>
+                                        <h4 className="text-lg font-bold leading-7 text-black-1600">Marie Dupont</h4>
                                         <span className="text-xs font-normal text-gray-1200 block">USR-1042</span>
                                    </div>
                                    <div className="text-xs font-bold text-blue1400 py-0.5 px-2.5 border border-blue1400 rounded-full">LKP</div>
@@ -53,7 +53,7 @@ function page() {
                                              <img src="/images/location-gray.svg" alt="" />
                                              <h6 className="text-xs font-normal leading-4 text-gray-1200">Timestamp</h6>
                                         </div>
-                                        <h6 className="text-sm font-bold leading-5 text-blue-1300">2026-02-12 14:32:07</h6>
+                                        <h6 className="text-sm font-bold leading-5 text-black-1600">2026-02-12 14:32:07</h6>
                                    </div>
                                    <div>
                                         <div className="flex items-center mb-1 gap-1.5">
@@ -74,7 +74,7 @@ function page() {
                                              <img src="/images/gps-icon.svg" alt="" />
                                              <h6 className="text-xs font-normal leading-4 text-gray-1200">GPS Source</h6>
                                         </div>
-                                        <h6 className="text-sm font-bold leading-5 text-blue-1300">Satellite</h6>
+                                        <h6 className="text-sm font-bold leading-5 text-black-1600">Satellite</h6>
                                    </div>
                               </div>
                               <div className="bg-gray-1600 mt-3 rounded-[10px]  py-2 px-3">
@@ -87,7 +87,7 @@ function page() {
                               <div className="bg-white border border-gray-1000 rounded-xl mb-6 shadow-4xl">
                                    <div className=" 2xl:p-6 p-4">
                                         <div className="flex items-center justify-between mb-3">
-                                             <h6 className="text-base font-bold leading-6 text-blue-1300">History Explorer</h6>
+                                             <h6 className="text-base font-bold leading-6 text-black-1600">History Explorer</h6>
                                              <CustomSelect className="bg-gray-1800 w-full min-w-[130px] rounded-[10px]! border border-gray-1000"
                                                   value={status}
                                                   onChange={(e) => setStatus(e.target.value)}
@@ -99,8 +99,8 @@ function page() {
                                         </div>
                                         <TabGroup>
                                              <TabList className="bg-gray-6000 mb-3 rounded-[10px] grid grid-cols-2 p-1">
-                                                  <Tab className="flex items-center justify-center gap-1.5 text-sm font-normal text-gray-1200 p-1.5 data-selected:bg-gray-1800 rounded-lg data-selected:text-blue-1300 cursor-pointer"><img src="/images/map-icon.svg" alt="" /> Map View</Tab>
-                                                  <Tab className="flex items-center justify-center gap-1.5 text-sm font-normal text-gray-1200 p-1.5 data-selected:bg-gray-1800 rounded-lg data-selected:text-blue-1300 cursor-pointer"><img src="/images/list-icon.svg" alt="" />List View</Tab>
+                                                  <Tab className="flex items-center justify-center gap-1.5 text-sm font-normal text-gray-1200 p-1.5 data-selected:bg-gray-1800 rounded-lg data-selected:text-black-1600 cursor-pointer"><img src="/images/map-icon.svg" alt="" /> Map View</Tab>
+                                                  <Tab className="flex items-center justify-center gap-1.5 text-sm font-normal text-gray-1200 p-1.5 data-selected:bg-gray-1800 rounded-lg data-selected:text-black-1600 cursor-pointer"><img src="/images/list-icon.svg" alt="" />List View</Tab>
                                              </TabList>
                                              <TabPanels>
                                                   <TabPanel>
@@ -117,7 +117,7 @@ function page() {
                                    <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                              <img src="/images/timer-icon2.svg" alt="" />
-                                             <h6 className="text-sm font-bold leading-5 text-blue-1300">Timeline Playback</h6>
+                                             <h6 className="text-sm font-bold leading-5 text-black-1600">Timeline Playback</h6>
                                         </div>
                                         <h6 className="text-xs font-normal text-gray-1200">14:32 — Now</h6>
                                    </div>
@@ -144,7 +144,7 @@ function page() {
                               <div className="bg-white border border-gray-1000 rounded-xl shadow-4xl p-6">
                                    <div className="flex items-center mb-3 gap-2">
                                         <img src="/images/shield-blue.svg" alt="" />
-                                        <h6 className="text-base font-bold leading-5 text-blue-1300">Data Retention & Privacy</h6>
+                                        <h6 className="text-base font-bold leading-5 text-black-1600">Data Retention & Privacy</h6>
                                    </div>
                                    <div className="flex items-center mb-3 gap-2">
                                         <img src="/images/timer-gray.svg" className="w-[14px] h-[14px]" alt="" />
@@ -165,7 +165,7 @@ function page() {
                                              <Link href='/' className="text-sm leading-5 justify-center w-full text-white flex items-center gap-1.5 py-2 px-2.5 rounded-[10px] bg-red-1300"><img src="/images/del-icon3.svg" alt="" /> Manual Purge</Link>
                                         </li>
                                         <li className="4xl:w-7/12 w-1/2">
-                                             <Link href='/' className="text-sm leading-5 justify-center w-full text-blue-1300 flex items-center gap-1.5 py-2 px-2.5 rounded-[10px] bg-gray-1800 border border-gray-1000"><img src="/images/download-file.svg" alt="" /> Legal Export </Link>
+                                             <Link href='/' className="text-sm leading-5 justify-center w-full text-black-1600 flex items-center gap-1.5 py-2 px-2.5 rounded-[10px] bg-gray-1800 border border-gray-1000"><img src="/images/download-file.svg" alt="" /> Legal Export </Link>
                                         </li>
                                    </ul>
                                    <div className="bg-gray-6000 rounded-[10px] p-3 flex items-center gap-2">

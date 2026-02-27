@@ -117,7 +117,7 @@ const UsersStudentsPage = () => {
     <div className='font-inter'>
       <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>
         <li>
-          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
             <Image
               src="/images/refresh-icon.svg"
               width="16"
@@ -128,7 +128,7 @@ const UsersStudentsPage = () => {
           </Link>
         </li>
         <li>
-          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
             <Image
               src="/images/export-icon4.svg"
               width="16"
@@ -153,7 +153,7 @@ const UsersStudentsPage = () => {
               <span className='text-white font-inter font-semibold text-xl leading-7 inline-flex items-center justify-center bg-blue1400 rounded-full shadow-49xl w-16 h-16'>MS</span>
               <div className='flex-1 w-full'>
                 <div className='flex items-center gap-3'>
-                  <h4 className='text-blue-1300 font-inter font-semibold text-xl leading-7'>Marcus Schmidt</h4>
+                  <h4 className='text-black-1600 font-inter font-semibold text-xl leading-7'>Marcus Schmidt</h4>
                   <span className='text-white bg-purpal115 rounded-full px-2.5 h-5.5 inline-flex items-center justify-center font-inter font-semibold text-xs leading-4 gap-1'>
                     <Image src="../icons/Premium-icon.svg" width="16" height="16" alt="" />
                     Premium
@@ -167,28 +167,28 @@ const UsersStudentsPage = () => {
               <ul className='flex items-center xl:justify-start justify-between sm:flex-nowrap flex-wrap gap-3.5 mb-5.5'>
                 <li>
                   <span className='text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 flex items-center gap-1'><Image src="../icons/Birthdate-icon.svg" width="8" height="8" alt="" />Birthdate</span>
-                  <h4 className='text-blue-1300 font-inter font-medium text-sm leading-4'>20-11-2000</h4>
+                  <h4 className='text-black-1600 font-inter font-medium text-sm leading-4'>20-11-2000</h4>
                 </li>
                 <li>
                   <span className='text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 flex items-center gap-1'><Image src="../icons/location2.svg" width="8" height="12" alt="" />Location</span>
-                  <h4 className='text-blue-1300 font-inter font-medium text-sm leading-4 flex items-center gap-1'><Image src="/images/🇩🇪.png" width="16" height="16" alt="" /> Berlin,Germany</h4>
+                  <h4 className='text-black-1600 font-inter font-medium text-sm leading-4 flex items-center gap-1'><Image src="/images/🇩🇪.png" width="16" height="16" alt="" /> Berlin,Germany</h4>
                 </li>
                 <li>
                   <span className='text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 flex items-center gap-1'>Gender |Profession</span>
-                  <h4 className='text-blue-1300 font-inter font-medium text-sm leading-4 flex items-center'>Male |Student</h4>
+                  <h4 className='text-black-1600 font-inter font-medium text-sm leading-4 flex items-center'>Male |Student</h4>
                 </li>
               </ul>
               <ul className='flex items-center xl:justify-start justify-between gap-20 mb-7.5'>
                 <li>
                   <span className='text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 flex items-center gap-1'><Image src="../icons/phone-icon.svg" width="12" height="12" alt="" />Phone</span>
-                  <h4 className='text-blue-1300 font-inter font-medium text-sm leading-4'>+49 17612345678</h4>
+                  <h4 className='text-black-1600 font-inter font-medium text-sm leading-4'>+49 17612345678</h4>
                 </li>
                 <li>
                   <span className='text-gray-1200 font-inter font-normal text-xs leading-4 mb-1 flex items-center gap-1'><Image src="../icons/heart.svg" width="12" height="12" alt="" />MaritalStatus</span>
-                  <h4 className='text-blue-1300 font-inter font-medium text-sm leading-4 flex items-center'>Single</h4>
+                  <h4 className='text-black-1600 font-inter font-medium text-sm leading-4 flex items-center'>Single</h4>
                 </li>
               </ul>
-              <Link href={"#"} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+              <Link href={"#"} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
                 <Image src="../images/eye-icon.svg" width="16" height="16" alt="" />
                 View ID Documents
               </Link>
@@ -211,7 +211,7 @@ const UsersStudentsPage = () => {
                   <li>
                     <span className='inline-flex items-center justify-center font-inter font-semibold text-xs leading-5 gap-1 bg-green-1500/10 border border-solid border-green-1500/20 rounded-full h-5.5 px-3 text-green-1500'><Image src="../images/Fraud-check.svg" width="12" height="12" alt="" />Fraud: Low</span>
                   </li>
-                  <li><Link href={"#"} className='inline-flex px-2.5 items-center justify-center text-blue-1300 font-inter font-semibold text-xs leading-4 bg-gray-1600/10 border border-solid  border-gray-1000 rounded-full'>Credit: 742</Link></li>
+                  <li><Link href={"#"} className='inline-flex px-2.5 items-center justify-center text-black-1600 font-inter font-semibold text-xs leading-4 bg-gray-1600/10 border border-solid  border-gray-1000 rounded-full'>Credit: 742</Link></li>
                 </ul>
               </div>
             </div>
@@ -221,13 +221,13 @@ const UsersStudentsPage = () => {
                   <span className='w-4 h-3 flex items-center justify-center'>
                     <Image src="../images/clock-gray.svg" width="16" height="16" alt="" />
                   </span>
-                  <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Last login: <strong className='font-medium text-blue-1300'>Today, 09:15</strong></p>
+                  <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Last login: <strong className='font-medium text-black-1600'>Today, 09:15</strong></p>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className='w-4 h-3 flex items-center justify-center'>
                     <Image src="../icons/phone-icon.svg" width="16" height="16" alt="" />
                   </span>
-                  <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Device: <strong className='font-medium text-blue-1300'>iPhone 15 Pro (iOS 17.2)</strong></p>
+                  <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Device: <strong className='font-medium text-black-1600'>iPhone 15 Pro (iOS 17.2)</strong></p>
                 </li>
               </ul>
             </div>
@@ -264,12 +264,12 @@ const UsersStudentsPage = () => {
         <div className='2xl:w-[calc(100%-300px)] w-full 4xl:p-6 2xl:py-6 px-0'>
           <div className='flex md:flex-row flex-col md:items-center md:gap-0 gap-4 justify-between mb-6'>
             <div className=''>
-              <h4 className='text-blue-1300 font-inter font-bold text-xl leading-7'>Card Inventory</h4>
+              <h4 className='text-black-1600 font-inter font-bold text-xl leading-7'>Card Inventory</h4>
               <p className='text-gray-1900 font-inter font-normal 4xl:text-sm text-xs leading-5'>Manage physical and virtual cards for this customer</p>
             </div>
             <ul className='flex sm:flex-row flex-col items-center gap-2'>
               <li className='sm:w-auto w-full'>
-                <Link href={"#"} className='group sm:w-auto w-full inline-flex items-center justify-center text-blue-1300 font-medium text-sm leading-5 gap-2 hover:bg-blue1400 hover:border-blue1400 hover:text-white bg-gray-1500 border border-solid border-gray-3600 rounded-md h-10 px-4'>
+                <Link href={"#"} className='group sm:w-auto w-full inline-flex items-center justify-center text-black-1600 font-medium text-sm leading-5 gap-2 hover:bg-blue1400 hover:border-blue1400 hover:text-white bg-gray-1500 border border-solid border-gray-3600 rounded-md h-10 px-4'>
                   <Image src="../images/card-black.svg"
                     width="16"
                     height="16"
@@ -303,7 +303,7 @@ const UsersStudentsPage = () => {
             <div className='flex-1 w-full'>
               <div className='flex items-center justify-between'>
                 <div className=''>
-                  <h4 className='text-blue-1300 font-inter font-bold text-base leading-6'>Physical Visa Card</h4>
+                  <h4 className='text-black-1600 font-inter font-bold text-base leading-6'>Physical Visa Card</h4>
                   <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>•••• •••• •••• 4589</p>
                 </div>
                 <div className='inline-flex items-center bg-green-1900 rounded-full h-5 px-2.5 gap-1.5 text-green-1600 font-inter font-medium text-xs leading-4'>
@@ -332,7 +332,7 @@ const UsersStudentsPage = () => {
               <div className='flex 4xl:flex-row flex-col 4xl:items-center items-start 4xl:gap-0 gap-4 justify-between mt-6'>
                 <ul className='flex sm:flex-nowrap flex-wrap items-center gap-2'>
                   <li>
-                    <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                    <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                       <Image src="/images/freeze-dark.svg"
                         width="16"
                         height="16"
@@ -353,7 +353,7 @@ const UsersStudentsPage = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                    <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                       <Image src="/images/key-icon.svg"
                         width="16"
                         height="16"
@@ -384,7 +384,7 @@ const UsersStudentsPage = () => {
             <div className='flex-1 w-full'>
               <div className='flex items-center justify-between'>
                 <div className=''>
-                  <h4 className='text-blue-1300 font-inter font-bold text-base leading-6'>Virtual Mastercard Card</h4>
+                  <h4 className='text-black-1600 font-inter font-bold text-base leading-6'>Virtual Mastercard Card</h4>
                   <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>•••• •••• •••• 7823</p>
                 </div>
                 <div className='inline-flex items-center bg-green-1900 rounded-full h-5 px-2.5 gap-1.5 text-yellow-1100 font-inter font-medium text-xs leading-4'>
@@ -413,7 +413,7 @@ const UsersStudentsPage = () => {
               <div className='flex 4xl:flex-row flex-col 4xl:items-center items-start 4xl:gap-0 gap-4 justify-between mt-6'>
                 <ul className='flex sm:flex-nowrap flex-wrap items-center gap-2'>
                   <li>
-                    <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                    <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                       <Image src="/images/freeze-dark.svg"
                         width="16"
                         height="16"
@@ -434,7 +434,7 @@ const UsersStudentsPage = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                    <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                       <Image src="/images/key-icon.svg"
                         width="16"
                         height="16"
@@ -465,7 +465,7 @@ const UsersStudentsPage = () => {
             <div className='flex-1 w-full'>
               <div className='flex items-center justify-between'>
                 <div className=''>
-                  <h4 className='text-blue-1300 font-inter font-bold text-base leading-6'>Physical Visa Card</h4>
+                  <h4 className='text-black-1600 font-inter font-bold text-base leading-6'>Physical Visa Card</h4>
                   <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>•••• •••• •••• 4589</p>
                 </div>
                 <div className='inline-flex items-center bg-green-1900 rounded-full h-5 px-2.5 gap-1.5 text-green-1600 font-inter font-medium text-xs leading-4'>
@@ -494,7 +494,7 @@ const UsersStudentsPage = () => {
               <div className='flex 4xl:flex-row flex-col 4xl:items-center items-start 4xl:gap-0 gap-4 justify-between mt-6'>
                 <ul className='flex sm:flex-nowrap flex-wrap items-center gap-2'>
                   <li>
-                    <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                    <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                       <Image src="/images/freeze-dark.svg"
                         width="16"
                         height="16"
@@ -515,7 +515,7 @@ const UsersStudentsPage = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                    <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                       <Image src="/images/key-icon.svg"
                         width="16"
                         height="16"
@@ -538,10 +538,10 @@ const UsersStudentsPage = () => {
             <div className='5xl:w-131.5 4xl:w-125.5 4xl:flex-1  bg-white shadow-53xl p-6 rounded-lg'>
               <div className='flex sm:flex-nowrap flex-wrap sm:gap-0 gap-4 items-center justify-between'>
                 <div className=''>
-                  <h4 className='text-blue-1300 font-inter font-bold text-lg leading-7'>Spending Limits</h4>
+                  <h4 className='text-black-1600 font-inter font-bold text-lg leading-7'>Spending Limits</h4>
                   <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Current usage and limits</p>
                 </div>
-                <Link href={"#"} className='group text-blue-1300 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium text-sm leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                <Link href={"#"} className='group text-black-1600 bg-gray-1500 hover:bg-blue1400 hover:text-white transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium text-sm leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                   <Image src="/images/freeze-dark.svg"
                     width="16"
                     height="16"
@@ -558,24 +558,24 @@ const UsersStudentsPage = () => {
                   alt=""
                   className='group-hover:brightness-10000'
                 />
-                <p className='text-blue-1300 font-normal text-xs leading-5'><strong className='font-bold'>4-Eyes Approval Required:</strong> Any limit change will trigger a review request.</p>
+                <p className='text-black-1600 font-normal text-xs leading-5'><strong className='font-bold'>4-Eyes Approval Required:</strong> Any limit change will trigger a review request.</p>
               </div>
               <div className='mb-5'>
                 <div className='flex items-center justify-between mb-2'>
-                  <h4 className='text-blue-1300 font-medium text-sm leading-5'>Daily Spending</h4>
+                  <h4 className='text-black-1600 font-medium text-sm leading-5'>Daily Spending</h4>
                   <span className='text-yellow-1100 font-medium text-sm leading-5 block'>€850 / €1,000</span>
                 </div>
                 <ProgressBar value={80} barColor="bg-yellow-1100" bgColor="bg-gray1700" />
               </div>
               <div className='mb-5'>
                 <div className='flex items-center justify-between mb-2'>
-                  <h4 className='text-blue-1300 font-medium text-sm leading-5'>Monthly Spending</h4>
+                  <h4 className='text-black-1600 font-medium text-sm leading-5'>Monthly Spending</h4>
                 </div>
                 <ProgressBar value={80} barColor="bg-yellow-1100" bgColor="bg-gray1700" />
               </div>
               <div className=''>
                 <div className='flex items-center justify-between mb-2'>
-                  <h4 className='text-blue-1300 font-medium text-sm leading-5'>ATM Withdrawal</h4>
+                  <h4 className='text-black-1600 font-medium text-sm leading-5'>ATM Withdrawal</h4>
                   <span className='text-gray-1900 font-normal text-sm leading-5 block'>€200 / €500</span>
                 </div>
                 <ProgressBar value={5} barColor="bg-blue1400" bgColor="bg-gray1700" />
@@ -583,7 +583,7 @@ const UsersStudentsPage = () => {
             </div>
             <div className='5xl:w-[calc(100%-526px)] 4xl:w-[calc(100%-502px)] w-full bg-white shadow-53xl p-6 rounded-lg'>
               <div className='mb-4'>
-                <h4 className='text-blue-1300 font-inter font-bold text-lg leading-7'>Recent Card Transactions</h4>
+                <h4 className='text-black-1600 font-inter font-bold text-lg leading-7'>Recent Card Transactions</h4>
                 <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>Last 5 transactions across all cards</p>
               </div>
               <CardTransactionsTable />
@@ -591,7 +591,7 @@ const UsersStudentsPage = () => {
           </div>
         </div>
         <div className='2xl:max-w-75 w-full bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
-          <h4 className='text-blue-1300 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
+          <h4 className='text-black-1600 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
             <Image src="../images/sheild-active.svg"
               width="16"
               height="16"
@@ -639,7 +639,7 @@ const UsersStudentsPage = () => {
             <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Send Message</h4>
             <ul className='mt-2 grid grid-cols-2 gap-3'>
               <li>
-                <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+                <Link href={"#"} className='w-full inline-flex items-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
                   <Image src="../images/email-black.svg"
                     width="16"
                     height="16"
@@ -649,7 +649,7 @@ const UsersStudentsPage = () => {
                 </Link>
               </li>
               <li>
-                <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+                <Link href={"#"} className='w-full inline-flex items-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
                   <Image src="../images/puch-icon.svg"
                     width="16"
                     height="16"
@@ -665,19 +665,19 @@ const UsersStudentsPage = () => {
             <ul className='grid grid-cols-2 gap-3 mt-2'>
               <li>
                 <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Account Age</span>
-                <p className="text-blue-1300 font-medium text-sm leading-5">2y 4mo</p>
+                <p className="text-black-1600 font-medium text-sm leading-5">2y 4mo</p>
               </li>
               <li>
                 <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Total Txns</span>
-                <p className="text-blue-1300 font-medium text-sm leading-5">1,247</p>
+                <p className="text-black-1600 font-medium text-sm leading-5">1,247</p>
               </li>
               <li>
                 <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Avg. Monthly</span>
-                <p className="text-blue-1300 font-medium text-sm leading-5">€3,450</p>
+                <p className="text-black-1600 font-medium text-sm leading-5">€3,450</p>
               </li>
               <li>
                 <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Support Tickets</span>
-                <p className="text-blue-1300 font-medium text-sm leading-5">12</p>
+                <p className="text-black-1600 font-medium text-sm leading-5">12</p>
               </li>
             </ul>
           </div>

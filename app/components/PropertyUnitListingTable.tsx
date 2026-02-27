@@ -139,9 +139,9 @@ export default function BlockedTable() {
             <tbody>
               {payments.map((item) => (
                 <tr key={item.id} className="group verti border-b border-gray1600 hover:bg-gray1700/50 transition">
-                  <td className="px-4 py-4.5 font-normal font-inter text-base leading-6 text-blue-1300">{item.unit}</td>
+                  <td className="px-4 py-4.5 font-normal font-inter text-base leading-6 text-black-1600">{item.unit}</td>
                   <td className="px-4 py-4.5 font-normal font-inter text-sm leading-5 text-gray-1200">{item.type}</td>
-                  <td className="px-4 py-4.5 font-normal font-inter text-base leading-6 text-blue-1300">{item.MonthlyRent}</td>
+                  <td className="px-4 py-4.5 font-normal font-inter text-base leading-6 text-black-1600">{item.MonthlyRent}</td>
                   <td className="px-4 py-4.5">
                     <span
                       className={`px-2.75 h-5.5 inline-flex items-center justify-center rounded-full font-inter border border-solid text-xs font-normal ${statusConfig[item.status].classes}`}
@@ -151,7 +151,7 @@ export default function BlockedTable() {
                   </td>
                   <td className="px-4 py-4.5">
                     <Link href={"#"}
-                      className="text-blue-1300 text-sm font-normal leading-5 inline-flex items-center justify-end gap-1.5"
+                      className="text-black-1600 text-sm font-normal leading-5 inline-flex items-center justify-end gap-1.5"
                     >
                       <Image
                         src={item.actions.eyesimg}
@@ -168,7 +168,7 @@ export default function BlockedTable() {
         </div>
         <div className='pt-4 flex items-center justify-between'>
           <p className='text-gray-1200 font-normal text-sm leading-5'>Showing 6 of 24 listings</p>
-          <Link href={"#"} className='text-sm font-normal leading-5 text-blue-1300 h-10 px-3 flex items-center justify-center gap-2 bg-gray-1600 border border-gray-1600 transition-all duration-500 ease-in-out hover:bg-gray-1600 rounded-[10px]'>View All Listings</Link>
+          <Link href={"#"} className='text-sm font-normal leading-5 text-black-1600 h-10 px-3 flex items-center justify-center gap-2 bg-gray-1600 border border-gray-1600 transition-all duration-500 ease-in-out hover:bg-gray-1600 rounded-[10px]'>View All Listings</Link>
         </div>
       </div>
     </>

@@ -108,7 +108,7 @@ export default function KycDocumentTable() {
                 key={item.id}
                 className="border-b border-gray-3600 hover:bg-gray1700/50 transition"
               >
-                <td className="px-3 py-4.25 text-blue-1300 font-inter font-medium text-sm leading-5">
+                <td className="px-3 py-4.25 text-black-1600 font-inter font-medium text-sm leading-5">
                   {item.merchant}
                 </td>
                 <td className="px-3 py-4.25">
@@ -123,7 +123,7 @@ export default function KycDocumentTable() {
                   {item.date}
                 </td>
                 <td className="px-3 py-4.25">
-                  <div className={`flex items-center text-sm font-medium leading-5 gap-1.5 ${item.amount.direction === "down" ? "text-green-1600" : "text-blue-1300"}`}>
+                  <div className={`flex items-center text-sm font-medium leading-5 gap-1.5 ${item.amount.direction === "down" ? "text-green-1600" : "text-black-1600"}`}>
                     <Image
                       src={item.amount.icon}
                       width="12"

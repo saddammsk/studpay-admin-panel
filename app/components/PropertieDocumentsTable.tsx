@@ -101,7 +101,7 @@ export default function PropertieDocumentsTable() {
             <tbody>
               {payments.map((item) => (
                 <tr key={item.id} className="group verti border-b border-gray1600 hover:bg-gray1700/50 transition last:border-b-0">
-                  <td className="px-4 py-6 font-normal font-inter text-sm leading-5 text-blue-1300">
+                  <td className="px-4 py-6 font-normal font-inter text-sm leading-5 text-black-1600">
                     <div className='flex items-center gap-2'>
                       <Image
                         src={item.document.icon}
@@ -112,7 +112,7 @@ export default function PropertieDocumentsTable() {
                       {item.document.name}
                     </div>
                   </td>
-                  <td className="px-4 py-6 font-normal font-inter text-base leading-6 text-blue-1300">{item.type}</td>
+                  <td className="px-4 py-6 font-normal font-inter text-base leading-6 text-black-1600">{item.type}</td>
                   <td className="px-4 py-6 font-normal font-inter text-sm leading-5 text-gray-1200">{item.Upload}</td>
                   <td className="px-4 py-6">
                     <span
@@ -123,7 +123,7 @@ export default function PropertieDocumentsTable() {
                   </td>
                   <td className="px-4 py-6">
                     <Link href={"#"}
-                      className="text-blue-1300 text-sm font-normal leading-5 inline-flex items-center"
+                      className="text-black-1600 text-sm font-normal leading-5 inline-flex items-center"
                     >
                       {item.action}
                     </Link>

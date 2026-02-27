@@ -167,31 +167,31 @@ export default function PartnerTable() {
                <table className="w-full">
                     <thead>
                          <tr className="border-b border-gray-5600">
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Partner ID
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Partner Name
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Category
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Country
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Active Students
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Conversion %
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Commission
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Status
                               </th>
-                              <th className="px-4 py-3 text-left text-sm text-blue-1300">
+                              <th className="px-4 py-3 text-left text-sm text-black-1600">
                                    Actions
                               </th>
                          </tr>
@@ -207,7 +207,7 @@ export default function PartnerTable() {
 
                                    {/* Name + Logo */}
                                    <td className="px-4 py-6 text-sm">
-                                        <div className="flex items-center gap-3 text-blue-1300">
+                                        <div className="flex items-center gap-3 text-black-1600">
                                              <Image
                                                   src={item.logo}
                                                   alt={item.name}
@@ -241,7 +241,7 @@ export default function PartnerTable() {
                                    </td>
 
                                    {/* Active Students */}
-                                   <td className="px-4 py-6 text-sm text-blue-1300">
+                                   <td className="px-4 py-6 text-sm text-black-1600">
                                         {item.activeStudents}
                                    </td>
 

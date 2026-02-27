@@ -198,13 +198,13 @@ export default function CountryPerformance() {
                       height={12}
                       className="rounded-sm"
                     />
-                    <span className="text-sm text-blue-1300">
+                    <span className="text-sm text-black-1600">
                       {item.country.name}
                     </span>
                   </div>
                 </td>
 
-                <td className="px-4 py-4 text-sm text-blue-1300">
+                <td className="px-4 py-4 text-sm text-black-1600">
                   {item.users}
                 </td>
 

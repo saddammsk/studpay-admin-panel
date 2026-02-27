@@ -158,7 +158,7 @@ export default function KycDocumentTable() {
                       />
                     </span>
                     <div className="flex-1 w-full">
-                      <h4 className="text-blue-1300 font-inter font-medium text-sm leading-5">
+                      <h4 className="text-black-1600 font-inter font-medium text-sm leading-5">
                         {item.account.name}
                       </h4>
                       <p className="text-gray-1900 font-inter font-normal text-xs leading-4">
@@ -169,13 +169,13 @@ export default function KycDocumentTable() {
                 </td>
 
                 <td className="p-4">
-                  <span className="inline-flex items-center text-blue-1300 font-normal text-xs leading-4 bg-gray-1600 rounded pl-2 pr-5.5 h-6">
+                  <span className="inline-flex items-center text-black-1600 font-normal text-xs leading-4 bg-gray-1600 rounded pl-2 pr-5.5 h-6">
                     {item.ibanAddress}
                   </span>
                 </td>
 
                 <td className="p-4">
-                  <span className="inline-flex items-center text-blue-1300 font-inter font-medium text-xs leading-5">
+                  <span className="inline-flex items-center text-black-1600 font-inter font-medium text-xs leading-5">
                     {item.balance}
                   </span>
                 </td>

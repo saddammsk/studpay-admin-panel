@@ -26,7 +26,7 @@ const UsersStudentsPage = () => {
     <div>
       <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>
         <li>
-          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
             <Image
               src="/images/refresh-icon.svg"
               width="16"
@@ -37,7 +37,7 @@ const UsersStudentsPage = () => {
           </Link>
         </li>
         <li>
-          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+          <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-black-1600 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
             <Image
               src="/images/export-icon4.svg"
               width="16"
@@ -67,7 +67,7 @@ const UsersStudentsPage = () => {
             Total Users
           </span>
           <div className="flex items-center justify-between mt-2">
-            <h4 className="text-blue-1300 font-inter font-bold text-2xl leading-8">87</h4>
+            <h4 className="text-black-1600 font-inter font-bold text-2xl leading-8">87</h4>
             <span className="text-lightgreen17 font-inter font-normal text-xs leading-4">+12.5%</span>
           </div>
         </div>
@@ -82,7 +82,7 @@ const UsersStudentsPage = () => {
             KYC Verified
           </span>
           <div className="flex items-center justify-between mt-2">
-            <h4 className="text-blue-1300 font-inter font-bold text-2xl leading-8">54</h4>
+            <h4 className="text-black-1600 font-inter font-bold text-2xl leading-8">54</h4>
             <span className="text-lightgreen17 font-inter font-normal text-xs leading-4">62.1%</span>
           </div>
         </div>
@@ -97,7 +97,7 @@ const UsersStudentsPage = () => {
             Pending Review
           </span>
           <div className="flex items-center justify-between mt-2">
-            <h4 className="text-blue-1300 font-inter font-bold text-2xl leading-8">23</h4>
+            <h4 className="text-black-1600 font-inter font-bold text-2xl leading-8">23</h4>
             <span className="text-yellow-1100 font-inter font-normal text-xs leading-4">Needs attention</span>
           </div>
         </div>
@@ -112,7 +112,7 @@ const UsersStudentsPage = () => {
             High Risk
           </span>
           <div className="flex items-center justify-between mt-2">
-            <h4 className="text-blue-1300 font-inter font-bold text-2xl leading-8">29</h4>
+            <h4 className="text-black-1600 font-inter font-bold text-2xl leading-8">29</h4>
             <span className="text-red1600 font-inter font-normal text-xs leading-4">Monitor closely</span>
           </div>
         </div>
@@ -154,7 +154,7 @@ const UsersStudentsPage = () => {
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="cursor-pointer transition-all duration-500 ease-in-out md:w-auto w-full inline-flex items-center justify-center px-3 text-blue-1300 font-normal text-sm leading-5 gap-2  bg-gray-1500 border border-gray-3600 hover:bg-gray-3600 rounded-md h-9"
+                  className="cursor-pointer transition-all duration-500 ease-in-out md:w-auto w-full inline-flex items-center justify-center px-3 text-black-1600 font-normal text-sm leading-5 gap-2  bg-gray-1500 border border-gray-3600 hover:bg-gray-3600 rounded-md h-9"
                 >
                   <Image src="../images/filter.svg" width="16" height="16" alt="" />
                   More Filters

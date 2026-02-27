@@ -131,13 +131,13 @@ export default function FinanceDonutChart() {
                                         className="w-3 h-3 rounded-full"
                                         style={{ backgroundColor: item.color }}
                                    />
-                                   <span className="text-blue-1300 text-sm font-medium">
+                                   <span className="text-black-1600 text-sm font-medium">
                                         {item.label}
                                    </span>
                               </div>
 
                               <div className="flex items-center gap-2">
-                                   <span className="font-bold text-sm text-blue-1300">
+                                   <span className="font-bold text-sm text-black-1600">
                                         {item.percent}
                                    </span>
                                    <span className="text-gray-1900 text-xs">
