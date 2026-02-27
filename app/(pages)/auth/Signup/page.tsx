@@ -155,10 +155,10 @@ const isFormIncomplete =
 
                   <div className="space-y-5">
                     <div>
-                      <label className="text-xs uppercase mb-1.5 font-semibold leading-4 text-gray-600 block">
+                      <label className="text-xs uppercase mb-1.5 font-semibold leading-4 text-gray-2300 block">
                         Assigned Role
                       </label>
-                      <div className="flex items-center justify-between bg-blue-50 border border-blue-200 rounded-xl py-3.5 px-4 hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between bg-blue-50 border border-blue-200 rounded-xl py-3.5 px-4 transition-colors">
                         <div className="flex items-center gap-2.5 text-sm font-bold leading-5 text-blue-1600">
                           <img
                             src="/images/user-tick.svg"
@@ -177,12 +177,12 @@ const isFormIncomplete =
                       label="Set Secure Password"
                       type="password"
                       placeholder="Minimum 12 characters"
-                      ClassName='pl-5! bg-gray-2100 border border-gray-2200'
+                      ClassName='pl-5! bg-gray-2100 border border-gray-2200 rounded-xl! h-11'
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
                       passwordToggleIconSrc={{
                         show: '/images/eye-icon.svg',
-                        hide: '/images/eye-icon.svg',
+                        hide: '/images/eye-off-icon.svg',
                       }}
                     />
 
@@ -196,12 +196,12 @@ const isFormIncomplete =
                       label="Confirm Password"
                       type="password"
                       placeholder="Re-enter your password"
-                      ClassName='pl-5! bg-gray-2100 border border-gray-2200' 
+                      ClassName='pl-5! bg-gray-2100 border border-gray-2200 rounded-xl! h-11' 
                       value={formData.confirmPassword}
                       onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                       passwordToggleIconSrc={{
                         show: '/images/eye-icon.svg',
-                        hide: '/images/eye-icon.svg',
+                        hide: '/images/eye-off-icon.svg',
                       }}
                     />
 
@@ -215,7 +215,7 @@ const isFormIncomplete =
                     <InputField
                       label="Phone Number (for 2FA setup)"
                       type="text"
-                      ClassName='bg-gray-2100 border border-gray-2200'
+                      ClassName='bg-gray-2100 border border-gray-2200 rounded-xl! h-11'
                       placeholder="+92 300 1234567"
                       value={formData.phoneNumber}
                       onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
@@ -244,14 +244,14 @@ const isFormIncomplete =
                       I agree to the{' '}
                       <Link
                         href="/"
-                        className="text-blue-1600 underline hover:text-blue-1600 font-semibold"
+                        className="text-blue-1600 underline hover:text-blue-1600"
                       >
                         internal data privacy
                       </Link>{' '}
                       and{' '}
                       <Link
                         href="/"
-                        className="text-blue-1600 underline hover:text-blue-1600 font-semibold"
+                        className="text-blue-1600 underline hover:text-blue-1600"
                       >
                         audit policies
                       </Link>

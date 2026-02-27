@@ -1,7 +1,4 @@
 'use client'
-import { useState } from 'react'
-
-
 import { usePathname } from "next/navigation";
 import { useSidebarStore } from "@/app/store/zustand/useSidebarStore";
 import { GlobalSearchbox } from "../ui/GlobalSearchbox";
@@ -35,7 +32,6 @@ const TopBar = () => {
 
      const pathname = usePathname();
 
-     // for dynamic routes like /users/123
      const basePath = "/" + pathname.split("/")[1];
 
      const pageData = pageConfig[basePath] || {
@@ -55,7 +51,7 @@ const TopBar = () => {
                                    {pageData.description}
                               </p>
                          </div>
-                         <div className='md:block hidden'>
+                         <div className='md:block hidden flex-1'>
                               {pageData.showSearch && <GlobalSearchbox />}
                          </div>
                     </div>

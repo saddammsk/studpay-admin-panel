@@ -10,7 +10,7 @@ export const GlobalSearchbox = () => {
   const searchQuery = useAppSelector((state) => state.dashboard.searchQuery);
 
   return (
-    <div className="flex-1 max-w-md w-full">
+    <div className="max-w-[448px] w-full">
       <form
         className="w-full relative"
         onSubmit={(e) => e.preventDefault()}
