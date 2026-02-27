@@ -9,7 +9,7 @@ import ProgressBar from "@/app/components/ProgressBar";
 import CardTransactionsTable from "@/app/components/UsersStudent/CardTransactionsTable";
 import CustomSelect from "@/app/components/CustomSelect";
 import InputField from '@/app/components/InputField';
-import { Checkbox } from '@headlessui/react'
+import { Checkbox, Radio, RadioGroup } from '@headlessui/react'
 
 interface MenuItem {
   name: string;
@@ -112,20 +112,27 @@ const menuItems = [
   },
 ];
 
-
+const plans = [
+  { name: 'Suspicious Activity Detected' },
+  { name: 'Lost/Stolen Reported' },
+  { name: 'Compliance Review Pending' },
+  { name: 'User Request' },
+]
 const UsersStudentsPage = () => {
-  const [enabled, setEnabled] = useState(true);
-  const [enabled2, setEnabled2] = useState(true);
-  const [enabled3, setEnabled3] = useState(true);
-  const [enabled4, setEnabled4] = useState(true);
-  const [enabled5, setEnabled5] = useState(false);
-  const [enabled6, setEnabled6] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
-  const [isOpen3, setIsOpen3] = useState(false);
-  const [isOpen4, setIsOpen4] = useState(false);
-  const [enabledCheck, setEnabledCheck] = useState(true)
-  const [name, setName] = useState('');
+  const [enabled, setEnabled] = useState(true); //  Toggle Switch
+  const [enabled2, setEnabled2] = useState(true); //  Toggle Switch
+  const [enabled3, setEnabled3] = useState(true); //  Toggle Switch
+  const [enabled4, setEnabled4] = useState(true); //  Toggle Switch
+  const [enabled5, setEnabled5] = useState(false); //  Toggle Switch
+  const [enabled6, setEnabled6] = useState(false); //  Toggle Switch
+  const [isOpen, setIsOpen] = useState(false);   //  Modal box
+  const [isOpen2, setIsOpen2] = useState(false); // Modal box
+  const [isOpen3, setIsOpen3] = useState(false); // Modal box
+  const [isOpen4, setIsOpen4] = useState(false); // Modal box
+  const [isOpen5, setIsOpen5] = useState(false); // Modal box
+  const [enabledCheck, setEnabledCheck] = useState(true) // Checkbox
+  const [name, setName] = useState(''); // input Field
+  const [selected, setSelected] = useState(plans[0]) // Radio button 
 
   return (
 
@@ -361,7 +368,7 @@ const UsersStudentsPage = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href={"#"} className='group text-red-1000 bg-gray-1500 hover:bg-blue1400 transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
+                      <Link onClick={() => setIsOpen5(true)} href={"#"} className='group text-red-1000 bg-gray-1500 hover:bg-blue1400 transition-all duration-500 ease-in-out border border-solid border-gray-3600 font-medium 5xl:text-sm text-xs leading-5 inline-flex items-center gap-2 h-9 px-3 rounded-md'>
                         <Image src="/images/warning-sheild.svg"
                           width="16"
                           height="16"
@@ -807,7 +814,7 @@ const UsersStudentsPage = () => {
         </Link>
         <div className='border-b border-solid border-gray-1000 flex items-center gap-3 px-6 pt-6 pb-4'>
           <span className='bg-blue-1400/10 rounded-lg flex items-center justify-center w-9 h-9'><Image src="/icons/card-blue.svg" width={20} height={20} alt="" /></span>
-          <h4 className='text-blue-1300 font-semibold text-xl leading-7 tracking-[-0.5ppx]'>Order Physical Card</h4>
+          <h4 className='text-blue-1300 font-semibold text-xl leading-7 tracking-[-0.5px]'>Order Physical Card</h4>
         </div>
         <div className='md:px-6 px-4 py-5'>
           <h4 className='text-blue-1300 font-semibold text-sm leading-5 flex items-center gap-2'><Image src="/images/gift-box.svg" width={16} height={16} alt="" />Card Configuration</h4>
@@ -942,7 +949,7 @@ const UsersStudentsPage = () => {
         </Link>
         <div className='border-b border-solid border-gray-1000 flex items-center gap-3 px-6 pt-6 pb-4'>
           <span className='bg-blue-1400/10 rounded-lg flex items-center justify-center w-9 h-9'><Image src="/icons/card-blue.svg" width={20} height={20} alt="" /></span>
-          <h4 className='text-blue-1300 font-semibold text-xl leading-7 tracking-[-0.5ppx]'>Create Virtual Card</h4>
+          <h4 className='text-blue-1300 font-semibold text-xl leading-7 tracking-[-0.5px]'>Create Virtual Card</h4>
         </div>
         <div className='md:px-6 px-4 py-5'>
           <h4 className='text-blue-1300 font-semibold text-sm leading-5 flex items-center gap-2'><Image src="/images/wallet-icon3.svg" width={16} height={16} alt="" />Card Configuration</h4>
@@ -1082,7 +1089,7 @@ const UsersStudentsPage = () => {
       <Modal
         isOpen={isOpen4}
         onClose={() => setIsOpen4(false)}
-        panelClassName="max-w-[520px] bg-white-1100 border-2 border-yellow-1100/30 relative"
+        panelClassName="max-w-[520px] bg-white-1100 border-2 border-yellow-1100/30 relative h-full overflow-x-auto "
       >
         <Link onClick={() => setIsOpen4(false)} href={"#"} className="flex items-center justify-center w-4 h-4 absolute top-4 right-4">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
@@ -1090,39 +1097,205 @@ const UsersStudentsPage = () => {
         <div className='bg-yellow-1100/5 border-b border-solid border-yellow-1100/20 flex items-center gap-3 px-6 pt-7.5 pb-5.5'>
           <span className='bg-yellow-1100/10 rounded-full flex items-center justify-center w-10 h-10'><Image src="/images/warning-yellow.svg" width={24} height={24} alt="" /></span>
           <div className='flex-1 w-full'>
-            <h4 className='text-blue-1300 font-semibold text-xl leading-7 tracking-[-0.5ppx]'>Freeze Card: •••• 4829</h4>
+            <h4 className='text-blue-1300 font-semibold text-xl leading-7 tracking-[-0.5px]'>Freeze Card: •••• 4829</h4>
             <p className='text-gray-1200 font-normal text-sm leading-5 mt-1'>Temporarily disable this card. This action is reversible.</p>
           </div>
         </div>
-        <div className='px-6 py-1.5'>
-          <div className=''>
+        <div className='px-6 pt-1.5'>
+          <div className='mb-6'>
             <h4 className="text-blue-1300 font-semibold text-sm leading-5 flex items-center gap-2"><Image src="/images/shield-dark.svg" width={16} height={16} alt="" />Risk Context</h4>
-            <div className='bg-gray-1600 rounded-lg p-4'>
+            <div className='bg-gray-1600 rounded-lg p-4 mt-3'>
               <ul>
-                <li className='text-gray-1200 font-normal text-sm leading-5'>Current Risk Score</li>
+                <li className='text-gray-1200 font-normal text-sm mb-3 leading-5 flex items-center justify-between'>Current Risk Score <span className='text-red-1300 font-bold text-lg leading-7'>75/100</span></li>
+                <li className='text-gray-1200 font-normal text-sm leading-5 flex items-center justify-between'>Active Fraud Flags</li>
+              </ul>
+              <ul className='flex items-center gap-2 mt-2.5'>
+                <li>
+                  <span className='text-red-1300 font-medium text-xs leading-4 inline-flex items-center justify-center h-6.5 rounded-md px-2.5 bg-red-1300/10 border border-solid border-red-1300/20'>Multiple declined transactions</span>
+                </li>
+                <li>
+                  <span className='text-red-1300 font-medium text-xs leading-4 inline-flex items-center justify-center h-6.5 rounded-md px-2.5 bg-red-1300/10 border border-solid border-red-1300/20'>Unusual location detected</span>
+                </li>
               </ul>
             </div>
           </div>
-        </div>
+          <div className='mb-6'>
+            <h4 className="text-blue-1300 font-semibold text-sm leading-5 flex items-center gap-2"><Image src="/images/card-gray.svg" width={16} height={16} alt="" />Action Details</h4>
+            <div className='mt-3'>
+              <label className='text-blue-1300 mb-1.5 font-medium text-sm leading-5 flex items-center'>Freeze Duration <span className='text-red-1300'>*</span></label>
+              <CustomSelect
+                className='shadow-57xl'
+                options={[
+                  { label: 'Select duration', value: 'Select duration' },
+                  { label: '2000', value: '2000' }
+                ]}
+              />
+            </div>
+            <div className='mt-3'>
+              <label className='text-blue-1300 mb-1.5 font-medium text-sm leading-5 flex items-center'>Reason for Freeze<span className='text-red-1300'>*</span></label>
+              <RadioGroup by="name" value={selected} onChange={setSelected} aria-label="Server size" className="">
+                {plans.map((plan) => (
+                  <Radio
+                    key={plan.name}
+                    value={plan}
+                    className="group relative flex cursor-pointer border border-solid border-gray-1000 rounded-lg bg-white px-3 py-3.5 transition focus:not-data-focus:outline-none data-checked:bg-white/50 data-focus:outline data-focus:outline-white mb-4 last:mb-0"
+                  >
+                    <div className="flex w-full items-center gap-3">
+                      <div className="border border-solid border-blue-1400 rounded-full w-4 h-4 flex items-center transition group-data-checked:bg-blue-1400"></div>
+                      <p className="text-blue-1300 font-normal text-sm leading-5">{plan.name}</p>
 
-        <div className="px-6 py-4 bg-gray-1600/50 border-t border-solid border-gray-1000">
-          <ul className="flex items-center justify-end gap-3">
-            <li>
-              <button
-                onClick={() => setIsOpen4(false)}
-                className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
-              >
-                Cancel
-              </button>
-            </li>
-            <li>
-              <button
-                className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-blue-1000/90 hover:border-blue-1000/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-blue-1000 border-solid border-blue-1000 h-10"
-              >
-                Submit for Approval
-              </button>
-            </li>
-          </ul>
+                    </div>
+                  </Radio>
+                ))}
+              </RadioGroup>
+            </div>
+            <div className='mt-4'>
+              <label className='text-blue-1300 mb-1.5 font-medium text-sm leading-5 flex items-center gap-1.5'>Internal Notes</label>
+              <textarea className='text-gray-1200 placeholder:text-gray-1200 h-20 font-normal text-sm leading-5 px-3.5 py-2.5 bg-white-1100 border border-solid border-gray-1000 rounded-md w-full' placeholder='Add any additional details for the audit log...'></textarea>
+              <p className='text-gray-1200 font-normal text-xs leading-4 mt-1'>These notes will be stored in the audit log.</p>
+            </div>
+            <div className='mt-6 flex items-start gap-2 rounded-lg bg-yellow1800/50 border border-solid border-yellow-1100/20 p-4'>
+              <span className='flex items-center justify-center w-5 h-5'><Image src="/images/warning-yellow.svg" width={20} height={22} alt="" /></span>
+              <div className='flex-1 w-full'>
+                <h4 className='text-blue-1300 font-medium text-sm leading-5'>Impact Summary</h4>
+                <p className='text-gray-1200 font-normal text-sm leading-5 mt-1'>
+                  Freezing this card will decline all incoming transactions and
+                  digital wallet payments (Apple/Google Pay) immediately.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="px-6 py-4 bg-gray-1600/50 border-t border-solid border-gray-1000">
+            <ul className="flex items-center justify-end gap-3">
+              <li>
+                <button
+                  onClick={() => setIsOpen4(false)}
+                  className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
+                >
+                  Cancel
+                </button>
+              </li>
+              <li>
+                <button
+                  className="cursor-pointer px-4 flex opacity-50 items-center justify-center w-full hover:bg-yellow-1100/90 hover:border-yellow-1100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-yellow-1100 border-solid border-yellow-1100 h-10"
+                >
+                  Confirm Freeze
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Modal>
+      {/* REPORT STOLEN CARD MODAL */}
+      <Modal
+        isOpen={isOpen5}
+        onClose={() => setIsOpen5(false)}
+        panelClassName="max-w-[520px] bg-white-1100 border-2 border-red85 relative h-full overflow-x-auto "
+      >
+        <Link onClick={() => setIsOpen4(false)} href={"#"} className="flex items-center justify-center w-4 h-4 absolute top-4 right-4">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" /> 
+        </Link>
+        <div className='bg-red2500 border-b border-solid border-red85 px-6 pt-7.5 pb-5.5'>
+          <div className='flex items-center gap-3 '>
+            <span className='bg-red2400/10 rounded-full flex items-center justify-center w-10 h-10'><Image src="/icons/sheild-cross.svg" width={24} height={24} alt="" /></span>
+            <h4 className='text-red2400 font-bold text-xl leading-7 tracking-[-0.5px]'>Report Card Stolen or Lost</h4>
+          </div>
+          <div className='flex items-start mt-3 gap-2 border border-solid border-red85 bg-red2400/5 rounded-xl p-3'>
+            <span className='flex items-center w-5 h-5'><Image src="/images/warning.svg" width={16} height={16} alt="" /></span>
+            <p className='flex-1 w-full font-normal text-sm leading-5.5 text-red2400'>
+              <span className='font-bold'> This action is permanent and cannot be undone.</span> The current card
+              will be destroyed in the system and all associated transactions will be
+              frozen.
+            </p>
+          </div>
+        </div>
+        <div className='p-6'>
+          <div className=''>
+            <h4 className="text-gray-1200 font-normal text-sm leading-5 uppercase tracking-[0.35px]">Card Details</h4>
+            <div className="flex items-center justify-between rounded-xl mt-4 bg-gray-1000/50 border border-solid border-gray-1000 p-4">
+              <div className="flex items-center gap-4">
+                <span className='bg-white shadow-4xl border border-solid border-gray-1000 rounded-xl w-12.5 h-12.5 flex items-center justify-center'>
+                  <Image src="/images/card-black.svg" width={24} height={24} alt="" />
+                </span>
+                <div className='flex-1 w-full'>
+                  <h4 className='text-blue-1300 text-base font-bold leading-6'>StudPay Debit Card</h4>
+                  <p className='text-gray-1200 text-sm font-normal leading-5'>•••• •••• •••• 4829</p>
+                  <span className='text-gray-1200 text-xs font-normal leading-4 block'>Emma Richardson</span>
+                </div>
+              </div>
+              <Link href={"#"} className='text-white text-xs font-bold leading-4 inline-flex items-center justify-center bg-red2400 rounded-full gap-2 h-7.5 px-3'><Image src="/icons/info-sheild.svg" width={16} height={16} alt="" /> Suspicious Activity</Link>
+            </div> 
+          </div>
+          <div className='pt-6 mt-6 border-t border-solid border-gray-1000'>
+             <h4 className="text-gray-1200 font-normal text-sm leading-5 uppercase tracking-[0.35px]">Incident Type</h4>
+          </div>
+          
+          
+          <div className='mb-6'>
+            <h4 className="text-blue-1300 font-semibold text-sm leading-5 flex items-center gap-2"><Image src="/images/card-gray.svg" width={16} height={16} alt="" />Action Details</h4>
+            <div className='mt-3'>
+              <label className='text-blue-1300 mb-1.5 font-medium text-sm leading-5 flex items-center'>Freeze Duration <span className='text-red-1300'>*</span></label>
+              <CustomSelect
+                className='shadow-57xl'
+                options={[
+                  { label: 'Select duration', value: 'Select duration' },
+                  { label: '2000', value: '2000' }
+                ]}
+              />
+            </div>
+            <div className='mt-3'>
+              <label className='text-blue-1300 mb-1.5 font-medium text-sm leading-5 flex items-center'>Reason for Freeze<span className='text-red-1300'>*</span></label>
+              <RadioGroup by="name" value={selected} onChange={setSelected} aria-label="Server size" className="">
+                {plans.map((plan) => (
+                  <Radio
+                    key={plan.name}
+                    value={plan}
+                    className="group relative flex cursor-pointer border border-solid border-gray-1000 rounded-lg bg-white px-3 py-3.5 transition focus:not-data-focus:outline-none data-checked:bg-white/50 data-focus:outline data-focus:outline-white mb-4 last:mb-0"
+                  >
+                    <div className="flex w-full items-center gap-3">
+                      <div className="border border-solid border-blue-1400 rounded-full w-4 h-4 flex items-center transition group-data-checked:bg-blue-1400"></div>
+                      <p className="text-blue-1300 font-normal text-sm leading-5">{plan.name}</p>
+
+                    </div>
+                  </Radio>
+                ))}
+              </RadioGroup>
+            </div>
+            <div className='mt-4'>
+              <label className='text-blue-1300 mb-1.5 font-medium text-sm leading-5 flex items-center gap-1.5'>Internal Notes</label>
+              <textarea className='text-gray-1200 placeholder:text-gray-1200 h-20 font-normal text-sm leading-5 px-3.5 py-2.5 bg-white-1100 border border-solid border-gray-1000 rounded-md w-full' placeholder='Add any additional details for the audit log...'></textarea>
+              <p className='text-gray-1200 font-normal text-xs leading-4 mt-1'>These notes will be stored in the audit log.</p>
+            </div>
+            <div className='mt-6 flex items-start gap-2 rounded-lg bg-yellow1800/50 border border-solid border-yellow-1100/20 p-4'>
+              <span className='flex items-center justify-center w-5 h-5'><Image src="/images/warning-yellow.svg" width={20} height={22} alt="" /></span>
+              <div className='flex-1 w-full'>
+                <h4 className='text-blue-1300 font-medium text-sm leading-5'>Impact Summary</h4>
+                <p className='text-gray-1200 font-normal text-sm leading-5 mt-1'>
+                  Freezing this card will decline all incoming transactions and
+                  digital wallet payments (Apple/Google Pay) immediately.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="px-6 py-4 bg-gray-1600/50 border-t border-solid border-gray-1000">
+            <ul className="flex items-center justify-end gap-3">
+              <li>
+                <button
+                  onClick={() => setIsOpen4(false)}
+                  className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
+                >
+                  Cancel
+                </button>
+              </li>
+              <li>
+                <button
+                  className="cursor-pointer px-4 flex opacity-50 items-center justify-center w-full hover:bg-yellow-1100/90 hover:border-yellow-1100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-yellow-1100 border-solid border-yellow-1100 h-10"
+                >
+                  Confirm Freeze
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </Modal>
     </div>
