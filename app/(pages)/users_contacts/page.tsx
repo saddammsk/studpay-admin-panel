@@ -2,12 +2,14 @@
 'use client'
 import TopBar from "@/app/components/common/TopBar";
 import AlertLedgerTable from "@/app/components/AlertLedgerTable";
+import Image from "next/image";
+import SafetyList from "@/app/components/SafetyList";
 function page() {
      return (
           <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
                <TopBar></TopBar>
                <div className="p-6">
-                    <div className="bg-blue-1000 mb-6 flex gap-4 flex-wrap items-center justify-between py-3 px-6">
+                    <div className="bg-blue-1000 flex gap-4 flex-wrap items-center justify-between py-3 px-6">
                          <div className="flex items-center gap-3">
                               <img src="/images/shield-icon3.svg" className="w-6 h-6" alt="" />
                               <h5 className="text-lg font-bold leading-7 text-white-1100">StudSafe</h5>
@@ -24,28 +26,25 @@ function page() {
                               </div>
                          </div>
                     </div>
-                    <div className="bg-red-2300 mb-4  flex-wrap gap-4 rounded-lg border border-red-2400 py-3 px-4 flex items-center justify-between">
+                    <div className="bg-white mb-4 pt-8 flex-wrap gap-4 py-3 px-4">
                          <div className="flex items-center gap-3">
-                              <img src="/images/caution-icon4.svg" alt="" />
-                              <p className="text-sm font-bold leading-5 text-red-2200">2 Critical SOS alerts requiring immediate attention</p>
+                              <img src="/images/shield-dark.svg" className="w-4 h-4" alt="" />
+                              <p className="text-sm font-bold leading-5 text-black-2900">Global User Safety List</p>
                          </div>
-                         <ul className="flex gap-2">
-                              <li className="text-xs font-bold rounded leading-4 text-red-2200 px-1.5 py-[1px] bg-gray-3500 border border-red-2200/30">
-                                   INC-2401
-                              </li>
-                              <li className="text-xs font-bold rounded leading-4 text-red-2200 px-1.5 py-[1px] bg-gray-3500 border border-red-2200/30">
-                                   INC-2402
-                              </li>
-                         </ul>
-                    </div>
-                    <div className="border border-gray-1000 mt-4 bg-white rounded-xl shadow-14xl">
-                         <div className="py-4 px-5 flex items-center justify-between flex-wrap gap-5">
-                              <div>
-                                   <h6 className="text-base font-bold leading-6 text-black-2600">Central Alert Ledger</h6>
-                                   <p className="text-sm font-normal leading-5 text-gray-1200">6 total incidents · Click a row for details</p>
+                         <form action="" className="mt-2 mb-7">
+                              <div className="relative">
+                                   <input type="text" className='text-sm font-normal font-neulis-sans text-gray-2300 placeholder:text-gray-2300 px-4 pl-10 h-9 bg-gray-1800 border border-gray-5600 rounded-md w-full outline-0' placeholder='Search students…' />
+                                   <div className='absolute top-1/2 -translate-y-1/2 left-3'>
+                                        <Image
+                                             src="/images/search-icon.svg"
+                                             width='16'
+                                             height='16'
+                                             alt=""
+                                        />
+                                   </div>
                               </div>
-                         </div>
-                         <AlertLedgerTable></AlertLedgerTable>
+                         </form>
+                         <SafetyList></SafetyList>
                     </div>
                </div>
           </div>
