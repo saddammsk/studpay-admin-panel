@@ -105,7 +105,7 @@ export default function FinanceAnalytics() {
                                         <div className="text-xs font-medium leading-4 rounded-full text-blue-1800 bg-green-1400 py-1 px-2">7</div>
                                    </div>
                               </div>
-                              <Link href="/" className="flex items-center justify-center rounded-md border border-blue-1800 bg-white flex gap-4 text-sm font-medium leading-5 text-blue-1800 py-2.5">View All Alerts <img src="/images/timer-icon2.svg" alt="" /></Link>
+                              <Link href="/" className="flex items-center justify-center rounded-md border border-blue-1800 bg-white gap-4 text-sm font-medium leading-5 text-blue-1800 py-2.5">View All Alerts <img src="/images/timer-icon2.svg" alt="" /></Link>
                          </div>
                     </div>
                     <div className="2xl:w-6/12 lg:w-[48%]  w-full">
@@ -114,20 +114,20 @@ export default function FinanceAnalytics() {
                               <div className="text-center mb-2">
                                    <img src="/images/trendup-arrow2.svg" className="inline-block" alt="" />
                               </div>
-                              <div className="space-y-2 max-w-[200px] mx-auto">
-                                   <div className="flex items-center justify-between px-[17px] py-[9px] bg-white rounded border border-gray1600">
+                              <div className="space-y-2 max-w-50 mx-auto">
+                                   <div className="flex items-center justify-between px-4.25 py-2.25 bg-white rounded border border-gray1600">
                                         <h6 className="text-sm font-normal leading-5 text-gray-2500">Canada</h6>
                                         <span className="blok text-sm font-semibold leading-5 text-green-1500">94.2%</span>
                                    </div>
-                                   <div className="flex items-center justify-between px-[17px] py-[9px] bg-white rounded border border-gray1600">
+                                   <div className="flex items-center justify-between px-4.25 py-2.25 bg-white rounded border border-gray1600">
                                         <h6 className="text-sm font-normal leading-5 text-gray-2500">Australia</h6>
                                         <span className="blok text-sm font-semibold leading-5 text-green-1500">91.8%</span>
                                    </div>
-                                   <div className="flex items-center justify-between px-[17px] py-[9px] bg-white rounded border border-gray1600">
+                                   <div className="flex items-center justify-between px-4.25 py-2.25 bg-white rounded border border-gray1600">
                                         <h6 className="text-sm font-normal leading-5 text-gray-2500">United Kingdom</h6>
                                         <span className="blok text-sm font-semibold leading-5 text-yellow-1100">87.5%</span>
                                    </div>
-                                   <div className="flex items-center justify-between px-[17px] py-[9px] bg-white rounded border border-gray1600">
+                                   <div className="flex items-center justify-between px-4.25 py-2.25 bg-white rounded border border-gray1600">
                                         <h6 className="text-sm font-normal leading-5 text-gray-2500">Spain</h6>
                                         <span className="blok text-sm font-semibold leading-5 text-yellow-1100">83.1%</span>
                                    </div>
@@ -190,7 +190,7 @@ export default function FinanceAnalytics() {
                                              <p className="text-xs font-normal leading-4 text-gray-2400">$45,000 • Canada</p>
                                         </div>
                                         <div className="text-end">
-                                             <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-yellow-1100 py-1 px-2 rounded-full ">Pending</div>
+                                             <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-yellow-1100 py-1 px-2 ">Pending</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
                                                        <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>
@@ -241,7 +241,7 @@ export default function FinanceAnalytics() {
                                              <p className="text-xs font-normal leading-4 text-gray-2400">$45,000 • Canada</p>
                                         </div>
                                         <div className="text-end">
-                                             <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-yellow-1100 py-1 px-2 rounded-full ">Pending</div>
+                                             <div className="text-xs mb-3 font-medium leading-4 bg-green-1400  text-yellow-1100 py-1 px-2 rounded-full ">Pending</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
                                                        <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>

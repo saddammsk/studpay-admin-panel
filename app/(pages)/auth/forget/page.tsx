@@ -65,33 +65,12 @@ const ForgetPasswordPage = () => {
     }
   };
 
-<<<<<<< HEAD
   const handleVerifyCode = async () => {
     const err = validateCode(code);
     if (err) {
       dispatch(setError(err));
       return;
     }
-=======
-     return (
-          <div className='h-screen overflow-auto scroll-hide pb-4'>
-               <div className="flex md:min-h-[calc(100vh-40px)] min-h-[calc(100vh-80px)] items-center justify-center">
-                    <div className='max-w-md px-4 w-full mx-auto'>
-                         <div className="text-center">
-                              <img src="/images/logo-2.svg" className='inline-block' alt="" />
-                              <p className="text-base font-normal leading-6 text-gray-1900">Admin Portal</p>
-                         </div>
-                         <div className='bg-white my-6 rounded-2xl shadow-7xl p-8'>
-                              <ul className='flex items-center justify-center gap-2 mb-8'>
-                                   <li className='bg-blue-1500 w-2 h-2 rounded-full block'></li>
-                                   <li className='bg-gray-2000 w-8 h-0.5 rounded-full block'></li>
-                                   <li className='bg-gray-2000 w-2 h-2 rounded-full block'></li>
-                                   <li className='bg-gray-2000 w-8 h-0.5 rounded-full block'></li>
-                                   <li className='bg-gray-2000 w-2 h-2 rounded-full block'></li>
-                                   <li className='bg-gray-2000 w-8 h-0.5 rounded-full block'></li>
-                                   <li className='bg-gray-2000 w-2 h-2 rounded-full block'></li>
-                              </ul>
->>>>>>> f9e7e26dbeb51927ff32e6d606ad9e561c799800
 
     dispatch(setLoading(true));
     try {
@@ -137,8 +116,8 @@ const ForgetPasswordPage = () => {
 
   return (
     <div className="h-screen overflow-auto scroll-hide pb-4">
-      <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
-        <div className="max-w-[448px] px-4 w-full mx-auto">
+      <div className="flex md:min-h-[calc(100vh-40px)] min-h-[calc(100vh-80px)] items-center justify-center">
+        <div className="max-w-md px-4 w-full mx-auto">
           <div className="text-center">
             <img src="/images/logo-2.svg" className="inline-block" alt="" />
             <p className="text-base font-normal leading-6 text-gray-1900">
@@ -324,7 +303,7 @@ const ForgetPasswordPage = () => {
             </form>
           </div>
 
-          <div className="bg-white rounded-lg flex items-center mb-6 justify-center py-[15px] gap-3 text-xs text-gray-1200">
+          <div className="bg-white rounded-lg flex items-center mb-6 justify-center py-3.75 gap-3 text-xs text-gray-1200">
             <img src="/images/shield-blue.svg" alt="" />
             256-bit SSL encrypted
           </div>

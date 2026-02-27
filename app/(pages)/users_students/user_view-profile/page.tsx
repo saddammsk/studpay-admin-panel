@@ -38,7 +38,7 @@ const menuItems = [
   },
   {
     name: "Transactions",
-    href: "/cards",
+    href: "user_transactions",
     icon: "../images/transfers-icon.svg",
     iconActive: "../images/avi-card-blue.svg",
     active: false,

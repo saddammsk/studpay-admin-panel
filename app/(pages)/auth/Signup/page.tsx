@@ -102,10 +102,10 @@ const isFormIncomplete =
 
   return (
     <div className="h-screen overflow-auto scroll-hide pb-4">
-      <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
-        <div className="max-w-[556px] px-4 w-full mx-auto">
+      <div className="flex md:min-h-[calc(100vh-40px)] min-h-[calc(100vh-80px)] items-center justify-center">
+        <div className="max-w-139 px-4 w-full mx-auto">
           <div className="bg-white my-6 rounded-2xl shadow-lg md:p-8 p-4 border border-gray-100">
-            <div className="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+            <div className="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center bg-linear-to-br from-blue-50 to-blue-100">
               <img
                 src="/images/shield-icon4.svg"
                 alt="Security"
@@ -143,7 +143,7 @@ const isFormIncomplete =
                   <div className="text-center mb-8">
                     <h4 className="text-2xl font-bold leading-8 text-gray-900 mb-2">
                       Welcome to the Team,{' '}
-                      <span className="bg-gradient-to-r from-blue-1600 to-blue-1600 bg-clip-text text-transparent">
+                      <span className="bg-linear-to-r from-blue-1600 to-blue-1600 bg-clip-text text-transparent">
                         Sarah Ahmed
                       </span>
                       !
