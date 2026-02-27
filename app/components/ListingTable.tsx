@@ -130,7 +130,7 @@ export default function ListingTable() {
      return (
           <div className="bg-white border border-gray1600 rounded-xl shadow-4xl shadow-9xl">
                <div className="p-4">
-                    <h6 className="text-lg font-bold text-blue-1300 leading-7 mb-4">Listings</h6>
+                    <h6 className="text-lg font-bold text-black-1600 leading-7 mb-4">Listings</h6>
                     <div className='flex-wrap items-center flex gap-4'>
                          <div className='w-full 2xl:flex-1'>
                               <InputField
@@ -230,7 +230,7 @@ export default function ListingTable() {
 
                                         <td className="px-4 py-4">
                                              <div className="flex flex-col">
-                                                  <span className="text-blue-1300 text-sm">
+                                                  <span className="text-black-1600 text-sm">
                                                        {item.unit}
                                                   </span>
                                                   <span className="text-gray-1900 text-sm">

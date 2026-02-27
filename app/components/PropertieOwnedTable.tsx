@@ -81,7 +81,7 @@ export default function PropertieOwnedTable() {
             </h4>
             <p className='text-gray-1200 font-normal text-sm leading-5'>4 properties registered</p>
           </div>
-          <Link href={"#"} className='text-sm font-normal leading-5 text-blue-1300 h-10 px-3 flex items-center justify-center gap-2 bg-gray-1600 border border-gray-1600 transition-all duration-500 ease-in-out hover:bg-gray-1600 rounded-[10px]'>View All Properties</Link>
+          <Link href={"#"} className='text-sm font-normal leading-5 text-black-1600 h-10 px-3 flex items-center justify-center gap-2 bg-gray-1600 border border-gray-1600 transition-all duration-500 ease-in-out hover:bg-gray-1600 rounded-[10px]'>View All Properties</Link>
         </div>
 
         <div className="overflow-x-auto">
@@ -99,10 +99,10 @@ export default function PropertieOwnedTable() {
             <tbody>
               {payments.map((item) => (
                 <tr key={item.id} className="group verti border-b border-gray1600 hover:bg-gray1700/50 transition last:border-b-0">
-                  <td className="px-4 py-6 font-normal font-inter text-sm leading-5 text-blue-1300">{item.name}</td>
-                  <td className="px-4 py-6 font-normal font-inter text-base leading-6 text-blue-1300">{item.unit}</td>
+                  <td className="px-4 py-6 font-normal font-inter text-sm leading-5 text-black-1600">{item.name}</td>
+                  <td className="px-4 py-6 font-normal font-inter text-base leading-6 text-black-1600">{item.unit}</td>
                   <td className="px-4 py-6 font-normal font-inter text-sm leading-5 text-gray-1200">{item.occupancy}</td>
-                  <td className="px-4 py-6 font-normal font-inter text-base leading-6 text-blue-1300">{item.MonthlyRevenue}</td>
+                  <td className="px-4 py-6 font-normal font-inter text-base leading-6 text-black-1600">{item.MonthlyRevenue}</td>
                   <td className="px-4 py-6">
                     <span
                       className={`px-2.75 h-5.5 inline-flex items-center justify-center rounded-full font-inter border border-solid text-xs font-normal ${statusConfig[item.status].classes}`}
@@ -112,7 +112,7 @@ export default function PropertieOwnedTable() {
                   </td>
                   <td className="px-4 py-6">
                     <Link href={"#"}
-                      className="text-blue-1300 text-sm font-normal leading-5 inline-flex items-center"
+                      className="text-black-1600 text-sm font-normal leading-5 inline-flex items-center"
                     >
                       {item.action}
                     </Link>

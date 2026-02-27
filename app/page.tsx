@@ -28,7 +28,7 @@ export default function DashboardPage() {
           <div className="5xl:max-w-116.5 max-w-full w-full border border-solid border-gray-3600 rounded-lg bg-white">
             <div className="flex items-center justify-between p-3">
               <div className="flex items-center gap-2 px-1.5">
-                <p className="text-sm font-semibold leading-5 text-blue-1300">
+                <p className="text-sm font-semibold leading-5 text-black-1600">
                   Live Events
                 </p>
                 <p className="gap-1 bg-lightgreen17/10 px-1.5 rounded-full h-4.75 flex items-center">
@@ -38,7 +38,7 @@ export default function DashboardPage() {
                   </span>
                 </p>
               </div>
-              <p className="text-blue-1300 text-xs font-medium leading-4">Pause</p>
+              <p className="text-black-1600 text-xs font-medium leading-4">Pause</p>
             </div>
             <div className="h-87.5 overflow-x-auto">
               <div className="flex items-center justify-between p-3 border-t border-solid border-gray-3600">
@@ -284,7 +284,7 @@ export default function DashboardPage() {
                   width={16}
                   height={16}
                 />
-                <p className="text-sm font-semibold leading-5 text-blue-1300">
+                <p className="text-sm font-semibold leading-5 text-black-1600">
                   4-Eyes Approval Queue
                 </p>
               </div>
@@ -296,12 +296,12 @@ export default function DashboardPage() {
                   <li><span className="text-red1600 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center bg-red1600/10 rounded h-4.75 px-1.5 uppercase">refund</span></li>
                   <li><span className="text-red1600 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center h-4.75 uppercase">refund</span></li>
                 </ul>
-                <h4 className="mt-1 text-blue-1300 font-inter font-medium text-xs leading-4">Refund Request</h4>
+                <h4 className="mt-1 text-black-1600 font-inter font-medium text-xs leading-4">Refund Request</h4>
                 <p className="mt-0.5 text-gray-1900 font-inter font-normal text-[11px] leading-4">Full refund for failed AVI application</p>
                 <ul className="mt-1.5 flex items-center gap-3">
                   <li className="text-gray-1900 font-inter font-normal text-[10px] leading-4">By: Sarah K.</li>
                   <li className="text-gray-1900 font-inter font-normal text-[10px] leading-4">•</li>
-                  <li className="text-blue-1300 font-inter font-medium text-[10px] leading-4">€450</li>
+                  <li className="text-black-1600 font-inter font-medium text-[10px] leading-4">€450</li>
                   <li className="text-gray-1900 font-inter font-normal text-[10px] leading-4">•</li>
                   <li className="text-gray-1900 font-inter font-normal text-[10px] leading-4 flex items-center gap-0.5">
                     <Image
@@ -340,7 +340,7 @@ export default function DashboardPage() {
                 <ul className="flex items-center gap-3">
                   <li><span className="text-yellow-1100 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center bg-yellow-1100/10 rounded h-4.75 px-1.5 uppercase">limit change</span></li>
                 </ul>
-                <h4 className="mt-1 text-blue-1300 font-inter font-medium text-xs leading-4">Limit Increase</h4>
+                <h4 className="mt-1 text-black-1600 font-inter font-medium text-xs leading-4">Limit Increase</h4>
                 <p className="mt-0.5 text-gray-1900 font-inter font-normal text-[11px] leading-4">Monthly transfer limit → €50,000</p>
                 <ul className="mt-1.5 flex items-center gap-3">
                   <li className="text-gray-1900 font-inter font-normal text-[10px] leading-4">By: Michael B.</li>
@@ -383,7 +383,7 @@ export default function DashboardPage() {
                   <li><span className="text-purple-5000 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center bg-purple-5000/10 rounded h-4.75 px-1.5 uppercase">account unlock</span></li>
                   <li><span className="text-red1600 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center h-4.75 uppercase">URGENT</span></li>
                 </ul>
-                <h4 className="mt-1 text-blue-1300 font-inter font-medium text-xs leading-4">Account Unlock</h4>
+                <h4 className="mt-1 text-black-1600 font-inter font-medium text-xs leading-4">Account Unlock</h4>
                 <p className="mt-0.5 text-gray-1900 font-inter font-normal text-[11px] leading-4">Locked due to suspicious activity</p>
                 <ul className="mt-1.5 flex items-center gap-3">
                   <li className="text-gray-1900 font-inter font-normal text-[10px] leading-4">By: Chen W.</li>
@@ -430,7 +430,7 @@ export default function DashboardPage() {
                   width={16}
                   height={16}
                 />
-                <p className="text-sm font-semibold leading-5 text-blue-1300">
+                <p className="text-sm font-semibold leading-5 text-black-1600">
                   Risk & Fraud Alerts
                 </p>
               </div>
@@ -451,12 +451,12 @@ export default function DashboardPage() {
                     <li><span className="text-white font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center bg-red1600 rounded h-4.75 px-1.5 uppercase">critical</span></li>
                     <li><span className="text-gray-1900 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center h-4.75 uppercase">USR-4521</span></li>
                   </ul>
-                  <h4 className="mt-1 text-blue-1300 font-inter font-medium text-xs leading-4">Potential Sanction Match</h4>
+                  <h4 className="mt-1 text-black-1600 font-inter font-medium text-xs leading-4">Potential Sanction Match</h4>
                   <p className="mt-0.5 text-gray-1900 font-inter font-normal text-[11px] leading-4">Name match against OFAC SDN list - 87% confidence</p>
                   <div className="flex items-center justify-between">
                     <ul className="mt-1.5 flex items-center gap-2">
                       <li>
-                        <Link href={"#"} className="bg-gray-1500 border border-solid border-gray-3600 text-blue-1300 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center h-6 px-2 gap-3">
+                        <Link href={"#"} className="bg-gray-1500 border border-solid border-gray-3600 text-black-1600 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center h-6 px-2 gap-3">
                           <Image
                             src={"/images/user-plus-icon.svg"}
                             alt=""
@@ -468,7 +468,7 @@ export default function DashboardPage() {
                         </Link>
                       </li>
                       <li>
-                        <Link href={"#"} className="text-blue-1300 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center px-2 py-1">
+                        <Link href={"#"} className="text-black-1600 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center px-2 py-1">
                           View Details
                         </Link>
                       </li>
@@ -494,12 +494,12 @@ export default function DashboardPage() {
                     <li><span className="text-white font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center bg-yellow-1100 rounded h-4.75 px-1.5 uppercase">high</span></li>
                     <li><span className="text-gray-1900 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center h-4.75 uppercase">USR-3892</span></li>
                   </ul>
-                  <h4 className="mt-1 text-blue-1300 font-inter font-medium text-xs leading-4">High Velocity Alert</h4>
+                  <h4 className="mt-1 text-black-1600 font-inter font-medium text-xs leading-4">High Velocity Alert</h4>
                   <p className="mt-0.5 text-gray-1900 font-inter font-normal text-[11px] leading-4">15 transactions in 10 minutes - €12,400 total</p>
                   <div className="flex items-center justify-between">
                     <ul className="mt-1.5 flex items-center gap-2">
                       <li>
-                        <Link href={"#"} className="bg-gray-1500 border border-solid border-gray-3600 text-blue-1300 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center h-6 px-2 gap-3">
+                        <Link href={"#"} className="bg-gray-1500 border border-solid border-gray-3600 text-black-1600 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center h-6 px-2 gap-3">
                           <Image
                             src={"/images/user-plus-icon.svg"}
                             alt=""
@@ -511,7 +511,7 @@ export default function DashboardPage() {
                         </Link>
                       </li>
                       <li>
-                        <Link href={"#"} className="text-blue-1300 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center px-2 py-1">
+                        <Link href={"#"} className="text-black-1600 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center px-2 py-1">
                           View Details
                         </Link>
                       </li>
@@ -537,12 +537,12 @@ export default function DashboardPage() {
                     <li><span className="text-gray-1900 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center bg-gray1700 rounded h-4.75 px-1.5 uppercase">medium</span></li>
                     <li><span className="text-gray-1900 font-inter font-medium text-[10px] leading-3.75 inline-flex items-center justify-center h-4.75 uppercase">USR-7721</span></li>
                   </ul>
-                  <h4 className="mt-1 text-blue-1300 font-inter font-medium text-xs leading-4">Unusual Activity</h4>
+                  <h4 className="mt-1 text-black-1600 font-inter font-medium text-xs leading-4">Unusual Activity</h4>
                   <p className="mt-0.5 text-gray-1900 font-inter font-normal text-[11px] leading-4">First-time large transfer to high-risk jurisdiction</p>
                   <div className="flex items-center justify-between">
                     <ul className="mt-1.5 flex items-center gap-2">
                       <li>
-                        <Link href={"#"} className="bg-gray-1500 border border-solid border-gray-3600 text-blue-1300 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center h-6 px-2 gap-3">
+                        <Link href={"#"} className="bg-gray-1500 border border-solid border-gray-3600 text-black-1600 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center h-6 px-2 gap-3">
                           <Image
                             src={"/images/user-plus-icon.svg"}
                             alt=""
@@ -554,7 +554,7 @@ export default function DashboardPage() {
                         </Link>
                       </li>
                       <li>
-                        <Link href={"#"} className="text-blue-1300 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center px-2 py-1">
+                        <Link href={"#"} className="text-black-1600 font-inter font-medium text-[10px] leading-4 rounded-md inline-flex items-center justify-center px-2 py-1">
                           View Details
                         </Link>
                       </li>

@@ -182,7 +182,7 @@ function LeadsTable() {
                                 {/* Student */}
                                 <td className="px-4 py-4">
                                     <div className="flex flex-col">
-                                        <span className="text-blue-1300 text-sm">
+                                        <span className="text-black-1600 text-sm">
                                             {item.name}
                                         </span>
                                         <span className="text-gray-1900 text-sm">

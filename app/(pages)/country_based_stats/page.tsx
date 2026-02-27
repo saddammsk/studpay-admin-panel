@@ -49,7 +49,7 @@ export default function FinanceAnalytics() {
                             </div>
                         </div>
                         <h6 className="text-sm leading-5 font-normal text-gray-1200">Active Regions</h6>
-                        <span className="block text-2xl font-bold leading-7 text-blue-1300">24</span>
+                        <span className="block text-2xl font-bold leading-7 text-black-1600">24</span>
                         <h6 className="text-xs leading-4 font-normal text-gray-1200"> Countries with live operations</h6>
                     </div>
                     <div className="card-bg1 p-5 bg-[url(/images/card-bg2.png)] bg-cover bg-no-repeat rounded-xl p-5">
@@ -62,7 +62,7 @@ export default function FinanceAnalytics() {
                             </div>
                         </div>
                         <h6 className="text-sm leading-5 font-normal text-gray-1200">Top Growth Market</h6>
-                        <span className="block text-2xl font-bold leading-7 text-blue-1300">Germany</span>
+                        <span className="block text-2xl font-bold leading-7 text-black-1600">Germany</span>
                         <h6 className="text-xs leading-4 font-normal text-gray-1200"> +34% week-on-week users</h6>
                     </div>
                     <div className="card-bg1 p-5 bg-[url(/images/card-bg3.png)] bg-cover bg-no-repeat rounded-xl p-5">
@@ -72,7 +72,7 @@ export default function FinanceAnalytics() {
                             </div>
                         </div>
                         <h6 className="text-sm leading-5 font-normal text-gray-1200">Regional Risk Index</h6>
-                        <span className="block text-2xl font-bold leading-7 text-blue-1300">Medium</span>
+                        <span className="block text-2xl font-bold leading-7 text-black-1600">Medium</span>
                         <h6 className="text-xs leading-4 font-normal text-gray-1200"> 3 high-risk new regions</h6>
                     </div>
                     <div className="card-bg1 p-5 bg-[url(/images/card-bg4.png)] bg-cover bg-no-repeat rounded-xl p-5">
@@ -82,7 +82,7 @@ export default function FinanceAnalytics() {
                             </div>
                         </div>
                         <h6 className="text-sm leading-5 font-normal text-gray-1200">Cross-Border Volume</h6>
-                        <span className="block text-2xl font-bold leading-7 text-blue-1300">$2.4M</span>
+                        <span className="block text-2xl font-bold leading-7 text-black-1600">$2.4M</span>
                         <h6 className="text-xs leading-4 font-normal text-gray-1200"> Total money moving between countries</h6>
                     </div>
                 </div>

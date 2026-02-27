@@ -21,7 +21,7 @@ function page() {
                <TopBar></TopBar>
                <div className="flex xl:flex-nowrap flex-wrap xl:gap-0 gap-4 items-center bg-white justify-between 2xl:p-6 p-4">
                     <div className="xl:flex-1">
-                         <h6 className="text-xl font-bold leading-7 text-blue-1300">Finance Analytics</h6>
+                         <h6 className="text-xl font-bold leading-7 text-black-1600">Finance Analytics</h6>
                          <p className="text-sm font-normal leading-5 text-gray-1900">Executive Dashboard • Real-time Insights</p>
                     </div>
                     <form action="" className="flex flex-wrap items-center gap-3">
@@ -71,7 +71,7 @@ function page() {
                                              <img src="/images/user-blue2.svg" className="w-5 h-5" alt="" />
                                         </div>
                                         <span className="block text-sm font-medium leading-5 text-gray-1200 mb-1">DAU/MAU Ratio</span>
-                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1 leading-9 text-blue-1300">32.5%</h4>
+                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1 leading-9 text-black-1600">32.5%</h4>
                                    </div>
                                    <div>
                                         <SparklineChart2
@@ -94,7 +94,7 @@ function page() {
                                              <img src="/images/bookmark.svg" className="w-5 h-5" alt="" />
                                         </div>
                                         <span className="block text-sm font-medium leading-5 text-gray-1200 mb-1">Avg Session Depth</span>
-                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1  leading-9 text-blue-1300">4.5 screens</h4>
+                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1  leading-9 text-black-1600">4.5 screens</h4>
                                    </div>
                                    <div>
                                         <SparklineChart2
@@ -117,7 +117,7 @@ function page() {
                                              <img src="/images/caution-icon.svg" className="w-5 h-5" alt="" />
                                         </div>
                                         <span className="block text-sm font-medium leading-5 text-gray-1200 mb-1">Churn Risk</span>
-                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1  leading-9 text-blue-1300">6.2%</h4>
+                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1  leading-9 text-black-1600">6.2%</h4>
                                    </div>
                                    <div>
                                         <SparklineChart2
@@ -140,7 +140,7 @@ function page() {
                                              <img src="/images/heart-red.svg" className="w-5 h-5" alt="" />
                                         </div>
                                         <span className="block text-sm font-medium leading-5 text-gray-1200 mb-1">NPS Score</span>
-                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1  leading-9 text-blue-1300">72</h4>
+                                        <h4 className="4xl:text-[30px] text-[17px] font-bold mt-1  leading-9 text-black-1600">72</h4>
                                    </div>
                                    <div>
                                         <SparklineChart2
@@ -160,7 +160,7 @@ function page() {
                     <div className="bg-white border mb-8 border-gray-1000/50 shadow-13xl rounded-2xl 4xl:p-6 pr-[18px] p-3">
                          <div className="flex items-center justify-between flex-wrap gap-4">
                               <div>
-                                   <h4 className="text-lg font-bold leading-6  text-blue-1300">User Journey Funnel</h4>
+                                   <h4 className="text-lg font-bold leading-6  text-black-1600">User Journey Funnel</h4>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Conversion flow from sign-up to purchase</p>
                               </div>
                               <div className="flex items-center gap-6">
@@ -197,20 +197,20 @@ function page() {
                     </div>
                     <div className="grid xl:grid-cols-2 grid-cols-1 mb-8 gap-6">
                          <div className="bg-white border  border-gray-1000/50 shadow-13xl rounded-2xl 4xl:p-6 pr-[18px] p-3">
-                              <h6 className="text-lg font-bold leading-7 text-blue-1300">Feature Adoption Matrix</h6>
+                              <h6 className="text-lg font-bold leading-7 text-black-1600">Feature Adoption Matrix</h6>
                               <p className="text-sm font-normal leading-5 text-gray-1900">Usage frequency vs. engagement time</p>
                               <UsageBubbleChart></UsageBubbleChart>
                          </div>
                          <div className="bg-white border  border-gray-1000/50 shadow-13xl rounded-2xl 4xl:p-6 pr-[18px] p-3">
                               <div className="bg-white relative w-fit">
-                                   <h6 className="text-lg font-bold leading-7 text-blue-1300">Cohort Retention</h6>
+                                   <h6 className="text-lg font-bold leading-7 text-black-1600">Cohort Retention</h6>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Monthly retention by signup cohort</p>
                               </div>
                               <CohortHeatmap></CohortHeatmap>
                               <div className="border-t border-gray-1000 mt-6 pt-4">
                                    <div className="bg-lightgreen17/5 border border-lightgreen17/20 rounded-xl flex items-center gap-3 p-3">
                                         <span className="w-2.5 h-2.5 rounded-full block bg-lightgreen17"></span>
-                                        <h6 className="text-sm font-normal leading-5 text-blue-1300"><span className="font-bold">March 2024</span> cohort shows strongest retention at  after 3 months</h6>
+                                        <h6 className="text-sm font-normal leading-5 text-black-1600"><span className="font-bold">March 2024</span> cohort shows strongest retention at  after 3 months</h6>
                                    </div>
                               </div>
                          </div>
@@ -218,7 +218,7 @@ function page() {
                     <div className="bg-white border border-gray-1000/50 shadow-13xl rounded-2xl 4xl:p-6 pr-[18px] p-3">
                          <div className="flex items-center justify-between  flex-wrap gap-4">
                               <div>
-                                   <h4 className="text-lg font-bold leading-6  text-blue-1300">Live Activity Map</h4>
+                                   <h4 className="text-lg font-bold leading-6  text-black-1600">Live Activity Map</h4>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Real-time student activity by region</p>
                               </div>
                               <div className="flex items-center gap-6">
@@ -240,11 +240,11 @@ function page() {
                               <SoftAreaChart></SoftAreaChart>
                               <div className="border-t border-gray-1000 pt-6 mt-8 grid md:grid-cols-3 gap-6">
                                    <div className="card-bg4 rounded-xl border border-blue1400/10 text-center py-4">
-                                        <h4 className="text-2xl font-bold leading-8 text-blue-1300 mb-1">8.0K</h4>
+                                        <h4 className="text-2xl font-bold leading-8 text-black-1600 mb-1">8.0K</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Active Now</p>
                                    </div>
                                    <div className="card-bg5 rounded-xl border border-blue1400/10 text-center py-4">
-                                        <h4 className="text-2xl font-bold leading-8 text-blue-1300 mb-1">12</h4>
+                                        <h4 className="text-2xl font-bold leading-8 text-black-1600 mb-1">12</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Countries</p>
                                    </div>
                                    <div className="card-bg3 rounded-xl border border-blue1400/10 text-center py-4">

@@ -182,7 +182,7 @@ function ManagementTable() {
                                         {/* Owner / Company */}
                                         <td className="px-4 py-4">
                                              <div className="flex flex-col">
-                                                  <span className="text-blue-1300  font-normal text-sm leading-5">
+                                                  <span className="text-black-1600  font-normal text-sm leading-5">
                                                        {item.company}
                                                   </span>
                                                   <span className="text-gray-1900 text-sm">
@@ -206,19 +206,19 @@ function ManagementTable() {
                                                        height={12}
                                                        className="rounded-sm"
                                                   />
-                                                  <span className="text-sm text-blue-1300">
+                                                  <span className="text-sm text-black-1600">
                                                        {item.country.name}
                                                   </span>
                                              </div>
                                         </td>
 
                                         {/* Properties */}
-                                        <td className="px-4 py-4 text-blue-1300 text-sm">
+                                        <td className="px-4 py-4 text-black-1600 text-sm">
                                              {item.properties}
                                         </td>
 
                                         {/* Listings */}
-                                        <td className="px-4 py-4 text-blue-1300 text-sm">
+                                        <td className="px-4 py-4 text-black-1600 text-sm">
                                              {item.listings}
                                         </td>
 

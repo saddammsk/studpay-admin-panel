@@ -64,7 +64,7 @@ export default function CircularProgress({
         </div>
       </div>
 
-      <div className="mt-3 text-blue-1300 text-sm">{label}</div>
+      <div className="mt-3 text-black-1600 text-sm">{label}</div>
 
       {sublabel && (
         <div className="text-xs text-gray-1900">{sublabel}</div>

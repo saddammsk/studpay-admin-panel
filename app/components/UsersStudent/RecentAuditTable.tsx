@@ -68,12 +68,12 @@ export default function KycDocumentTable() {
                 key={item.id}
                 className="border-b border-gray1600 hover:bg-gray1700/50 transition"
               >
-                <td className="p-3 text-blue-1300 font-inter font-normal text-sm leading-5">
+                <td className="p-3 text-black-1600 font-inter font-normal text-sm leading-5">
                   {item.name}
                 </td>
 
                 <td className="p-3">
-                  <span className="inline-flex items-center text-blue-1300 font-normal text-[10px] leading-5 gap-1 bg-gray-1600 border border-solid border-gray-3100 rounded-full px-2.5 h-6.5">
+                  <span className="inline-flex items-center text-black-1600 font-normal text-[10px] leading-5 gap-1 bg-gray-1600 border border-solid border-gray-3100 rounded-full px-2.5 h-6.5">
                     <Image
                       src={item.performed.icon}
                       width="16"

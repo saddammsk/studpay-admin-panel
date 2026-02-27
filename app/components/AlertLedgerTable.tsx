@@ -23,38 +23,34 @@ const severityConfig: Record<
      { wrapper: string; dot: string }
 > = {
      "P1 Critical": {
-          wrapper: "bg-red-500/10 text-red-600",
-          dot: "bg-red-600",
+          wrapper: "bg-gray-3500 border-red-2200/30 text-red-2200",
+          dot: "bg-red-2200",
      },
      "P2 High": {
-          wrapper: "bg-orange-500/10 text-orange-600",
-          dot: "bg-orange-600",
+          wrapper: "bg-gray-5700 border-yellow-2300/30 text-yellow-2300",
+          dot: "bg-yellow-2300",
      },
      "P3 Normal": {
-          wrapper: "bg-blue-500/10 text-blue-600",
-          dot: "bg-blue-600",
+          wrapper: "bg-gray-5700 border-blue-3400/30 text-blue-3400",
+          dot: "bg-blue-3400",
      },
 };
 
 const statusConfig: Record<
      Status,
-     { wrapper: string; dot: string }
+     { wrapper: string; }
 > = {
      New: {
-          wrapper: "bg-red-500/10 text-red-600",
-          dot: "bg-red-600",
+          wrapper: "bg-red-2200 text-white",
      },
      "In Progress": {
-          wrapper: "bg-orange-500/10 text-orange-600",
-          dot: "bg-orange-600",
+          wrapper: "bg-yellow-2300 text-white",
      },
      Resolved: {
-          wrapper: "bg-green-500/10 text-green-600",
-          dot: "bg-green-600",
+          wrapper: "bg-gray-5800 text-green-3300",
      },
      Closed: {
-          wrapper: "bg-gray-400/10 text-gray-500",
-          dot: "bg-gray-500",
+          wrapper: "bg-gray-5800 text-gray-2300",
      },
 };
 
@@ -64,8 +60,8 @@ const incidents: Incident[] = [
           severity: "P1 Critical",
           studentName: "Amara Diallo",
           studentCountry: "Senegal",
-          studentAvatar: "/images/student1.png",
-          studentFlag: "/images/flag-senegal.png",
+          studentAvatar: "/images/avatar-1.png",
+          studentFlag: "/images/🇸🇳.png",
           trigger: "SOS Manual",
           location: "Lyon, France",
           time: "3 min ago",
@@ -77,8 +73,8 @@ const incidents: Incident[] = [
           severity: "P1 Critical",
           studentName: "Yuki Tanaka",
           studentCountry: "Japan",
-          studentAvatar: "/images/student2.png",
-          studentFlag: "/images/flag-japan.png",
+          studentAvatar: "/images/avatar2.png",
+          studentFlag: "/images/🇯🇵.png",
           trigger: "SOS Manual",
           location: "Marseille, France",
           time: "7 min ago",
@@ -90,8 +86,8 @@ const incidents: Incident[] = [
           severity: "P2 High",
           studentName: "Carlos Mendes",
           studentCountry: "Brazil",
-          studentAvatar: "/images/student3.png",
-          studentFlag: "/images/flag-brazil.png",
+          studentAvatar: "/images/avatar3.png",
+          studentFlag: "/images/🇧🇷.png",
           trigger: "Inactivity Timeout",
           location: "Paris, France",
           time: "45 min ago",
@@ -103,8 +99,8 @@ const incidents: Incident[] = [
           severity: "P2 High",
           studentName: "Fatima Al-Hassan",
           studentCountry: "Morocco",
-          studentAvatar: "/images/student4.png",
-          studentFlag: "/images/flag-morocco.png",
+          studentAvatar: "/images/avatar-1.png",
+          studentFlag: "/images/🇲🇦.png",
           trigger: "Geofence Exit",
           location: "Toulouse, France",
           time: "1 hr ago",
@@ -116,8 +112,8 @@ const incidents: Incident[] = [
           severity: "P3 Normal",
           studentName: "Sofia Petrov",
           studentCountry: "Bulgaria",
-          studentAvatar: "/images/student6.png",
-          studentFlag: "/images/flag-bulgaria.png",
+          studentAvatar: "/images/avatar2.png",
+          studentFlag: "/images/🇧🇬.png",
           trigger: "Geofence Exit",
           location: "Nice, France",
           time: "3 hr ago",
@@ -132,22 +128,22 @@ export default function IncidentTable() {
                <table className="xl:w-full w-[1200px]">
                     <thead>
                          <tr className="border-b border-gray-200">
-                              <th className="px-5 py-3 bg-gray-100 text-left text-xs uppercase text-gray-500">
+                              <th className="px-5 py-3 text-left text-xs uppercase text-gray-2300">
                                    ID & Severity
                               </th>
-                              <th className="px-5 py-3 bg-gray-100 text-left text-xs uppercase text-gray-500">
+                              <th className="px-5 py-3 text-left text-xs uppercase text-gray-2300">
                                    Student
                               </th>
-                              <th className="px-5 py-3 bg-gray-100 text-left text-xs uppercase text-gray-500">
+                              <th className="px-5 py-3 text-left text-xs uppercase text-gray-2300">
                                    Trigger
                               </th>
-                              <th className="px-5 py-3 bg-gray-100 text-left text-xs uppercase text-gray-500">
+                              <th className="px-5 py-3 text-left text-xs uppercase text-gray-2300">
                                    Location
                               </th>
-                              <th className="px-5 py-3 bg-gray-100 text-left text-xs uppercase text-gray-500">
+                              <th className="px-5 py-3 text-left text-xs uppercase text-gray-2300">
                                    Assignee
                               </th>
-                              <th className="px-5 py-3 bg-gray-100 text-left text-xs uppercase text-gray-500">
+                              <th className="px-5 py-3 text-left text-xs uppercase text-gray-2300">
                                    Status
                               </th>
                          </tr>
@@ -158,11 +154,11 @@ export default function IncidentTable() {
                               <tr key={item.id} className="border-b border-gray-100">
                                    {/* ID & Severity */}
                                    <td className="px-5 py-4 text-sm">
-                                        <div className="flex items-center gap-3">
-                                             <span className="text-gray-800">{item.id}</span>
+                                        <div className="flex items-center gap-2">
+                                             <span className="text-black-2900 text-xs uppercase">{item.id}</span>
 
                                              <span
-                                                  className={`px-2 py-1 text-xs rounded-md inline-flex items-center gap-1.5 ${severityConfig[item.severity].wrapper}`}
+                                                  className={`px-2 py-0.5 border text-xs rounded-md inline-flex items-center gap-1.5 ${severityConfig[item.severity].wrapper}`}
                                              >
                                                   <span
                                                        className={`w-2 h-2 rounded-full ${severityConfig[item.severity].dot}`}
@@ -184,7 +180,7 @@ export default function IncidentTable() {
                                              />
 
                                              <div className="flex flex-col">
-                                                  <span className="text-sm text-black">
+                                                  <span className="text-sm text-black-2900">
                                                        {item.studentName}
                                                   </span>
 
@@ -196,7 +192,7 @@ export default function IncidentTable() {
                                                             height={14}
                                                             className="rounded-sm"
                                                        />
-                                                       <span className="text-xs text-gray-500">
+                                                       <span className="text-xs text-gray-2300">
                                                             {item.studentCountry}
                                                        </span>
                                                   </div>
@@ -205,22 +201,22 @@ export default function IncidentTable() {
                                    </td>
 
                                    {/* Trigger */}
-                                   <td className="px-5 py-4 text-sm text-gray-700">
+                                   <td className="px-5 py-4 text-sm text-black-2900">
                                         {item.trigger}
                                    </td>
 
                                    {/* Location */}
                                    <td className="px-5 py-4 text-sm">
                                         <div className="flex flex-col">
-                                             <span className="text-gray-800">{item.location}</span>
-                                             <span className="text-xs text-gray-500">
+                                             <span className="text-black-2900">{item.location}</span>
+                                             <span className="text-xs text-gray-2300">
                                                   {item.time}
                                              </span>
                                         </div>
                                    </td>
 
                                    {/* Assignee */}
-                                   <td className="px-5 py-4 text-sm text-gray-800">
+                                   <td className="px-5 py-4 text-sm text-black-2900">
                                         {item.assignee}
                                    </td>
 
@@ -229,9 +225,7 @@ export default function IncidentTable() {
                                         <span
                                              className={`px-3 py-1 text-xs rounded-md inline-flex items-center gap-1.5 ${statusConfig[item.status].wrapper}`}
                                         >
-                                             <span
-                                                  className={`w-2 h-2 rounded-full ${statusConfig[item.status].dot}`}
-                                             />
+
                                              {item.status}
                                         </span>
                                    </td>

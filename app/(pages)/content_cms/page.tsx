@@ -14,7 +14,7 @@ function page() {
                <TopBar></TopBar>
                <div className="flex xl:flex-nowrap flex-wrap xl:gap-0 gap-4 items-center bg-white justify-between 2xl:p-6 p-4">
                     <div className="xl:flex-1">
-                         <h6 className="text-xl font-bold leading-7 text-blue-1300">Content CMS Hub</h6>
+                         <h6 className="text-xl font-bold leading-7 text-black-1600">Content CMS Hub</h6>
                          <p className="text-sm font-normal leading-5 text-gray-1900">Manage all student-facing communications</p>
                     </div>
                     <form action="" className="flex flex-wrap items-center gap-3">

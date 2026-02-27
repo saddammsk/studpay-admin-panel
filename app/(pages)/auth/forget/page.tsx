@@ -146,7 +146,6 @@ const ForgetPasswordPage = () => {
               ))}
             </ul>
 
-            {/* Form */}
             <form className="mt-8">
               {/* Step 1: Email */}
               {step === 1 && (
@@ -169,11 +168,11 @@ const ForgetPasswordPage = () => {
                       value={email}
                       onChange={(e: any) => dispatch(setEmail(e.target.value))}
                     />
-                      {error && (
+                    {error && (
                       <p className="text-xs text-red-600 mt-0.5">{error}</p>
-                      )}
+                    )}
                   </div>
-                
+
                   <Button
                     label={loading ? 'Sending...' : 'Send code'}
                     className="text-white w-full justify-center bg-blue-1500"
@@ -183,7 +182,6 @@ const ForgetPasswordPage = () => {
                 </div>
               )}
 
-              {/* Step 2: Code */}
               {step === 2 && (
                 <div>
                   <div className="text-center mb-6">
@@ -206,11 +204,11 @@ const ForgetPasswordPage = () => {
                         dispatch(setCode(val));
                       }}
                     />
-                      {error && (
+                    {error && (
                       <p className="text-xs text-red-600 mt-0.5">{error}</p>
-                      )}
+                    )}
                   </div>
-               
+
                   <Button
                     label={loading ? 'Verifying...' : 'Next'}
                     className="text-white w-full justify-center bg-blue-1500"
@@ -220,7 +218,6 @@ const ForgetPasswordPage = () => {
                 </div>
               )}
 
-              {/* Step 3: Password */}
               {step === 3 && (
                 <div>
                   <div className="text-center mb-6">
@@ -235,8 +232,8 @@ const ForgetPasswordPage = () => {
                     <InputField
                       label="New Password"
                       ClassName="bg-white rounded-lg! h-12 pl-5!"
-                      type="text"
-                      placeholder="usman@@xxx"
+                      type="password"
+                      placeholder="••••••••"
                       value={password}
                       onChange={(e: any) =>
                         dispatch(setPassword(e.target.value))
@@ -246,9 +243,9 @@ const ForgetPasswordPage = () => {
                   <div className="mb-5">
                     <InputField
                       label="Confirm Password"
-                      ClassName="bg-white rounded-lg! h-12 pl-5!" 
-                      type="text"
-                      placeholder="usman@@xxx"
+                      ClassName="bg-white rounded-lg! h-12 pl-5!"
+                      type="password"
+                      placeholder="••••••••"
                       value={confirmPassword}
                       onChange={(e: any) =>
                         dispatch(setConfirmPassword(e.target.value))
@@ -256,9 +253,9 @@ const ForgetPasswordPage = () => {
                     />
                     {error && (
                       <p className="text-xs text-red-600 mt-0.5">{error}</p>
-                      )}
+                    )}
                   </div>
-             
+
                   <Button
                     label={loading ? 'Resetting...' : 'Reset'}
                     className="text-white w-full justify-center bg-blue-1500"
@@ -276,7 +273,7 @@ const ForgetPasswordPage = () => {
                     className="mb-7 inline-block"
                     alt=""
                   />
-                  <h4 className="text-[30px] font-medium text-blue-1300 mb-7">
+                  <h4 className="text-[30px] font-medium text-black-1600 mb-7">
                     {"You're"} all set!
                   </h4>
                   <p className="text-sm text-gray-1900 mb-7">

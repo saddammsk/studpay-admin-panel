@@ -1,20 +1,13 @@
 
 'use client'
-import { useState } from "react";
 import TopBar from "@/app/components/common/TopBar";
-import Image from "next/image";
-import Button from "@/app/components/ui/Button";
-import Link from "next/link";
-import LedgerTable from "@/app/components/LedgerTable";
-import ManagerTable from "@/app/components/ManagerTable";
-import AlertTable from "@/app/components/AlertTable";
 import AlertLedgerTable from "@/app/components/AlertLedgerTable";
 function page() {
      return (
           <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
                <TopBar></TopBar>
                <div className="p-6">
-                    <div className="bg-blue-1000 mb-6 flex items-center justify-between py-3 px-6">
+                    <div className="bg-blue-1000 mb-6 flex gap-4 flex-wrap items-center justify-between py-3 px-6">
                          <div className="flex items-center gap-3">
                               <img src="/images/shield-icon3.svg" className="w-6 h-6" alt="" />
                               <h5 className="text-lg font-bold leading-7 text-white-1100">StudSafe</h5>
@@ -31,7 +24,7 @@ function page() {
                               </div>
                          </div>
                     </div>
-                    <div className="bg-red-2300 mb-4 rounded-lg border border-red-2400 py-3 px-4 flex items-center justify-between">
+                    <div className="bg-red-2300 mb-4  flex-wrap gap-4 rounded-lg border border-red-2400 py-3 px-4 flex items-center justify-between">
                          <div className="flex items-center gap-3">
                               <img src="/images/caution-icon4.svg" alt="" />
                               <p className="text-sm font-bold leading-5 text-red-2200">2 Critical SOS alerts requiring immediate attention</p>

@@ -39,7 +39,7 @@ export default function FinanceAnalytics() {
             <div className='bg-white border my-6 border-gray-3100 shadow-11xl rounded-[12px] p-5'>
                 <div className="flex items-center gap-2">
                     <span className='block w-1.5 h-1.5 rounded-full bg-blue-1400'></span>
-                    <h6 className='text-sm font-bold text-blue-1300'>Pipeline Performance</h6>
+                    <h6 className='text-sm font-bold text-black-1600'>Pipeline Performance</h6>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 mt-5 gap-10">
                     <CircularProgress value={68} color="#D9A520" label="Conversion Rate" sublabel="Lead to Customer" />
@@ -55,7 +55,7 @@ export default function FinanceAnalytics() {
                     </div>
                     <div>
                         <h6 className='text-xs font-normal text-gray-1900'>Pipeline Value</h6>
-                        <h5 className='text-xl font-bold text-blue-1300'>€847,320 <span className='text-xs text-green-2000'>+12.5%</span></h5>
+                        <h5 className='text-xl font-bold text-black-1600'>€847,320 <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
                 <div className='p-4 flex items-center gap-4 border border-blue-1400/20 rounded-xl  shadow-11xl'>
@@ -64,7 +64,7 @@ export default function FinanceAnalytics() {
                     </div>
                     <div>
                         <h6 className='text-xs font-normal text-gray-1900'>Avg Response Time</h6>
-                        <h5 className='text-xl font-bold text-blue-1300'>2.4h <span className='text-xs text-green-2000'>+12.5%</span></h5>
+                        <h5 className='text-xl font-bold text-black-1600'>2.4h <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
                 <div className='p-4 flex items-center gap-4 border border-gray-3100 rounded-xl  shadow-11xl'>
@@ -73,7 +73,7 @@ export default function FinanceAnalytics() {
                     </div>
                     <div>
                         <h6 className='text-xs font-normal text-gray-1900'>Abandoned Carts</h6>
-                        <h5 className='text-xl font-bold text-blue-1300'>127 <span className='text-xs text-green-2000'>+12.5%</span></h5>
+                        <h5 className='text-xl font-bold text-black-1600'>127 <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
                 <div className='p-4 flex items-center gap-4 border border-gray-3100 rounded-xl  shadow-11xl'>
@@ -82,31 +82,31 @@ export default function FinanceAnalytics() {
                     </div>
                     <div>
                         <h6 className='text-xs font-normal text-gray-1900'>Monthly Target</h6>
-                        <h5 className='text-xl font-bold text-blue-1300'>78% <span className='text-xs text-green-2000'>+12.5%</span></h5>
+                        <h5 className='text-xl font-bold text-black-1600'>78% <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
             </div>
             <div className='bg-white border my-6 border-gray-3100 shadow-11xl rounded-[12px] p-5'>
                 <div className="flex items-center gap-2">
                     <span className='block w-1.5 h-1.5 rounded-full bg-golden-1000'></span>
-                    <h6 className='text-sm font-bold text-blue-1300'>Sales Funnel</h6>
+                    <h6 className='text-sm font-bold text-black-1600'>Sales Funnel</h6>
                 </div>
                 <div className='flex items-center flex-wrap  md:gap-0 gap-4 my-4'>
                     <div className='py-3 px-[26px] bg-[url(/images/shape-1.svg)] text-center  bg-size-[100%_100%] bg-no-repeat'>
-                        <h6 className='text-lg font-bold text-blue-1300'>2,847</h6>
-                        <span className="block text-[10px] uppercase font-normal text-blue-1300/80">Registered</span>
+                        <h6 className='text-lg font-bold text-black-1600'>2,847</h6>
+                        <span className="block text-[10px] uppercase font-normal text-black-1600/80">Registered</span>
                     </div>
                     <div className='py-3 px-[26px] bg-[url(/images/shape-2.png)] text-center  bg-size-[100%_100%] bg-no-repeat'>
-                        <h6 className='text-lg font-bold text-blue-1300'>1,923</h6>
-                        <span className="block text-[10px] uppercase font-normal text-blue-1300/80">Document Uploaded</span>
+                        <h6 className='text-lg font-bold text-black-1600'>1,923</h6>
+                        <span className="block text-[10px] uppercase font-normal text-black-1600/80">Document Uploaded</span>
                     </div>
                     <div className='py-3 px-[26px] bg-[url(/images/shape-3.png)]  text-center bg-size-[100%_100%] bg-no-repeat'>
-                        <h6 className='text-lg font-bold text-blue-1300'>847</h6>
-                        <span className="block text-[10px] uppercase font-normal text-blue-1300/80">Payment Pending</span>
+                        <h6 className='text-lg font-bold text-black-1600'>847</h6>
+                        <span className="block text-[10px] uppercase font-normal text-black-1600/80">Payment Pending</span>
                     </div>
                     <div className='py-3 px-[26px] bg-[url(/images/shape-4.png)] ml-1 text-center  bg-size-[100%_100%] bg-no-repeat'>
-                        <h6 className='text-lg font-bold text-blue-1300'>523</h6>
-                        <span className="block text-[10px] uppercase font-normal text-blue-1300/80">Service Active</span>
+                        <h6 className='text-lg font-bold text-black-1600'>523</h6>
+                        <span className="block text-[10px] uppercase font-normal text-black-1600/80">Service Active</span>
                     </div>
                 </div>
                 <h6 className="text-xs font-normal leading-4 text-gray-1900">Conversion Rate: <span className='text-green-2000'>18.4%</span></h6>
@@ -115,8 +115,8 @@ export default function FinanceAnalytics() {
                 <div className="flex items-center flex-wrap gap-4 justify-between">
                 <div className="flex items-center gap-2">
                     <img src="/images/burn-icon.svg" alt="" />
-                    <h6 className='text-sm font-bold text-blue-1300'>Hot Leads Ledger</h6>
-                    <div className="text-xs font-bold text-blue-1300 py-0.5 px-2.5 rounded-full  bg-gray-2000">12 leads</div>
+                    <h6 className='text-sm font-bold text-black-1600'>Hot Leads Ledger</h6>
+                    <div className="text-xs font-bold text-black-1600 py-0.5 px-2.5 rounded-full  bg-gray-2000">12 leads</div>
                 </div>
                 <form className="flex md:flex-row flex-col items-center gap-4">
                     <div className="relative md:flex-1 w-full">

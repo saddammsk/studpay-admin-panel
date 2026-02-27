@@ -25,7 +25,7 @@ export default function FinanceAnalytics() {
                               <img src="/images/user-blue.svg" className='w-5' alt="" />
                          </div>
                          <div className='flex-1'>
-                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-blue-1300 block">6</span>
+                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-black-1600 block">6</span>
                               <h6 className="text-sm font-normal leading-5 text-gray-1200 mb-1">Total Owners</h6>
                          </div>
                     </div>
@@ -34,7 +34,7 @@ export default function FinanceAnalytics() {
                               <img src="/images/user-green2.svg" className='w-5' alt="" />
                          </div>
                          <div className='flex-1'>
-                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-blue-1300 block">4</span>
+                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-black-1600 block">4</span>
                               <h6 className="text-sm font-normal leading-5 text-gray-1200 mb-1">Active</h6>
                          </div>
                     </div>
@@ -43,7 +43,7 @@ export default function FinanceAnalytics() {
                               <img src="/images/building-icon3.svg" className='w-5' alt="" />
                          </div>
                          <div className='flex-1'>
-                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-blue-1300 block">38</span>
+                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-black-1600 block">38</span>
                               <h6 className="text-sm font-normal leading-5 text-gray-1200 mb-1">Properties</h6>
                          </div>
                     </div>
@@ -52,7 +52,7 @@ export default function FinanceAnalytics() {
                               <img src="/images/euro-blue.svg" className='w-5' alt="" />
                          </div>
                          <div className='flex-1'>
-                              <span className="4xl:text-[30px] text-[22px]  leading-9 font-bold text-blue-1300 block">€214,500</span>
+                              <span className="4xl:text-[30px] text-[22px]  leading-9 font-bold text-black-1600 block">€214,500</span>
                               <h6 className="text-sm font-normal leading-5 text-gray-1200 mb-1">Deposits Held</h6>
                          </div>
                     </div>
@@ -61,7 +61,7 @@ export default function FinanceAnalytics() {
                               <img src="/images/info-yellow.svg" className='w-5' alt="" />
                          </div>
                          <div className='flex-1'>
-                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-blue-1300 block">1</span>
+                              <span className="4xl:text-[30px] text-2xl  leading-9 font-bold text-black-1600 block">1</span>
                               <h6 className="text-sm font-normal leading-5 text-gray-1200 mb-1">Pending Verification</h6>
                          </div>
                     </div>
