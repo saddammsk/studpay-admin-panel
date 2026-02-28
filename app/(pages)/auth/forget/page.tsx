@@ -116,8 +116,8 @@ const ForgetPasswordPage = () => {
 
   return (
     <div className="h-screen overflow-auto scroll-hide pb-4">
-      <div className="flex md:min-h-[calc(100vh_-_40px)] min-h-[calc(100vh_-_80px)] items-center justify-center">
-        <div className="max-w-[448px] px-4 w-full mx-auto">
+      <div className="flex md:min-h-[calc(100vh-40px)] min-h-[calc(100vh-80px)] items-center justify-center">
+        <div className="max-w-md px-4 w-full mx-auto">
           <div className="text-center">
             <img src="/images/logo-2.svg" className="inline-block" alt="" />
             <p className="text-base font-normal leading-6 text-gray-1900">
@@ -300,7 +300,7 @@ const ForgetPasswordPage = () => {
             </form>
           </div>
 
-          <div className="bg-white rounded-lg flex items-center mb-6 justify-center py-[15px] gap-3 text-xs text-gray-1200">
+          <div className="bg-white rounded-lg flex items-center mb-6 justify-center py-3.75 gap-3 text-xs text-gray-1200">
             <img src="/images/shield-blue.svg" alt="" />
             256-bit SSL encrypted
           </div>

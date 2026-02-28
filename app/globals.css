@@ -1,4 +1,4 @@
-@import "tailwindcss";
+ @import "tailwindcss";
 
 @theme inline {
   --font-neulis-sans: "Neulis Sans";
@@ -86,7 +86,6 @@
   --color-blue-2500: #E6EFFF;
   --color-blue-2600: #BAD2F7;
   --color-blue-2700: #6653C6;
-  --color-blue-2800: #DEEFF7;
   --color-green-1000: #16A34A;
   --color-green-1100: #166534;
   --color-green-1200: #DCFCE7;
@@ -126,7 +125,6 @@
   --color-orange-2000: #D97706;
   --color-purple-1100: #A855F7;
   --color-purple-2000: #5914D2;
-  --color-purple-3000: #AF57DB;
   /******* 4-2-2028 ******/
   --color-black13: #020817;
   --color-gray1600: #E2E8F0;
@@ -220,198 +218,162 @@
 }
 
 
-@font-face {
-  font-family: 'Neulis Sans';
-  src: url('/fonts/NeulisSans-Medium.woff2') format('woff2'),
-    url('/fonts/NeulisSans-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
+ @font-face {
+   font-family: 'Neulis Sans';
+   src: url('/fonts/NeulisSans-Medium.woff2') format('woff2'),
+     url('/fonts/NeulisSans-Medium.woff') format('woff');
+   font-weight: 500;
+   font-style: normal;
+   font-display: swap;
+ }
 
-@font-face {
-  font-family: 'Neulis Sans';
-  src: url('/fonts/NeulisSans-SemiBold.woff2') format('woff2'),
-    url('/fonts/NeulisSans-SemiBold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
+ @font-face {
+   font-family: 'Neulis Sans';
+   src: url('/fonts/NeulisSans-SemiBold.woff2') format('woff2'),
+     url('/fonts/NeulisSans-SemiBold.woff') format('woff');
+   font-weight: 600;
+   font-style: normal;
+   font-display: swap;
+ }
 
-@font-face {
-  font-family: 'Neulis Sans';
-  src: url('/fonts/NeulisSans-Bold.woff2') format('woff2'),
-    url('/fonts/NeulisSans-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
+ @font-face {
+   font-family: 'Neulis Sans';
+   src: url('/fonts/NeulisSans-Bold.woff2') format('woff2'),
+     url('/fonts/NeulisSans-Bold.woff') format('woff');
+   font-weight: bold;
+   font-style: normal;
+   font-display: swap;
+ }
 
-@font-face {
-  font-family: 'Neulis Sans';
-  src: url('/fonts/NeulisSans-Regular.woff2') format('woff2'),
-    url('/fonts/NeulisSans-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+ @font-face {
+   font-family: 'Neulis Sans';
+   src: url('/fonts/NeulisSans-Regular.woff2') format('woff2'),
+     url('/fonts/NeulisSans-Regular.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
 
-@font-face {
-  font-family: 'Segoe UI';
-  src: url('/fonts/SegoeUI.woff2') format('woff2'),
-    url('/fonts/SegoeUI.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+ @font-face {
+   font-family: 'Segoe UI';
+   src: url('/fonts/SegoeUI.woff2') format('woff2'),
+     url('/fonts/SegoeUI.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
 
-html {
-  overflow: auto !important;
-  padding-right: 0px !important;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.dashboard-bg {
-  background: linear-gradient(135deg, var(--color-grey-98, #FAFAFA) 0%, var(--color-grey-9730, rgba(239, 246, 255, 0.30)) 50%, var(--color-grey-9820, rgba(250, 245, 255, 0.20)) 100%);
-}
-
-.banner-bg {
-  background: linear-gradient(90deg, #0D8CFF 0%, #0D8CFF 50%, #7E22CE 100%);
-
-}
-
-.line-bg {
-  background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
-}
-
-.line-bg-2 {
-  background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
-
-}
-
-.line-bg-3 {
-  background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
-
-}
+ @font-face {
+   font-family: 'Graphik';
+   src: url('/fonts/Graphik.eot');
+   src: url('/fonts/Graphik.eot?#iefix') format('embedded-opentype'),
+     url('/fonts/Graphik.woff2') format('woff2'),
+     url('/fonts/Graphik.woff') format('woff'),
+     url('/fonts/Graphik.ttf') format('truetype'),
+     url('/fonts/Graphik.svg#Graphik') format('svg');
+   font-weight: 100;
+   font-style: normal;
+   font-display: swap;
+ }
 
 
 
-.gray-icon {
-  filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
+ html {
+   overflow: auto !important;
+   padding-right: 0px !important;
+ }
 
-}
+ .scrollbar-hide::-webkit-scrollbar {
+   display: none;
+ }
 
-.flag-bg {
-  background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
-}
+ .scrollbar-hide {
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+ }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-  cursor: pointer;
-}
+ .dashboard-bg {
+   background: linear-gradient(135deg, var(--color-grey-98, #FAFAFA) 0%, var(--color-grey-9730, rgba(239, 246, 255, 0.30)) 50%, var(--color-grey-9820, rgba(250, 245, 255, 0.20)) 100%);
+ }
 
-input[type="date"] {
-  -moz-appearance: textfield;
-}
+ .banner-bg {
+   background: linear-gradient(90deg, #0D8CFF 0%, #0D8CFF 50%, #7E22CE 100%);
 
-.text-gradient {
-  background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+ }
 
-.calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
-  display: block;
-  -webkit-appearance: auto;
-  cursor: pointer;
-  position: absolute;
-  left: 11px;
-}
+ .line-bg {
+   background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
+ }
 
-.sale-date input[type="date"]::-webkit-calendar-picker-indicator {
-  display: block;
-  -webkit-appearance: auto;
-  cursor: pointer;
-}
+ .line-bg-2 {
+   background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
 
-.btn-primary:hover img {
-  filter: brightness(300);
-}
+ }
 
-.card-bg {
-  background: linear-gradient(135deg, var(--color-grey-96, #EDFDF5) 0%, var(--color-grey-96, #EDFDF5) 100%);
-}
+ .line-bg-3 {
+   background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
 
-.card-bg2 {
-  background: linear-gradient(135deg, var(--color-red-605, rgba(239, 67, 67, 0.05)) 0%, var(--color-red-6010, rgba(239, 67, 67, 0.10)) 100%);
-}
-
-.card-bg3 {
-  background: linear-gradient(135deg, var(--color-spring-green-395, rgba(16, 183, 127, 0.05)) 0%, var(--color-spring-green-3910, rgba(16, 183, 127, 0.10)) 100%);
-
-}
-
-.card-bg4 {
-  background: linear-gradient(135deg, var(--color-azure-605, rgba(60, 131, 246, 0.05)) 0%, var(--color-azure-6010, rgba(60, 131, 246, 0.10)) 100%);
-}
-
-.card-bg5 {
-  background: linear-gradient(135deg, var(--color-azure-485, rgba(13, 162, 231, 0.05)) 0%, var(--color-azure-4810, rgba(13, 162, 231, 0.10)) 100%);
-
-}
-
-.icon-bg1 {
-  background: linear-gradient(135deg, var(--color-azure-6015, rgba(60, 131, 246, 0.15)) 0%, var(--color-azure-605, rgba(60, 131, 246, 0.05)) 100%);
-
-}
-
-.icon-bg2 {
-  background: linear-gradient(135deg, var(--color-spring-green-3915, rgba(16, 183, 127, 0.15)) 0%, var(--color-spring-green-395, rgba(16, 183, 127, 0.05)) 100%);
-}
-
-.icon-bg3 {
-  background: linear-gradient(135deg, var(--color-orange-5015, rgba(245, 159, 10, 0.15)) 0%, var(--color-orange-505, rgba(245, 159, 10, 0.05)) 100%);
-}
-
-.icon-bg4 {
-  background: linear-gradient(135deg, var(--color-red-6015, rgba(239, 67, 67, 0.15)) 0%, var(--color-red-605, rgba(239, 67, 67, 0.05)) 100%);
-}
-
-.circle-bg1 {
-  background: linear-gradient(90deg, var(--color-azure-60, #3C83F6) 0%, var(--color-azure-48, #0DA2E7) 100%);
-}
-
-.text-gradient10 {
-  background: linear-gradient(94deg, var(--color-azure-60, #3C83F6) 0%, var(--color-azure-48, #0DA2E7) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-}
+ }
 
 
-.bg-gradient {
-  background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
-}
 
-.bg-gradient4 {
-  background: linear-gradient(116deg, var(--color-cyan-388, rgba(29, 151, 165, 0.08)) 0%, var(--color-azure-453, rgba(23, 145, 207, 0.03)) 100%);
-}
+ .gray-icon {
+   filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
 
-.bg-gradient5 {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
-}
+ }
 
-.gradient-bg {
-  background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
-}
+ .flag-bg {
+   background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
+ }
+
+ input[type="date"]::-webkit-calendar-picker-indicator {
+   display: none;
+   -webkit-appearance: none;
+   cursor: pointer;
+ }
+
+ input[type="date"] {
+   -moz-appearance: textfield;
+ }
+
+ .text-gradient {
+   background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+ }
+
+ .calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
+   display: block;
+   -webkit-appearance: auto;
+   cursor: pointer;
+   position: absolute;
+   left: 11px;
+ }
+
+ .sale-date input[type="date"]::-webkit-calendar-picker-indicator {
+   display: block;
+   -webkit-appearance: auto;
+   cursor: pointer;
+ }
+
+ .btn-primary:hover img {
+   filter: brightness(300);
+ }
+
+ .bg-gradient {
+   background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
+ }
+
+ .bg-gradient4 {
+   background: linear-gradient(116deg, var(--color-cyan-388, rgba(29, 151, 165, 0.08)) 0%, var(--color-azure-453, rgba(23, 145, 207, 0.03)) 100%);
+ }
+
+ .bg-gradient5 {
+   background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
+ }
+
+ .gradient-bg {
+   background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
+
+ }

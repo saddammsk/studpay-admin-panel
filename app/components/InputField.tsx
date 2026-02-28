@@ -12,7 +12,7 @@ interface InputFieldProps {
   passwordToggleIconSrc?: { show: string; hide: string };
   wrapperClassName?: string;
   ClassName?: string;
-  rows?: number; // for textarea
+  rows?: number;  
 }
 
 const InputField: React.FC<InputFieldProps> = ({
