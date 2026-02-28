@@ -1229,8 +1229,6 @@ const UsersStudentsPage = () => {
           <div className='pt-6 mt-6 border-t border-solid border-gray-1000'>
              <h4 className="text-gray-1200 font-normal text-sm leading-5 uppercase tracking-[0.35px]">Incident Type</h4>
           </div>
-          
-          
           <div className='mb-6'>
             <h4 className="text-blue-1300 font-semibold text-sm leading-5 flex items-center gap-2"><Image src="/images/card-gray.svg" width={16} height={16} alt="" />Action Details</h4>
             <div className='mt-3'>
