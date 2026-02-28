@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Public_Sans, Inter } from "next/font/google";
+import { Public_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import DashboardLayout from "./layout/DashboardLayout";
 import ReduxProvider from "./store/ReduxProvider";
@@ -9,16 +9,7 @@ export const metadata: Metadata = {
   description: "StudPay is a platform for managing student payments and invoices",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+  
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -38,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body  className={`bg-gray-1500 ${geistSans.variable} ${geistMono.variable} ${inter.variable} ${publicSans.variable} antialiased`}
+      <body  className={`bg-gray-1500 ${inter.variable} ${publicSans.variable} antialiased`}
       >
         <ReduxProvider>
         <DashboardLayout>{children}</DashboardLayout>

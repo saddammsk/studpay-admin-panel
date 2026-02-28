@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import Modal from "@/app/components/Modal";
+import CustomSelect from "@/app/components/CustomSelect";
 import RecentAuditTable from '@/app/components/UsersStudent/RecentAuditTable';
 import UserAccountTable from '@/app/components/UsersStudent/UserAccountTable';
 import { Radio, RadioGroup } from '@headlessui/react'
@@ -117,6 +118,9 @@ const menuItems = [
 
 
 const UsersStudentsPage = () => {
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState<string>("All Countries");
+
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(plans[0])
   return (
@@ -273,19 +277,95 @@ const UsersStudentsPage = () => {
               <h4 className='text-black-2000 font-semibold text-2xl mb-1 leading-8'>User Transaction Ledger</h4>
               <p className='text-gray-3800 font-normal text-sm leading-5'>View and manage all user transactions</p>
             </div>
-            <div className='grid 5xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'> 
+            <div className='grid 5xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
               <div className='bg-white shadow-4xl rounded-lg p-4'>
                 <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-green-5000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4> 
+                <h4 className='text-green-5000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
               </div>
               <div className='bg-white shadow-4xl rounded-lg p-4'>
                 <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-red2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4> 
+                <h4 className='text-red2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
               </div>
-               <div className='bg-white shadow-4xl rounded-lg p-4'>
+              <div className='bg-white shadow-4xl rounded-lg p-4'>
                 <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-black-2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4> 
+                <h4 className='text-black-2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
               </div>
+            </div>
+            <div className='bg-white rounded-lg p-4 mt-6 shadow-4xl'>
+              <div className="relative flex-1 xl:max-w-md md:max-w-90 md:mb-0 mb-4 max-w-full w-full">
+                <input
+                  type="text"
+                  className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-gray-1900 placeholder:text-gray-1400 px-4 pl-10 h-9 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
+                  placeholder="Search students, transactions..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <div className="absolute top-1/2 -translate-y-1/2 left-3">
+                  <Image
+                    src="../images/search-icon.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <ul>
+                <li>
+                  <div className='md:w-39 w-full'>
+                    <CustomSelect
+                      value={status}
+                      className='h-10'
+                      onChange={(e) => setStatus(e.target.value)}
+                      options={[
+                        { label: "All Accounts", value: "All Accounts" },
+                      ]}
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div className='md:w-35 w-full'>
+                    <CustomSelect
+                      value={status}
+                      className='h-10'
+                      onChange={(e) => setStatus(e.target.value)}
+                      options={[
+                        { label: "All Status", value: "All Status" },
+                      ]}
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div className='md:w-35 w-full'>
+                    <CustomSelect
+                      value={status}
+                      className='h-10'
+                      onChange={(e) => setStatus(e.target.value)}
+                      options={[
+                        { label: "All Types", value: "All Types" },
+                      ]}
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div className="relative flex-1 xl:max-w-md md:max-w-90 md:mb-0 mb-4 max-w-full w-full">
+                    <input
+                      type="text"
+                      className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-black-2000 placeholder:text-black-2000 px-4 pl-10 h-9 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
+                      placeholder="Date Range"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <div className="absolute top-1/2 -translate-y-1/2 left-3">
+                      <Image
+                        src="../images/calendar-icon4.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
             <div className='bg-white pb-6 border border-solid border-gray-3100 shadow-4xl mt-6 rounded-lg'>
               <div className='flex items-center justify-between 5xl:px-6 xl:px-3 px-4 pt-6 pb-4'>
