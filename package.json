@@ -1,5 +1,5 @@
 {
-  "name": "studpay",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,27 +15,23 @@
     "chartjs-plugin-datalabels": "^2.2.0",
     "i18next": "^25.8.4",
     "lucide-react": "^0.564.0",
-    "next": "14.2.5",
-    "react": "18.2.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
     "react-chartjs-2": "^5.3.1",
-    "react-dom": "18.2.0",
-    "react-globe.gl": "^2.37.0",
+    "react-dom": "19.2.3",
     "react-i18next": "^15.7.4",
     "react-redux": "^9.2.0",
     "recharts": "^3.7.0",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.4",
-    "postcss": "^8.4.38",
-    "autoprefixer": "^10.4.19",
-    "@types/d3": "^7.4.3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/three": "^0.183.1",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
