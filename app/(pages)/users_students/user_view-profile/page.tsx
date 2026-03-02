@@ -45,23 +45,23 @@ const menuItems = [
   },
   {
     name: "AVI & Blocked",
-    href: "/cards",
+    href: "user_avi-blocked",
     icon: "../images/avi-block.svg",
     iconActive: "../images/avi-card-blue.svg",
     active: false,
   },
   {
     name: "KYC",
-    href: "/cards",
+    href: "user_kyc",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/kyc-active.svg",
     active: false,
   },
   {
     name: "Financing",
-    href: "/cards",
+    href: "user_financing",
     icon: "../images/Financing.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/financing-active.svg",
     active: false,
   },
   {
