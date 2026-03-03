@@ -189,6 +189,7 @@
    --color-lighrgrey37: #DFE4EC;
    --color-yellow1700: #FEF3C7;
    --color-yellow1800: #FEF5E7;
+   --color-yellow1900: #864E0E;
    --color-red2000: #E11D48;
    --color-red2100: #DC2828;
    --color-red2200: #EF4360;
@@ -198,11 +199,15 @@
    --color-red85: #F0C2CC;
    --color-green51: #1CCA5B;
    --color-green53: #198653;
+   --color-green54: #085E41;
+   --color-green55: #DEF8EE;
    --color-skyblue26: #BEE3F4;
    --color-skyblue27: #F1FAFE;
    --color-OxfordBlue: #1B294B;
    --color-OxfordBlue2: #141F38;
-  
+   --color-SteelGray: #737B8C;
+   --color-RosePink: #FDE8E8;
+
 
 
    --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
@@ -231,7 +236,9 @@
    --shadow-56xl: 0 0 0 2px rgba(60, 131, 246, 0.20);
    --shadow-57xl: 0 0 0 2px #FAFAFA, 0 0 0 4px #0B64F4;
    --shadow-58xl: 0 0 0 2px #F3F4F6, 0 0 0 4px #E21D48;
-   --shadow-59xl:  0 0 0 2px #F9FAFB, 0 0 0 4px #141F38;
+   --shadow-59xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #141F38;
+   --shadow-61xl: 0 1px 2px 0 #FFF;
+   --shadow-62xl: 0 1px 3px 0 #FFF, 0 4px 12px -2px #FFF;
    --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
    --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
 

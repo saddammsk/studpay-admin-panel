@@ -2,9 +2,9 @@
 import { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
-import Button from "@/app/components/ui/Button"; 
-import CustomSelect from "@/app/components/CustomSelect"; 
-import UserTransactionTable from '@/app/components/UsersStudent/UserTransactionTable'; 
+import Button from "@/app/components/ui/Button";
+import ProgressBar from "@/app/components/ProgressBar";
+import UserFinancingTable from '@/app/components/UsersStudent/UserFinancingTable';
 
 
 
@@ -67,23 +67,23 @@ const menuItems = [
   },
   {
     name: "Housing",
-    href: "/cards",
+    href: "user_housing",
     icon: "../images/house-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/house-icon-active.svg",
     active: false,
   },
   {
     name: "Insurance",
-    href: "/cards",
+    href: "user_insurance",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/sheild-active.svg",
     active: false,
   },
   {
     name: "Crypto",
-    href: "/cards",
+    href: "user_crypto",
     icon: "../images/crypto-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/crypto-active.svg",
     active: false,
   },
   {
@@ -114,7 +114,7 @@ const UsersStudentsPage = () => {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("All Countries");
 
- 
+
   return (
     <div className='font-inter'>
       <div className=''>
@@ -263,193 +263,461 @@ const UsersStudentsPage = () => {
             ))}
           </ul>
         </div>
-        <div className='flex xl:flex-row flex-col items-start gap-4'>
-          <div className='xl:w-[calc(100%-300px)] w-full'>
-           
-           <div className='mb-6'>
-              <h4 className='text-black-2000 font-semibold text-2xl mb-1 leading-8'>User Transaction Ledger</h4>
-              <p className='text-gray-3800 font-normal text-sm leading-5'>View and manage all user transactions</p>
-            </div>
-            <div className='grid 5xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
-              <div className='bg-white shadow-4xl rounded-lg p-4'>
-                <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-green-5000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
-              </div>
-              <div className='bg-white shadow-4xl rounded-lg p-4'>
-                <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-red2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
-              </div>
-              <div className='bg-white shadow-4xl rounded-lg p-4'>
-                <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-black-2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
-              </div>
-            </div>
-            <div className='bg-white 4xl:flex-row flex-col flex items-center gap-3 rounded-lg p-4 mt-6 shadow-4xl'>
-              <div className="relative flex-1 max-w-full w-full">
-                <input
-                  type="text"
-                  className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-gray-1900 placeholder:text-gray-1400 px-4 pl-10 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-                  placeholder="Search students, transactions..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+        <div className='pt-6 mb-6'>
+          <h4 className='text-blue-1300 font-semibold text-2xl leading-8'>Financing Profile</h4>
+          <p className='text-gray-1200 font-normal text-base leading-6'>Your complete credit and loan status overview</p>
+        </div>
+        <div className='2xl:flex grid md:grid-cols-3 grid-cols-1 4xl:gap-8.5 gap-4'>
+          <div className='2xl:max-w-84 max-w-full w-full flex-1 bg-white border border-solid border-gray-1000 4xl:p-5 md:px-2.5 px-4 py-5 rounded-lg shadow-61xl'>
+            <div className='flex items-center justify-between mb-3'>
+              <h4 className='text-gray-1200 text-sm font-medium leading-5'>Loan Status</h4>
+              <span className='rounded-lg bg-blue-2200/10 w-8 h-8 flex items-center justify-center'>
+                <Image
+                  src="../images/price-down-arrow-blue.svg"
+                  width="16"
+                  height="16"
+                  alt=""
                 />
-                <div className="absolute top-1/2 -translate-y-1/2 left-3">
+              </span>
+            </div>
+            <span className='text-blue-2200 font-medium text-sm leading-5 inline-flex items-center justify-center bg-blue-2200/10 border border-solid border-blue-2200/20 rounded-full h-6.5 px-2.5'>Active</span>
+            <p className='text-gray-1200 font-normal text-xs leading-4 mt-3'>Current loan is in repayment</p>
+          </div>
+          <div className='2xl:max-w-84 max-w-full w-full flex-1 bg-white border border-solid border-gray-1000 4xl:p-5 md:px-2.5 px-4 py-5 rounded-lg shadow-61xl'>
+            <div className='flex items-center justify-between mb-3'>
+              <h4 className='text-gray-1200 text-sm font-medium leading-5'>Total Principal</h4>
+              <span className='rounded-lg bg-yellow1800 w-8 h-8 flex items-center justify-center'>
+                <Image
+                  src="../icons/wallet-green.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+              </span>
+            </div>
+            <h3 className='text-blue-1300 text-2xl leading-8 font-bold'>$5,400.00</h3>
+            <p className='text-gray-1200 font-normal text-xs leading-4 mt-1'>Original amount borrowed</p>
+          </div>
+          <div className='2xl:max-w-84 max-w-full w-full flex-1 bg-white border border-solid border-gray-1000 4xl:p-5 md:px-2.5 px-4 py-5 rounded-lg shadow-61xl'>
+            <div className='flex items-center justify-between mb-3'>
+              <h4 className='text-gray-1200 text-sm font-medium leading-5'>Remaining Balance</h4>
+              <span className='rounded-lg bg-yellow1800 w-8 h-8 flex items-center justify-center'>
+                <Image
+                  src="../icons/wallet-red.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+              </span>
+            </div>
+            <ProgressBar value={47} barColor='bg-blue-2200' bgColor='bg-gray-1600' className='h-1.5!' />
+            <p className='text-gray-1200 font-normal text-xs leading-4 mt-1'>47% paid off</p>
+          </div>
+          <div className='2xl:col-span-1 md:col-span-3 4xl:max-w-105.5 2xl:max-w-98.75 max-w-full w-full bg-white border border-solid border-gray-1000 px-3 py-5 rounded-lg shadow-61xl'>
+            <div className='flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-4 justify-between'>
+              <div className=''>
+                <h4 className='text-blue1700 text-xl leading-7 font-bold mb-0.5'>Credit Score</h4>
+                <p className='text-SteelGray text-sm leading-4 font-normal'>John Anderson • <span className='text-xs'>USR-2847391</span></p>
+              </div>
+              <Link href={"#"} className='py-2.5 px-4 bg-gray-2000/60 rounded-xl h-13 inline-flex items-center gap-3 text-SteelGray text-sm leading-5 font-normal'>
+                <span className='flex items-center justify-center bg-gray-2000 rounded-2xl w-8 h-8'>
                   <Image
-                    src="../images/search-icon.svg"
+                    src="../icons/file-gray.svg"
                     width="16"
                     height="16"
                     alt=""
                   />
+                </span>
+                View Full Report
+              </Link>
+            </div>
+            <div className='flex items-center justify-center mt-5'>
+              <Image
+                src="/images/graph-img.png"
+                width="289"
+                height="150"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div className='flex xl:flex-row flex-col items-start 4xl:gap-12.5 gap-4 mt-6'>
+          <div className='xl:w-[calc(100%-411px)] w-full'>
+            <div className='flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-4 justify-between bg-white border border-solid border-gray-1000 rounded-lg p-5'>
+              <div className='flex items-center gap-4'>
+                <span className='bg-blue-2200/10 rounded-xl flex items-center justify-center w-12 h-12'>
+                  <Image
+                    src="../icons/calendar-blue.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                  />
+                </span>
+                <div className='flex-1 w-full'>
+                  <span className='text-gray-1200 text-sm leading-5 font-normal block'>Next Installment Due</span>
+                  <h4 className='text-blue-1300 font-semibold text-lg leading-7'>Sat, Feb 15, 2025</h4>
+                  <p className='text-gray-1200 text-xs leading-6 font-normal block'>17 days remaining</p>
                 </div>
               </div>
-              <div className='4xl:flex 4xl:w-auto w-full grid sm:grid-cols-4 grid-cols-2 items-center gap-3'>
-                <div className='5xl:w-40 4xl:w-32.5 w-full'>
-                    <CustomSelect
-                      value={status}
-                      className='h-10'
-                      onChange={(e) => setStatus(e.target.value)}
-                      options={[
-                        { label: "All Accounts", value: "All Accounts" },
-                      ]}
+              <div className='sm:text-right'>
+                <span className='text-gray-1200 font-inter font-normal text-sm leading-5 block'>Amount Due</span>
+                <h4 className='text-blue-1300 mb-2 font-bold text-2xl leading-8'>$468.75</h4>
+                <Link href={"#"} className='sm:w-full w-full inline-flex items-center justify-center gap-3 text-white text-sm leading-5 font-medium bg-blue-2200 hover:bg-blue-2200/90 rounded-md h-9 px-3'>
+                  Pay Now
+                  <Image
+                    src="../images/right-arrow-white.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </Link>
+              </div>
+            </div>
+            <div className='bg-white mt-6 border border-solid border-gray-1000 rounded-lg shadow-61xl'>
+              <div className='sm:p-6 p-4'>
+                <h4 className='text-blue-1300 mb-1.5 flex items-center gap-2 font-semibold text-lg leading-7 tracking-[-0.45px]'>
+                  <Image
+                    src="/icons/Repayment-icon.svg"
+                    width="20"
+                    height="20"
+                    alt=""
+                  />
+                  Repayment Ledger
+                </h4>
+                <p className='text-gray-1200 font-normal text-sm leading-5'>Full schedule of loan repayments</p>
+              </div>
+              <UserFinancingTable />
+            </div>
+          </div>
+          <div className='xl:max-w-102.75 w-full'>
+            <div className='bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
+              <h4 className='text-blue-1300 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
+                <Image src="../images/sheild-active.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+                Administrative Actions
+              </h4>
+              <ul className='mt-3'>
+                <li className='mb-2'>
+                  <Link href={"#"} className='text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-blue1400 hover:bg-blue-1400 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
+                    <Image src="../images/eye-icon.svg"
+                      width="16"
+                      height="16"
+                      alt=""
+                      className='brightness-1000'
                     />
-                  </div>
-                   <div className='5xl:w-35 4xl:w-27.5 w-full'>
-                    <CustomSelect
-                      value={status}
-                      className='h-10'
-                      onChange={(e) => setStatus(e.target.value)}
-                      options={[
-                        { label: "All Status", value: "All Status" },
-                      ]}
+                    Impersonate User
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link href={"#"} className='text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-red1700 hover:bg-red1700/90 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
+                    <Image src="../images/freeze-icon.svg"
+                      width="16"
+                      height="16"
+                      alt=""
                     />
-                  </div>
-                  <div className='5xl:w-40 4xl:w-32.5 w-full'>
-                    <CustomSelect
-                      value={status}
-                      className='h-10'
-                      onChange={(e) => setStatus(e.target.value)}
-                      options={[
-                        { label: "All Types", value: "All Types" },
-                      ]}
-                    />
-                  </div>
-                  <div className="relative 5xl:max-w-55 4xl:max-w-37.5 max-w-full w-full">
-                    <input
-                      type="text"
-                      className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-black-2000 placeholder:text-black-2000 px-4 pl-10 h-9 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-                      placeholder="Date Range"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <div className="absolute top-1/2 -translate-y-1/2 left-3">
-                      <Image
-                        src="../images/calendar-icon4.svg"
+                    Freeze Account
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"#"} className='text-yellow-1100 border border-solid border-yellow-1100/50 text-sm leading-5 font-inter font-medium flex items-center justify-between bg-gray-1600 hover:bg-skyblue2434 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
+                    <div className='flex items-center gap-2'>
+                      <Image src="../images/filter-yellow.svg"
                         width="16"
                         height="16"
                         alt=""
                       />
+                      Adjust Limits
                     </div>
-                  </div>
-              </div> 
-            </div>
-            <div className='bg-white shadow-4xl mt-6 rounded-lg'> 
-              <UserTransactionTable />
-            </div> 
-          </div>
-          <div className='xl:max-w-75 w-full bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
-            <h4 className='text-blue-1300 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
-              <Image src="../images/sheild-active.svg"
-                width="16"
-                height="16"
-                alt=""
-              />
-              Administrative Actions
-            </h4>
-            <ul className='mt-3'>
-              <li className='mb-2'>
-                <Link href={"#"} className='text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-blue1400 hover:bg-blue-1400 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
-                  <Image src="../images/eye-icon.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                    className='brightness-1000'
-                  />
-                  Impersonate User
-                </Link>
-              </li>
-              <li className='mb-2'>
-                <Link href={"#"} className='text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-red1700 hover:bg-red1700/90 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
-                  <Image src="../images/freeze-icon.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                  Freeze Account
-                </Link>
-              </li>
-              <li>
-                <Link href={"#"} className='text-yellow-1100 border border-solid border-yellow-1100/50 text-sm leading-5 font-inter font-medium flex items-center justify-between bg-gray-1600 hover:bg-skyblue2434 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
-                  <div className='flex items-center gap-2'>
-                    <Image src="../images/filter-yellow.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    Adjust Limits
-                  </div>
-                  <span className='text-yellow-1100 font-inter font-medium text-[10px] leading-5 bg-yellow-1100/10 rounded px-1.5 h-6'>4-Eyes</span>
-                </Link>
-              </li>
-            </ul>
-            <div className='border-t border-b border-solid border-gray-3100 py-3 mt-3'>
-              <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Send Message</h4>
-              <ul className='mt-2 grid grid-cols-2 gap-3'>
-                <li>
-                  <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
-                    <Image src="../images/email-black.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    Email
-                  </Link>
-                </li>
-                <li>
-                  <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
-                    <Image src="../images/puch-icon.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    Push
+                    <span className='text-yellow-1100 font-inter font-medium text-[10px] leading-5 bg-yellow-1100/10 rounded px-1.5 h-6'>4-Eyes</span>
                   </Link>
                 </li>
               </ul>
+              <div className='border-t border-b border-solid border-gray-3100 py-3 mt-3'>
+                <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Send Message</h4>
+                <ul className='mt-2 grid grid-cols-2 gap-3'>
+                  <li>
+                    <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+                      <Image src="../images/email-black.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                      />
+                      Email
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
+                      <Image src="../images/puch-icon.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                      />
+                      Push
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className='pt-3'>
+                <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Quick Stats</h4>
+                <ul className='grid grid-cols-2 gap-3 mt-2'>
+                  <li>
+                    <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Account Age</span>
+                    <p className="text-blue-1300 font-medium text-sm leading-5">2y 4mo</p>
+                  </li>
+                  <li>
+                    <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Total Txns</span>
+                    <p className="text-blue-1300 font-medium text-sm leading-5">1,247</p>
+                  </li>
+                  <li>
+                    <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Avg. Monthly</span>
+                    <p className="text-blue-1300 font-medium text-sm leading-5">€3,450</p>
+                  </li>
+                  <li>
+                    <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Support Tickets</span>
+                    <p className="text-blue-1300 font-medium text-sm leading-5">12</p>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className='pt-3'>
-              <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Quick Stats</h4>
-              <ul className='grid grid-cols-2 gap-3 mt-2'>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Account Age</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">2y 4mo</p>
-                </li>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Total Txns</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">1,247</p>
-                </li>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Avg. Monthly</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">€3,450</p>
-                </li>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Support Tickets</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">12</p>
-                </li>
-              </ul>
+            <div className='bg-white mt-8 border border-solid border-gray-3100 rounded-lg shadow-4xl px-2.5 py-6'>
+              <div className=''>
+                <h4 className='text-blue-1300 mb-1.5 flex items-center gap-2 font-semibold text-lg leading-7 tracking-[-0.45px]'>
+                  <Image
+                    src="/icons/file-blue.svg"
+                    width="20"
+                    height="20"
+                    alt=""
+                  />
+                  Credit Compliance & Documents
+                </h4>
+                <p className='text-gray-1200 font-normal text-sm leading-5'>Required financing documentation</p>
+              </div>
+              <div className='mt-3 flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-4 justify-between border border-solid border-gray-1000 rounded-lg bg-white p-3'>
+                <div className='flex items-center gap-3'>
+                  <span className='bg-blue-2200/10 rounded-lg w-[36.53px] h-10 flex items-center justify-center'>
+                    <Image
+                      src="/icons/file-blue.svg"
+                      width="20"
+                      height="20"
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-medium'>Signed Loan Contract</h4>
+                    <p className='text-gray-1200 text-xs leading-4 font-normal'>PDF • Uploaded Aug 20,
+                      2024</p>
+                  </div>
+                </div>
+                <div className='flex items-center justify-center gap-3 sm:w-auto w-full'>
+                  <span className='px-2.5 h-5.5 inline-flex items-center gap-1 rounded-full font-semibold text-xs leading-4 border border-solid bg-yellow1800 border-lightgreen17/20 text-lightgreen17'>Approved</span>
+                  <ul className='flex items-center gap-1'>
+                    <li>
+                      <Link href={"#"} className='flex items-center justify-center w-8 h-8'>
+                        <Image
+                          src="/images/eye-icon.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                          className='brightness-0'
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href={"#"} className='flex items-center justify-center w-8 h-8'>
+                        <Image
+                          src="/images/export-icon4.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                          className='brightness-0'
+                        />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className='mt-3 flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-4 justify-between border border-solid border-gray-1000 rounded-lg bg-white p-3'>
+                <div className='flex items-center gap-3'>
+                  <span className='bg-blue-2200/10 rounded-lg w-[36.53px] h-10 flex items-center justify-center'>
+                    <Image
+                      src="/icons/file-blue.svg"
+                      width="20"
+                      height="20"
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-medium'>Proof of
+                      Income/Guarantee</h4>
+                    <p className='text-gray-1200 text-xs leading-4 font-normal'>PDF • Uploaded Aug 18,
+                      2024</p>
+                  </div>
+                </div>
+                <div className='flex items-center justify-center gap-3 sm:w-auto w-full'>
+                  <span className='px-2.5 h-5.5 inline-flex items-center gap-1 rounded-full font-semibold text-xs leading-4 border border-solid bg-yellow1800 border-lightgreen17/20 text-lightgreen17'>Approved</span>
+                  <ul className='flex items-center gap-1'>
+                    <li>
+                      <Link href={"#"} className='flex items-center justify-center w-8 h-8'>
+                        <Image
+                          src="/images/eye-icon.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                          className='brightness-0'
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href={"#"} className='flex items-center justify-center w-8 h-8'>
+                        <Image
+                          src="/images/export-icon4.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                          className='brightness-0'
+                        />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className='mt-3 flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-4 justify-between border border-solid border-gray-1000 rounded-lg bg-white p-3'>
+                <div className='flex items-center gap-3'>
+                  <span className='bg-blue-2200/10 rounded-lg w-[36.53px] h-10 flex items-center justify-center'>
+                    <Image
+                      src="/icons/file-blue.svg"
+                      width="20"
+                      height="20"
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-medium'>University Enrollment
+                      Letter</h4>
+                    <p className='text-gray-1200 text-xs leading-4 font-normal'>PDF • Uploaded Aug 22,
+                      2024</p>
+                  </div>
+                </div>
+                <div className='flex items-center justify-center gap-3 sm:w-auto w-full'>
+                  <span className='px-2.5 h-5.5 inline-flex items-center gap-1 rounded-full font-semibold text-xs leading-4 border border-solid bg-yellow1800 border-yellow-1100/20 text-yellow-1100'>Pending</span>
+                  <ul className='flex items-center gap-1'>
+                    <li>
+                      <Link href={"#"} className='flex items-center justify-center w-8 h-8'>
+                        <Image
+                          src="/images/eye-icon.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                          className='brightness-0'
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href={"#"} className='flex items-center justify-center w-8 h-8'>
+                        <Image
+                          src="/images/export-icon4.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                          className='brightness-0'
+                        />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div> 
+        <div className='bg-white mt-6 border border-solid border-gray-1000 rounded-lg shadow-61xl sm:p-6 p-4'>
+          <div className=''>
+            <h4 className='text-blue-1300 mb-1.5 flex items-center gap-2 font-semibold text-lg leading-7 tracking-[-0.45px]'>
+              <Image
+                src="/images/shield-blue.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              Owner/Admin Controls
+            </h4>
+            <p className='text-gray-1200 font-normal text-sm leading-5'>Manage loan terms and apply adjustments</p>
+          </div>
+          <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 4xl:gap-27.5 xl:gap-8 gap-4 mt-3'>
+            <div className='border border-solid border-gray-1000 rounded-lg xl:p-4 px-2 py-4'>
+              <h4 className='text-blue-1300 mb-2 flex items-center gap-2 font-medium text-sm leading-5'>
+                <span className='bg-blue-2200/10 rounded-lg w-8 h-8 flex items-center justify-center'>
+                  <Image
+                    src="/icons/refresh-blue.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
+                Restructure Loan
+              </h4>
+              <p className='text-gray-1200 mb-3 flex items-center font-normal xl:text-xs text-[11px] leading-4'>Change monthly payment or interest rate. Requires 4-eyes approval.</p>
+              <Link href={""} className='w-full flex items-center justify-center gap-3.5 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-1000 rounded-md bg-white h-9 px-3 hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
+                <Image
+                  src="/icons/setting-icon.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+                Restructure
+              </Link>
+            </div>
+            <div className='border border-solid border-gray-1000 rounded-lg xl:p-4 px-2 py-4'>
+              <h4 className='text-blue-1300 mb-2 flex items-center gap-2 font-medium text-sm leading-5'>
+                <span className='bg-yellow1800 rounded-lg w-8 h-8 flex items-center justify-center'>
+                  <Image
+                    src="/images/warning.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
+                Apply Penalty
+              </h4>
+              <p className='text-gray-1200 mb-3 flex items-center font-normal xl:text-xs text-[11px] leading-4'>Manually add a late fee for missed or delayed payments.</p>
+              <Link href={""} className='w-full flex items-center justify-center gap-3.5 text-red-1300 font-inter font-normal text-sm leading-5 border border-solid border-red-1300/30 rounded-md bg-white h-9 px-3 hover:bg-yellow1800 transition-all duration-500 ease-in-out'>
+                <Image
+                  src="/images/warning.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+                Apply Fee
+              </Link>
+            </div>
+            <div className='border border-solid border-gray-1000 rounded-lg xl:p-4 px-2 py-4'>
+              <h4 className='text-blue-1300 mb-2 flex items-center gap-2 font-medium text-sm leading-5'>
+                <span className='bg-yellow1800 rounded-lg w-8 h-8 flex items-center justify-center'>
+                  <Image
+                    src="/images/clock-yellow.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
+                Grace Period
+              </h4>
+              <p className='text-gray-1200 mb-3 flex items-center font-normal xl:text-xs text-[11px] leading-4'>Delay the next payment without applying a penalty.</p>
+              <Link href={""} className='w-full flex items-center justify-center gap-3.5 text-yellow-1100 font-inter font-normal text-sm leading-5 border border-solid border-yellow-1100/30 rounded-md bg-white h-9 px-3 hover:bg-yellow1800 transition-all duration-500 ease-in-out'>
+                <Image
+                  src="/images/clock-yellow.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+                Request
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

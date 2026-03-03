@@ -2,9 +2,9 @@
 import { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
-import Button from "@/app/components/ui/Button"; 
-import CustomSelect from "@/app/components/CustomSelect"; 
-import UserTransactionTable from '@/app/components/UsersStudent/UserTransactionTable'; 
+import Button from "@/app/components/ui/Button";
+import CustomSelect from "@/app/components/CustomSelect";
+import UserTransactionTable from '@/app/components/UsersStudent/UserTransactionTable';
 
 
 
@@ -58,7 +58,7 @@ const menuItems = [
     iconActive: "../icons/kyc-active.svg",
     active: true,
   },
- {
+  {
     name: "Financing",
     href: "user_financing",
     icon: "../images/Financing.svg",
@@ -67,23 +67,23 @@ const menuItems = [
   },
   {
     name: "Housing",
-    href: "/cards",
+    href: "user_housing",
     icon: "../images/house-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/house-icon-active.svg",
     active: false,
   },
   {
     name: "Insurance",
-    href: "/cards",
+    href: "user_insurance",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/sheild-active.svg",
     active: false,
   },
   {
     name: "Crypto",
-    href: "/cards",
+    href: "user_crypto",
     icon: "../images/crypto-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/crypto-active.svg",
     active: false,
   },
   {
@@ -114,7 +114,7 @@ const UsersStudentsPage = () => {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("All Countries");
 
- 
+
   return (
     <div className='font-inter'>
       <div className=''>
@@ -265,8 +265,8 @@ const UsersStudentsPage = () => {
         </div>
         <div className='flex xl:flex-row flex-col items-start gap-4'>
           <div className='xl:w-[calc(100%-300px)] w-full'>
-           
-           <div className='mb-6'>
+
+            <div className='mb-6'>
               <h4 className='text-black-2000 font-semibold text-2xl mb-1 leading-8'>User Transaction Ledger</h4>
               <p className='text-gray-3800 font-normal text-sm leading-5'>View and manage all user transactions</p>
             </div>
@@ -304,57 +304,57 @@ const UsersStudentsPage = () => {
               </div>
               <div className='4xl:flex 4xl:w-auto w-full grid sm:grid-cols-4 grid-cols-2 items-center gap-3'>
                 <div className='5xl:w-40 4xl:w-32.5 w-full'>
-                    <CustomSelect
-                      value={status}
-                      className='h-10'
-                      onChange={(e) => setStatus(e.target.value)}
-                      options={[
-                        { label: "All Accounts", value: "All Accounts" },
-                      ]}
+                  <CustomSelect
+                    value={status}
+                    className='h-10'
+                    onChange={(e) => setStatus(e.target.value)}
+                    options={[
+                      { label: "All Accounts", value: "All Accounts" },
+                    ]}
+                  />
+                </div>
+                <div className='5xl:w-35 4xl:w-27.5 w-full'>
+                  <CustomSelect
+                    value={status}
+                    className='h-10'
+                    onChange={(e) => setStatus(e.target.value)}
+                    options={[
+                      { label: "All Status", value: "All Status" },
+                    ]}
+                  />
+                </div>
+                <div className='5xl:w-40 4xl:w-32.5 w-full'>
+                  <CustomSelect
+                    value={status}
+                    className='h-10'
+                    onChange={(e) => setStatus(e.target.value)}
+                    options={[
+                      { label: "All Types", value: "All Types" },
+                    ]}
+                  />
+                </div>
+                <div className="relative 5xl:max-w-55 4xl:max-w-37.5 max-w-full w-full">
+                  <input
+                    type="text"
+                    className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-black-2000 placeholder:text-black-2000 px-4 pl-10 h-9 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
+                    placeholder="Date Range"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                  <div className="absolute top-1/2 -translate-y-1/2 left-3">
+                    <Image
+                      src="../images/calendar-icon4.svg"
+                      width="16"
+                      height="16"
+                      alt=""
                     />
                   </div>
-                   <div className='5xl:w-35 4xl:w-27.5 w-full'>
-                    <CustomSelect
-                      value={status}
-                      className='h-10'
-                      onChange={(e) => setStatus(e.target.value)}
-                      options={[
-                        { label: "All Status", value: "All Status" },
-                      ]}
-                    />
-                  </div>
-                  <div className='5xl:w-40 4xl:w-32.5 w-full'>
-                    <CustomSelect
-                      value={status}
-                      className='h-10'
-                      onChange={(e) => setStatus(e.target.value)}
-                      options={[
-                        { label: "All Types", value: "All Types" },
-                      ]}
-                    />
-                  </div>
-                  <div className="relative 5xl:max-w-55 4xl:max-w-37.5 max-w-full w-full">
-                    <input
-                      type="text"
-                      className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-black-2000 placeholder:text-black-2000 px-4 pl-10 h-9 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-                      placeholder="Date Range"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <div className="absolute top-1/2 -translate-y-1/2 left-3">
-                      <Image
-                        src="../images/calendar-icon4.svg"
-                        width="16"
-                        height="16"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-              </div> 
+                </div>
+              </div>
             </div>
-            <div className='bg-white shadow-4xl mt-6 rounded-lg'> 
+            <div className='bg-white shadow-4xl mt-6 rounded-lg'>
               <UserTransactionTable />
-            </div> 
+            </div>
           </div>
           <div className='xl:max-w-75 w-full bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
             <h4 className='text-blue-1300 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
@@ -449,7 +449,7 @@ const UsersStudentsPage = () => {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   );
 };

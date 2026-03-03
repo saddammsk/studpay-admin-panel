@@ -71,23 +71,23 @@ const menuItems = [
   },
   {
     name: "Housing",
-    href: "/cards",
+    href: "user_housing",
     icon: "../images/house-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/house-icon-active.svg",
     active: false,
   },
   {
     name: "Insurance",
-    href: "/cards",
+    href: "user_insurance",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/shield-blue.svg",
     active: false,
   },
   {
     name: "Crypto",
-    href: "/cards",
+    href: "user_crypto",
     icon: "../images/crypto-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/crypto-active.svg",
     active: false,
   },
   {
@@ -721,7 +721,7 @@ const UsersStudentsPage = () => {
           <p className='text-gray-3800 font-normal text-sm leading-5 mt-1.5'>Please provide a reason for rejecting this document. The student will
             be notified.
           </p>
-          <textarea className='text-gray-1900 font-normal px-3.5 py-2.5 outline-0 text-sm leading-5 placeholder:text-gray-1900 border border-solid border-gray-3600 rounded-md shadow-59xl w-full h-[100px] mt-6' placeholder='Enter rejection reason...'></textarea>
+          <textarea className='text-gray-1900 font-normal px-3.5 py-2.5 outline-0 text-sm leading-5 placeholder:text-gray-1900 border border-solid border-gray-3600 rounded-md shadow-59xl w-full h-25 mt-6' placeholder='Enter rejection reason...'></textarea>
           <ul className="flex items-center justify-end gap-3 mt-4">
             <li>
               <button
