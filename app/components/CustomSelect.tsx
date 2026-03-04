@@ -31,7 +31,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                          </option>
                     ))}
                </select>
-               <div className='w-4 h-4 opacity-50 flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-1.5'>
+               <div className='w-4 h-4  flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-1.5'>
                     <Image
                          src="../images/down-arrow.svg"
                          width='10'
