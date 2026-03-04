@@ -42,7 +42,7 @@ const menuItems = [
     href: "user_transactions",
     icon: "../images/transfers-icon.svg",
     iconActive: "../images/transfers-icon-blue.svg",
-    active: true,
+    active: false,
   },
   {
     name: "AVI & Blocked",
@@ -56,7 +56,7 @@ const menuItems = [
     href: "user_kyc",
     icon: "../images/shield-dark.svg",
     iconActive: "../icons/kyc-active.svg",
-    active: false,
+    active: true,
   },
   {
     name: "Financing",
@@ -265,6 +265,7 @@ const UsersStudentsPage = () => {
         </div>
         <div className='flex xl:flex-row flex-col items-start gap-4'>
           <div className='xl:w-[calc(100%-300px)] w-full'>
+
             <div className='mb-6'>
               <h4 className='text-black-2000 font-semibold text-2xl mb-1 leading-8'>User Transaction Ledger</h4>
               <p className='text-gray-3800 font-normal text-sm leading-5'>View and manage all user transactions</p>

@@ -55,44 +55,44 @@ const menuItems = [
   },
   {
     name: "AVI & Blocked",
-    href: "/cards",
+    href: "user_avi-blocked",
     icon: "../images/avi-block.svg",
     iconActive: "../images/avi-card-blue.svg",
     active: false,
   },
   {
     name: "KYC",
-    href: "/cards",
+    href: "user_kyc",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/kyc-active.svg",
     active: false,
   },
   {
     name: "Financing",
-    href: "/cards",
+    href: "user_financing",
     icon: "../images/Financing.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/financing-active.svg",
     active: false,
   },
   {
     name: "Housing",
-    href: "/cards",
+    href: "user_housing",
     icon: "../images/house-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/house-icon-active.svg",
     active: false,
   },
   {
     name: "Insurance",
-    href: "/cards",
+    href: "user_insurance",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/sheild-active.svg",
     active: false,
   },
   {
     name: "Crypto",
-    href: "/cards",
+    href: "user_crypto",
     icon: "../images/crypto-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/crypto-active.svg",
     active: false,
   },
   {
@@ -658,12 +658,12 @@ setup for French Visa application')"></textarea>
             <li>
               <button
                 className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-blue-1000/90 hover:border-blue-1000/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-blue-1000 border-solid border-blue-1000 h-10"
-              > 
+              >
                 Send Campaign
               </button>
             </li>
           </ul>
-        </div> 
+        </div>
       </Modal >
     </div>
   );

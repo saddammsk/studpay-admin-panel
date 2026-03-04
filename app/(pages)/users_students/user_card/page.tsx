@@ -49,44 +49,44 @@ const menuItems = [
   },
   {
     name: "AVI & Blocked",
-    href: "/cards",
+    href: "user_avi-blocked",
     icon: "../images/avi-block.svg",
     iconActive: "../images/avi-card-blue.svg",
     active: false,
   },
   {
     name: "KYC",
-    href: "/cards",
+    href: "user_kyc",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/kyc-active.svg",
     active: false,
   },
   {
     name: "Financing",
-    href: "/cards",
+    href: "user_financing",
     icon: "../images/Financing.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/financing-active.svg",
     active: false,
   },
   {
     name: "Housing",
-    href: "/cards",
+    href: "user_housing",
     icon: "../images/house-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/house-icon-active.svg",
     active: false,
   },
   {
     name: "Insurance",
-    href: "/cards",
+    href: "user_insurance",
     icon: "../images/shield-dark.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/sheild-active.svg",
     active: false,
   },
   {
     name: "Crypto",
-    href: "/cards",
+    href: "user_crypto",
     icon: "../images/crypto-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../images/crypto-active.svg",
     active: false,
   },
   {
@@ -1397,7 +1397,7 @@ const UsersStudentsPage = () => {
                 onClick={() => setIsOpen6(false)}
                 className="group opacity-50 sm:px-4 px-2.5 flex items-center justify-center sm:gap-4 gap-1.5 cursor-pointer hover:bg-gray-1000 hover:text-blue-1300 transition-all duration-500 ease-in-out w-full border rounded-[10px] text-gray-1200 font-medium sm:text-sm text-[11px] leading-5 bg-gray-1600 border-solid border-gray-1000 h-12"
               >
-                <Image src="/icons/lock-open.svg" width={16} height={16} alt="" className='group-hover:brightness-0'/>
+                <Image src="/icons/lock-open.svg" width={16} height={16} alt="" className='group-hover:brightness-0' />
                 Unblock Attempt Counter
               </button>
             </li>
