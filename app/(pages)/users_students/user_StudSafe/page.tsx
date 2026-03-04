@@ -7,6 +7,7 @@ import Button from "@/app/components/ui/Button";
 import CustomSelect from "@/app/components/CustomSelect";
 import UserCryptoAssetTable from "@/app/components/UsersStudent/UserCryptoAssetTable";
 import UserCryptoLedgerTable from "@/app/components/UsersStudent/UserCryptoLedgerTable";
+import { PiSquare } from "lucide-react";
 
 interface MenuItem {
   name: string;
@@ -84,27 +85,27 @@ const menuItems = [
     href: "user_crypto",
     icon: "../images/crypto-icon.svg",
     iconActive: "../images/crypto-active.svg",
-    active: true,
+    active: false,
   },
   {
     name: "StudSafe",
     href: "user_StudSafe",
     icon: "../images/lock-icon.svg",
     iconActive: "../icons/lock-icon-active.svg",
-    active: false,
+    active: true,
   },
   {
     name: "Support",
     href: "user_Support",
     icon: "../images/support-icon.svg",
-    iconActive: "../icons/support-active.svg",
+    iconActive: "../images/support-active.svg",
     active: false,
   },
   {
     name: "Audit Trail",
     href: "/cards",
     icon: "../images/file-icon2.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/avi-card-blue.svg",
     active: false,
   },
 ];
@@ -413,166 +414,398 @@ const UsersStudentsPage = () => {
         </div>
         <div className="flex xl:flex-row flex-col items-start gap-6 mt-12 5xl:pl-6 5xl:pr-12.5">
           <div className="xl:w-[calc(100%-300px)] w-full p">
-            <div className="grid 4xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-              <div className="bg-white border border-solid border-gray-1000 rounded-lg shadow-61xl 2xl:p-5 px-2.5 py-4">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="flex items-center justify-center w-12 h-12 rounded-xl gradient-new">
-                    <Image
-                      src="/images/wallet-blue.svg"
-                      width="24"
-                      height="24"
-                      alt=""
-                      className="brightness-10000"
-                    />
-                  </span>
-                  <span className="text-green-1600 text-sm leading-5 font-normal flex items-center gap-1">
-                    <Image
-                      src="/images/price-arrow-green.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    +3.24%
-                  </span>
-                </div>
-                <p className="text-lighrgrey38 text-sm leading-5 font-normal mb-1">
-                  Total Crypto Value
-                </p>
-                <h4 className="text-Black234 text-[30px] leading-9 font-bold">
-                  6.387,15 €
-                </h4>
-              </div>
-              <div className="bg-white border border-solid border-gray-1000 rounded-lg shadow-61xl 2xl:p-5 px-2.5 py-4">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-lighrgrey39">
-                    <Image
-                      src="/icons/sheild-dark-blue.svg"
-                      width="24"
-                      height="24"
-                      alt=""
-                    />
-                  </span>
-                  <span className="text-white text-xs leading-4 font-bold flex items-center bg-green-1600 rounded-full h-5.5 px-2.5">
-                    Wallet Active
-                  </span>
-                </div>
-                <p className="text-lighrgrey38 text-sm leading-5 font-normal mb-1">
-                  Wallet Status
-                </p>
-                <h4 className="text-Black234 text-lg leading-7 font-bold">
-                  Security Level: High
-                </h4>
-                <p className="text-lighrgrey38 text-sm leading-5 font-normal mt-1">
-                  Last verified: 2 hours ago
-                </p>
-              </div>
-              <div className="bg-white border border-solid border-gray-1000 rounded-lg shadow-61xl 2xl:p-5 px-2.5 py-4">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-lighrgrey39">
-                    <Image
-                      src="/icons/Connecte.svg"
-                      width="24"
-                      height="24"
-                      alt=""
-                    />
-                  </span>
-                  <span className="text-lighrgrey38 text-sm leading-5 font-normal">
-                    2 Connected
-                  </span>
-                </div>
-                <p className="text-lighrgrey38 text-sm leading-5 font-normal mb-3">
-                  Connected Wallets
-                </p>
-                <ul>
-                  <li className="flex items-center justify-between mb-2">
-                    <p className="text-Black234 font-normal text-xs leading-6 flex items-center gap-2">
-                      <span className="bg-violet55 rounded-full flex items-center w-2 h-2"></span>{" "}
-                      StudPay Wallet
-                    </p>
-                    <span className="text-lighrgrey38 text-xs leading-4 font-normal inline-flex items-center rounded bg-lighrgrey39 h-5 max-w-27.5 w-full px-2">
-                      0x742d...f7e8
-                    </span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <p className="text-Black234 font-normal text-xs leading-6 flex items-center gap-2">
-                      <span className="bg-lighrgrey38 rounded-full flex items-center w-2 h-2"></span>{" "}
-                      MetaMask
-                    </p>
-                    <span className="text-lighrgrey38 text-xs leading-4 font-normal inline-flex items-center rounded bg-lighrgrey39 h-5 max-w-27.5 w-full px-2">
-                      0x8ba1...9a1c
-                    </span>
-                  </li>
-                </ul>
+            <div className="bg-white flex items-center gap-4 border border-solid border-lighrgrey40 rounded-xl p-4">
+              <span className="bg-azureblue12/10 w-12 h-12 flex items-center justify-center text-azureblue12 text-lg leading-7 font-bold rounded-full">JD</span>
+              <div className="flex-1 w-full">
+                <h4 className="text-Black234 text-base leading-6 font-bold">Jane Doe</h4>
+                <p className="text-lighrgrey38 text-sm leading-5">Student ID: STU-2024-78234 • Dublin, Ireland</p>
               </div>
             </div>
-            <div className="bg-white mt-6 border border-solid border-gray-1000 rounded-lg shadow-61xl">
-              <div className="flex sm:flex-row flex-col sm:items-center items-start px-2 pt-6 pb-4 border-b border-solid border-gray-1000">
-                <h4 className="text-Black234 font-bold text-lg leading-7">
-                  Asset Holdings
-                </h4>
-              </div>
-              <UserCryptoAssetTable />
-            </div>
-            <div className="bg-white mt-6 border border-solid border-gray-1000 rounded-lg shadow-61xl">
-              <div className="flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-3 items-start justify-between px-2 sm:pt-6 pt-4 pb-4 border-b border-solid border-gray-1000">
-                <h4 className="text-Black234 font-bold text-lg leading-7">
-                  Crypto Transaction Ledger
-                </h4>
-                <span className="text-lighrgrey38 text-xs leading-4 font-bold border border-solid border-lighrgrey40 rounded-full h-5.5 px-2.5 flex items-center justify-center">
-                  5 Transactions
+            <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-6">
+              <div className="bg-white flex items-start gap-2 shadow-4xl border border-l-4  border-solid  border-lighrgrey40 border-l-orange-500 rounded-xl px-2.5 py-6">
+                <span className="flex items-center w-4 h-4">
+                  <Image
+                    src='/images/shield-dark.svg'
+                    width='16'
+                    height='16'
+                    alt=''
+                  />
                 </span>
+                <div className="flex-1 w-full">
+                  <h4 className="text-lighrgrey38 text-sm leading-5">Safety Status</h4>
+                  <span className="text-white mt-2.5 text-xs font-bold leading-4 inline-flex items-center justify-center bg-green-1600 rounded-full h-5.5 px-2.5">Safe</span>
+                  <p className="text-lighrgrey38 mt-2.5 text-xs leading-4 font-normal">Last updated: Today, 2:30 PM</p>
+                </div>
               </div>
-              <UserCryptoLedgerTable />
-            </div>
-
-            <div className="bg-white mt-6  rounded-xl shadow-63xl sm:p-6 p-4">
-              <h4 className="text-Black234 text-lg leading-7 font-bold">
-                Admin Control Actions
-              </h4>
-              <p className="text-lighrgrey38 text-sm leading-5 font-normal">
-                High-security administrative actions for wallet management
-              </p>
-              <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 mt-6">
-                <div
-                  onClick={() => setIsOpen(true)}
-                  className=" group cursor-pointer flex items-center gap-4 border-2 border-solid border-red-1300 rounded-[10px] hover:border-red-1300/90 bg-red-1300 hover:bg-red-1300/90 transition-all duration-500 ease-in-out 2xl:px-6 px-4 py-4"
-                >
-                  <span className="bg-white/20 flex items-center justify-center rounded-xl w-10 h-10">
+              <div className="bg-white flex items-start gap-2 shadow-4xl border border-solid  border-lighrgrey40 rounded-xl px-2.5 py-6">
+                <span className="flex items-center w-4 h-4">
+                  <Image
+                    src='/images/location-gray.svg'
+                    width='16'
+                    height='16'
+                    alt=''
+                  />
+                </span>
+                <div className="flex-1 w-full">
+                  <h4 className="text-lighrgrey38 text-sm leading-5">Recent Check-ins</h4>
+                  <ul className="mt-2">
+                    <li className="flex items-center gap-2 mb-2">
+                      <span className="flex items-center justify-center w-3 h-3">
+                        <Image
+                          src='/images/clock-gray.svg'
+                          width='12'
+                          height='12'
+                          alt=''
+                        />
+                      </span>
+                      <div className="">
+                        <h5 className="text-Black234 text-xs leading-4 font-normal">University Library, Dublin</h5>
+                        <p className="text-lighrgrey38 text-xs leading-4 font-normal">2 hours ago</p>
+                      </div>
+                    </li>
+                    <li className="flex items-center gap-2 mb-2">
+                      <span className="flex items-center justify-center w-3 h-3">
+                        <Image
+                          src='/images/clock-gray.svg'
+                          width='12'
+                          height='12'
+                          alt=''
+                        />
+                      </span>
+                      <div className="">
+                        <h5 className="text-Black234 text-xs leading-4 font-normal">Student Residence, Block A</h5>
+                        <p className="text-lighrgrey38 text-xs leading-4 font-normal">Yesterday, 10:45 PM</p>
+                      </div>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="flex items-center justify-center w-3 h-3">
+                        <Image
+                          src='/images/clock-gray.svg'
+                          width='12'
+                          height='12'
+                          alt=''
+                        />
+                      </span>
+                      <div className="">
+                        <h5 className="text-Black234 text-xs leading-4 font-normal">Dublin Airport, Terminal 2</h5>
+                        <p className="text-lighrgrey38 text-xs leading-4 font-normal">3 days ago</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="bg-white flex items-start gap-2 shadow-4xl border border-solid  border-lighrgrey40 rounded-xl px-2.5 py-6">
+                <span className="flex items-center w-4 h-4">
+                  <Image
+                    src='/images/warning-gray.svg'
+                    width='16'
+                    height='16'
+                    alt=''
+                  />
+                </span>
+                <div className="flex-1 w-full">
+                  <h4 className="text-lighrgrey38 text-sm leading-5 mb-2">
+                    SOS Button History
+                  </h4>
+                  <p className="text-lighrgrey38 text-sm leading-5 font-normal flex items-center gap-2">
                     <Image
-                      src="../icons/freez-icon.svg"
-                      width="16"
-                      height="16"
+                      src='/images/sheild-green.svg'
+                      width='16'
+                      height='16'
+                      alt=''
+                    />
+                    No SOS triggers recorded
+                  </p>
+                  <p className="text-lighrgrey38 text-xs leading-4 mt-2">
+                    No SOS triggers recorded
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="grid 4xl:grid-cols-2 grid-cols-1 items-start xl:gap-6 gap-0 mt-6">
+              <div className="mb-4 border border-solid border-lighrgrey40 rounded-xl bg-white shadow-4xl sm:p-6 p-4">
+                <h4 className="text-Black234 sm:mb-6 mb-4 flex items-center gap-2 sm:text-2xl text-[15px] leading-6 font-bold tracking-[-0.6px]">
+                  <Image
+                    src="../icons/Trusted-user.svg"
+                    width="20"
+                    height="20"
+                    alt=""
+                  />
+                  Trusted Contacts (Emergency Dossier)
+                </h4>
+                <div className="bg-Orange56/5 mb-4 flex items-start justify-between border border-solid border-Orange56 rounded-xl p-4">
+                  <div className="">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="inline-flex items-center justify-center text-white text-xs leading-4 font-bold bg-azureblue12 rounded-full h-5.5 px-2.5">Local Contact</span>
+                      <Image
+                        src="/icons/check-icon3.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                      />
+                    </div>
+                    <h4 className="text-Black234 text-base leading-6 font-bold mb-1">Michael O'Brien</h4>
+                    <p className="text-lighrgrey38 text-sm leading-5 font-normal mb-1">Father</p>
+                    <Link href={"#"} className="text-Black234 text-sm leading-5 font-normal">+353 87 123 4567</Link>
+                  </div>
+                  <div className="">
+                    <ul>
+                      <li className="mb-2">
+                        <Link href={"#"} className="inline-flex items-center justify-center text-white font-normal text-sm leading-5 gap-3 bg-green-1600 hover:bg-green-1600/90 h-9 rounded-[10px] w-21.5">
+                          <Image
+                            src="../images/call-icon.svg"
+                            width="16"
+                            height="16"
+                            alt=""
+                            className="brightness-10000"
+                          />
+                          Call
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={"#"} className="inline-flex items-center justify-center text-Orange56 font-normal text-sm leading-5 gap-3 bg-SnowWhite border border-solid border-Orange56 hover:bg-Orange56/10 h-9 rounded-[10px] w-21.5">
+                          <Image
+                            src="../icons/sms-icon.svg"
+                            width="16"
+                            height="16"
+                            alt=""
+                          />
+                          SMS
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="bg-white flex items-start justify-between border border-solid border-lighrgrey40 rounded-xl p-4">
+                  <div className="">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="inline-flex items-center justify-center text-Black234 text-xs leading-4 font-bold bg-lighrgrey39 rounded-full h-5.5 px-2.5">Local Contact</span>
+                      <Image
+                        src="/icons/check-icon3.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                      />
+                    </div>
+                    <h4 className="text-Black234 text-base leading-6 font-bold mb-1">Dr. Sarah Murphy</h4>
+                    <p className="text-lighrgrey38 text-sm leading-5 font-normal mb-1">University Coordinator</p>
+                    <Link href={"#"} className="text-Black234 text-sm leading-5 font-normal">+353 1 234 5678</Link>
+                  </div>
+                  <div className="">
+                    <ul>
+                      <li className="mb-2">
+                        <Link href={"#"} className="inline-flex items-center justify-center text-white font-normal text-sm leading-5 gap-3 bg-green-1600 hover:bg-green-1600/90 h-9 rounded-[10px] w-21.5">
+                          <Image
+                            src="../images/call-icon.svg"
+                            width="16"
+                            height="16"
+                            alt=""
+                            className="brightness-10000"
+                          />
+                          Call
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={"#"} className="inline-flex items-center justify-center text-Orange56 font-normal text-sm leading-5 gap-3 border border-solid border-Orange56 hover:bg-Orange56/10 h-9 rounded-[10px] w-21.5">
+                          <Image
+                            src="../icons/sms-icon.svg"
+                            width="16"
+                            height="16"
+                            alt=""
+                          />
+                          SMS
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="">
+                <div className="border border-solid border-lighrgrey40 rounded-xl bg-white shadow-4xl sm:p-6 p-4">
+                  <h4 className="text-Black234 sm:mb-6 mb-4 flex items-center gap-2 sm:text-2xl text-[15px] leading-6 font-bold tracking-[-0.6px]">
+                    <Image
+                      src="../icons/sheild-dark-blue2.svg"
+                      width="20"
+                      height="20"
                       alt=""
                     />
-                  </span>
-                  <div className="flex-1 w-full">
-                    <h4 className="text-white text-sm leading-5 font-bold">
-                      Convert to Fiat
-                    </h4>
-                    <p className="text-white text-xs leading-4 font-normal">
-                      Sell crypto to cover expenses
+                    Protection & Insurance
+                  </h4>
+                  <div className="bg-white mb-4 flex sm:flex-row flex-col sm:gap-0 gap-4 items-start justify-between border border-solid border-lighrgrey40 rounded-xl p-4">
+                    <div className="">
+                      <h4 className="flex items-center mb-1 text-Black234 text-base gap-2 leading-6 font-normal">
+                        <Image
+                          src="/icons/file-blue-dark.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                        />
+                        Active Coverage
+                      </h4>
+                      <div className="inline-flex mb-1 items-center text-white text-xs leading-4  gap-1 font-bold bg-green-1600 rounded-full h-5.5 px-2.5">
+                        <Image
+                          src="/icons/check-icon3.svg"
+                          width="12"
+                          height="12"
+                          alt=""
+                          className="brightness-10000"
+                        />
+                        Active Coverage
+                      </div>
+                      <ul>
+                        <li className="text-lighrgrey38 font-normal text-sm leading-5 mb-1">
+                          Provider: <span className="text-Black234"> StudProtect International</span>
+                        </li>
+                        <li className="text-lighrgrey38 font-normal text-sm leading-5 mb-1">
+                          Policy #:  <span className="text-Black234"> SP-2024-IE-78234</span>
+                        </li>
+                        <li className="text-lighrgrey38 font-normal text-sm leading-5">
+                          Valid until: <span className="text-Black234">August 31, 2025</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="">
+                      <ul>
+                        <li className="mb-2">
+                          <Link href={"#"} className="group inline-flex items-center justify-center text-Black234 font-normal text-sm leading-5 gap-3 hover:bg-violet55 hover:text-white border border-solid border-lighrgrey40 bg-SnowWhite h-9 rounded-[10px] w-32.5">
+                            <Image
+                              src="../icons/expend-icon2.svg"
+                              width="16"
+                              height="16"
+                              alt=""
+                              className="group-hover:brightness-10000"
+                            />
+                            View Policy
+                          </Link>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="bg-white mb-4 flex sm:flex-row flex-col sm:gap-0 gap-4 items-start justify-between border border-solid border-lighrgrey40 rounded-xl p-4">
+                    <div className="">
+                      <h4 className="flex items-center mb-1 text-Black234 text-base gap-2 leading-6 font-normal">
+                        <Image
+                          src="/icons/sheild-dark-blue2.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                        />
+                        Personal Accident Cover
+                      </h4>
+                      <div className="inline-flex mb-1 items-center text-white text-xs leading-4  gap-1 font-bold bg-green-1600 rounded-full h-5.5 px-2.5">
+                        <Image
+                          src="/icons/check-icon3.svg"
+                          width="12"
+                          height="12"
+                          alt=""
+                          className="brightness-10000"
+                        />
+                        Included
+                      </div>
+                      <ul>
+                        <li className="text-lighrgrey38 font-normal text-sm leading-5">
+                          Coverage: <span className="text-Black234"> €50,000</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="bg-Orange56/5 border border-solid border-Orange56/30 rounded-xl p-4">
+                    <div className="flex sm:flex-row flex-col sm:gap-0 gap-4 items-start justify-between">
+                      <h4 className="flex items-center  text-Black234 text-base gap-2 leading-6 font-normal">
+                        <Image
+                          src="/icons/legal-icon.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                        />
+                        Legal Assistance
+                      </h4>
+                      <Link href={"#"} className="group inline-flex items-center justify-center text-Orange56 font-normal text-sm leading-5 gap-3 hover:bg-Orange56/10 border border-solid border-Orange56 bg-SnowWhite h-9 rounded-[10px] w-36.75">
+                        <Image
+                          src="../icons/expend-orange.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                        />
+                        Contact Legal
+                      </Link>
+                    </div>
+                    <p className="text-lighrgrey38 mt-2 font-normal text-sm leading-5">
+                      24/7 access to StudPay's legal help partner for students facing legal
+                      issues abroad.
+                    </p>
+                    <p className="text-lighrgrey38 mt-4.5 flex sm:flex-nowrap flex-wrap items-center font-normal text-sm leading-5">
+                      <Image
+                        src="/images/info-yellow.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                        className="mr-2"
+                      />
+                      Emergency Hotline:<span className="text-Black234">+353 1 800 LEGAL</span>
                     </p>
                   </div>
                 </div>
-                <div
-                  onClick={() => setIsOpen2(true)}
-                  className="group cursor-pointer flex items-center gap-4 border-2 border-solid border-lighrgrey40 rounded-[10px] hover:border-violet55 bg-white hover:bg-violet55/5 transition-all duration-500 ease-in-out 2xl:px-6 px-4 py-4"
-                >
-                  <span className="bg-violet55/10 flex items-center justify-center rounded-xl w-10 h-10">
-                    <Image
-                      src="../icons/convert-icon.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                  </span>
-                  <div className="flex-1 w-full">
-                    <h4 className="text-Black234  text-sm leading-5 font-bold">
-                      Freeze Crypto Wallet
-                    </h4>
-                    <p className="text-lighrgrey38  text-xs leading-4 font-normal">
-                      Stop all withdrawals immediately
-                    </p>
+                <div className="border border-solid border-lighrgrey40 rounded-xl bg-white shadow-4xl sm:p-6 p-4 sm:mt-6 mt-4">
+                  <div className="flex items-start gap-2">
+                    <span className="w-5 h-5 flex items-center justify-center">
+                      <Image
+                        src="../icons/warning-dark.svg"
+                        width="20"
+                        height="20"
+                        alt=""
+                      />
+                    </span>
+                    <div className="flex-1 w-full">
+                      <h4 className="text-Black234 mb-6 flex items-center gap-2  text-2xl leading-6 font-bold tracking-[-0.6px]">
+                        Admin Safety Actions
+                      </h4>
+                      <div className="mt-6">
+                        <div className="w-full mb-3 border border-solid border-azureblue12/30 rounded-[10px] bg-SnowWhite hover:bg-azureblue12/5 sm:px-4 px-3 py-3 flex items-center sm:gap-5 gap-3">
+                          <span>
+                            <Image
+                              src="../icons/bell-dark.svg"
+                              width="16"
+                              height="16"
+                              alt=""
+                            />
+                          </span>
+                          <div className="flex-1 w-full">
+                            <h4 className="text-Black234 font-normal leading-5 text-sm">Trigger Welfare Check</h4>
+                            <p className="text-lighrgrey38 font-normal leading-4 text-xs">Send push notification to confirm safety</p>
+                          </div>
+                        </div>
+                        <div className="w-full mb-3 border border-solid border-red-1300/30 rounded-[10px] bg-SnowWhite hover:bg-red-1300/5 sm:px-4 px-3 py-3 flex items-center sm:gap-5 gap-3">
+                          <span>
+                            <Image
+                              src="../icons/lock-red.svg"
+                              width="16"
+                              height="16"
+                              alt=""
+                            />
+                          </span>
+                          <div className="flex-1 w-full">
+                            <h4 className="text-red-1300 font-normal leading-5 text-sm">Lock All Digital Assets</h4>
+                            <p className="text-red-1300 opacity-70 font-normal leading-4 text-xs">Freeze cards, crypto & accounts</p>
+                          </div>
+                        </div>
+                        <div className="w-full border border-solid border-Orange56/30 rounded-[10px] bg-SnowWhite hover:bg-Orange56/5 sm:px-4 px-3 py-3 flex items-center sm:gap-5 gap-3">
+                          <span>
+                            <Image
+                              src="../icons/share-icon.svg"
+                              width="16"
+                              height="16"
+                              alt=""
+                            />
+                          </span>
+                          <div className="flex-1 w-full">
+                            <h4 className="text-red-1300 font-normal leading-5 text-sm">Share Profile with Authorities</h4>
+                            <p className="text-red-1300 opacity-70 font-normal leading-4 text-xs">Generate secure link for police/embassy</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

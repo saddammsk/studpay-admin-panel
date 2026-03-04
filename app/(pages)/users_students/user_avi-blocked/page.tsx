@@ -92,16 +92,16 @@ const menuItems = [
   },
   {
     name: "StudSafe",
-    href: "/cards",
+    href: "user_StudSafe",
     icon: "../images/lock-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/lock-icon-active.svg",
     active: false,
   },
   {
     name: "Support",
-    href: "/cards",
+    href: "user_Support",
     icon: "../images/support-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/support-active.svg",
     active: false,
   },
   {

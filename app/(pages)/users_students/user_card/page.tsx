@@ -91,16 +91,16 @@ const menuItems = [
   },
   {
     name: "StudSafe",
-    href: "/cards",
+    href: "user_StudSafe",
     icon: "../images/lock-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/lock-icon-active.svg",
     active: false,
   },
   {
     name: "Support",
-    href: "/cards",
+    href: "user_Support",
     icon: "../images/support-icon.svg",
-    iconActive: "../images/avi-card-blue.svg",
+    iconActive: "../icons/support-active.svg",
     active: false,
   },
   {
@@ -142,9 +142,6 @@ const UsersStudentsPage = () => {
   const [selected, setSelected] = useState(plans[0]) // Radio button 
 
   return (
-
-
-
     <div className='font-inter'>
       <div className=''>
         <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>

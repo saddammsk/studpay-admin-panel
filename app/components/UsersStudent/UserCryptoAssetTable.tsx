@@ -186,14 +186,14 @@ export default function UserInsuranceTable() {
                     {item.current.pricenumber}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-Black234 text-sm leading-5 font-bold">
+                <td className="px-4 py-3 text-right text-Black234 text-sm leading-5 font-bold">
                   {item.value}
                 </td>
 
                 <td className="px-4 py-3 text-center">
                   <Link
                     href="#"
-                    className="flex items-center text-sm leading-5 text-violet55 gap-3 py-2.5 px-3 rounded-[10px] hover:bg-violet55/10"
+                    className="flex items-center justify-end text-sm leading-5 text-violet55 gap-3 py-2.5 px-3 rounded-[10px] hover:bg-violet55/10"
                   >
                     <Image
                       src={item.explorer.icon}

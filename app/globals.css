@@ -1,4 +1,5 @@
  @import "tailwindcss";
+
  @theme inline {
      --font-neulis-sans: "Neulis Sans";
      --font-segoe: "Segoe UI";
@@ -192,6 +193,7 @@
      --color-yellow1700: #FEF3C7;
      --color-yellow1800: #FEF5E7;
      --color-yellow1900: #864E0E;
+     --color-yellow2000: #E7B008;
      --color-red2000: #E11D48;
      --color-red2100: #DC2828;
      --color-red2200: #EF4360;
@@ -203,6 +205,7 @@
      --color-green53: #198653;
      --color-green54: #085E41;
      --color-green55: #DEF8EE;
+     --color-green56: #F97015;
      --color-skyblue26: #BEE3F4;
      --color-skyblue27: #F1FAFE;
      --color-OxfordBlue: #1B294B;
@@ -212,10 +215,16 @@
      --color-Black234: #17171C;
      --color-violet55: #6325F4;
      --color-Orange55: #F7931A;
+     --color-Orange56: #F97415;
+     --color-Orange57: #FEF0E6;
      --color-blue55: #627EEA;
      --color-blue556: #2775CA;
      --color-blueviolet1: #9945FF;
      --color-greenviolet1: #14F195;
+     --color-azureblue12: #1A3366;
+     --color-azureblue13: #0950C3;
+     --color-azuregray12: #8B97A7;
+     --color-SnowWhite: #FCFCFC;
      /*****/
      --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
      --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -246,6 +255,7 @@
      --shadow-61xl: 0 1px 2px 0 #FFF;
      --shadow-62xl: 0 1px 3px 0 #FFF, 0 4px 12px -2px #FFF;
      --shadow-63xl: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+     --shadow-64xl: 0 1px 2px 0 rgba(15, 23, 41, 0.05);
      --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
      --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
      --breakpoint-xs: 390px;
@@ -257,7 +267,7 @@
      --breakpoint-4xl: 1600px;
      --breakpoint-5xl: 1800px;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Medium.woff2') format('woff2'), url('/fonts/NeulisSans-Medium.woff') format('woff');
@@ -265,7 +275,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-SemiBold.woff2') format('woff2'), url('/fonts/NeulisSans-SemiBold.woff') format('woff');
@@ -273,7 +283,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Bold.woff2') format('woff2'), url('/fonts/NeulisSans-Bold.woff') format('woff');
@@ -281,7 +291,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Regular.woff2') format('woff2'), url('/fonts/NeulisSans-Regular.woff') format('woff');
@@ -289,7 +299,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Segoe UI';
      src: url('/fonts/SegoeUI.woff2') format('woff2'), url('/fonts/SegoeUI.woff') format('woff');
@@ -297,7 +307,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Graphik';
      src: url('/fonts/Graphik.eot');
@@ -306,66 +316,66 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  html {
      overflow: auto !important;
      padding-right: 0px !important;
  }
- 
+
  .scrollbar-hide::-webkit-scrollbar {
      display: none;
  }
- 
+
  .scrollbar-hide {
      -ms-overflow-style: none;
      scrollbar-width: none;
  }
- 
+
  .dashboard-bg {
      background: linear-gradient(135deg, var(--color-grey-98, #FAFAFA) 0%, var(--color-grey-9730, rgba(239, 246, 255, 0.30)) 50%, var(--color-grey-9820, rgba(250, 245, 255, 0.20)) 100%);
  }
- 
+
  .banner-bg {
      background: linear-gradient(90deg, #0D8CFF 0%, #0D8CFF 50%, #7E22CE 100%);
  }
- 
+
  .line-bg {
      background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
  }
- 
+
  .line-bg-2 {
      background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
  }
- 
+
  .line-bg-3 {
      background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
  }
- 
+
  .gray-icon {
      filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
  }
- 
+
  .flag-bg {
      background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
  }
- 
+
  input[type="date"]::-webkit-calendar-picker-indicator {
      display: none;
      -webkit-appearance: none;
      cursor: pointer;
  }
- 
+
  input[type="date"] {
      -moz-appearance: textfield;
  }
- 
+
  .text-gradient {
      background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
      background-clip: text;
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
  }
- 
+
  .calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
      display: block;
      -webkit-appearance: auto;
@@ -373,33 +383,33 @@
      position: absolute;
      left: 11px;
  }
- 
+
  .sale-date input[type="date"]::-webkit-calendar-picker-indicator {
      display: block;
      -webkit-appearance: auto;
      cursor: pointer;
  }
- 
+
  .btn-primary:hover img {
      filter: brightness(300);
  }
- 
+
  .bg-gradient {
      background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
  }
- 
+
  .bg-gradient4 {
      background: linear-gradient(116deg, var(--color-cyan-388, rgba(29, 151, 165, 0.08)) 0%, var(--color-azure-453, rgba(23, 145, 207, 0.03)) 100%);
  }
- 
+
  .bg-gradient5 {
      background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
  }
- 
+
  .gradient-bg {
      background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
  }
- 
+
  .gradient-new {
      background: linear-gradient(135deg, #6325F4 0%, #B642F0 50%, #256AF4 100%);
  }

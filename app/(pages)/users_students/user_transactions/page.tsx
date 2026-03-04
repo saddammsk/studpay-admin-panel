@@ -80,10 +80,10 @@ const menuItems = [
     active: false,
   },
   {
-    name: "Crypto",
-    href: "user_crypto",
-    icon: "../images/crypto-icon.svg",
-    iconActive: "../images/crypto-active.svg",
+    name: "Support",
+    href: "user_Support",
+    icon: "../images/support-icon.svg",
+    iconActive: "../icons/support-active.svg",
     active: false,
   },
   {
