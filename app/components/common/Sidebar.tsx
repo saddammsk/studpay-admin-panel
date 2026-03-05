@@ -27,7 +27,7 @@ const mainMenu: MenuItem[] = [
   {
     label: "AVI & Blocked",
     icon: "/images/avi-card.svg",
-    href: "/avi_blocked"
+    href: "/blocked_avi"
   },
   {
     label: "Financing",

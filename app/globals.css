@@ -163,6 +163,7 @@
      --color-green12: #166534;
      --color-green13: #065F46;
      --color-green14: #15803D;
+     --color-green15: #288A5B;
      --color-lightgreen12: #DCFCE7;
      --color-lightgreen13: #BBF7D0;
      --color-lightgreen14: #D1FAE5;
@@ -242,12 +243,24 @@
      --color-darkgreen59: #0A7552;
      --color-lightgreenNew: #C0FFE1;
      --color-lightgreenNew2: #E7F9F3;
+     --color-lightgreenNew3: #EBF9F2;
      --color-grey-5300: #686C75;
      --color-grey-5400: #E0E5EB;
      --color-grey5500: #EEEFF2;
+     --color-grey5600: #EDEFF2;
      --color-lighrgrey34: #CBD5E1;
+     --color-lighrgrey35: #E3F5F0;
+     --color-lighrgrey36: #EDEFF3;
+     --color-lighrgrey37: #DFE4EC;
+     --color-lighrgrey38: #71717A;
+     --color-lighrgrey39: #F4F4F5;
+     --color-lighrgrey40: #E4E4E7;
+     --color-lighrgrey41: #F3F5F6;
      --color-yellow1700: #FEF3C7;
      --color-yellow1800: #FEF5E7;
+     --color-yellow1900: #864E0E;
+     --color-yellow2000: #E7B008;
+     --color-yellow2100: #FDE68A;
      --color-red2000: #E11D48;
      --color-red2100: #DC2828;
      --color-red2200: #EF4360;
@@ -255,7 +268,35 @@
      --color-red2400: #E21D48;
      --color-red2500: #FDF1F4;
      --color-red85: #F0C2CC;
+     --color-red86: #FF383C;
      --color-green51: #1CCA5B;
+     --color-green53: #198653;
+     --color-green54: #085E41;
+     --color-green55: #DEF8EE;
+     --color-green56: #F97015;
+     --color-skyblue26: #BEE3F4;
+     --color-skyblue27: #F1FAFE;
+     --color-OxfordBlue: #1B294B;
+     --color-OxfordBlue2: #141F38;
+     --color-SteelGray: #737B8C;
+     --color-RosePink: #FDE8E8;
+     --color-Black234: #17171C;
+     --color-violet55: #6325F4;
+     --color-Orange55: #F7931A;
+     --color-Orange57: #FEF0E6;
+     --color-blue55: #627EEA;
+     --color-blue556: #2775CA;
+     --color-blueviolet1: #9945FF;
+     --color-greenviolet1: #14F195;
+     --color-azureblue13: #0950C3;
+     --color-azuregray12: #8B97A7;
+     --color-DarkBrown122: #4D3000;
+     --color-royalBlue123: #2662D9;
+     --color-royalBlue124: #0846AA;
+     --color-LightSkyBlue: #E7F0FE;
+     --color-BurntOrange: #B45309;
+     --color-BurntOrange2: #C2410C;
+     --color-brown1300: #624004;
 
 
      --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
@@ -288,6 +329,15 @@
      --shadow-55xl: 0 0 0 2px #F6F7F9, 0 0 0 4px #0D8CFF;
      --shadow-56xl: 0 0 0 2px rgba(60, 131, 246, 0.20);
      --shadow-57xl: 0 0 0 2px #FAFAFA, 0 0 0 4px #0B64F4;
+     --shadow-58xl: 0 0 0 2px #F3F4F6, 0 0 0 4px #E21D48;
+     --shadow-59xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #141F38;
+     --shadow-61xl: 0 1px 2px 0 #FFF;
+     --shadow-62xl: 0 1px 3px 0 #FFF, 0 4px 12px -2px #FFF;
+     --shadow-63xl: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+     --shadow-64xl: 0 1px 2px 0 rgba(15, 23, 41, 0.05);
+     --shadow-65xl: 0 0 0 2px #F8FAFC, 0 0 0 4px #2FA26A;
+     --shadow-66xl: 0 25px 50px -12px rgba(19, 23, 32, 0.25);
+     --shadow-67xl:  0 0 0 2px #F9FAFB, 0 0 0 4px #25A777;
      --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
      --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
 
@@ -461,7 +511,10 @@
 
  .gradient-new {
      background: linear-gradient(135deg, #6325F4 0%, #B642F0 50%, #256AF4 100%);
+ }
 
+ .approve-gradient {
+     background: linear-gradient(90deg, rgba(37, 167, 119, 0.05) 0%, rgba(37, 167, 119, 0.00) 100%)
  }
 
  .card-bg3 {
