@@ -6,6 +6,8 @@ import Modal from "@/app/components/Modal";
 import Button from "@/app/components/ui/Button";
 import CustomSelect from "@/app/components/CustomSelect";
 import ProgressBar from "@/app/components/ProgressBar";
+import InputField from "@/app/components/InputField";
+import ToggleSwitch from "@/app/components/ToggleSwitch";
 import UserSupportTicketsTable from "@/app/components/UsersStudent/UserSupportTicketsTable";
 
 interface MenuItem {
@@ -114,6 +116,24 @@ const UsersStudentsPage = () => {
   const [isOpen2, setIsOpen2] = useState(false);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("All Countries");
+  const [name, setName] = useState("");
+
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const removeFile = () => {
+    setFile(null);
+  };
+
+  const [enabled, setEnabled] = useState(true);
+
+
+
   return (
     <div className="font-inter">
       <div className="">
@@ -413,8 +433,8 @@ const UsersStudentsPage = () => {
             ))}
           </ul>
         </div>
-        <div className="p-6">
-          <div className="grid grid-cols-5 gap-9.25">
+        <div className="xl:p-6">
+          <div className="grid 2xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 2xl:gap-9.25 gap-4">
             <div className="bg-white flex items-start justify-between border border-l-4 border-solid border-gray-3600 border-l-green56 rounded-lg p-4 shadow-64xl">
               <div className="">
                 <span className="text-gray-1900 text-[13px] leading-5 font-normal">Open Tickets</span>
@@ -494,11 +514,11 @@ const UsersStudentsPage = () => {
               </span>
             </div>
           </div>
-          <div className="flex xl:flex-row flex-col items-start gap-6 mt-6">
-            <div className="xl:w-[calc(100%-608px)] w-full p">
-              <div className="border border-solid border-gray-3600 bg-white shadow-64xl">
-                <div className="px-6 pt-6 pb-4">
-                  <div className="flex items-center justify-between">
+          <div className="flex 2xl:flex-row flex-col items-start gap-6 mt-6">
+            <div className="2xl:w-[60%] w-full">
+              <div className="border border-solid border-gray-3600 bg-white shadow-64xl rounded-lg">
+                <div className="md:px-6 px-4 md:pt-6 pt-4 pb-4">
+                  <div className="flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-4 justify-between">
                     <div className="">
                       <h4 className="text-blue-1300 font-semibold text-[17.3px] leading-7 mb-0.5">Support Tickets</h4>
                       <p className="text-gray-1900 font-normal text-[13px] leading-5">Manage and track all support requests</p>
@@ -508,7 +528,7 @@ const UsersStudentsPage = () => {
                       Advanced Filters
                     </Link>
                   </div>
-                  <div className="flex items-center max-w-152.5 w-full mt-4 gap-3">
+                  <div className="flex sm:flex-row flex-col sm:items-center sm:max-w-152.5 w-full sm:mt-4 mt-2 sm:gap-3 gap-2">
                     <div className="relative flex-1 max-w-full w-full">
                       <input
                         type="text"
@@ -526,7 +546,7 @@ const UsersStudentsPage = () => {
                         />
                       </div>
                     </div>
-                    <div className='relative w-37.5!'>
+                    <div className='relative sm:w-37.5! w-full!'>
                       <CustomSelect
                         value={status}
                         className='h-10 w-full! text-center'
@@ -548,7 +568,7 @@ const UsersStudentsPage = () => {
                 </div>
                 <UserSupportTicketsTable />
               </div>
-              <div className="mt-6 border border-solid border-gray-3600 bg-white shadow-64xl p-6 rounded-lg">
+              <div className="xl:mt-6 mt-4 border border-solid border-gray-3600 bg-white shadow-64xl xl:p-6 p-4 rounded-lg">
                 <h4 className="text-blue-1300 font-semibold text-[17.3px] leading-7 mb-0.5 flex items-center gap-2"><Image src="/icons/meter-icon.svg" width={16} height={16} alt="" /> Customer Satisfaction</h4>
                 <div className="grid grid-cols-2 gap-4 mt-3">
                   <div className="bg-gray1700/50 rounded-lg p-3">
@@ -603,15 +623,15 @@ const UsersStudentsPage = () => {
                   </ul>
                 </div>
               </div>
-              <div className="mt-6 border border-solid border-gray-3600 bg-white shadow-64xl p-6 rounded-lg">
+              <div className="xl:mt-6 mt-4 border border-solid border-gray-3600 bg-white shadow-64xl xl:p-6 p-4 rounded-lg">
                 <h4 className="text-blue-1300 font-semibold text-[15.6px] leading-7 mb-3 flex items-center gap-2"><Image src="/icons/action-icon.svg" width={16} height={16} alt="" /> Quick Actions</h4>
-                <Link href={"#"} className="flex items-center text-white gap-3 text-[13px] leading-5 bg-blue1400 rounded-lg px-4 py-3">
+                <Link onClick={() => setIsOpen(true)} href={"#"} className="flex items-center text-white gap-3 text-[13px] leading-5 bg-blue1400 rounded-lg px-4 py-3">
                   <Image src="/icons/plus-rounded.svg" width={16} height={16} alt="" />
                   Create New Ticket
                 </Link>
                 <ul className="grid grid-cols-2 gap-2 mt-2 max-w-139.25 w-full">
                   <li>
-                    <Link href={"#"} className="flex items-center text-red-1300 gap-3 text-[13px] leading-5 bg-gray-1500 border border-solid border-red-1300/30 rounded-lg px-4 py-3">
+                    <Link onClick={() => setIsOpen2(true)} href={"#"} className="flex items-center text-red-1300 gap-3 text-[13px] leading-5 bg-gray-1500 border border-solid border-red-1300/30 rounded-lg px-4 py-3">
                       <Image src="/icons/escalate-top.svg" width={16} height={16} alt="" />
                       Escalate
                     </Link>
@@ -625,8 +645,10 @@ const UsersStudentsPage = () => {
                 </ul>
               </div>
             </div>
-            <div className="xl:max-w-152 w-full">
-              <div className="mb-4 border border-solid border-gray-3600 bg-white rounded-lg shadow-64xl">
+            {/*** RIGHT BAR ****/}
+            <div className="2xl:w-[40%] w-full">
+              {/*** CHAT BOX ****/}
+              <div className="mb-4 h-105 border border-solid border-gray-3600 bg-white rounded-lg shadow-64xl">
                 <div className="flex items-center justify-between border-b border-solid border-gray-3600 py-3 px-4">
                   <div className="flex items-center gap-3">
                     <div className="relative bg-blue1400/10 rounded-full w-9 h-9 flex items-center justify-center text-blue1400 font-normal text-[13.6px] leading-6">
@@ -682,7 +704,7 @@ const UsersStudentsPage = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="p-4">
+                <div className="p-4 h-[calc(100%-126px)] overflow-x-auto">
                   <div className="flex items-start gap-2">
                     <div className="relative bg-blue1400/10 rounded-full w-7 h-7 flex items-center justify-center text-blue1400 font-normal text-[9.7px] leading-4">
                       MD
@@ -695,8 +717,33 @@ const UsersStudentsPage = () => {
                       <p className="text-gray-1900 text-[9.5px] font-normal leading-4 p-1">10:32 AM</p>
                     </div>
                   </div>
-                  
-
+                  <div className="w-full text-right mt-3">
+                    <div className="inline-flex text-left items-center bg-blue1400 pl-3.5 pr-6 py-2 rounded-t-2xl rounded-bl-2xl rounded-br-md">
+                      <p className="text-white text-[13px] font-normal leading-5.5 max-w-98.5 w-full">
+                        Hello Marie! I'm sorry to hear that. Let me check your card status
+                        right away.
+                      </p>
+                    </div>
+                    <p className="text-gray-1900 text-[9.5px] font-normal leading-4 p-1 flex items-center gap-1 justify-end"><Image src="/icons/double-check.svg" width={12} height={12} alt="" />10:33 AM</p>
+                  </div>
+                  <div className="w-full text-right mt-3">
+                    <div className="inline-flex text-left items-center bg-blue1400 pl-3.5 pr-6 py-2 rounded-t-2xl rounded-bl-2xl rounded-br-md">
+                      <p className="text-white text-[13px] font-normal leading-5.5 max-w-98.5 w-full">
+                        I can see your card is active. Can you tell me which ATM you
+                        tried to use?
+                      </p>
+                    </div>
+                    <p className="text-gray-1900 text-[9.5px] font-normal leading-4 p-1 flex items-center gap-1 justify-end"><Image src="/icons/double-check.svg" width={12} height={12} alt="" />10:34 AM</p>
+                  </div>
+                  <div className="w-full text-right mt-3">
+                    <div className="inline-flex text-left items-center bg-blue1400 pl-3.5 pr-6 py-2 rounded-t-2xl rounded-bl-2xl rounded-br-md">
+                      <p className="text-white text-[13px] font-normal leading-5.5 max-w-98.5 w-full">
+                        I can see your card is active. Can you tell me which ATM you
+                        tried to use?
+                      </p>
+                    </div>
+                    <p className="text-gray-1900 text-[9.5px] font-normal leading-4 p-1 flex items-center gap-1 justify-end"><Image src="/icons/double-check.svg" width={12} height={12} alt="" />10:34 AM</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 border-t border-solid border-gray-3600 p-3">
                   <Link href={"#"} className="flex items-center justify-center w-8 h-8 rounded-md hover:bg-Orange57">
@@ -880,10 +927,11 @@ const UsersStudentsPage = () => {
           </div>
         </div>
       </div>
+
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        panelClassName="max-w-[512px] bg-gray-1500 border-gray-3600! relative"
+        panelClassName="max-w-[560px] bg-gray22 border-gray1600! shadow-7xl! rounded-xl! relative h-full overflow-y-auto"
       >
         <Link
           onClick={() => setIsOpen(false)}
@@ -892,42 +940,114 @@ const UsersStudentsPage = () => {
         >
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
         </Link>
-        <div className="md:py-3.5 md:px-6 p-4">
-          <h4 className="text-blue-1300 font-semibold text-lg leading-5 tracking-[-0.45px]">
-            Freeze Wallet
+        <div className="md:p-6 p-4">
+          <h4 className="text-black13 font-medium text-xl leading-7 tracking-[-0.5px] flex items-center gap-2">
+            <Image src="/icons/Ticket-icon.svg" width={20} height={20} alt="" />
+            Create Internal Support Ticket
           </h4>
-          <p className="text-gray-1900 font-normal text-sm leading-5 mt-1.5">
-            This is a high-security action. Freezing the wallet will immediately
-            block all crypto withdrawals. Use this only for suspicious activity.
+          <p className="text-gray-1400 font-normal text-[13.1px] leading-5 mt-1.5">
+            Manually create a ticket on behalf of a student who reported an issue via phone or
+            email.
           </p>
-          <div className="bg-red2300 border border-solid border-red2200/20 mt-5.5 rounded-lg p-1.5">
-            <p className="text-red2200 flex items-center justify-center gap-2 text-sm leading-5 font-bold">
-              <Image src="/images/warning.svg" width={16} height={16} alt="" />
-              All pending and future withdrawals will be blocked
-            </p>
+          <div className="bg-gray1700/50 border border-solid border-gray1600 rounded-xl p-4 mt-6">
+            <h4 className="text-gray-1400 font-medium text-xs leading-4 uppercase">Student Information</h4>
+            <ul className="grid grid-cols-2 gap-6 mt-4.5">
+              <li>
+                <span className="text-gray-1400 font-normal text-[11.3px] leading-4 block mb-1.75">Student Name</span>
+                <h5 className="text-black13 font-normal text-[13.3px] leading-5">Marcus Schmidt</h5>
+              </li>
+              <li>
+                <span className="text-gray-1400 font-normal text-[11.3px] leading-4 block mb-1.75">Student ID</span>
+                <h5 className="text-black13 font-normal text-[13.3px] leading-5">STU-2024-0847</h5>
+              </li>
+            </ul>
           </div>
-          <ul className="flex items-center justify-end gap-3 mt-6">
-            <li>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 cursor-pointer  hover:bg-lighrgrey37 hover:text-blue-1300 transition-all duration-500 ease-in-out w-full border rounded-md text-blue1700 font-normal text-sm leading-5 bg-gray-1800 border-solid border-gray-3900 h-10"
-              >
-                Cancel
-              </button>
-            </li>
-            <li>
-              <button className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-red2100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-red2100 border-solid border-red2100 h-10">
-                Confirm Terminate
-              </button>
-            </li>
-          </ul>
+          <div className="">
+            <div className="grid grid-cols-2 gap-4 md:mt-6 mt-4">
+              <div className=''>
+                <label className='text-black13 mb-3 font-normal text-sm leading-5 flex items-center'>Category <span className='text-red-1300'>*</span></label>
+                <CustomSelect
+                  className='shadow-65xl rounded-[10px]!'
+                  options={[
+                    { label: 'Select category', value: 'Select category' },
+                    { label: '2000', value: '2000' }
+                  ]}
+                />
+              </div>
+              <div className=''>
+                <label className='text-black13 mb-3 font-normal text-sm leading-5 flex items-center'>Priority <span className='text-red-1300'>*</span></label>
+                <CustomSelect
+                  className='rounded-[10px]!'
+                  options={[
+                    { label: 'Select priority', value: 'Select priority' },
+                    { label: '2000', value: '2000' }
+                  ]}
+                />
+              </div>
+            </div>
+            <div className='md:mt-6 mt-4'>
+              <label className='text-black13 mb-3 font-normal text-sm leading-5 flex items-center'>Subject <span className='text-red-1300'>*</span></label>
+              <InputField
+                ClassName="bg-gray-1500 text-gray-3800 rounded-[10px]! px-3! h-10!"
+                type="name"
+                placeholder="Brief title for the issue..."
+                value={name}
+                onChange={(e: any) => setName(e.target.value)}
+              />
+            </div>
+            <div className='md:mt-6 mt-4'>
+              <label className='text-black13 mb-3 font-normal text-sm leading-5 flex items-center'>Description <span className='text-red-1300'>*</span></label>
+              <textarea className='text-gray-1400 placeholder:text-gray-1200 h-30 font-normal text-[13.1px] focus:outline-0 leading-5 px-3.5 py-2.5 bg-gray22 border border-solid border-gray-1000 rounded-md w-full' placeholder='Detailed notes about the student"s issue...'></textarea>
+            </div>
+            <div className='md:mt-6 mt-4'>
+              <label className='text-black13 mb-3 font-normal text-sm leading-5 flex items-center'>Assign to Agent <span className='text-red-1300'>*</span></label>
+              <CustomSelect
+                className='rounded-[10px]!'
+                options={[
+                  { label: 'Select agent', value: 'Select agent' },
+                  { label: '2000', value: '2000' }
+                ]}
+              />
+            </div>
+            <div className='md:mt-6 mt-4'>
+              <label className='text-black13 mb-3 font-normal text-sm leading-5 flex items-center'>Attachments</label>
+              <label className="group cursor-pointer inline-flex items-center bg-gray22 hover:bg-lightgreenNew3 hover:text-green15 border border-solid border-gray1600 rounded-[10px] h-9 gap-1.5 px-3">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path className='group-hover:stroke-green15'
+                    d="M14.2929 7.36645L8.16621 13.4931C7.41565 14.2437 6.39767 14.6653 5.33621 14.6653C4.27475 14.6653 3.25677 14.2437 2.50621 13.4931C1.75565 12.7425 1.33398 11.7246 1.33398 10.6631C1.33398 9.60166 1.75565 8.58367 2.50621 7.83311L8.21954 2.11978C8.71992 1.61852 9.39892 1.33656 10.1072 1.33594C10.8154 1.33531 11.495 1.61607 11.9962 2.11645C12.4975 2.61682 12.7794 3.29583 12.78 4.00409C12.7807 4.71235 12.4999 5.39185 11.9995 5.89311L6.27288 11.6064C6.02269 11.8566 5.68336 11.9972 5.32954 11.9972C4.97572 11.9972 4.6364 11.8566 4.38621 11.6064C4.13602 11.3563 3.99547 11.0169 3.99547 10.6631C3.99547 10.3093 4.13602 9.96997 4.38621 9.71978L10.0462 4.06645"
+                    stroke="#65758B"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Attach File
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </label>
+            </div>
+          </div>
+          <div className="mt-6">
+            <button onClick={() => setIsOpen(false)} className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-blue600/90 transition-all duration-500 ease-in-out border rounded-[10px] text-white font-normal gap-2 text-base leading-6 bg-blue600 border-solid border-blue600 h-11">
+              Create & Notify Student
+            </button>
+          </div>
         </div>
       </Modal>
 
       <Modal
         isOpen={isOpen2}
         onClose={() => setIsOpen2(false)}
-        panelClassName="max-w-[512px] bg-gray-1500 border-gray-3600! relative"
+        panelClassName="max-w-[520px] bg-white rounded-xl! border-gray-3600! relative h-full overflow-y-auto"
       >
         <Link
           onClick={() => setIsOpen2(false)}
@@ -936,46 +1056,114 @@ const UsersStudentsPage = () => {
         >
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
         </Link>
-        <div className="md:p-6 p-4">
-          <h4 className="text-blue-1300 flex items-center gap-3 font-bold text-lg leading-5 tracking-[-0.45px]">
-            <span className="bg-blue-1000/10 flex items-center justify-center rounded-xl w-10 h-10">
-              <Image
-                src="../icons/converter-blue.svg"
+        <div className="md:px-6 md:pb-6 md:pt-10 p-4">
+          <div className="flex items-center gap-3">
+            <span className="bg-blue-1700/20 rounded-xl w-10 h-10 flex items-center justify-center">
+              <Image src="/icons/arrow-up-rounded.svg" width={20} height={20} alt="" />
+            </span>
+            <div className="">
+              <h4 className="text-blue1700 flex items-center font-bold text-lg leading-7 tracking-[-0.45px]">
+                Escalation Command
+              </h4>
+              <p className="text-gray-2300 font-normal text-sm leading-5">
+                Ticket <span className="text-xs leading-4 rounded h-4 px-1.5 bg-gray-5800">TKT-2847</span>
+              </p>
+            </div>
+          </div>
+          <div className="bg-blue-1700/20 mt-3 flex items-center gap-2 border border-solid border-blue-1700/20 rounded-xl py-2 px-3">
+            <span className="flex items-center justify-center w-4 h-4">
+              <svg
                 width="20"
                 height="20"
-                alt=""
-              />
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.108 14.9999L11.4414 3.33319C11.296 3.0767 11.0852 2.86335 10.8305 2.71492C10.5757 2.56649 10.2862 2.48828 9.99136 2.48828C9.69654 2.48828 9.40699 2.56649 9.15226 2.71492C8.89753 2.86335 8.68673 3.0767 8.54136 3.33319L1.8747 14.9999C1.72777 15.2543 1.65072 15.5431 1.65137 15.837C1.65202 16.1308 1.73035 16.4192 1.8784 16.673C2.02646 16.9269 2.23899 17.137 2.49444 17.2822C2.7499 17.4274 3.0392 17.5025 3.33303 17.4999H16.6664C16.9588 17.4996 17.246 17.4223 17.4991 17.2759C17.7522 17.1295 17.9624 16.9191 18.1085 16.6658C18.2545 16.4125 18.3314 16.1252 18.3313 15.8328C18.3312 15.5404 18.2542 15.2531 18.108 14.9999Z"
+                  stroke="#0D8CFF"
+                  strokeWidth="1.66667"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 7.5V10.8333"
+                  stroke="#0D8CFF"
+                  strokeWidth="1.66667"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 14.166H10.0083"
+                  stroke="#0D8CFF"
+                  strokeWidth="1.66667"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
-            Convert Crypto to Fiat
-          </h4>
-          <p className="text-lighrgrey38 font-normal text-sm leading-5 mt-4">
-            Sell crypto to cover student expenses like rent or fees.
-          </p>
-          <div className="mt-8">
-            <label className="text-blue-1300 block mb-1.5 font-medium text-sm leading-5">
-              Card Purpose
-            </label>
+            <p className='text-DarkBrown122 text-xs leading-4 flex-1 w-full font-normal'>
+              This is a critical action. The ticket will be reassigned and the current agent
+              removed.
+            </p>
+          </div>
+          <div className='mt-6'>
+            <label className='text-blue1700 mb-2.5 font-bold text-sm leading-5 flex items-center'>Escalation Reason <span className='text-red-1300'>*</span></label>
             <CustomSelect
-              className="shadow-57xl"
+              className='shadow-57xl rounded-[10px]!'
               options={[
-                { label: "Select Asset", value: "Select Asset" },
-                { label: "2000", value: "2000" },
+                { label: 'Select a reason...', value: 'Select a reason...' },
+                { label: '2000', value: '2000' }
               ]}
             />
           </div>
-          <div className="mt-4 mb-8">
-            <label className="text-blue-1300 block mb-1.5 font-medium text-sm leading-5">
-              Amount
-            </label>
-            <input
-              type="text"
-              className="border border-solid border-lighrgrey40 rounded-[10px] h-10 text-lighrgrey38 text-sm leading-4 px-3 w-full"
-              placeholder="0.00"
-            />
+          <div className="mt-7">
+            <label className='text-blue1700 mb-2.5 font-bold text-sm leading-5 flex items-center'>Escalation Level<span className='text-red-1300'>*</span></label>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-gray-1800 border border-solid border-gray-5600 rounded-xl p-3">
+                <h4 className="text-blue1700 text-sm leading-5 font-bold mb-[2.5px]">Level 2</h4>
+                <p className="text-gray-2300 text-xs leading-4 font-normal">Team Lead</p>
+              </div>
+              <div className="bg-gray-1800 border border-solid border-gray-5600 rounded-xl p-3">
+                <h4 className="text-blue1700 text-sm leading-5 font-bold mb-[2.5px]">Level 3</h4>
+                <p className="text-gray-2300 text-xs leading-4 font-normal">Super Admin / Dev Team</p>
+              </div>
+            </div>
           </div>
-          <button className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-blue-1000/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-blue-1000 border-solid border-blue-1000 opacity-50 h-10">
-            Convert to EUR
-          </button>
+          <div className="mt-6">
+            <label className='text-blue1700 mb-2.5 font-bold text-sm leading-5 flex items-center'>Internal Note<span className='text-red-1300'>*</span></label>
+            <textarea className='text-gray-2300 placeholder:text-gray-2300 h-25 font-normal text-sm focus:outline-0 leading-5 px-3.5 py-2.5 bg-gray-1800 border border-solid border-gray-5600 rounded-[10px] w-full' placeholder='Explain why you"re escalating this case... (min 10 characters)'></textarea>
+            <p className="text-gray-2300 text-xs leading-4 font-normal">0/500 characters</p>
+          </div>
+          <div className="mt-6 bg-gray-5800/30 border border-solid border-gray-5600 rounded-xl p-4">
+            <h4 className="text-blue1700 text-sm leading-5 font-bold flex items-center gap-2"><Image src="/icons/bell-dark.svg" width={16} height={16} alt="" className="opacity-70" />Impact Notifications</h4>
+            <div className="mt-3 flex items-center justify-between">
+              <div className="">
+                <h4 className="text-blue1700 text-sm leading-5 font-normal">Slack Notification</h4>
+                <p className="text-gray-2300 text-xs leading-4 font-normal">Alert assignee via Slack channel</p>
+              </div>
+              <ToggleSwitch checked={enabled} onChange={setEnabled} />
+            </div>
+            <div className="mt-3 flex items-center justify-between">
+              <div className="">
+                <h4 className="text-blue1700 text-sm leading-5 font-normal">Email Notification</h4>
+                <p className="text-gray-2300 text-xs leading-4 font-normal">Send email to new assignee</p>
+              </div>
+              <ToggleSwitch checked={enabled} onChange={setEnabled} />
+            </div>
+          </div>
+          <ul className="grid grid-cols-2 gap-3 mt-8">
+            <li>
+              <Link href={"#"} className="flex items-center justify-center px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10">Cancel</Link>
+            </li>
+            <li>
+              <button className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-red-1000/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-red-1000 border-solid border-red-1000 opacity-50 h-10">
+                <Image src="/icons/arrow-up-rounded.svg" className="brightness-10000" width={16} height={16} alt="" />
+                Escalate Now
+              </button>
+            </li>
+          </ul>
+
         </div>
       </Modal>
     </div>

@@ -103,7 +103,7 @@ const statusColors: Record<string, string> = {
 export default function TicketTable() {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
+      <table className="5xl:w-full w-262.5">
         <thead>
           <tr className="bg-gray1700/30 border-b border-gray-3600">
             <th className="px-4 py-3.5 text-left text-[13.5px] font-bold text-gray-1900">
@@ -133,7 +133,7 @@ export default function TicketTable() {
           {tickets.map((ticket) => (
             <tr
               key={ticket.id}
-              className={`border-l-4 ${borderColors[ticket.priority] || "border-gray-300 border-l-0!"} border-b border-gray-200`}
+              className={`border-l-4 ${borderColors[ticket.priority] || "border-gray-300 border-l-0!"} border-b border-gray-200 last:border-b-0`}
             >
               <td className="px-3 py-6 text-blue1400 font-medium text-sm leading-5">{ticket.id}</td>
               <td className="px-3 py-6">
