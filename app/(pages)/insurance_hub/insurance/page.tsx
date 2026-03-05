@@ -1,6 +1,8 @@
 "use client";
 
 import TopBar from "@/app/components/common/TopBar";
+import { Clock, ChevronDown, AlertTriangle } from "lucide-react";
+
 import {
      ArrowLeft,
      Phone,
@@ -187,13 +189,10 @@ function page() {
                                                        <span className="text-sm text-gray-5000"> /year</span>
                                                   </p>
                                              </div>
-
-
                                         </div>
                                    </div>
                               </div>
                          </div>
-
                          {/* ================= MAIN GRID ================= */}
                          <div className="grid grid-cols-12 gap-6">
 
@@ -253,22 +252,28 @@ function page() {
 
                               {/* RIGHT */}
                               <div className="col-span-4 space-y-6">
-                                   {/* 🔵 University Bundle */}
-                                   <div className="rounded-xl p-4 bg-blue-1000/10 border border-blue-1000/20 flex justify-between items-center">
-                                        <div>
-                                             <p className="text-xs text-blue-1000 uppercase font-medium">
-                                                  University Bundle
-                                             </p>
-                                             <p className="text-sm font-semibold text-gray-1600">
-                                                  TU Berlin Winter 2024 Partnership
-                                             </p>
+                                   <div className="rounded-xl p-4 bg-blue-1000/10 card-bg3 border border-blue-2800/20 flex justify-between items-center">
+                                        <div className="flex items-center gap-3">
+                                             <div className="w-10 h-10 bg-blue-2800/20 rounded-lg flex items-center justify-center">
+                                                  <img src="/images/star-icon4.svg" alt="" />
+                                             </div>
+                                             <div>
+                                                  <div className="flex itesm-center w-fit mb-1 py-1 px-2.5 gap-1 bg-blue-2800/20 rounded-full">
+                                                       <img src="/images/pencile-icon3.svg" alt="" />
+                                                       <p className="text-xs text-blue-2800 uppercase font-bold ">
+                                                            University Bundle
+                                                       </p>
+                                                  </div>
+                                                  <p className="text-base font-bold text-blue-2900">
+                                                       TU Berlin Winter 2024 Partnership
+                                                  </p>
+                                             </div>
                                         </div>
-
                                         <div className="text-right">
-                                             <p className="text-lg font-semibold text-blue-1000">
+                                             <p className="text-[22px] font-bold text-blue-2800">
                                                   -15%
                                              </p>
-                                             <p className="text-xs text-gray-1200">Applied</p>
+                                             <p className="text-xs text-gray-5000">Applied</p>
                                         </div>
                                    </div>
                                    {/* Coverage Summary (Mapped) */}
@@ -341,7 +346,50 @@ function page() {
                                              </div>
                                         ))}
                                    </div>
+                                   {/* Benefits (Mapped) */}
+                                   <div className="bg-white border border-gray-1000 rounded-lg p-4 space-y-4">
+                                        <h3 className="text-sm font-bold uppercase text-gray-5000">
+                                             Provider Information
+                                        </h3>
+                                        <div className="flex itesm-center justify-between gap-4">
+                                             <div className="flex items-center gap-4">
+                                                  <img src="/images/Allianz-2.png" alt="" />
+                                                  <div>
+                                                       <h6 className="text-base font-normal leading-6 text-blue-2900">Allianz SE</h6>
+                                                       <span className="text-sm font-normal leading-5 text-gray-5000">Student Insurance Division</span>
+                                                  </div>
+                                             </div>
+                                             <div className="text-xs font-bold py-0.5 h-fit px-2.5 rounded-full bg-gray-6800 leading-4 text-blue-2900">A+ Rated</div>
+                                        </div>
+                                   </div>
                               </div>
+                         </div>
+                         <div className="w-full flex items-center justify-between border-b bg-white px-6 py-3">
+                              {/* Left Section */}
+                              <div className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                                   <Clock size={16} className="text-gray-500" />
+                                   <span className="font-medium">Audit Log</span>
+                                   <ChevronDown size={16} className="text-gray-500" />
+                              </div>
+
+                              {/* Center Status */}
+                              <div className="flex items-center gap-2 text-sm text-gray-600">
+                                   <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                                   <span>Verification incomplete</span>
+                              </div>
+
+                              {/* Right Actions */}
+                              <div className="flex items-center gap-3">
+                                   <button className="flex items-center gap-2 border rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                        <AlertTriangle size={16} />
+                                        Request Correction
+                                   </button>
+
+                                   <button className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">
+                                        Approve & Activate Policy
+                                   </button>
+                              </div>
+
                          </div>
                     </div>
                </div>

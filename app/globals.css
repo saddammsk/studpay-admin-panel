@@ -37,6 +37,26 @@
      --color-gray-3800: #676F7E;
      --color-gray-3900: #E2E4E9;
      --color-gray-4000: #D4D7DE;
+     --color-gray-5000: #6C7C93;
+     --color-gray-5100: #E0E4EB;
+     --color-gray-5200: #EAECF1;
+     --color-gray-5300: #E8F1FC;
+     --color-gray-5400: #6E7D91;
+     --color-gray-5500: #E1E4EA;
+     --color-gray-5600: #DCDFE5;
+     --color-gray-5700: #E9F1FC;
+     --color-gray-5800: #EDEFF2;
+     --color-gray-5900: #FFF0E6;
+     --color-gray-6000: #F1EFFB;
+     --color-gray-6100: #F0F2F5;
+     --color-gray-6200: #EDEFF3;
+     --color-gray-6300: #7588A3;
+     --color-gray-6400: #627084;
+     --color-gray-6500: #1FA2AD;
+     --color-gray-6600: #FCFCFC;
+     --color-gray-6700: #F4F6FD;
+     --color-gray-6800: #EBF0F4;
+     --color-gray-6900: #F2F5F7;
      --color-blue-1000: #0D8CFF;
      --color-red-1000: #EF4444;
      --color-red-1100: #FEE2E2;
@@ -45,10 +65,17 @@
      --color-red-1400: #BE123C;
      --color-red-1500: #F43F5E;
      --color-red-1600: #FF3B00;
+     --color-red-2000: #DF3A3A;
+     --color-red-2100: #E93535;
+     --color-red-2200: #ED2C2C;
+     --color-red-2300: #FEF1F1;
+     --color-red-2400: #F0C2C2;
+     --color-red-2500: #DB2424;
      --color-white-1000: #DBEAFE;
      --color-white-1100: #FAFAFA;
      --color-purple-1000: #93C5FD;
      --color-blue-1100: #1F2937;
+     --color-purple-2000: #5914D2;
      --color-blue-1200: #0F172A;
      --color-black-1200: #111827;
      --color-black-1300: #1C1E21;
@@ -64,6 +91,16 @@
      --color-blue-2000: #0F87FF;
      --color-blue-2100: #EBF5FF;
      --color-blue-2200: #2463EB;
+     --color-blue-3000: #7C3BED;
+     --color-blue-3100: #1672F3;
+     --color-blue-3200: #14325D;
+     --color-blue-3300: #19222E;
+     --color-blue-3400: #2875E2;
+     --color-blue-2500: #E6EFFF;
+     --color-blue-2600: #BAD2F7;
+     --color-blue-2700: #6653C6;
+     --color-blue-2800: #1173D4;
+     --color-blue-2900: #1D2530;
      --color-green-1000: #16A34A;
      --color-green-1100: #166534;
      --color-green-1200: #DCFCE7;
@@ -78,20 +115,46 @@
      --color-green-2100: #FCFBF8;
      --color-green-2200: #25A777;
      --color-green-2300: #1D97A5;
+     --color-green-2600: #059467;
+     --color-green-2700: #36D399;
+     --color-green-2800: #94A3B8;
+     --color-green-2900: #48566A;
+     --color-green-3000: #047756;
+     --color-green-3100: #EDFDF5;
+     --color-green-3200: #2BAB6F;
+     --color-green-3300: #28AF60;
+     --color-green-3400: #E6F9EE;
+     --color-green-3500: #22C37B;
+     --color-green-3600: #20C55D;
+     --color-green-3700: #1DA578;
+     --color-green-3800: #2A9D90;
      --color-yellow-1000: #FEF9C3;
      --color-yellow-1100: #F59F0A;
      --color-yellow-1200: #FEF7EB;
      --color-yellow-1300: #F59E0B;
      --color-yellow-1400: #FE7B02;
      --color-yellow-1500: #DC8F09;
+     --color-yellow-1800: #FE7B02;
+     --color-yellow-1900: #DB7706;
+     --color-yellow-2000: #FEF3C8;
+     --color-yellow-2100: #B35309;
+     --color-yellow-2200: #F3B116;
+     --color-yellow-2300: #F5930A;
+     --color-yellow-2400: #FEF4E7;
+     --color-yellow-2500: #F97415;
+     --color-yellow-2600: #FBD3B6;
+     --color-yellow-2700: #00FF8C;
      --color-brown-1000: #854D0E;
      --color-brown-1100: #EAB308;
      --color-brown-1200: #4D3700;
      --color-orange-1000: #F97316;
+     --color-orange-2000: #D97706;
      --color-purple-1100: #A855F7;
      --color-golden-1000: #D9A520;
      --color-black-2000: #14181F;
      --color-black-2100: #090B21;
+     --color-black-2200: #20283C;
+     --color-black-2300: #333C4D;
      --color-black13: #020817;
      --color-gray1600: #E2E8F0;
      --color-gray1700: #F1F5F9;
@@ -182,18 +245,9 @@
      --color-grey-5300: #686C75;
      --color-grey-5400: #E0E5EB;
      --color-grey5500: #EEEFF2;
-     --color-grey5600: #EDEFF2;
      --color-lighrgrey34: #CBD5E1;
-     --color-lighrgrey35: #E3F5F0;
-     --color-lighrgrey36: #EDEFF3;
-     --color-lighrgrey37: #DFE4EC;
-     --color-lighrgrey38: #71717A;
-     --color-lighrgrey39: #F4F4F5;
-     --color-lighrgrey40: #E4E4E7;
      --color-yellow1700: #FEF3C7;
      --color-yellow1800: #FEF5E7;
-     --color-yellow1900: #864E0E;
-     --color-yellow2000: #E7B008;
      --color-red2000: #E11D48;
      --color-red2100: #DC2828;
      --color-red2200: #EF4360;
@@ -202,30 +256,8 @@
      --color-red2500: #FDF1F4;
      --color-red85: #F0C2CC;
      --color-green51: #1CCA5B;
-     --color-green53: #198653;
-     --color-green54: #085E41;
-     --color-green55: #DEF8EE;
-     --color-green56: #F97015;
-     --color-skyblue26: #BEE3F4;
-     --color-skyblue27: #F1FAFE;
-     --color-OxfordBlue: #1B294B;
-     --color-OxfordBlue2: #141F38;
-     --color-SteelGray: #737B8C;
-     --color-RosePink: #FDE8E8;
-     --color-Black234: #17171C;
-     --color-violet55: #6325F4;
-     --color-Orange55: #F7931A;
-     --color-Orange56: #F97415;
-     --color-Orange57: #FEF0E6;
-     --color-blue55: #627EEA;
-     --color-blue556: #2775CA;
-     --color-blueviolet1: #9945FF;
-     --color-greenviolet1: #14F195;
-     --color-azureblue12: #1A3366;
-     --color-azureblue13: #0950C3;
-     --color-azuregray12: #8B97A7;
-     --color-SnowWhite: #FCFCFC;
-     /*****/
+
+
      --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
      --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
      --shadow-5xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
@@ -235,8 +267,14 @@
      --shadow-9xl: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
      --shadow-10xl: 0 4px 6px -1px rgba(20, 25, 31, 0.07), 0 2px 4px -2px rgba(20, 25, 31, 0.05);
      --shadow-11xl: 0 1px 3px 0 rgba(15, 23, 41, 0.05), 0 4px 12px 0 rgba(15, 23, 41, 0.03);
+     --shadow-13xl: 0 4px 30px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.03), 0 1px 0 1px rgba(255, 255, 255, 0.60) inset;
+     --shadow-14xl: 0 1px 2px 0 rgba(24, 20, 31, 0.03);
+     --shadow-15xl: 0 0 16px 4px rgba(233, 53, 53, 0.40), 0 0 32px 8px rgba(233, 53, 53, 0.15);
+     --shadow-16xl: 0 0 8px 0 rgba(239, 68, 68, 0.5);
+     --shadow-17xl: 0 0 20px 0 rgba(29, 165, 120, 0.30), 0 0 40px 0 rgba(29, 165, 120, 0.10);
      --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
      --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
+
      /**** LATEST *****/
      --shadow-46xl: 0 0 0 2px #FFF;
      --shadow-47xl: 0 4px 6px -1px rgba(59, 130, 246, 0.20), 0 2px 4px -2px rgba(59, 130, 246, 0.20);
@@ -250,14 +288,10 @@
      --shadow-55xl: 0 0 0 2px #F6F7F9, 0 0 0 4px #0D8CFF;
      --shadow-56xl: 0 0 0 2px rgba(60, 131, 246, 0.20);
      --shadow-57xl: 0 0 0 2px #FAFAFA, 0 0 0 4px #0B64F4;
-     --shadow-58xl: 0 0 0 2px #F3F4F6, 0 0 0 4px #E21D48;
-     --shadow-59xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #141F38;
-     --shadow-61xl: 0 1px 2px 0 #FFF;
-     --shadow-62xl: 0 1px 3px 0 #FFF, 0 4px 12px -2px #FFF;
-     --shadow-63xl: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
-     --shadow-64xl: 0 1px 2px 0 rgba(15, 23, 41, 0.05);
      --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
      --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
+
+
      --breakpoint-xs: 390px;
      --breakpoint-sm: 575px;
      --breakpoint-md: 767px;
@@ -266,6 +300,7 @@
      --breakpoint-2xl: 1365px;
      --breakpoint-4xl: 1600px;
      --breakpoint-5xl: 1800px;
+
  }
 
  @font-face {
@@ -408,8 +443,28 @@
 
  .gradient-bg {
      background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
+
+ }
+
+ .body-gradient {
+     background: linear-gradient(115deg, #DEEFF7 -0.39%, #EBD6F5 50.26%, #DEEFF7 100.91%);
+ }
+
+ .customselect .w-4 img {
+     filter: brightness(50);
+ }
+
+ .card-bg {
+     background: linear-gradient(180deg, var(--color-white-solid, #FFF) 0%, var(--color-grey-98, #F9FAFB) 100%);
+     background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
  }
 
  .gradient-new {
      background: linear-gradient(135deg, #6325F4 0%, #B642F0 50%, #256AF4 100%);
+
+ }
+
+ .card-bg3 {
+     background: linear-gradient(90deg, var(--color-azure-4510, rgba(17, 115, 212, 0.10)) 0%, var(--color-grey-94, #E4F4FB) 50%, var(--color-azure-455, rgba(17, 115, 212, 0.05)) 100%);
+
  }
