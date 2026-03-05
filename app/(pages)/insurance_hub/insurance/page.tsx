@@ -1,7 +1,7 @@
 "use client";
 
 import TopBar from "@/app/components/common/TopBar";
-import { Clock, ChevronDown, AlertTriangle } from "lucide-react";
+import { Clock, ChevronDown, AlertTriangle, CheckCheckIcon, Check } from "lucide-react";
 
 import {
      ArrowLeft,
@@ -20,6 +20,11 @@ import {
      Info,
      Smile,
      EyeOff,
+     Search,
+     ZoomIn,
+     RotateCw,
+     Maximize2,
+     Download
 } from "lucide-react";
 
 /* ================= TYPES ================= */
@@ -123,11 +128,11 @@ function page() {
           <div>
                <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
                     <TopBar></TopBar>
-                    <div className="p-6">
+                    <div className="md:p-6 p-4">
                          {/* ================= HEADER ================= */}
                          <div className="bg-white border my-6 border-gray-1000 rounded-lg p-4">
-                              <div className="flex items-center justify-between gap-5">
-                                   <div className="space-y-4">
+                              <div className="flex 2xl:flex-nowrap flex-wrap items-center justify-between gap-5">
+                                   <div className="space-y-4 2xl:w-auto w-full">
                                         <button className="flex items-center gap-2 text-sm text-gray-1200">
                                              <ArrowLeft className="w-4 h-4" />
                                              Back to Applications
@@ -160,13 +165,13 @@ function page() {
                                              </div>
                                         </div>
                                    </div>
-                                   <div>
+                                   <div className="2xl:w-auto w-full">
                                         <div className="text-end">
                                              <span className="px-3 py-1 text-xs rounded-full border bg-yellow-1100/10 border-yellow-1100/30 text-yellow-1100">
                                                   {application.status}
                                              </span>
                                         </div>
-                                        <div className="bg-gray-6800/50 rounded-lg p-4 flex gap-6 items-center">
+                                        <div className="bg-gray-6800/50 rounded-lg p-4 md:flex-nowrap flex-wrap flex mt-6 gap-6 items-center">
                                              <div className="border-r border-gray-1000 pr-6">
                                                   <img src="/images/Allianz.png" alt="" />
                                              </div>
@@ -194,14 +199,14 @@ function page() {
                               </div>
                          </div>
                          {/* ================= MAIN GRID ================= */}
-                         <div className="grid grid-cols-12 gap-6">
+                         <div className="grid xl:grid-cols-12 gap-6">
 
                               {/* LEFT */}
-                              <div className="col-span-8 space-y-6">
+                              <div className="4xl:col-span-8 xl:col-span-7 space-y-6">
 
                                    {/* Document */}
                                    <div className="bg-white border border-gray-1000 rounded-lg p-4">
-                                        <div className="flex justify-between mb-4">
+                                        <div className="flex justify-between md:flex-nowrap flex-wrap gap-4 mb-4">
                                              <div>
                                                   <div className="flex items-center gap-2 text-blue-2900 font-normal text-sm">
                                                        <FileText className="w-5 h-5 text-blue-1000" />
@@ -210,6 +215,22 @@ function page() {
                                                   <span className="text-xs text-gray-5000">
                                                        Uploaded Oct 15, 2024
                                                   </span>
+                                             </div>
+                                             <div className="flex items-center gap-6  text-gray-700">
+
+                                                  <Search className="w-5 h-5 cursor-pointer" />
+
+                                                  <div className="flex items-center gap-3">
+                                                       <span className="text-base font-medium">100%</span>
+                                                       <ZoomIn className="w-5 h-5 cursor-pointer" />
+                                                  </div>
+
+                                                  <div className="h-6 w-px bg-gray-300" />
+
+                                                  <RotateCw className="w-5 h-5 cursor-pointer" />
+                                                  <Maximize2 className="w-5 h-5 cursor-pointer" />
+                                                  <Download className="w-5 h-5 cursor-pointer" />
+
                                              </div>
                                         </div>
 
@@ -251,13 +272,13 @@ function page() {
                               </div>
 
                               {/* RIGHT */}
-                              <div className="col-span-4 space-y-6">
+                              <div className="4xl:col-span-4 xl:col-span-5 space-y-6">
                                    <div className="rounded-xl p-4 bg-blue-1000/10 card-bg3 border border-blue-2800/20 flex justify-between items-center">
                                         <div className="flex items-center gap-3">
                                              <div className="w-10 h-10 bg-blue-2800/20 rounded-lg flex items-center justify-center">
                                                   <img src="/images/star-icon4.svg" alt="" />
                                              </div>
-                                             <div>
+                                             <div className="flex-1">
                                                   <div className="flex itesm-center w-fit mb-1 py-1 px-2.5 gap-1 bg-blue-2800/20 rounded-full">
                                                        <img src="/images/pencile-icon3.svg" alt="" />
                                                        <p className="text-xs text-blue-2800 uppercase font-bold ">
@@ -282,7 +303,7 @@ function page() {
                                              Coverage Summary
                                         </h3>
 
-                                        <div className="grid grid-cols-3 gap-4">
+                                        <div className="grid sm:grid-cols-3 gap-4">
                                              {coverageItems.map((item) => (
                                                   <div
                                                        key={item.label}
@@ -351,7 +372,7 @@ function page() {
                                         <h3 className="text-sm font-bold uppercase text-gray-5000">
                                              Provider Information
                                         </h3>
-                                        <div className="flex itesm-center justify-between gap-4">
+                                        <div className="flex itesm-center justify-between md:flex-nowrap flex-wrap gap-4">
                                              <div className="flex items-center gap-4">
                                                   <img src="/images/Allianz-2.png" alt="" />
                                                   <div>
@@ -364,32 +385,31 @@ function page() {
                                    </div>
                               </div>
                          </div>
-                         <div className="w-full flex items-center justify-between border-b bg-white px-6 py-3">
+                         <div className="w-full mt-9 2xl:-mx-6 gap-5 flex items-center flex-wrap justify-between border-b bg-white/95 p-4 border border-gray-7000">
                               {/* Left Section */}
-                              <div className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                              <div className="flex items-center gap-2 text-sm text-gray-5000 cursor-pointer">
                                    <Clock size={16} className="text-gray-500" />
                                    <span className="font-medium">Audit Log</span>
                                    <ChevronDown size={16} className="text-gray-500" />
                               </div>
 
                               {/* Center Status */}
-                              <div className="flex items-center gap-2 text-sm text-gray-600">
-                                   <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                              <div className="flex items-center gap-2 text-xs text-gray-5000">
+                                   <span className="w-2 h-2 rounded-full bg-yellow-1100"></span>
                                    <span>Verification incomplete</span>
                               </div>
 
                               {/* Right Actions */}
-                              <div className="flex items-center gap-3">
-                                   <button className="flex items-center gap-2 border rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                              <div className="flex items-center sm:flex-nowrap flex-wrap gap-3">
+                                   <button className="flex items-center gap-2 bg-gray22 border-gray-7100 border rounded-md px-4 py-2.5 text-sm text-blue-2900 hover:bg-gray-50">
                                         <AlertTriangle size={16} />
                                         Request Correction
                                    </button>
 
-                                   <button className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">
-                                        Approve & Activate Policy
+                                   <button className="flex items-center gap-2 bg-green-3200/50 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">
+                                        <CheckCircle size={16} />   Approve & Activate Policy
                                    </button>
                               </div>
-
                          </div>
                     </div>
                </div>

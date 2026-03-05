@@ -5,23 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import CustomSelect from "@/app/components/CustomSelect";
 import Button from "@/app/components/ui/Button";
-import {
-     AlertTriangle,
-     ShieldAlert,
-     Smartphone,
-     Globe,
-     FileText,
-     Shield,
-     Activity,
-     UserCog,
-     Fuel,
-     Wallet,
-     Receipt,
-     CreditCard,
-     Bitcoin,
-     Hexagon,
-     Coins,
-} from "lucide-react";
 
 import StatsCard4 from "@/app/components/StatsCard4";
 import PolicyTable from '@/app/components/PolicyTable';
