@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import CustomSelect from "@/app/components/CustomSelect";
-import FinancingLoanLedgerTable from '@/app/components/GlobalFinancing/FinancingLoanLedgerTable';
 
 const CircularProgress = ({ value }: { value: number }) => {
   const r = 44;
@@ -53,10 +52,10 @@ interface MenuItem {
 const menuItems = [
   {
     name: "Loan Ledger",
-    href: "#",
+    href: "global_financing",
     icon: "../icons/loan-file.svg",
     iconActive: "../icons/loan-file-active.svg",
-    active: true,
+    active: false,
   },
   {
     name: "Partner Management",
@@ -70,26 +69,63 @@ const menuItems = [
     href: "financing_api_console",
     icon: "../icons/api-keys.svg",
     iconActive: "../icons/api-keys-active.svg",
+    active: true,
+  },
+];
+
+{/*******/}
+interface MenuItem2 {
+  name: string;
+  href: string;
+  icon: string;
+  active?: boolean;
+}
+
+const menuItems2 = [
+  {
+    name: "API Keys",
+    href: "financing_api_console",
+    icon: "../icons/api-key.svg",
+    iconActive: "../icons/api-key-active.svg",
+    active: true,
+  },
+  {
+    name: "Access Control",
+    href: "access_control",
+    icon: "../icons/access-icon.svg",
+    iconActive: "../icons/access-icon-active.svg",
+    active: false,
+  },
+  {
+    name: "Monitoring",
+    href: "monitoring",
+    icon: "../icons/monitoring-icon.svg",
+    iconActive: "../icons/monitoring-icon-active.svg",
+    active: false,
+  },
+   {
+    name: "Emergency",
+    href: "emergency",
+    icon: "../icons/Emergency-icon.svg",
+    iconActive: "../icons/Emergency-icon-active.svg",
     active: false,
   },
 ];
 
-
-const UsersStudentsPage = () => {
-
+const financingapiconsole = () => {
   return (
     <>
       <div className='font-inter'>
         {/**** MOBILE SHOW ****/}
-        <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>     
+        <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>
           <li>
             <CustomSelect
-                className="h-9! w-34! text-gray-1900!"
-                options={[
-                  { label: "Last 30 days", value: "Last 30 days" },
-                  { label: "2000", value: "2000" },
-                ]}
-              />
+              className="h-9! w-34! text-gray-1900!"
+              options={[
+                { label: "Last 30 days", value: "Last 30 days" },
+                { label: "2000", value: "2000" },
+              ]}
+            />
           </li>
           <li>
             <Button
@@ -223,12 +259,38 @@ const UsersStudentsPage = () => {
             ))}
           </ul>
         </div>
-        {/**** TAB NAV END *****/}
-        <FinancingLoanLedgerTable />
+        <div className='mt-6'>
+          <div className=''>
+            <ul className='flex sm:flex-row flex-col items-center md:gap-6 gap-4'>
+              {menuItems2.map((item) => (
+                <li key={item.name} className='sm:w-auto w-full'>
+                  <Link
+                    href={item.href}
+                    className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${item.active ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127" : "text-lighrgrey42 bg-gray-1500 border-gray-3600"
+                      }`}
+                  >
+                    <span className="flex items-center justify-center">
+                      <Image
+                        src={item.active ? item.iconActive : item.icon}
+                        width={16}
+                        height={16}
+                        alt={item.name}
+                      />
+
+                    </span>
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
       </div>
+
+
     </>
   );
 };
 
-export default UsersStudentsPage;
+export default financingapiconsole;

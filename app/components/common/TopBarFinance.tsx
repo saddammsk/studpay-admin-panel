@@ -1,8 +1,4 @@
-"use client";
-import { useState } from "react";
-
-import Image from "next/image";
-import Link from "next/link";
+"use client"; 
 import Button from "../ui/Button";
 import { NotificationsDropdown } from "@/app/components/NotificationsDropdown";
 import CustomSelect from "@/app/components/CustomSelect";
@@ -24,8 +20,8 @@ const TopBar = () => {
           </div>
         </div>
         <div className="flex items-center md:gap-4 gap-1">
-          <ul className="md:flex hidden items-center md:gap-4 gap-1">
-            <li>
+          <ul className="flex items-center md:gap-4 gap-1">
+            <li className="md:block hidden">
               <CustomSelect
                 className="h-9! w-34! text-gray-1900!"
                 options={[
@@ -38,7 +34,7 @@ const TopBar = () => {
               <NotificationsDropdown />
             </li>
 
-            <li>
+            <li className="md:block hidden">
               <Button
                 onClick={() => {}}
                 iconSrc="/images/plus-icon.svg"
