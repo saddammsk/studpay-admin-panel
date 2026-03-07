@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Public_Sans, Inter } from "next/font/google";
+import { Public_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import DashboardLayout from "./layout/DashboardLayout";
 import ReduxProvider from "./store/ReduxProvider";
@@ -20,7 +20,10 @@ const publicSans = Public_Sans({
   subsets: ["latin"],
 });
 
-
+const JetBrainsMono = JetBrains_Mono({
+  variable: "--font-JetBrains-Mono",
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -29,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body  className={`bg-gray-1500 ${inter.variable} ${publicSans.variable} antialiased`}
+      <body  className={`bg-gray-1500 ${inter.variable} ${publicSans.variable} ${JetBrainsMono.variable} antialiased`}
       >
         <ReduxProvider>
         <DashboardLayout>{children}</DashboardLayout>

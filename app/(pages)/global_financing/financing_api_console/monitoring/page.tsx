@@ -1,9 +1,10 @@
 "use client";
+import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import CustomSelect from "@/app/components/CustomSelect";
-import ApiKeyTable from '@/app/components/GlobalFinancing/ApiKeyTable';
 
 const CircularProgress = ({ value }: { value: number }) => {
   const r = 44;
@@ -56,22 +57,22 @@ const menuItems = [
   {
     name: "Loan Ledger",
     href: "global_financing",
-    icon: "../icons/loan-file.svg",
-    iconActive: "../icons/loan-file-active.svg",
+    icon: "../../icons/loan-file.svg",
+    iconActive: "../../icons/loan-file-active.svg",
     active: false,
   },
   {
     name: "Partner Management",
     href: "partner_management",
-    icon: "../icons/Partner-icon.svg",
-    iconActive: "../icons/Partner-icon-active.svg",
+    icon: "../../icons/Partner-icon.svg",
+    iconActive: "../../icons/Partner-icon-active.svg",
     active: false,
   },
   {
     name: "API Console",
     href: "financing_api_console",
-    icon: "../icons/api-keys.svg",
-    iconActive: "../icons/api-keys-active.svg",
+    icon: "../../icons/api-keys.svg",
+    iconActive: "../../icons/api-keys-active.svg",
     active: true,
   },
 ];
@@ -90,29 +91,29 @@ const menuItems2 = [
   {
     name: "API Keys",
     href: "financing_api_console",
-    icon: "../icons/api-key.svg",
-    iconActive: "../icons/api-key-active.svg",
-    active: true,
+    icon: "../../icons/api-key.svg",
+    iconActive: "../../icons/api-key-active.svg",
+    active: false,
   },
   {
     name: "Access Control",
     href: "api_access_control",
-    icon: "../icons/access-icon.svg",
-    iconActive: "../icons/access-icon-active.svg",
+    icon: "../../icons/access-icon.svg",
+    iconActive: "../../icons/access-icon-active.svg",
     active: false,
   },
   {
     name: "Monitoring",
     href: "monitoring",
-    icon: "../icons/monitoring-icon.svg",
-    iconActive: "../icons/monitoring-icon-active.svg",
-    active: false,
+    icon: "../../icons/monitoring-icon.svg",
+    iconActive: "../../icons/monitoring-icon-active.svg",
+    active: true,
   },
   {
     name: "Emergency",
     href: "emergency",
-    icon: "../icons/Emergency-icon.svg",
-    iconActive: "../icons/Emergency-icon-active.svg",
+    icon: "../../icons/Emergency-icon.svg",
+    iconActive: "../../icons/Emergency-icon-active.svg",
     active: false,
   },
 ];
@@ -313,27 +314,144 @@ const financingapiconsole = () => {
         <div className="bg-white border border-solid border-grey5800 mt-7 rounded-lg shadow-4xl">
           <div className="flex sm:flex-row flex-col sm:items-center items-start sm:gap-0 gap-4 justify-between border-b border-solid border-grey5800 px-5 py-4 ">
             <div className="flex items-center gap-2">
-              <h4 className="text-blue1700 text-base font-semibold leading-6 flex items-center gap-2">
+              <h4 className="text-blue1700 sm:text-base text-sm font-semibold leading-6 flex items-center gap-2">
                 <Image
-                  src="/icons/api-key.svg"
+                  src="/icons/monitoring-icon.svg"
                   width="16"
                   height="16"
                   alt=""
                 />
-                API Keys & Client Secrets
-                </h4>
-              <span className="text-blue1700 text-xs font-bold leading-4 font-JetBrainsMono px-2.5 inline-flex items-center justify-center bg-gray-6200 border border-solid border-gray-6200 rounded-full">
-                4 keys
+                Endpoint Monitoring
+              </h4>
+            </div>
+            <div className="flex items-center gap-3">
+              <p className="text-green59 text-xs leading-4 font-medium flex items-center gap-1.5">
+                <span className="bg-green59 w-2 h-2 flex items-center rounded-full"></span>
+                99.97% uptime
+              </p>
+              <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-5.5 px-2.5 text-blue1700 text-xs leading-4 font-bold font-JetBrainsMono">
+                24h
               </span>
             </div>
-            <Button
-              onClick={() => {}}
-              iconSrc="/images/plus-icon.svg"
-              label="Generate Key"
-              className="text-gray22 text-sm font-medium gap-1.5 h-9 px-3! bg-royalBlue129 hover:bg-royalBlue129/90 rounded-md border border-solid border-royalBlue129 m-0!"
-            />
           </div>
-          <ApiKeyTable />
+          <div className="p-5">
+            <div className="flex items-center mb-5">
+              <Image
+                src="/images/Monitoring-chart.png"
+                width="1542"
+                height="184"
+                alt=""
+              />
+            </div>
+            <div className="bg-lighrgrey36/30 mb-2 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
+                  GET
+                </span>
+                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
+                  /api/v1/dossiers
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <p className="text-gray-5000 text-xs leading-4 font-normal">
+                  142 req/s
+                </p>
+                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
+                  142 req/s
+                </p>
+                <p className="flex items-center gap-3 text-green59 text-xs leading-4 font-normal">
+                  <Image
+                    src="/images/arrow-up.svg"
+                    width="12"
+                    height="12"
+                    alt=""
+                  />
+                  Healthy
+                </p>
+              </div>
+            </div>
+            <div className="bg-lighrgrey36/30 mb-2 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
+                  POST
+                </span>
+                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
+                  /api/v1/decisions
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <p className="text-gray-5000 text-xs leading-4 font-normal">
+                  38 req/s
+                </p>
+                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
+                  120ms
+                </p>
+                <p className="flex items-center gap-3 text-green59 text-xs leading-4 font-normal">
+                  <Image
+                    src="/images/arrow-up.svg"
+                    width="12"
+                    height="12"
+                    alt=""
+                  />
+                  Healthy
+                </p>
+              </div>
+            </div>
+             <div className="bg-lighrgrey36/30 mb-2 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
+                  POST
+                </span>
+                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
+                  /api/v1/webhooks/hbl
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <p className="text-gray-5000 text-xs leading-4 font-normal">
+                  12 req/s
+                </p>
+                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
+                  89ms
+                </p>
+                <p className="flex items-center gap-3 text-yellow-1100 text-xs leading-4 font-normal">
+                  <Image
+                    src="/images/arrow-up.svg"
+                    width="12"
+                    height="12"
+                    alt=""
+                  />
+                  Degraded
+                </p>
+              </div>
+            </div>
+             <div className="bg-lighrgrey36/30 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
+                  POST
+                </span>
+                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
+                  /api/v1/auth/token
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <p className="text-gray-5000 text-xs leading-4 font-normal">
+                  67 req/s
+                </p>
+                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
+                  32ms
+                </p>
+                <p className="flex items-center gap-3 text-green59 text-xs leading-4 font-normal">
+                  <Image
+                    src="/images/arrow-up.svg"
+                    width="12"
+                    height="12"
+                    alt=""
+                  />
+                  Healthy
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
