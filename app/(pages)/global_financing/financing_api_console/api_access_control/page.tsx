@@ -91,28 +91,28 @@ interface MenuItem2 {
 const menuItems2 = [
   {
     name: "API Keys",
-    href: "financing_api_console",
+    href: "/global_financing/financing_api_console",
     icon: "../../icons/api-key.svg",
     iconActive: "../../icons/api-key-active.svg",
     active: false,
   },
   {
     name: "Access Control",
-    href: "api_access_control",
+    href: "/global_financing/financing_api_console/api_access_control",
     icon: "../../icons/access-icon.svg",
     iconActive: "../../icons/access-icon-active.svg",
     active: true,
   },
   {
     name: "Monitoring",
-    href: "monitoring",
+    href: "/global_financing/financing_api_console/monitoring",
     icon: "../../icons/monitoring-icon.svg",
     iconActive: "../../icons/monitoring-icon-active.svg",
     active: false,
   },
   {
     name: "Emergency",
-    href: "emergency",
+    href: "/global_financing/financing_api_console/emergency",
     icon: "../../icons/Emergency-icon.svg",
     iconActive: "../../icons/Emergency-icon-active.svg",
     active: false,
@@ -121,6 +121,17 @@ const menuItems2 = [
 
 const financingapiconsole = () => {
   const [switch1, setSwitch1] = useState(true)
+  const [switch2, setSwitch2] = useState(true)
+  const [switch3, setSwitch3] = useState(false)
+  const [switch4, setSwitch4] = useState(true)
+  const [switch5, setSwitch5] = useState(true)
+  const [switch6, setSwitch6] = useState(false)
+  const [switch7, setSwitch7] = useState(false)
+  const [switch8, setSwitch8] = useState(true)
+  const [switch9, setSwitch9] = useState(true)
+  const [switch10, setSwitch10] = useState(true)
+  const [switch11, setSwitch11] = useState(true)
+  const [switch12, setSwitch12] = useState(true)
   return (
     <>
       <div className="font-inter">
@@ -137,7 +148,7 @@ const financingapiconsole = () => {
           </li>
           <li>
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               iconSrc="/images/plus-icon.svg"
               label="New Application"
               className="text-white text-sm font-normal gap-2 h-9 px-3! bg-blue-1000 hover:bg-blue800 rounded-md border border-solid border-gray1600 m-0!"
@@ -265,11 +276,10 @@ const financingapiconsole = () => {
               <li key={item.name} className="sm:w-auto w-full">
                 <Link
                   href={item.href}
-                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${
-                    item.active
-                      ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
-                      : "text-lighrgrey42 bg-gray-1500 border-gray-3600"
-                  }`}
+                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${item.active
+                    ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
+                    : "text-lighrgrey42 bg-gray-1500 border-gray-3600"
+                    }`}
                 >
                   <span className="flex items-center justify-center">
                     <Image
@@ -292,11 +302,10 @@ const financingapiconsole = () => {
                 <li key={item.name} className="sm:w-auto w-full">
                   <Link
                     href={item.href}
-                    className={`inline-flex sm:w-auto w-full sm:justify-start justify-center items-center h-8 px-3 gap-1.5 font-inter font-normal text-sm leading-5 relative rounded ${
-                      item.active
-                        ? "text-blue1700 bg-white shadow-4xl"
-                        : "text-gray-5000"
-                    }`}
+                    className={`inline-flex sm:w-auto w-full sm:justify-start justify-center items-center h-8 px-3 gap-1.5 font-inter font-normal text-sm leading-5 relative rounded ${item.active
+                      ? "text-blue1700 bg-white shadow-4xl"
+                      : "text-gray-5000"
+                      }`}
                   >
                     <span className="flex items-center justify-center">
                       <Image
@@ -330,7 +339,7 @@ const financingapiconsole = () => {
               </span>
             </div>
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               iconSrc="/images/plus-black.svg"
               label="Add Sub-Login"
               className="text-blue1700 text-sm leading-5 font-medium gap-1.5 h-9 px-3! bg-gray-1500 hover:bg-gray-1500/90 rounded-md border border-solid border-grey5800 m-0!"
@@ -376,31 +385,31 @@ const financingapiconsole = () => {
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Read Dossiers</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch1} onChange={setSwitch1} className={`${switch1 ? "bg-royalBlue129" : "bg-grey5800"}`} />
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Write Decisions</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch2} onChange={setSwitch2} className={`${switch2 ? "bg-royalBlue129" : "bg-grey5800"}`} />
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Manage Keys</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch3} onChange={setSwitch3} className={`${switch3 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">View Analytics</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch4} onChange={setSwitch4} className={`${switch4 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                 </div>
               </div>
             </div>
             <Link href={"#"} className="flex items-center justify-center w-8 h-8 absolute right-5 top-4">
-             <Image
-                  src="/images/pencile-icon2.svg"
-                  width="16"
-                  height="16"
-                  alt=""
-                  className="brightness-0"
-                />
+              <Image
+                src="/images/pencile-icon2.svg"
+                width="16"
+                height="16"
+                alt=""
+                className="brightness-0"
+              />
             </Link>
           </div>
           <div className="sm:px-5 px-4 py-4 border-b border-solid border-grey5800 relative">
@@ -443,31 +452,32 @@ const financingapiconsole = () => {
                 <div className="mt-3 flex-wrap flex items-center gap-3">
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Read Dossiers</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch5} onChange={setSwitch5} className={`${switch5 ? "bg-royalBlue129" : "bg-grey5800"}`}
+                    />
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Write Decisions</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch6} onChange={setSwitch6} className={`${switch6 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Manage Keys</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch7} onChange={setSwitch7} className={`${switch7 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">View Analytics</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch8} onChange={setSwitch8} className={`${switch8 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                 </div>
               </div>
             </div>
             <Link href={"#"} className="flex items-center justify-center w-8 h-8 absolute right-5 top-4">
-             <Image
-                  src="/images/pencile-icon2.svg"
-                  width="16"
-                  height="16"
-                  alt=""
-                  className="brightness-0"
-                />
+              <Image
+                src="/images/pencile-icon2.svg"
+                width="16"
+                height="16"
+                alt=""
+                className="brightness-0"
+              />
             </Link>
           </div>
           <div className="sm:px-5 px-4 py-4 relative">
@@ -510,31 +520,31 @@ const financingapiconsole = () => {
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Read Dossiers</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch9} onChange={setSwitch9} className={`${switch9 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Write Decisions</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch10} onChange={setSwitch10} className={`${switch10 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">Manage Keys</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch11} onChange={setSwitch11} className={`${switch11 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                   <div className="bg-gray-6200/50 rounded-md border border-solid border-grey5800 py-1.5 pl-3 pr-4.25 inline-flex items-center  gap-3.5">
                     <p className="text-blue1700 text-xs leading-4 font-normal">View Analytics</p>
-                    <ToggleSwitch enabled={switch1} setEnabled={setSwitch1} />
+                    <ToggleSwitch checked={switch12} onChange={setSwitch12} className={`${switch12 ? "bg-royalBlue129" : "bg-grey5800"}`}/>
                   </div>
                 </div>
               </div>
             </div>
             <Link href={"#"} className="flex items-center justify-center w-8 h-8 absolute right-5 top-4">
-             <Image
-                  src="/images/pencile-icon2.svg"
-                  width="16"
-                  height="16"
-                  alt=""
-                  className="brightness-0"
-                />
+              <Image
+                src="/images/pencile-icon2.svg"
+                width="16"
+                height="16"
+                alt=""
+                className="brightness-0"
+              />
             </Link>
           </div>
         </div>

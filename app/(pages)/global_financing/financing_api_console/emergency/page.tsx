@@ -107,14 +107,14 @@ const menuItems2 = [
     href: "/global_financing/financing_api_console/monitoring",
     icon: "../../icons/monitoring-icon.svg",
     iconActive: "../../icons/monitoring-icon-active.svg",
-    active: true,
+    active: false,
   },
   {
     name: "Emergency",
     href: "/global_financing/financing_api_console/emergency",
     icon: "../../icons/Emergency-icon.svg",
     iconActive: "../../icons/Emergency-icon-active.svg",
-    active: false,
+    active: true,
   },
 ];
 
@@ -135,7 +135,7 @@ const financingapiconsole = () => {
           </li>
           <li>
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               iconSrc="/images/plus-icon.svg"
               label="New Application"
               className="text-white text-sm font-normal gap-2 h-9 px-3! bg-blue-1000 hover:bg-blue800 rounded-md border border-solid border-gray1600 m-0!"
@@ -263,11 +263,10 @@ const financingapiconsole = () => {
               <li key={item.name} className="sm:w-auto w-full">
                 <Link
                   href={item.href}
-                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${
-                    item.active
-                      ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
-                      : "text-lighrgrey42 bg-gray-1500 border-gray-3600"
-                  }`}
+                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${item.active
+                    ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
+                    : "text-lighrgrey42 bg-gray-1500 border-gray-3600"
+                    }`}
                 >
                   <span className="flex items-center justify-center">
                     <Image
@@ -290,11 +289,10 @@ const financingapiconsole = () => {
                 <li key={item.name} className="sm:w-auto w-full">
                   <Link
                     href={item.href}
-                    className={`inline-flex sm:w-auto w-full sm:justify-start justify-center items-center h-8 px-3 gap-1.5 font-inter font-normal text-sm leading-5 relative rounded ${
-                      item.active
-                        ? "text-blue1700 bg-white shadow-4xl"
-                        : "text-gray-5000"
-                    }`}
+                    className={`inline-flex sm:w-auto w-full sm:justify-start justify-center items-center h-8 px-3 gap-1.5 font-inter font-normal text-sm leading-5 relative rounded ${item.active
+                      ? "text-blue1700 bg-white shadow-4xl"
+                      : "text-gray-5000"
+                      }`}
                   >
                     <span className="flex items-center justify-center">
                       <Image
@@ -311,146 +309,50 @@ const financingapiconsole = () => {
             </ul>
           </div>
         </div>
-        <div className="bg-white border border-solid border-grey5800 mt-7 rounded-lg shadow-4xl">
-          <div className="flex sm:flex-row flex-col sm:items-center items-start sm:gap-0 gap-4 justify-between border-b border-solid border-grey5800 px-5 py-4 ">
-            <div className="flex items-center gap-2">
-              <h4 className="text-blue1700 sm:text-base text-sm font-semibold leading-6 flex items-center gap-2">
-                <Image
-                  src="/icons/monitoring-icon.svg"
-                  width="16"
-                  height="16"
-                  alt=""
-                />
-                Endpoint Monitoring
-              </h4>
-            </div>
-            <div className="flex items-center gap-3">
-              <p className="text-green59 text-xs leading-4 font-medium flex items-center gap-1.5">
-                <span className="bg-green59 w-2 h-2 flex items-center rounded-full"></span>
-                99.97% uptime
-              </p>
-              <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-5.5 px-2.5 text-blue1700 text-xs leading-4 font-bold font-JetBrainsMono">
-                24h
-              </span>
-            </div>
-          </div>
-          <div className="p-5">
-            <div className="flex items-center mb-5">
+        <div className="mt-6 border border-solid border-red2100/30 bg-red2100/2 rounded-lg shadow-4xl">
+          <div className="p-5 border-b border-solid border-red2100/30">
+            <h4 className="text-red2100 text-base font-semibold leading-6 flex items-center gap-2">
               <Image
-                src="/images/Monitoring-chart.png"
-                width="1542"
-                height="184"
+                src="/images/warning.svg"
+                width="16"
+                height="16"
                 alt=""
               />
+              Emergency Controls
+            </h4>
+          </div>
+          <div className="flex xl:flex-row flex-col xl:items-center xl:gap-0 gap-4 justify-between px-5 py-4">
+            <div className="2xl:max-w-112.5 xl:max-w-100 max-w-fulll w-full">
+              <h4 className="text-blue1700 font-medium text-sm leading-5 mb-1">Immediate Security Lockdown</h4>
+              <p className="text-gray-5000 text-xs leading-4 font-normal">
+                Instantly revoke all API keys and client secrets. This will disconnect all partner
+                bank integrations and require manual re-activation.
+              </p>
             </div>
-            <div className="bg-lighrgrey36/30 mb-2 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
-                  GET
-                </span>
-                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
-                  /api/v1/dossiers
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <p className="text-gray-5000 text-xs leading-4 font-normal">
-                  142 req/s
-                </p>
-                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
-                  142 req/s
-                </p>
-                <p className="flex items-center gap-3 text-green59 text-xs leading-4 font-normal">
+            <ul className="flex sm:flex-row flex-col items-center gap-2">
+              <li>
+                <Link href={"#"} className="text-red2100 text-sm leading-5 font-medium gap-1.5 bg-gray-1500 rounded-md h-9 px-3 border border-solid border-red2100 inline-flex items-center justify-center">
                   <Image
-                    src="/images/arrow-up.svg"
-                    width="12"
-                    height="12"
+                    src="/icons/lock-red.svg"
+                    width="16"
+                    height="16"
                     alt=""
                   />
-                  Healthy
-                </p>
-              </div>
-            </div>
-            <div className="bg-lighrgrey36/30 mb-2 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
-                  POST
-                </span>
-                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
-                  /api/v1/decisions
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <p className="text-gray-5000 text-xs leading-4 font-normal">
-                  38 req/s
-                </p>
-                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
-                  120ms
-                </p>
-                <p className="flex items-center gap-3 text-green59 text-xs leading-4 font-normal">
+                  Freeze New Connections
+                </Link>
+              </li>
+              <li>
+                <Link href={"#"} className="text-gray22 text-sm leading-5 font-medium gap-1.5 bg-royalBlue129 rounded-md h-9 px-3 border border-solid border-royalBlue129 shadow-72xl inline-flex items-center justify-center">
                   <Image
-                    src="/images/arrow-up.svg"
-                    width="12"
-                    height="12"
+                    src="/icons/sheild-revoke-icon.svg"
+                    width="16"
+                    height="16"
                     alt=""
                   />
-                  Healthy
-                </p>
-              </div>
-            </div>
-             <div className="bg-lighrgrey36/30 mb-2 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
-                  POST
-                </span>
-                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
-                  /api/v1/webhooks/hbl
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <p className="text-gray-5000 text-xs leading-4 font-normal">
-                  12 req/s
-                </p>
-                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
-                  89ms
-                </p>
-                <p className="flex items-center gap-3 text-yellow-1100 text-xs leading-4 font-normal">
-                  <Image
-                    src="/icons/down-yellow-right.svg"
-                    width="12"
-                    height="12"
-                    alt=""
-                  />
-                  Degraded
-                </p>
-              </div>
-            </div>
-             <div className="bg-lighrgrey36/30 flex items-center justify-between border border-solid border-grey5800 rounded-md px-3 py-2">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center rounded-full border border-solid border-grey5800 h-4.25 px-1.5 text-blue1700 text-[10px] leading-4 font-bold font-JetBrainsMono">
-                  POST
-                </span>
-                <p className="text-blue1700 text-sm leading-5 font-normal font-JetBrainsMono">
-                  /api/v1/auth/token
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <p className="text-gray-5000 text-xs leading-4 font-normal">
-                  67 req/s
-                </p>
-                <p className="text-gray-5000 text-xs leading-4 font-normal font-JetBrainsMono">
-                  32ms
-                </p>
-                <p className="flex items-center gap-3 text-green59 text-xs leading-4 font-normal">
-                  <Image
-                    src="/images/arrow-up.svg"
-                    width="12"
-                    height="12"
-                    alt=""
-                  />
-                  Healthy
-                </p>
-              </div>
-            </div>
+                  Revoke All Keys
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

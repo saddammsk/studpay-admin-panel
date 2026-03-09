@@ -55,21 +55,21 @@ interface MenuItem {
 const menuItems = [
   {
     name: "Loan Ledger",
-    href: "global_financing",
+    href: "/global_financing",
     icon: "../icons/loan-file.svg",
     iconActive: "../icons/loan-file-active.svg",
     active: false,
   },
   {
     name: "Partner Management",
-    href: "partner_management",
+    href: "/global_financing/partner_management",
     icon: "../icons/Partner-icon.svg",
     iconActive: "../icons/Partner-icon-active.svg",
     active: true,
   },
   {
     name: "API Console",
-    href: "financing_api_console",
+    href: "/global_financing/financing_api_console",
     icon: "../icons/api-keys.svg",
     iconActive: "../icons/api-keys-active.svg",
     active: false,
@@ -341,8 +341,8 @@ const UsersStudentsPage = () => {
         <Link onClick={() => setIsOpen(false)} href={"#"} className="flex items-center justify-center  w-4 h-4 absolute top-4 right-4">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
         </Link>
-         <AddPartnerModal />
-          
+        <AddPartnerModal />
+
       </Modal >
 
 

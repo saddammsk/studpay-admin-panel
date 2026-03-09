@@ -53,21 +53,21 @@ interface MenuItem {
 const menuItems = [
   {
     name: "Loan Ledger",
-    href: "#",
+    href: "/global_financing",
     icon: "../icons/loan-file.svg",
     iconActive: "../icons/loan-file-active.svg",
     active: true,
   },
   {
     name: "Partner Management",
-    href: "partner_management",
+    href: "/global_financing/partner_management",
     icon: "../icons/Partner-icon.svg",
     iconActive: "../icons/Partner-icon-active.svg",
     active: false,
   },
   {
     name: "API Console",
-    href: "financing_api_console",
+     href: "/global_financing/financing_api_console",
     icon: "../icons/api-keys.svg",
     iconActive: "../icons/api-keys-active.svg",
     active: false,

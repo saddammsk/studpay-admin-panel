@@ -55,21 +55,21 @@ interface MenuItem {
 const menuItems = [
   {
     name: "Loan Ledger",
-    href: "global_financing",
+    href: "/global_financing",
     icon: "../icons/loan-file.svg",
     iconActive: "../icons/loan-file-active.svg",
     active: false,
   },
   {
     name: "Partner Management",
-    href: "partner_management",
+    href: "/global_financing/partner_management",
     icon: "../icons/Partner-icon.svg",
     iconActive: "../icons/Partner-icon-active.svg",
     active: false,
   },
   {
     name: "API Console",
-    href: "financing_api_console",
+    href: "/global_financing/financing_api_console",
     icon: "../icons/api-keys.svg",
     iconActive: "../icons/api-keys-active.svg",
     active: true,
@@ -89,28 +89,28 @@ interface MenuItem2 {
 const menuItems2 = [
   {
     name: "API Keys",
-    href: "financing_api_console",
+    href: "/global_financing/financing_api_console",
     icon: "../icons/api-key.svg",
     iconActive: "../icons/api-key-active.svg",
     active: true,
   },
   {
     name: "Access Control",
-    href: "api_access_control",
+    href: "/global_financing/financing_api_console/api_access_control",
     icon: "../icons/access-icon.svg",
     iconActive: "../icons/access-icon-active.svg",
     active: false,
   },
   {
     name: "Monitoring",
-    href: "monitoring",
+    href: "/global_financing/financing_api_console/monitoring",
     icon: "../icons/monitoring-icon.svg",
     iconActive: "../icons/monitoring-icon-active.svg",
     active: false,
   },
   {
     name: "Emergency",
-    href: "emergency",
+    href: "/global_financing/financing_api_console/emergency",
     icon: "../icons/Emergency-icon.svg",
     iconActive: "../icons/Emergency-icon-active.svg",
     active: false,
@@ -134,7 +134,7 @@ const financingapiconsole = () => {
           </li>
           <li>
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               iconSrc="/images/plus-icon.svg"
               label="New Application"
               className="text-white text-sm font-normal gap-2 h-9 px-3! bg-blue-1000 hover:bg-blue800 rounded-md border border-solid border-gray1600 m-0!"
@@ -262,11 +262,10 @@ const financingapiconsole = () => {
               <li key={item.name} className="sm:w-auto w-full">
                 <Link
                   href={item.href}
-                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${
-                    item.active
+                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${item.active
                       ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
                       : "text-lighrgrey42 bg-gray-1500 border-gray-3600"
-                  }`}
+                    }`}
                 >
                   <span className="flex items-center justify-center">
                     <Image
@@ -289,11 +288,10 @@ const financingapiconsole = () => {
                 <li key={item.name} className="sm:w-auto w-full">
                   <Link
                     href={item.href}
-                    className={`inline-flex sm:w-auto w-full sm:justify-start justify-center items-center h-8 px-3 gap-1.5 font-inter font-normal text-sm leading-5 relative rounded ${
-                      item.active
+                    className={`inline-flex sm:w-auto w-full sm:justify-start justify-center items-center h-8 px-3 gap-1.5 font-inter font-normal text-sm leading-5 relative rounded ${item.active
                         ? "text-blue1700 bg-white shadow-4xl"
                         : "text-gray-5000"
-                    }`}
+                      }`}
                   >
                     <span className="flex items-center justify-center">
                       <Image
@@ -321,13 +319,13 @@ const financingapiconsole = () => {
                   alt=""
                 />
                 API Keys & Client Secrets
-                </h4>
+              </h4>
               <span className="text-blue1700 text-xs font-bold leading-4 font-JetBrainsMono px-2.5 inline-flex items-center justify-center bg-gray-6200 border border-solid border-gray-6200 rounded-full">
                 4 keys
               </span>
             </div>
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               iconSrc="/images/plus-icon.svg"
               label="Generate Key"
               className="text-gray22 text-sm font-medium gap-1.5 h-9 px-3! bg-royalBlue129 hover:bg-royalBlue129/90 rounded-md border border-solid border-royalBlue129 m-0!"
