@@ -323,7 +323,7 @@ made..."></textarea>
                     onClose={() => setIsOpen3(false)}
                     panelClassName="max-w-[1824px] bg-white/70 border border-solid border-white/30 rounded-2xl! relative lg:items-center items-start "
                >
-                    <div className="flex items-center px-6 py-5 gap-3 bg-white rounded-t-2xl border-b border-solid border-gray-3600">
+                    <div className="flex items-center sm:px-6 sm:py-5 p-4 gap-3 bg-white rounded-t-2xl border-b border-solid border-gray-3600">
                          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-1400/10">
                               <Image src="/icons/DocumentReview.svg" width={20} height={20} alt="" />
                          </span>
@@ -332,21 +332,21 @@ made..."></textarea>
                               <p className='text-gray-1900 font-normal text-sm leading-5 mt-1.5'>Reference: GUA-2024-001847</p>
                          </div>
                     </div>
-                    <div className="flex lg:flex-row flex-col lg:h-[calc(100vh-250px)] overflow-hidden">
+                    <div className="lg:flex block lg:h-[calc(100vh-250px)] h-[calc(100vh-160px)] lg:overflow-hidden overflow-y-auto">
                          <div className="w-full flex-1">
                               <div className="bg-white flex items-center justify-between py-2.5 px-3">
-                                   <div className="flex items-center gap-4">
+                                   <div className="flex items-center sm:gap-4 gap-1.5">
                                         <ul className="flex items-center gap-2">
                                              <li>
-                                                  <Link href={"#"} className="flex items-center w-8 h-8">
+                                                  <Link href={"#"} className="flex items-center justify-center w-8 h-8">
                                                        <Image src="/icons/minus-zoom.svg" width={16} height={16} alt="" />
                                                   </Link>
                                              </li>
                                              <li>
-                                                  <span className="text-gray-1900 text-sm leading-5 font-normal block w-16">100%</span>
+                                                  <span className="text-gray-1900 text-sm text-center leading-5 font-normal block sm:w-16 w-11">100%</span>
                                              </li>
                                              <li>
-                                                  <Link href={"#"} className="flex items-center w-8 h-8">
+                                                  <Link href={"#"} className="flex items-center justify-center w-8 h-8">
                                                        <Image src="/icons/zoom-icon.svg" width={16} height={16} alt="" />
                                                   </Link>
                                              </li>
@@ -361,9 +361,9 @@ made..."></textarea>
                                         Download
                                    </Link>
                               </div>
-                              <div className="bg-gray-6200/50 rounded-xl p-6 h-[calc(100%-56px)] overflow-y-auto">
-                                   <div className="bg-white shadow-7xl p-12 max-w-148.75 w-full mx-auto">
-                                        <div className="flex items-center justify-between border-b border-solid border-gray-3600 pb-6">
+                              <div className="bg-gray-6200/50 rounded-xl sm:p-6 p-4 sm:h-[calc(100%-56px)] overflow-y-auto">
+                                   <div className="bg-white shadow-7xl sm:p-12 p-5 max-w-148.75 w-full mx-auto">
+                                        <div className="flex sm:flex-row flex-col sm:items-center items-start sm:gap-0 gap-4 justify-between border-b border-solid border-gray-3600 pb-6">
                                              <div className="flex items-center gap-3">
                                                   <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-1400/10">
                                                        <Image src="/icons/file-blue.svg" width={24} height={24} alt="" />
@@ -375,9 +375,9 @@ made..."></textarea>
                                              </div>
                                              <span className="text-green-1600 text-xs rounded-full leading-4 inline-flex items-center gap-2 bg-green-1600/10 border border-solid border-green-1600/20 h-7.5 px-3"><Image src="/icons/sheild-greendark.svg" width={16} height={16} alt="" /> Verified</span>
                                         </div>
-                                        <div className="text-center my-12">
-                                             <h4 className="text-blue1700 text-2xl leading-8 font-bold">PARENTAL GUARANTEE LETTER</h4>
-                                             <p className="text-gray-1900 text-base leading-6 font-normal mt-2">Reference: GUA-2024-001847</p>
+                                        <div className="text-center sm:my-12 my-5">
+                                             <h4 className="text-blue1700 sm:text-2xl text-base leading-8 font-bold">PARENTAL GUARANTEE LETTER</h4>
+                                             <p className="text-gray-1900 text-base leading-6 font-normal sm:mt-2 mt-1">Reference: GUA-2024-001847</p>
                                         </div>
                                         <div className="pb-4">
                                              <p className="text-blue1700 text-sm leading-[22.8px] font-normal mb-4">Date: January 15, 2024</p>
@@ -405,8 +405,8 @@ made..."></textarea>
                                         <div className="flex items-start justify-between border-t border-solid border-gray-3600 pt-8">
                                              <div className="">
                                                   <p className="text-blue1700 text-sm leading-[22.8px] font-normal">Guarantor Signature:</p>
-                                                  <div className="max-w-48 w-full border-b border-solid text-center border-blue1700/30 pt-6.5 pb-2 px-8 mt-4">
-                                                       <h4 className="text-blue-1400 text-2xl font-normal italic leading-8">John Smith</h4>
+                                                  <div className="sm:max-w-48 max-w-30 w-full border-b border-solid text-center border-blue1700/30 sm:pt-6.5 pt-4 sm:pb-2 pb-1 sm:px-8 px-3 sm:mt-4 mt-0">
+                                                       <h4 className="text-blue-1400 sm:text-2xl text-xl font-normal italic leading-8">John Smith</h4>
                                                   </div>
                                                   <p className="text-gray-1900 text-xs leading-4 font-normal mt-2">John Smith</p>
                                              </div>
@@ -415,7 +415,7 @@ made..."></textarea>
                                                   <p className="text-blue1700 text-sm leading-[22.8px] text-right">January 15, 2024</p>
                                              </div>
                                         </div>
-                                        <div className="text-center border-t border-solid border-gray-3600 pt-8 mt-6">
+                                        <div className="text-center border-t border-solid border-gray-3600 sm:pt-8 pt-5 sm:mt-6 mt-4">
                                              <p className="text-grya-1900 text-xs leading-4 font-normal mb-1">
                                                   This document is digitally signed and verified by StudPay's secure document verification
                                                   system.
@@ -432,7 +432,7 @@ made..."></textarea>
                                    <h4 className="text-grya-1900 text-xs leading-4 font-bold uppercase">Document Information</h4>
                                    <ul className="mt-4">
                                         <li>
-                                             <Link href={"#"} className="p-4 rounded-xl flex items-center gap-3 bg-lighrgrey46/50 border border-solid border-royalBlue130/10">
+                                             <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3 bg-lighrgrey46/50 border border-solid border-royalBlue130/10">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-green-1600/10"><Image src="/images/check-green-round.svg" width={20} height={20} alt="" /></span>
                                                   <div className="flex-1 w-full">
                                                        <h4 className="text-blue1700 text-sm font-normal leading-5">Document Status</h4>
@@ -441,7 +441,7 @@ made..."></textarea>
                                              </Link>
                                         </li>
                                         <li className="mt-6">
-                                             <Link href={"#"} className="p-4 rounded-xl flex items-center gap-3">
+                                             <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/images/file-blue.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
                                                        <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Document Type</h4>
@@ -450,7 +450,7 @@ made..."></textarea>
                                              </Link>
                                         </li>
                                         <li className="mt-4">
-                                             <Link href={"#"} className="p-4 rounded-xl flex items-center gap-3">
+                                             <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/icons/upload-user.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
                                                        <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Uploaded By</h4>
@@ -459,7 +459,7 @@ made..."></textarea>
                                              </Link>
                                         </li>
                                         <li className="mt-4">
-                                             <Link href={"#"} className="p-4 rounded-xl flex items-center gap-3">
+                                             <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/icons/calendar-time.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
                                                        <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Upload Timestamp</h4>
@@ -468,7 +468,7 @@ made..."></textarea>
                                              </Link>
                                         </li>
                                         <li className="mt-4">
-                                             <Link href={"#"} className="p-4 rounded-xl flex items-center gap-3">
+                                             <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/icons/linked-icon.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
                                                        <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Linked Loan</h4>
