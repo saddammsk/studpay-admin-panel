@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Modal from '@/app/components/Modal';
+import { useModalStore } from "../store/zustand/useModalStore";
 
 interface ActionType {
   icon: string;
   name: string;
 }
-
 
 interface Payment {
   id: number;
@@ -26,10 +25,6 @@ interface Payment {
   action?: ActionType | null;
 }
 
-
-
-
-
 const payments: Payment[] = [
   {
     id: 1,
@@ -43,8 +38,9 @@ const payments: Payment[] = [
     amount: "+€400",
     frequency: "Monthly",
     product: "High-Yield Savings Pot",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 2,
     number: "STU-1892",
     name: "Léo Martin",
@@ -56,8 +52,9 @@ const payments: Payment[] = [
     amount: "+€720",
     frequency: "Monthly",
     product: "Budget Optimizer Tool",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 3,
     number: "STU-3384",
     name: "Fatou Sy",
@@ -70,7 +67,8 @@ const payments: Payment[] = [
     frequency: "Monthly",
     product: "No match",
     action: null,
-  }, {
+  },
+  {
     id: 4,
     number: "STU-0915",
     name: "Hugo Bernard",
@@ -82,8 +80,9 @@ const payments: Payment[] = [
     amount: "+€580",
     frequency: "Bi-weekly",
     product: "Rental Guarantee Insurance",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 5,
     number: "STU-2741",
     name: "Amina Diallo",
@@ -95,8 +94,9 @@ const payments: Payment[] = [
     amount: "−€650",
     frequency: "Monthly",
     product: "Rental Guarantee Insurance",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 6,
     number: "STU-1892",
     name: "Léo Martin",
@@ -108,8 +108,9 @@ const payments: Payment[] = [
     amount: "−€35",
     frequency: "Monthly",
     product: "Health Insurance Pack",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 7,
     number: "STU-3384",
     name: "Fatou Sy",
@@ -122,7 +123,8 @@ const payments: Payment[] = [
     frequency: "Monthly",
     product: "No match",
     action: null,
-  }, {
+  },
+  {
     id: 8,
     number: "STU-0915",
     name: "Hugo Bernard",
@@ -134,8 +136,9 @@ const payments: Payment[] = [
     amount: "−€520",
     frequency: "Monthly",
     product: "Rental Guarantee Insurance",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 9,
     number: "STU-4467",
     name: "Sofia Reyes",
@@ -147,8 +150,9 @@ const payments: Payment[] = [
     amount: "+€550",
     frequency: "Monthly",
     product: "Emergency Fund Builder",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 10,
     number: "STU-4467",
     name: "Sofia Reyes",
@@ -161,7 +165,8 @@ const payments: Payment[] = [
     frequency: "Monthly",
     product: "No match",
     action: null,
-  }, {
+  },
+  {
     id: 11,
     number: "STU-5590",
     name: "Youssef El Amri",
@@ -173,8 +178,9 @@ const payments: Payment[] = [
     amount: "+€720",
     frequency: "Monthly",
     product: "High-Yield Savings Pot",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
-  }, {
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
+  },
+  {
     id: 12,
     number: "STU-5590",
     name: "Youssef El Amri",
@@ -186,15 +192,30 @@ const payments: Payment[] = [
     amount: "−€28",
     frequency: "Monthly",
     product: "Health Insurance Pack",
-    action: { icon: "../images/rocket.svg", name: "Launch Campaign", },
+    action: { icon: "../images/rocket.svg", name: "Launch Campaign" },
   },
 ];
 
 export default function FlowMatchTable() {
   const [search, setSearchState] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, selectedStudent, openModal, closeModal } = useModalStore();
+
+  // Filter payments based on search
+  const filteredPayments = payments.filter(item => 
+    item.number.toLowerCase().includes(search.toLowerCase()) ||
+    item.name.toLowerCase().includes(search.toLowerCase()) ||
+    item.recurring.type.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const matchesFound = filteredPayments.filter(p => p.product !== "No match").length;
+
   return (
     <>
+    <div className="w-full">
+       <div className='mb-4'>
+            <h4 className='text-black-1400 font-bold text-lg leading-7'>Flow & Match</h4>
+            <p className='text-gray-2300 font-normal text-xs leading-4'>All recurring operations with intelligent product recommendations</p>
+        </div>
       <div className="bg-white border border-gray23 rounded-[10px]">
         <div className="flex md:flex-row flex-col md:items-center items-start justify-between px-4 pb-4 md:pt-7 pt-4">
           <div>
@@ -236,7 +257,7 @@ export default function FlowMatchTable() {
               </tr>
             </thead>
             <tbody>
-              {payments.map((item) => (
+              {filteredPayments.map((item) => (
                 <tr key={item.id}
                   className="border-b border-gray23 hover:bg-gray1700/50 transition"
                 >
@@ -263,9 +284,7 @@ export default function FlowMatchTable() {
                     className={`px-4 py-3.5 text-right font-inter font-bold text-[10.5px] leading-4
                     ${item.amount.startsWith("+")
                         ? "text-lightgreen19"
-                        : item.amount.startsWith("-")
-                          ? "text-red1900"
-                          : "text-red1900"
+                        : "text-red1900"
                       }
                   `}
                   >
@@ -276,7 +295,6 @@ export default function FlowMatchTable() {
                     {item.frequency}
                   </td>
 
-                  {/* Product */}
                   <td className="px-4 py-3.5 text-[11px]">
                     {item.product === "No match" ? (
                       <span className="text-gray-2300 italic text-xs leading-4">
@@ -289,18 +307,17 @@ export default function FlowMatchTable() {
                     )}
                   </td>
 
-                  {/* Actions */}
                   <td className="px-4 py-3.5 text-center">
                     {item.product === "No match" ? (
                       <span className="text-gray-2300 text-xs leading-4">—</span>
                     ) : (
-                      <Link
-                        href="#" onClick={() => setIsOpen(true)}
-                        className="inline-flex items-center gap-1 text-white shadow-51xl bg-blue1500 rounded-lg h-6 px-3 text-[11px] font-bold"
+                      <button
+                        onClick={() => openModal(item)}
+                        className="inline-flex items-center gap-1 text-white shadow-51xl bg-blue1500 rounded-lg h-6 px-3 text-[11px] font-bold hover:bg-blue1500/90 transition-colors cursor-pointer"
                       >
                         <Image src={item.action!.icon} width={16} height={16} alt="" />
                         {item.action!.name}
-                      </Link>
+                      </button>
                     )}
                   </td>
                 </tr>
@@ -309,19 +326,20 @@ export default function FlowMatchTable() {
           </table>
         </div>
         <div className="flex items-center justify-between bg-gray24/30 py-2.75 px-4">
-          <p className="text-gray-2300 font-inter text-[11px] leading-4">Showing 12 of 12 records</p>
-          <p className="text-gray-2300 font-inter text-[11px] leading-4">9 product matches found</p>
+          <p className="text-gray-2300 font-inter text-[11px] leading-4">Showing {filteredPayments.length} of {payments.length} records</p>
+          <p className="text-gray-2300 font-inter text-[11px] leading-4">{matchesFound} product matches found</p>
         </div>
+      </div>
       </div>
 
       <Modal
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={closeModal}
         panelClassName="max-w-[460px] bg-gray-1800 relative"
       >
-        <Link onClick={() => setIsOpen(false)} href={"#"} className="flex items-center justify-center w-5 h-5 absolute top-2.5 right-4">
+        <button onClick={closeModal} className="flex items-center justify-center w-5 h-5 absolute top-2.5 right-4 cursor-pointer hover:opacity-70">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
-        </Link>
+        </button>
         <div className="bg-linear-to-r from-blue-1000 from-0% via-blue-1700 via-20% to-lightgreenNew2 to-100% w-full h-1.5 rounded-t-md absolute -top-px left-0"></div>
         <div className="p-6">
           <div className="flex items-center gap-3">
@@ -337,14 +355,16 @@ export default function FlowMatchTable() {
           <div className="bg-grey5500/50 border border-solid border-gray-3900/40 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <p className="text-gray-2300 font-normal uppercase text-xs leading-4 tracking-[0.6px]">Target Student</p>
-              <span className="inline-flex items-center justify-center text-blue1700 font-bold text-[11.8px] leading-4 bg-white border border-solid border-gray-3900 rounded-full h-5.5 px-2.5">STU-2741</span>
+              <span className="inline-flex items-center justify-center text-blue1700 font-bold text-[11.8px] leading-4 bg-white border border-solid border-gray-3900 rounded-full h-5.5 px-2.5">
+                {selectedStudent?.number || "STU-2741"}
+              </span>
             </div>
             <div className="flex items-center gap-3 mt-4 border-b border-solid border-gray-3900/60 pb-4">
               <span className="border border-solid border-lightgreen17/20 bg-blue-1700/20 rounded-full w-11 h-11 flex items-center justify-center">
                 <Image src="/images/user-icon4.svg" width={20} height={20} alt="" />
               </span>
               <div className="flex-1 w-full">
-                <h4 className="text-blue1700 font-bold text-[15.9px] leading-6">Amina Diallo</h4>
+                <h4 className="text-blue1700 font-bold text-[15.9px] leading-6">{selectedStudent?.name || "Amina Diallo"}</h4>
                 <p className="text-gray-2300 font-normal text-[13px] leading-5">Student Profile Match</p>
               </div>
             </div>
@@ -355,7 +375,7 @@ export default function FlowMatchTable() {
               </li>
               <li className="text-gray-2300 font-normal text-[12.9px] leading-5 flex items-center justify-between">
                 Product
-                <strong className="text-blue1700 font-normal text-[13.1px] leading-5 ">High-Yield Savings Pot</strong>
+                <strong className="text-blue1700 font-normal text-[13.1px] leading-5 ">{selectedStudent?.product || "High-Yield Savings Pot"}</strong>
               </li>
             </ul>
           </div>
@@ -363,33 +383,37 @@ export default function FlowMatchTable() {
             <h4 className="text-gray-2300 font-normal text-xs leading-4 uppercase">Delivery Channels</h4>
             <ul className="flex items-center gap-2 mt-3">
               <li>
-                <Link href={"#"} className="text-blue1700 font-normal text-[13px] leading-5 inline-flex items-center justify-center gap-2 bg-grey5500/60 border border-solid border-gray-3900/50 h-9.5 px-3 rounded-xl">
+                <button className="text-blue1700 font-normal text-[13px] leading-5 inline-flex items-center justify-center gap-2 bg-grey5500/60 border border-solid border-gray-3900/50 h-9.5 px-3 rounded-xl hover:bg-grey5500/80 transition-colors cursor-pointer">
                   <Image src="/images/bell-icon-blue.svg" width={14} height={14} alt="" />
                   Push Notification
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href={"#"} className="text-blue1700 font-normal text-[13px] leading-5 inline-flex items-center justify-center gap-2 bg-grey5500/60 border border-solid border-gray-3900/50 h-9.5 px-3 rounded-xl">
+                <button className="text-blue1700 font-normal text-[13px] leading-5 inline-flex items-center justify-center gap-2 bg-grey5500/60 border border-solid border-gray-3900/50 h-9.5 px-3 rounded-xl hover:bg-grey5500/80 transition-colors cursor-pointer">
                   <Image src="/images/email-blue.svg" width={14} height={14} alt="" />
                   Email
-                </Link>
+                </button>
               </li>
             </ul>
-            <p className="text-gray-2300 font-normal text-[11.1px] leading-[19.5px] mt-3">This will trigger via <span className="text-blue1700">Content CMS </span>  to all students matching this profile.</p>
+            <p className="text-gray-2300 font-normal text-[11.1px] leading-[19.5px] mt-3">This will trigger via <span className="text-blue1700">Content CMS </span> to all students matching this profile.</p>
           </div>
         </div>
         <div className="bg-grey5500/30 border border-solid border-gray-3900/60 px-6 py-4">
           <ul className="grid grid-cols-2 gap-3">
             <li>
               <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 cursor-pointer hover:bg-lightgreenNew2 hover:text-darkgreen59 transition-all duration-500 ease-in-out w-full shadow-55xl border rounded-[10px] text-blue1700 font-normal text-[13.3px] leading-5 bg-gray-1800 border-solid border-gray-3900 h-9.5"
+                onClick={closeModal}
+                className="px-4 cursor-pointer hover:bg-gray-200 transition-all duration-500 ease-in-out w-full border rounded-[10px] text-blue1700 font-normal text-[13.3px] leading-5 bg-gray-1800 border-solid border-gray-3900 h-9.5"
               >
                 Cancel
               </button>
             </li>
             <li>
               <button
+                onClick={() => {
+                  console.log('Sending campaign to:', selectedStudent);
+                  closeModal();
+                }}
                 className="cursor-pointer flex items-center justify-center w-full hover:bg-lightgreen17 hover:border-lightgreen17 transition-all duration-500 ease-in-out border rounded-[10px] text-white font-normal gap-2 text-[13.3px] leading-5 bg-blue-1000 border-solid border-blue-1000 h-9.5"
               >
                 <Image src="/images/send-icon.svg" width={14} height={14} alt="" />
@@ -398,11 +422,7 @@ export default function FlowMatchTable() {
             </li>
           </ul>
         </div>
-
-
-      </Modal >
-
-
+      </Modal>
     </>
   );
 }
