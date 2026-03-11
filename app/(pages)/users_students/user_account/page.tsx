@@ -21,7 +21,7 @@ interface MenuItem {
   name: string;
   href: string;
   icon: string;
-  active?: boolean; // optional: to highlight active link
+  active?: boolean;
 }
 
 const menuItems = [

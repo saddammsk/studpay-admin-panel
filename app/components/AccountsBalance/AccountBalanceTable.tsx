@@ -207,7 +207,7 @@ const RiskConfig = {
 
 
 
-export default function PaymentsTransfersTable() {
+export default function AccountBalanceTable() {
   const [status, setStatus] = useState<string>("All Countries");
 
 
@@ -413,7 +413,7 @@ export default function PaymentsTransfersTable() {
         </div>
         <div className='bg-gray-7500/30 rounded-b-lg border-t border-solid border-gray-3600 px-4 py-3'>
           <div className='flex sm:flex-row flex-col sm:gap-0 gap-4 items-center justify-between'>
-            <p className='text-grya-1900 font-inter font-normal sm:text-sm text-xs leading-5'>Showing 8 of 8 accounts</p>
+            <p className='text-gray-1900 font-inter font-normal sm:text-sm text-xs leading-5'>Showing 8 of 8 accounts</p>
             <ul className='flex items-center gap-2'>
               <li>
                 <Link href={"#"} className='text-blue-1300 opacity-50 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-[42px] inline-flex items-center justify-center'>

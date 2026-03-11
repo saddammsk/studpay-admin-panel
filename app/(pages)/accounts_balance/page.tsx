@@ -2,9 +2,8 @@
 import { useState } from 'react' 
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
-import CustomSelect from "@/app/components/CustomSelect";
-import ProgressBar from "@/app/components/ProgressBar";
-import PaymentsTransfersTable from '@/app/components/AccountsBalance/PaymentsTransfersTable';
+import CustomSelect from "@/app/components/CustomSelect"; 
+import AccountBalanceTable from '@/app/components/AccountsBalance/AccountBalanceTable';
 
 
 
@@ -139,7 +138,7 @@ const UsersStudentsPage = () => {
           </div> 
         </div>
         {/**** TAB NAV END *****/}
-        <PaymentsTransfersTable />
+        <AccountBalanceTable />
 
       </div>
     </>

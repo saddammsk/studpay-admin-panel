@@ -44,7 +44,7 @@ const UsersStudentsPage = () => {
               <h4 className="4xl:text-[30px] text-2xl leading-9 font-bold text-blue-1300 tracking-[-0.75px]">
                 €847,320
               </h4>
-              <p className="text-grya-1900 text-sm leading-5 mt-1">Live processing</p>
+              <p className="text-gray-1900 text-sm leading-5 mt-1">Live processing</p>
               <div className="flex items-center gap-1 mt-3">
                 <span className="4xl:text-sm text-xs leading-5 font-normal text-green57 flex items-center gap-1">
                   <Image
@@ -54,7 +54,7 @@ const UsersStudentsPage = () => {
                     alt=""
                   /> 8.2%
                 </span>
-                <span className="4xl:text-sm text-xs leading-5 font-normal block text-grya-1900">vs yesterday</span>
+                <span className="4xl:text-sm text-xs leading-5 font-normal block text-gray-1900">vs yesterday</span>
               </div>
             </div>
             <div className="4xl:w-12 w-11 4xl:h-12 h-11 bg-blue-2200/10 rounded-xl flex items-center justify-center">
@@ -88,10 +88,10 @@ const UsersStudentsPage = () => {
             <div className='mt-4'>
               <ProgressBar value={96.8} className='h-3' barColor='bg-green57' bgColor='bg-red-1300' />
               <div className='flex items-center justify-between my-2'>
-                <p className='text-grya-1900 text-xs leading-4 font-normal flex items-center gap-1.5'><span className='flex items-center w-2 h-2 rounded-full bg-green57'></span> Success (96.8%)</p>
-                <p className='text-grya-1900 text-xs leading-4 font-normal flex items-center gap-1.5'><span className='flex items-center w-2 h-2 rounded-full bg-red-1300'></span> Failed (3.2%)</p>
+                <p className='text-gray-1900 text-xs leading-4 font-normal flex items-center gap-1.5'><span className='flex items-center w-2 h-2 rounded-full bg-green57'></span> Success (96.8%)</p>
+                <p className='text-gray-1900 text-xs leading-4 font-normal flex items-center gap-1.5'><span className='flex items-center w-2 h-2 rounded-full bg-red-1300'></span> Failed (3.2%)</p>
               </div>
-              <p className='text-grya-1900 text-xs leading-4 font-normal flex items-center gap-1.5'>2,847 transactions today</p>
+              <p className='text-gray-1900 text-xs leading-4 font-normal flex items-center gap-1.5'>2,847 transactions today</p>
             </div>
           </div>
           <div className="flex items-start justify-between bg-white rounded-xl border border-gray-3600/50 4xl:p-6 p-4 shadow-68xl">
@@ -112,7 +112,7 @@ const UsersStudentsPage = () => {
                     alt=""
                   /> 2 resolved
                 </span>
-                <span className="4xl:text-sm text-xs leading-5 font-normal block text-grya-1900">vs yesterday</span>
+                <span className="4xl:text-sm text-xs leading-5 font-normal block text-gray-1900">vs yesterday</span>
               </div>
             </div>
             <div className="4xl:w-12 w-11 4xl:h-12 h-11 bg-yellow-1100/10 rounded-xl flex items-center justify-center">
@@ -142,7 +142,7 @@ const UsersStudentsPage = () => {
                     alt=""
                   /> 5 new
                 </span>
-                <span className="4xl:text-sm text-xs leading-5 font-normal block text-grya-1900">vs yesterday</span>
+                <span className="4xl:text-sm text-xs leading-5 font-normal block text-gray-1900">vs yesterday</span>
               </div>
             </div>
             <div className="4xl:w-12 w-11 4xl:h-12 h-11 bg-red-1300/10 rounded-xl flex items-center justify-center">
@@ -158,7 +158,7 @@ const UsersStudentsPage = () => {
         <div className='bg-white border my-6 border-gray-1000 rounded-lg p-4'>
           <div className="flex xl:flex-row flex-col flex-wrap items-center gap-3 4xl:flex-1">
             <div className="relative flex-1 w-full">
-              <input type="text" className='text-sm font-normal text-grya-1900 placeholder:text-grya-1900 px-4 pl-9 h-10 bg-gray-6600 border border-gray-1000 rounded-md w-full outline-0' placeholder='Search by Transaction ID, Student Name...' />
+              <input type="text" className='text-sm font-normal text-gray-1900 placeholder:text-gray-1900 px-4 pl-9 h-10 bg-gray-6600 border border-gray-1000 rounded-md w-full outline-0' placeholder='Search by Transaction ID, Student Name...' />
               <div className='absolute top-1/2 -translate-y-1/2 left-3'>
                 <Image
                   src="../icons/search-dark.svg"

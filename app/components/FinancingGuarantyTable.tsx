@@ -416,11 +416,11 @@ made..."></textarea>
                                              </div>
                                         </div>
                                         <div className="text-center border-t border-solid border-gray-3600 sm:pt-8 pt-5 sm:mt-6 mt-4">
-                                             <p className="text-grya-1900 text-xs leading-4 font-normal mb-1">
+                                             <p className="text-gray-1900 text-xs leading-4 font-normal mb-1">
                                                   This document is digitally signed and verified by StudPay's secure document verification
                                                   system.
                                              </p>
-                                             <p className="text-grya-1900 text-xs leading-4 font-normal">
+                                             <p className="text-gray-1900 text-xs leading-4 font-normal">
                                                   Document ID: DOC-2024-001847-GUA | Verification Code: VF7X-K9M2-P4QL
                                              </p>
                                         </div>
@@ -429,7 +429,7 @@ made..."></textarea>
                          </div>
                          <div className="lg:max-w-[384px] max-w-full w-full bg-white lg:p-6 p-4 h-full overflow-y-auto">
                               <div className="">
-                                   <h4 className="text-grya-1900 text-xs leading-4 font-bold uppercase">Document Information</h4>
+                                   <h4 className="text-gray-1900 text-xs leading-4 font-bold uppercase">Document Information</h4>
                                    <ul className="mt-4">
                                         <li>
                                              <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3 bg-lighrgrey46/50 border border-solid border-royalBlue130/10">
@@ -444,7 +444,7 @@ made..."></textarea>
                                              <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/images/file-blue.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
-                                                       <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Document Type</h4>
+                                                       <h4 className="text-gray-1900 text-xs font-normal leading-4 uppercase">Document Type</h4>
                                                        <p className="text-blue1700 text-sm font-normal leading-5 mt-0.5">Parental Guarantee Letter</p>
                                                   </div>
                                              </Link>
@@ -453,7 +453,7 @@ made..."></textarea>
                                              <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/icons/upload-user.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
-                                                       <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Uploaded By</h4>
+                                                       <h4 className="text-gray-1900 text-xs font-normal leading-4 uppercase">Uploaded By</h4>
                                                        <p className="text-blue1700 text-sm font-normal leading-5 mt-0.5">Emma Smith</p>
                                                   </div>
                                              </Link>
@@ -462,7 +462,7 @@ made..."></textarea>
                                              <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/icons/calendar-time.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
-                                                       <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Upload Timestamp</h4>
+                                                       <h4 className="text-gray-1900 text-xs font-normal leading-4 uppercase">Upload Timestamp</h4>
                                                        <p className="text-blue1700 text-sm font-normal leading-5 mt-0.5">Jan 15, 2024 at 2:34 PM</p>
                                                   </div>
                                              </Link>
@@ -471,7 +471,7 @@ made..."></textarea>
                                              <Link href={"#"} className="sm:p-4 p-2.5 rounded-xl flex items-center gap-3">
                                                   <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-1400/10"><Image src="/icons/linked-icon.svg" width={16} height={16} alt="" /></span>
                                                   <div className="flex-1 w-full">
-                                                       <h4 className="text-grya-1900 text-xs font-normal leading-4 uppercase">Linked Loan</h4>
+                                                       <h4 className="text-gray-1900 text-xs font-normal leading-4 uppercase">Linked Loan</h4>
                                                        <p className="text-blue1700 text-sm font-normal leading-5 mt-0.5">LN-2024-001</p>
                                                   </div>
                                              </Link>
@@ -505,7 +505,7 @@ made..."></textarea>
                                              <h4 className="text-yellow-1100 text-base leading-6 font-normal">Reject Document</h4>
                                         </div>
                                    </div>
-                                   <p className="text-grya-1900 mt-4 text-xs leading-[19.5px] font-normal">
+                                   <p className="text-gray-1900 mt-4 text-xs leading-[19.5px] font-normal">
                                         Approving this document requires a second admin sign-off to
                                         complete the 4-Eyes verification process. Requesting a new
                                         version will send an instant notification to the student.
@@ -514,8 +514,8 @@ made..."></textarea>
                          </div>
                     </div>
                     <div className="bg-gray-6200/50 flex items-center justify-between border-t border-solid border-gray-3600 rounded-b-2xl px-2.5 py-3.5">
-                         <p className="text-grya-1900 text-xs leading-4 flex items-center gap-1"><Image src="/images/eye-icon.svg" width={16} height={16} alt="" /> Last viewed by <span className="text-blue1700 block"> Admin Sarah </span> at <span className="text-blue1700 block">10:15 AM</span> </p>
-                         <p className="text-grya-1900 text-xs leading-4 flex items-center gap-2"><Image src="/images/clock-gray.svg" width={14} height={14} alt="" /> Today</p>
+                         <p className="text-gray-1900 text-xs leading-4 flex items-center gap-1"><Image src="/images/eye-icon.svg" width={16} height={16} alt="" /> Last viewed by <span className="text-blue1700 block"> Admin Sarah </span> at <span className="text-blue1700 block">10:15 AM</span> </p>
+                         <p className="text-gray-1900 text-xs leading-4 flex items-center gap-2"><Image src="/images/clock-gray.svg" width={14} height={14} alt="" /> Today</p>
                     </div>
 
                </Modal>

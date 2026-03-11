@@ -101,12 +101,7 @@ const statusConfig = {
 } as const;
 
 
-
-
-
-export default function PaymentsAccountLedgerTable() {
-
-
+export default function AccountLedgerTable() {
 
   return (
     <div>
@@ -118,15 +113,15 @@ export default function PaymentsAccountLedgerTable() {
           </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="5xl:w-full w-325">
+          <table className="4xl:w-full w-187.5">
             <thead>
               <tr className="bg-gray-6200/50 border-b border-solid border-gray-3600">
-                <th className="px-4 py-3 text-left text-grya-1900 font-inter font-semibold text-sm leading-5">Date</th>
-                <th className="px-4 py-3 text-left text-grya-1900 font-inter font-semibold text-sm leading-5">Description</th>
-                <th className="px-4 py-3 text-left text-grya-1900 font-inter font-semibold text-sm leading-5">Type</th>
-                <th className="px-4 py-3 text-left text-grya-1900 font-inter font-semibold text-sm leading-5">Amount</th>
-                <th className="px-4 py-3 text-left text-grya-1900 font-inter font-semibold text-sm leading-5">Fee</th>
-                <th className="px-4 py-3 text-left text-grya-1900 font-inter font-semibold text-sm leading-5">Balance</th>
+                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-semibold text-sm leading-5">Date</th>
+                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-semibold text-sm leading-5">Description</th>
+                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-semibold text-sm leading-5">Type</th>
+                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-semibold text-sm leading-5">Amount</th>
+                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-semibold text-sm leading-5">Fee</th>
+                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-semibold text-sm leading-5">Balance</th>
               </tr>
             </thead>
 
@@ -136,7 +131,7 @@ export default function PaymentsAccountLedgerTable() {
                   key={item.id}
                   className="border-b border-gray1600 hover:bg-gray1700/50 transition last:border-b-0"
                 >
-                  <td className="p-4 text-grya-1900 text-xs leading-4 font-normal">
+                  <td className="p-4 text-gray-1900 text-xs leading-4 font-normal">
                     {item.date}
                     <span className='block'>{item.time}</span>
                   </td>
@@ -161,16 +156,16 @@ export default function PaymentsAccountLedgerTable() {
                   <td className="p-4">
                     <span
                       className={`text-sm leading-5 font-bold ${item.status === "Debit"
-                          ? "text-red-1300"
-                          : item.status === "Credit"
-                            ? "text-lightgreen17"
-                            : "text-yellow-1100"
+                        ? "text-red-1300"
+                        : item.status === "Credit"
+                          ? "text-lightgreen17"
+                          : "text-yellow-1100"
                         }`}
                     >
                       {item.amount}
                     </span>
                   </td>
-                  <td className="p-4 text-grya-1900 text-sm leading-5 font-normal">
+                  <td className="p-4 text-gray-1900 text-sm leading-5 font-normal">
                     {item.fee}
                   </td>
                   <td className="p-4">
