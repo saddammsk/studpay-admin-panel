@@ -1,12 +1,12 @@
 "use client";
 import { useState } from 'react'
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/app/components/ui/Button";
 import CustomSelect from "@/app/components/CustomSelect";
 import FxManagementTable from '@/app/components/FxManagementTable';
 
 const UsersStudentsPage = () => {
-  const [status, setStatus] = useState<string>("All Countries");
 
   return (
     <>
@@ -37,9 +37,9 @@ const UsersStudentsPage = () => {
             <h4 className='text-blue-1300 text-lg leading-7 font-bold'>Real-Time Rate Monitor</h4>
             <p className='text-gray-1900 text-xs leading-4 font-normal flex items-center gap-2'> <span className='bg-lightgreen17 w-2 h-2 rounded-full inline-flex items-center justify-center'></span> Live Rates</p>
           </div>
-          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+          <div className="grid 4xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
             <div className="bg-white rounded-lg border border-solid border-gray-3600 border-l-4 border-l-blue-2200 p-5 shadow-4xl">
-              <div className='flex items-start justify-between w-full'>
+              <div className='flex items-start justify-between w-full mb-3'>
                 <div className='flex items-center gap-2'>
                   <ul className='flex items-center'>
                     <li>
@@ -84,7 +84,7 @@ const UsersStudentsPage = () => {
 
             </div>
             <div className="bg-white rounded-lg border border-solid border-gray-3600 border-l-4 border-l-blue-2200 p-5 shadow-4xl">
-              <div className='flex items-start justify-between w-full'>
+              <div className='flex items-start justify-between w-full mb-3'>
                 <div className='flex items-center gap-2'>
                   <ul className='flex items-center'>
                     <li>
@@ -129,7 +129,7 @@ const UsersStudentsPage = () => {
 
             </div>
             <div className="bg-white rounded-lg border border-solid border-gray-3600 border-l-4 border-l-blue-2200 p-5 shadow-4xl">
-              <div className='flex items-start justify-between w-full'>
+              <div className='flex items-start justify-between w-full mb-3'>
                 <div className='flex items-center gap-2'>
                   <ul className='flex items-center'>
                     <li>
@@ -177,7 +177,7 @@ const UsersStudentsPage = () => {
         </div>
         <div className='mt-6'>
           <h4 className='text-blue-1300 text-lg leading-7 font-bold mb-4'>FX Volume & Revenue Analytics</h4>
-          <div className='grid grid-cols-4 gap-4'>
+          <div className='grid 4xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4'>
             <div className="bg-white rounded-lg border border-solid border-gray-3600 border-l-4 border-l-blue-2200 p-5 shadow-4xl">
               <div className='flex items-center justify-between'>
                 <div className='bg-gray1700 w-10 h-10 flex items-center justify-center rounded-lg'>
@@ -268,8 +268,70 @@ const UsersStudentsPage = () => {
             </div>
           </div>
         </div>
-        {/**** TAB NAV END *****/}
+
         <FxManagementTable />
+        <div className='mt-6 bg-white border border-solid border-gray-3600 rounded-lg shadow-4xl p-5'>
+          <h4 className='text-blue-1300 text-lg leading-7 font-bold flex items-center gap-2'>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.6663 10.8331C16.6663 14.9997 13.7497 17.0831 10.283 18.2914C10.1015 18.3529 9.90429 18.35 9.72467 18.2831C6.24967 17.0831 3.33301 14.9997 3.33301 10.8331V4.99972C3.33301 4.77871 3.42081 4.56675 3.57709 4.41047C3.73337 4.25419 3.94533 4.16639 4.16634 4.16639C5.83301 4.16639 7.91634 3.16639 9.36634 1.89972C9.54289 1.74889 9.76747 1.66602 9.99967 1.66602C10.2319 1.66602 10.4565 1.74889 10.633 1.89972C12.0913 3.17472 14.1663 4.16639 15.833 4.16639C16.054 4.16639 16.266 4.25419 16.4223 4.41047C16.5785 4.56675 16.6663 4.77871 16.6663 4.99972V10.8331Z" stroke="#EF4343" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Critical Controls
+          </h4>
+          <div className='grid md:grid-cols-2 grid-cols-1 gap-4 mt-4'>
+            <div className='border border-solid border-gray-3600 bg-white rounded-lg p-4'>
+              <div className='flex items-center gap-3 mb-3'>
+                <span className='bg-yellow1800 rounded-lg flex items-center justify-center w-10 h-10'>
+                  <Image
+                    src="/images/warning.svg"
+                    width={20}
+                    height={20}
+                    alt="warning"
+                  />
+                </span>
+                <div className=''>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-medium'>Emergency Rate Freeze</h4>
+                  <p className='text-gray-1900 text-xs leading-4 font-normal mt-0.5'>Emergency Rate Freeze</p>
+                </div>
+              </div>
+              <Link href={"#"} className='flex items-center justify-center h-10 text-white text-sm leading-5 font-medium gap-4 bg-red-1300 hover:bg-red-1300/90 rounded-md w-full'>
+                <Image
+                  src="/images/lock-icon.svg"
+                  width={20}
+                  height={20}
+                  alt="warning"
+                  className='brightness-1000'
+                />
+                Activate Emergency Freeze
+              </Link>
+            </div>
+            <div className='border border-solid border-gray-3600 bg-white rounded-lg p-4'>
+              <div className='flex items-center gap-3 mb-3'>
+                <span className='bg-yellow1800 rounded-lg flex items-center justify-center w-10 h-10'>
+                  <Image
+                    src="/icons/eyes-yellow.svg"
+                    width={20}
+                    height={20}
+                    alt="eyes"
+                  />
+                </span>
+                <div className='flex-1 w-full'>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-medium'>Manual Rate Override</h4>
+                  <p className='text-gray-1900 text-xs leading-4 font-normal mt-0.5'>Set a fixed rate for a specific corridor (4-Eyes Approval Required)</p>
+                </div>
+              </div>
+              <Link href={"#"} className='group flex items-center justify-center h-10 text-yellow-1100 text-sm leading-5 font-medium gap-4 bg-gray-1500 hover:bg-yellow-1100 hover:text-white border border-solid border-yellow-1100 rounded-md w-full'>
+                <Image
+                  src="/icons/lock-yellow.svg"
+                  width={20}
+                  height={20}
+                  alt="warning"
+                  className='group-hover:brightness-10000'
+                />
+                Request Rate Override
+              </Link>
+            </div>
+          </div>
+        </div>
 
       </div>
     </>

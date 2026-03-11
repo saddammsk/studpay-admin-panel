@@ -4,7 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import ProgressBar from "@/app/components/ProgressBar";
+import Modal from "@/app/components/Modal";
+import CustomSelect from "@/app/components/CustomSelect";
+import InputField from "@/app/components/InputField";
+import ToggleSwitch from "@/app/components/ToggleSwitch";
 import UserFinancingTable from '@/app/components/UsersStudent/UserFinancingTable';
+import CreditScoreCard from '@/app/components/UsersStudent/Financing/CreditScoreCard'
+import ScoreHistory from '@/app/components/UsersStudent/Financing/ScoreHistory'
+import Recommendations from '@/app/components/UsersStudent/Financing/Recommendations'
 
 
 
@@ -110,10 +117,100 @@ const menuItems = [
 ];
 
 
-const UsersStudentsPage = () => {
-  const [search, setSearch] = useState("");
-  const [status, setStatus] = useState<string>("All Countries");
 
+const scoreHistory = [
+  {
+    id: 1,
+    icon: '/images/card-gray.svg',
+    title: 'Timely Rent Payment',
+    date: 'Jan 28, 2024',
+    time: '2:30 PM',
+    change: 15,
+    type: 'positive',
+    status: 'System',
+    git: '/icons/git-icon.svg',
+  },
+  {
+    id: 2,
+    icon: '/images/wallet-icon3.svg',
+    title: 'High Credit Utilization (>70%)',
+    date: 'Jan 25, 2024',
+    time: '9:15 AM',
+    change: -10,
+    type: 'negative',
+    status: 'System',
+    git: '/icons/git-icon.svg',
+  },
+  {
+    id: 3,
+    icon: '/images/file-icon2.svg',
+    title: 'New Loan Approved',
+    date: 'Jan 20, 2024',
+    time: '11:45 AM',
+    change: 25,
+    type: 'positive',
+    status: 'Admin: Sarah M.',
+    git: '/images/user-icon2.svg',
+  },
+  {
+    id: 4,
+    icon: '/icons/ac-profile.svg',
+    title: 'Account Age Milestone (1 Year)',
+    date: 'Jan 15, 2024',
+    time: '4:20 PM',
+    change: 10,
+    type: 'positive',
+    status: 'System',
+    git: '/icons/git-icon.svg',
+  },
+  {
+    id: 5,
+    icon: '/images/card-gray.svg',
+    title: 'Late Payment Warning',
+    date: 'Jan 10, 2024',
+    time: '8:00 AM',
+    change: -5,
+    type: 'negative',
+    status: 'System',
+    git: '/icons/git-icon.svg',
+  },
+  {
+    id: 6,
+    icon: '/images/card-gray.svg',
+    title: 'Rent Payment Streak Bonus',
+    date: 'Dec 28, 2023',
+    time: '10:00 AM',
+    change: 8,
+    type: 'positive',
+    status: 'System',
+    git: '/icons/git-icon.svg',
+  },
+  {
+    id: 7,
+    icon: '/images/card-gray.svg',
+    title: 'Consistent Balance Maintained',
+    date: 'Jan 5, 2024',
+    time: '1:30 PM',
+    change: 20,
+    type: 'positive',
+    status: 'System',
+    git: '/icons/git-icon.svg',
+  }
+]
+
+const recommendations = [
+  { id: 1, text: 'Maintain a balance above €200 for 30 consecutive days to gain bonus points.', points: 20 },
+  { id: 2, text: 'Reduce credit utilization below 30% to improve your score faster.', points: 15 },
+  { id: 3, text: 'Set up automatic rent payments to ensure timely payments.', points: 10 },
+  { id: 4, text: 'Keep your account active with at least one transaction per month.', points: 5 }
+]
+
+
+const UsersStudentsPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [enabled, setEnabled] = useState(false); //  Toggle Switch
+  const [name, setName] = useState(''); // input Field
 
   return (
     <div className='font-inter'>
@@ -319,7 +416,7 @@ const UsersStudentsPage = () => {
                 <h4 className='text-blue1700 text-xl leading-7 font-bold mb-0.5'>Credit Score</h4>
                 <p className='text-SteelGray text-sm leading-4 font-normal'>John Anderson • <span className='text-xs'>USR-2847391</span></p>
               </div>
-              <Link href={"#"} className='py-2.5 px-4 bg-gray-2000/60 rounded-xl h-13 inline-flex items-center gap-3 text-SteelGray text-sm leading-5 font-normal'>
+              <Link onClick={() => setIsOpen(true)} href={"#"} className='py-2.5 px-4 bg-gray-2000/60 rounded-xl h-13 inline-flex items-center gap-3 text-SteelGray text-sm leading-5 font-normal'>
                 <span className='flex items-center justify-center bg-gray-2000 rounded-2xl w-8 h-8'>
                   <Image
                     src="../icons/file-gray.svg"
@@ -682,7 +779,7 @@ const UsersStudentsPage = () => {
                 Apply Penalty
               </h4>
               <p className='text-gray-1200 mb-3 flex items-center font-normal xl:text-xs text-[11px] leading-4'>Manually add a late fee for missed or delayed payments.</p>
-              <Link href={""} className='w-full flex items-center justify-center gap-3.5 text-red-1300 font-inter font-normal text-sm leading-5 border border-solid border-red-1300/30 rounded-md bg-white h-9 px-3 hover:bg-yellow1800 transition-all duration-500 ease-in-out'>
+              <Link onClick={() => setIsOpen2(true)} href={""} className='w-full flex items-center justify-center gap-3.5 text-red-1300 font-inter font-normal text-sm leading-5 border border-solid border-red-1300/30 rounded-md bg-white h-9 px-3 hover:bg-yellow1800 transition-all duration-500 ease-in-out'>
                 <Image
                   src="/images/warning.svg"
                   width="16"
@@ -718,6 +815,116 @@ const UsersStudentsPage = () => {
           </div>
         </div>
       </div>
+
+      {/****** view full report Modal *******/}
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        panelClassName="max-w-[672px] bg-gray-1500 relative h-full overflow-y-auto sm:p-6 px-4 pb-4 pt-12"
+      >
+        <Link onClick={() => setIsOpen(false)} href={"#"} className="flex items-center justify-center rounded-full sm:w-8 sm:h-8 w-6 h-6 absolute sm:top-8 top-6 shadow-75xl right-6">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className='mb-6'>
+          <h4 className='text-blue-1300 font-inter font-semibold text-xl leading-7 tracking-[-0.5px]'>Credit Score History & Insights</h4>
+          <p className='text-gray-1200 font-inter font-normal text-sm leading-5'>Track changes and get recommendations to improve your score</p>
+        </div>
+        <div className="">
+          <CreditScoreCard score={742} status="Good" updated="Jan 30, 2026 at 8:01 PM" />
+          <ScoreHistory history={scoreHistory} />
+          <Recommendations items={recommendations} />
+        </div>
+        <Link href={"#"} className='flex items-center justify-center border border-solid border-gray-1000 bg-white rounded-[10px] h-10 text-gray-1200 text-sm leading-5 font-semibold gap-2 hover:bg-gray-1600'> <Image src="/icons/Adjustment-icon.svg" width={16} height={16} alt="" />Manual Adjustment</Link>
+
+      </Modal>
+      {/****** APPLY PENALTY Modal *******/}
+
+
+      <Modal
+        isOpen={isOpen2}
+        onClose={() => setIsOpen2(false)}
+        panelClassName="max-w-[448px] bg-gray-1500 relative sm:p-6 px-4 pb-4 pt-12"
+      >
+        <Link onClick={() => setIsOpen2(false)} href={"#"} className="flex items-center justify-center rounded-full w-4 h-4 absolute  top-4 right-4">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className='mb-6 flex items-center gap-2'>
+          <span className='bg-red2100/10 rounded-lg w-9 h-9 flex items-center justify-center'>
+            <Image
+              src="/icons/sheild-error.svg"
+              width="20"
+              height="20"
+              alt=""
+            />
+          </span>
+
+          <div className='flex-1 w-full'>
+            <h4 className='text-blue-1300 font-inter font-semibold text-xl leading-7 tracking-[-0.5px]'>Apply Late Fee / Penalty</h4>
+            <p className='text-gray-1200 font-inter font-normal text-sm leading-5'>Charge a penalty to the tenant's account</p>
+          </div>
+        </div>
+        <div className=''>
+          <div className='mt-3'>
+            <label className='text-blue-1300 block mb-1.5 font-normal text-[13.5px] leading-5'>Penalty Reason</label>
+            <CustomSelect
+              className='shadow-57xl'
+              options={[
+                { label: 'Select card type', value: 'Select card type' },
+                { label: '2000', value: '2000' }
+              ]}
+            />
+          </div>
+          <div className='mt-5'>
+            <label className='text-blue-1300 block mb-1.5 font-normal text-[13.5px] leading-5'>Amount</label>
+            <InputField
+              ClassName="bg-gray-1500 text-gray-3800 rounded-md! h-10!"
+              type="name"
+              placeholder="0.00"
+              value={name}
+              iconSrc="../images/dollar-icon.svg"
+              onChange={(e: any) => setName(e.target.value)}
+            />
+          </div>
+          <div className='mt-5 flex items-center justify-end bg-gray1700/50 border border-solid border-gray1600 rounded-lg p-3'>
+            <div className='flex-1 w-full'>
+              <h4 className='text-black13 font-inter font-normal text-[13.3px] leading-5'>Grace Period Waiver</h4>
+              <p className='text-gray-1400 font-inter font-normal text-[11.1px] leading-4'>Waive penalty if paid within 48 hours</p>
+            </div>
+            <ToggleSwitch checked={enabled} onChange={setEnabled}
+            />
+          </div>
+          <div className="mt-4">
+            <ul className="flex items-center justify-end gap-3">
+              <li>
+                <button
+                  onClick={() => setIsOpen2(false)}
+                  className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
+                >
+                  Cancel
+                </button>
+              </li>
+              <li>
+                <button
+                  className="cursor-pointer opacity-50 gap-2 px-4 flex items-center justify-center w-full hover:bg-red2100/90 hover:border-red2100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-red2100 border-solid border-red2100 h-10"
+                >
+                   <Image
+              src="/icons/sheild-error.svg"
+              width="16"
+              height="16"
+              alt=""
+              className='brightness-10000'
+            />
+                Charge Account
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+      </Modal>
+
     </div>
   );
 };
