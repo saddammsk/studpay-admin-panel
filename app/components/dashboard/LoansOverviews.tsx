@@ -56,7 +56,7 @@ export const LoansOverviews = () => {
   return (
     <div>
       <div
-        className="border-white/80 2xl:mb-4.5 mb-0 border border-solid rounded-3xl relative bg-white shadow-81xl p-5.25 4xl:pb-12 pb-5"
+        className="border-white/80 2xl:mb-4.5 mb-0 border border-solid rounded-3xl relative bg-white shadow-81xl p-4 pb-5"
         style={{ minHeight: 200 }}
       >
         <div className="flex items-center justify-between 4xl:pb-4 pb-1.5">
