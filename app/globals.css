@@ -63,7 +63,7 @@
      --color-gray-7300: #0F618A;
      --color-gray-7400: #1B294B;
      --color-gray-7500: #F2F4F8;
-     --color-gray-7600: #F7F7F7;
+     --color-gray-7600: #E8EDF5;
      --color-blue-1000: #0D8CFF;
      --color-red-1000: #EF4444;
      --color-red-1100: #FEE2E2;
@@ -160,8 +160,7 @@
      --color-yellow-2800: #FBBD23;
      --color-yellow-2900: #F0CD75;
      --color-yellow-3000: #FFFAEB;
-     --color-yellow-3100: #FEF3E2;
-     --color-yellow-3200: #FEFAE6;
+     --color-yellow-3100: #FCF3E3;
      --color-brown-1000: #854D0E;
      --color-brown-1100: #EAB308;
      --color-brown-1200: #4D3700;
@@ -386,6 +385,8 @@
      --shadow-65xl: 0 0 0 2px #F8FAFC, 0 0 0 4px #2FA26A;
      --shadow-66xl: 0 25px 50px -12px rgba(19, 23, 32, 0.25);
      --shadow-67xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #25A777;
+<<<<<<< HEAD
+=======
      --shadow-68xl: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
      --shadow-69xl: 0 0 10px 2px rgba(48, 166, 117, 0.25);
      --shadow-70xl: 0 0 10px 2px rgba(29, 86, 165, 0.25);
@@ -394,6 +395,7 @@
      --shadow-73xl: 0 4px 46px 0 rgba(0, 0, 0, 0.08), 0 4px 46px 0 rgba(129, 129, 129, 0.08);
      --shadow-74xl: 0 1px 2px 0 rgba(20, 24, 31, 0.05);
      --shadow-75xl: 0 0 0 2px #FFF, 0 0 0 4px #0F1729;
+>>>>>>> 1701c9d07aab7d3b251d3867595ef56f9a94d699
      --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
      --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
      --breakpoint-xs: 390px;
