@@ -8,10 +8,12 @@ import Modal from "@/app/components/Modal";
 import CustomSelect from "@/app/components/CustomSelect";
 import InputField from "@/app/components/InputField";
 import ToggleSwitch from "@/app/components/ToggleSwitch";
+import { Checkbox } from '@headlessui/react'
 import UserFinancingTable from '@/app/components/UsersStudent/UserFinancingTable';
 import CreditScoreCard from '@/app/components/UsersStudent/Financing/CreditScoreCard'
 import ScoreHistory from '@/app/components/UsersStudent/Financing/ScoreHistory'
 import Recommendations from '@/app/components/UsersStudent/Financing/Recommendations'
+import LoanInterestRate from '@/app/components/UsersStudent/Financing/LoanInterestRate'
 
 
 
@@ -209,8 +211,12 @@ const recommendations = [
 const UsersStudentsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
+  const [isOpen4, setIsOpen4] = useState(false);
   const [enabled, setEnabled] = useState(false); //  Toggle Switch
+  const [enabled2, setEnabled2] = useState(false); //  Toggle Switch
   const [name, setName] = useState(''); // input Field
+  const [enabledCheck, setEnabledCheck] = useState(false) // CHECKBOX
 
   return (
     <div className='font-inter'>
@@ -756,7 +762,7 @@ const UsersStudentsPage = () => {
                 Restructure Loan
               </h4>
               <p className='text-gray-1200 mb-3 flex items-center font-normal xl:text-xs text-[11px] leading-4'>Change monthly payment or interest rate. Requires 4-eyes approval.</p>
-              <Link href={""} className='w-full flex items-center justify-center gap-3.5 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-1000 rounded-md bg-white h-9 px-3 hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
+              <Link onClick={() => setIsOpen4(true)} href={""} className='w-full flex items-center justify-center gap-3.5 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-1000 rounded-md bg-white h-9 px-3 hover:bg-gray-1600 transition-all duration-500 ease-in-out'>
                 <Image
                   src="/icons/setting-icon.svg"
                   width="16"
@@ -802,7 +808,7 @@ const UsersStudentsPage = () => {
                 Grace Period
               </h4>
               <p className='text-gray-1200 mb-3 flex items-center font-normal xl:text-xs text-[11px] leading-4'>Delay the next payment without applying a penalty.</p>
-              <Link href={""} className='w-full flex items-center justify-center gap-3.5 text-yellow-1100 font-inter font-normal text-sm leading-5 border border-solid border-yellow-1100/30 rounded-md bg-white h-9 px-3 hover:bg-yellow1800 transition-all duration-500 ease-in-out'>
+              <Link onClick={() => setIsOpen3(true)} href={""} className='w-full flex items-center justify-center gap-3.5 text-yellow-1100 font-inter font-normal text-sm leading-5 border border-solid border-yellow-1100/30 rounded-md bg-white h-9 px-3 hover:bg-yellow1800 transition-all duration-500 ease-in-out'>
                 <Image
                   src="/images/clock-yellow.svg"
                   width="16"
@@ -839,7 +845,6 @@ const UsersStudentsPage = () => {
 
       </Modal>
       {/****** APPLY PENALTY Modal *******/}
-
 
       <Modal
         isOpen={isOpen2}
@@ -908,14 +913,14 @@ const UsersStudentsPage = () => {
                 <button
                   className="cursor-pointer opacity-50 gap-2 px-4 flex items-center justify-center w-full hover:bg-red2100/90 hover:border-red2100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-red2100 border-solid border-red2100 h-10"
                 >
-                   <Image
-              src="/icons/sheild-error.svg"
-              width="16"
-              height="16"
-              alt=""
-              className='brightness-10000'
-            />
-                Charge Account
+                  <Image
+                    src="/icons/sheild-error.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                    className='brightness-10000'
+                  />
+                  Charge Account
                 </button>
               </li>
             </ul>
@@ -925,7 +930,236 @@ const UsersStudentsPage = () => {
 
       </Modal>
 
-    </div>
+      {/****** GRACE PERIOD Modal *******/}
+      <Modal
+        isOpen={isOpen3}
+        onClose={() => setIsOpen3(false)}
+        panelClassName="max-w-[448px] bg-gray-1500 relative sm:p-6 px-4 pb-4 pt-12"
+      >
+        <Link onClick={() => setIsOpen3(false)} href={"#"} className="flex items-center justify-center rounded-full w-4 h-4 absolute  top-4 right-4">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className='mb-6 flex items-center gap-2'>
+          <span className='bg-blue-1200/10 rounded-lg w-9 h-9 flex items-center justify-center'>
+            <Image
+              src="/icons/Period-icon.svg"
+              width="20"
+              height="20"
+              alt=""
+            />
+          </span>
+
+          <div className='flex-1 w-full'>
+            <h4 className='text-black13 font-inter font-bold text-[17.7px] leading-7 tracking-[-0.45px]'>Grace Period Request</h4>
+            <p className='text-gray-1400 font-inter font-normal text-[13px] leading-5'>Extend the payment deadline for Marcus Schmidt</p>
+          </div>
+        </div>
+        <div className=''>
+          <div className='mt-3'>
+            <label className='text-blue-1300 block mb-2.5 font-normal text-[13.2px] leading-5'>Extension Duration</label>
+            <ul className='grid grid-cols-3 gap-2'>
+              <li>
+                <Link href={"#"} className='bg-white py-3.5 border-2 border-solid border-blue1800 rounded-lg flex items-center justify-center flex-col'>
+                  <h4 className='text-black13 text-xl leading-7 font-bold'>7</h4>
+                  <p className='text-gray-1400 text-[11.1px] leading-4 font-normal mt-1.5'>days</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"#"} className='bg-white py-3.5 border-2 border-solid border-gray1600 rounded-lg flex items-center justify-center flex-col'>
+                  <h4 className='text-black13 text-xl leading-7 font-bold'>14</h4>
+                  <p className='text-gray-1400 text-[11.1px] leading-4 font-normal mt-1.5'>days</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"#"} className='bg-white py-3.5 border-2 border-solid border-gray1600 rounded-lg flex items-center justify-center flex-col'>
+                  <h4 className='text-black13 text-xl leading-7 font-bold'>30</h4>
+                  <p className='text-gray-1400 text-[11.1px] leading-4 font-normal mt-1.5'>days</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className='mt-5 flex items-center justify-end bg-gray1700/50 border border-solid border-gray1600 rounded-lg p-3'>
+            <div className='flex-1 w-full'>
+              <h4 className='text-black13 font-inter font-normal text-[13.3px] leading-5'>Accrue Interest</h4>
+              <p className='text-gray-1400 font-inter font-normal text-[11.1px] leading-4'>Accrue interest during grace period?</p>
+            </div>
+            <ToggleSwitch checked={enabled2} onChange={setEnabled2}
+            />
+          </div>
+          <div className='mt-5'>
+            <label className="flex items-start gap-2 cursor-pointer">
+              <Checkbox
+                checked={enabledCheck}
+                onChange={setEnabledCheck}
+                className="group block w-4 h-4 rounded border border-solid border-blue-1200 bg-white data-checked:bg-blue1400 data-checked:border-blue1400 data-disabled:cursor-not-allowed data-disabled:opacity-50 data-checked:data-disabled:bg-gray-500"
+              >
+                <svg
+                  className="stroke-white opacity-0 group-data-checked:opacity-100"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                >
+                  <path
+                    d="M3 8L6 11L11 3.5"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Checkbox>
+
+              <p
+                onClick={() => setEnabledCheck(!enabledCheck)}
+                className="flex-1 w-full text-gray-1400 text-[13px] leading-4 font-normal"
+              >
+                I confirm this grace period extension and understand the
+                impact on the payment schedule.
+              </p>
+            </label>
+          </div>
+          <div className="mt-6">
+            <ul className="flex items-center justify-end gap-3">
+              <li>
+                <button
+                  onClick={() => setIsOpen3(false)}
+                  className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
+                >
+                  Cancel
+                </button>
+              </li>
+              <li>
+                <button
+                  className="cursor-pointer opacity-50 gap-2 px-4 flex items-center justify-center w-full hover:bg-blue-1200/90 hover:border-blue-1200/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal  text-sm leading-5 bg-blue-1200 border-solid border-blue-1200 h-10"
+                >
+                  <Image
+                    src="/icons/Period-icon.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                    className='brightness-10000'
+                  />
+                  Grant Grace Period
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Modal>
+
+      {/****** LOAN MODIFICATION Modal *******/}
+      <Modal
+        isOpen={isOpen4}
+        onClose={() => setIsOpen4(false)}
+        panelClassName="max-w-[540px] bg-gray-1500 relative sm:overflow-y-hidden border-0 sm:h-auto h-full overflow-y-auto"
+      >
+        <span className='bg-linear-to-r from-royalBlue131 from-0 via-royalBlue131/70 via-50% to-royalBlue131 to-100% h-1.5 block w-full absolute top-0 left-0 rounded-t-xl'></span>
+        <Link onClick={() => setIsOpen4(false)} href={"#"} className="flex items-center justify-center rounded-full w-4 h-4 absolute sm:top-4 sm:right-4 top-3 right-3">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className='sm:p-6 p-4'>
+          <div className=''>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-lighrgrey47">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.3335 4.66602H7.3335"
+                    stroke="#1252A1"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9.3335 11.334H3.3335"
+                    stroke="#1252A1"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M11.3335 13.334C12.4381 13.334 13.3335 12.4386 13.3335 11.334C13.3335 10.2294 12.4381 9.33398 11.3335 9.33398C10.2289 9.33398 9.3335 10.2294 9.3335 11.334C9.3335 12.4386 10.2289 13.334 11.3335 13.334Z"
+                    stroke="#1252A1"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4.6665 6.66602C5.77107 6.66602 6.6665 5.77059 6.6665 4.66602C6.6665 3.56145 5.77107 2.66602 4.6665 2.66602C3.56193 2.66602 2.6665 3.56145 2.6665 4.66602C2.6665 5.77059 3.56193 6.66602 4.6665 6.66602Z"
+                    stroke="#1252A1"
+                    strokeWidth="1.33333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <h2 className="sm:text-[19.5px] text-base tracking-[-0.5px] font-bold text-blue-1300 leading-7">
+                Loan Modification & Restructuring
+              </h2>
+            </div>
+            <p className="text-lighrgrey48 text-[13px] font-normal leading-[22.8px]">
+              Adjust loan terms below. Changes require super-admin approval before taking effect.
+            </p>
+          </div>
+          <div className="mt-4">
+            <p className="mb-3 text-xs font-normal uppercase tracking-[0.6px] text-lighrgrey48">
+              Current Terms
+            </p>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="rounded-xl bg-lighrgrey47/50 border border-solid border-lighrgrey49/70 p-3">
+                <p className="text-[11.4px] font-normal leading-4 text-lighrgrey48 mb-1">Principal</p>
+                <p className="text-Black236 text-[15.2px] font-bold leading-7">$5,400</p>
+              </div>
+              <div className="rounded-xl bg-lighrgrey47/50 border border-solid border-lighrgrey49/70 p-3">
+                <p className="text-[11.4px] font-normal leading-4 text-lighrgrey48 mb-1">Interest Rate</p>
+                <p className="text-Black236 text-[15.2px] font-bold leading-7">8.5%</p>
+              </div>
+              <div className="rounded-xl bg-lighrgrey47/50 border border-solid border-lighrgrey49/70 p-3">
+                <p className="text-[11.4px] font-normal leading-4 text-lighrgrey48 mb-1">Tenure</p>
+                <p className="text-Black236 text-[15.2px] font-bold leading-7">10 mo</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4">
+            <p className="mb-3 text-xs font-normal uppercase tracking-[0.6px] text-lighrgrey48">
+              New Terms
+            </p>
+            <LoanInterestRate />
+          </div>
+        </div>
+        <div className="bg-lighrgrey47/30 border-t border-solid border-lighrgrey49/60 px-6 py-4">
+          <ul className="grid sm:grid-cols-2 grid-cols-1 gap-3">
+            <li>
+              <button
+                onClick={() => setIsOpen4(false)}
+                className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-[10px] text-gray-3800 font-normal text-[13.3px] leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
+              >
+                Cancel
+              </button>
+            </li>
+            <li>
+              <button
+                className="cursor-pointer gap-2 px-4 flex items-center justify-center w-full hover:bg-royalBlue131/90 hover:border-royalBlue131/90 transition-all duration-500 ease-in-out border rounded-[10px] text-white font-normal text-[13px] leading-5 bg-royalBlue131 border-solid border-royalBlue131 h-10"
+              >
+                <Image
+                  src="/icons/Adjustment-icon.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                  className='brightness-10000'
+                />
+                Grant Grace Period
+              </button>
+            </li>
+          </ul>
+        </div>
+
+      </Modal>
+
+    </div >
   );
 };
 

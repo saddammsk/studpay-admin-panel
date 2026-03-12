@@ -3,8 +3,8 @@ import { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
-import CustomSelect from "@/app/components/CustomSelect";
-import UserTransactionTable from '@/app/components/UsersStudent/UserTransactionTable';
+import ProgressBar from "@/app/components/ProgressBar";
+import RiskScoringCard from '@/app/components/UsersStudent/Kyc/RiskScoringCard';
 
 
 
@@ -110,6 +110,52 @@ const menuItems = [
 ];
 
 
+/***** TABLE****/
+type Student = {
+  id: string;
+  admin: {
+    title: string;
+    name: string;
+  },
+  action: string;
+  notes: string;
+  timestamp: string;
+};
+
+const students: Student[] = [
+  {
+    id: "1",
+    admin: {
+      title: "SC",
+      name: "Sarah Chen",
+    },
+    action: "FIRST_APPROVAL",
+    notes: "All documents verified. Biometric mat…",
+    timestamp: "Jan 17, 2024 16:42",
+  }, {
+    id: "2",
+    admin: {
+      title: "MA",
+      name: "Michael Adeyemi",
+    },
+    action: "REJECTION",
+    notes: "POA document too blurry. Requested…",
+    timestamp: "Jan 16, 2024 18:30",
+  }, {
+    id: "3",
+    admin: {
+      title: "S",
+      name: "System",
+    },
+    action: "WATCHLIST_CLEAR",
+    notes: "Automated screening complete. No …",
+    timestamp: "Jan 16, 2024 14:40",
+  },
+
+];
+/***** TABLE****/
+
+
 const UsersStudentsPage = () => {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("All Countries");
@@ -117,7 +163,7 @@ const UsersStudentsPage = () => {
 
   return (
     <div className='font-inter'>
-      <div className=''>
+      <div className='4xl:pb-20 md:pb-37.5 sm:pb-50'>
         <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>
           <li>
             <Link href={'#'} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
@@ -263,192 +309,716 @@ const UsersStudentsPage = () => {
             ))}
           </ul>
         </div>
-        <div className='flex xl:flex-row flex-col items-start gap-4'>
-          <div className='xl:w-[calc(100%-300px)] w-full'>
-
-            <div className='mb-6'>
-              <h4 className='text-black-2000 font-semibold text-2xl mb-1 leading-8'>User Transaction Ledger</h4>
-              <p className='text-gray-3800 font-normal text-sm leading-5'>View and manage all user transactions</p>
-            </div>
-            <div className='grid 5xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
-              <div className='bg-white shadow-4xl rounded-lg p-4'>
-                <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-green-5000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
-              </div>
-              <div className='bg-white shadow-4xl rounded-lg p-4'>
-                <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-red2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
-              </div>
-              <div className='bg-white shadow-4xl rounded-lg p-4'>
-                <span className='text-gray-3800 font-inter font-normal text-sm leading-5 block'>Total Inflow</span>
-                <h4 className='text-black-2000 font-inter font-semibold md:text-2xl text-lg leading-8'>+€3.500,00</h4>
-              </div>
-            </div>
-            <div className='bg-white 4xl:flex-row flex-col flex items-center gap-3 rounded-lg p-4 mt-6 shadow-4xl'>
-              <div className="relative flex-1 max-w-full w-full">
-                <input
-                  type="text"
-                  className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-gray-1900 placeholder:text-gray-1400 px-4 pl-10 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-                  placeholder="Search students, transactions..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <div className="absolute top-1/2 -translate-y-1/2 left-3">
+        <div className='flex 4xl:flex-row flex-col gap-6'>
+          <div className='5xl:max-w-157.5 4xl:max-w-125 max-w-full w-full'>
+            <div className='bg-white border border-solid border-gray-3600 rounded-lg'>
+              <div className='flex sm:flex-row flex-col sm:items-center items-start justify-between border-b border-solid border-gray-3600 px-4 py-5.5'>
+                <h4 className='text-blue-1300 text-sm leading-5 font-bold flex items-center gap-2'>
                   <Image
-                    src="../images/search-icon.svg"
-                    width="16"
-                    height="16"
+                    src="/images/file-icon2.svg"
+                    width={16}
+                    height={16}
+                    alt=""
+                  />
+                  Document Viewer
+                </h4>
+                <div className="flex items-center gap-1">
+                  <ul className="flex items-center gap-2">
+                    <li>
+                      <Link href={"#"} className="flex items-center justify-center w-8 h-8">
+                        <Image src="/icons/minus-zoom.svg" width={16} height={16} alt="" />
+                      </Link>
+                    </li>
+                    <li>
+                      <span className="text-blue-1300 text-xs text-center leading-4 font-normal font-JetBrainsMono block sm:w-12 w-11">100%</span>
+                    </li>
+                    <li>
+                      <Link href={"#"} className="flex items-center justify-center w-8 h-8">
+                        <Image src="/icons/zoom-icon.svg" width={16} height={16} alt="" />
+                      </Link>
+                    </li>
+                  </ul>
+                  <Link href={"#"} className="flex items-center justify-center w-8 h-8">
+                    <Image src="/icons/refresh-icon.svg" width={16} height={16} alt="" />
+                  </Link>
+                  <Link href={"#"} className="flex items-center justify-center w-8 h-8">
+                    <Image src="/images/download-black.svg" width={16} height={16} alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className='border-b border-solid border-gray-3600'>
+                <ul className='flex items-center'>
+                  <li>
+                    <Link href={"#"} className='text-blue-1300 text-xs leading-4 font-normal px-4 py-2.5 border-b-2 border-solid border-blue-1300 flex items-center justify-center'>Passport / ID</Link>
+                  </li>
+                  <li>
+                    <Link href={"#"} className='text-gray-1900 text-xs leading-4 font-normal px-4 py-2.5 border-b-2 border-solid border-transparent flex items-center justify-center'>Proof of Address</Link>
+                  </li>
+                  <li>
+                    <Link href={"#"} className='text-gray-1900 text-xs leading-4 font-normal px-4 py-2.5 border-b-2 border-solid border-transparent flex items-center justify-center'>Selfie</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className='p-4'>
+                <div className='flex items-center gap-2 mb-3'>
+                  <span className='text-green53 font-bold text-xs leading-4 h-5.5 px-2.5 border border-solid border-green53/10 bg-green53/20 rounded-full inline-flex items-center justify-center mt-0.5'>Verified</span>
+                  <p className='text-gray-1900 text-xs leading-4 font-normal'>Uploaded: Jan 16, 2024 at 14:32</p>
+                </div>
+                <Image
+                  src="/images/Verified-file.jpg"
+                  width={598}
+                  height={280}
+                  alt=""
+                  className='rounded-lg w-full'
+                />
+              </div>
+            </div>
+            <div className='bg-white border border-solid border-gray-3600 rounded-lg p-4 mt-6'>
+              <div className='flex items-center justify-between'>
+                <h4 className='text-blue-1300 text-sm leading-5 font-bold flex items-center gap-2'>
+                  <Image
+                    src="/images/user-icon2.svg"
+                    width={16}
+                    height={16}
+                    alt=""
+                  />
+                  Biometric Match
+                </h4>
+                <p className='text-gray-1900 text-xs leading-4 font-normal'>Last: 2 mins ago</p>
+              </div>
+              <div className='flex items-center gap-4 mt-4'>
+                <div className='text-center'>
+                  <span className='bg-gray-2000 border-2 border-solid border-gray-3600 rounded-lg flex items-center justify-center w-16 h-20 mx-auto'>
+                    <Image
+                      src="/icons/user-gray.svg"
+                      width={32}
+                      height={32}
+                      alt=""
+                    />
+                  </span>
+                  <p className='text-gray-1900 text-xs leading-4 capitalize font-normal mt-1.5'>ID Photo</p>
+                </div>
+                <div className='relative flex flex-1 w-full items-center justify-center flex-col'>
+                  <span className='absolute top-3.5 left-0 bg-gray-3600 h-0.5 w-full'></span>
+                  <span className='relative z-50 flex items-center justify-center w-8 h-8 bg-green53/10 rounded-full'>
+                    <Image
+                      src="/icons/check-dark.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                  </span>
+                  <h4 className='text-2xl leading-8 font-bold text-green53'>94%</h4>
+                  <p className='text-xs leading-4 font-normal text-green53'>High Match</p>
+                </div>
+                <div className='text-center'>
+                  <span className='bg-gray-2000 border-2 border-solid border-gray-3600 rounded-lg flex items-center justify-center w-16 h-20 mx-auto'>
+                    <Image
+                      src="/icons/camera.svg"
+                      width={32}
+                      height={32}
+                      alt=""
+                    />
+                  </span>
+                  <p className='text-gray-1900 text-xs leading-4 capitalize font-normal mt-1.5'>Liveness</p>
+                </div>
+              </div>
+              <div className='mt-4'>
+                <ProgressBar value={94} className='h-2' barColor='bg-green53' bgColor='bg-gray-2000' />
+              </div>
+            </div>
+            <div className="bg-white border border-solid border-gray-3600 rounded-lg p-4 mt-6">
+              <h4 className='text-blue-1300 text-sm leading-5 font-bold'>
+                Biometric Match
+              </h4>
+              <ul className='grid sm:grid-cols-3 grid-cols-2 gap-x-6 gap-y-4 mt-4'>
+                <li>
+                  <span className='flex items-center gap-1.5 text-gray-1900 mb-1.5 text-xs leading-4 uppercase font-normal'>
+                    <Image
+                      src="/icons/gender-user-icon.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    Gender
+                  </span>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-normal'>Male</h4>
+                </li>
+                <li>
+                  <span className='flex items-center gap-1.5 text-gray-1900 mb-1.5 text-xs leading-4 uppercase font-normal'>
+                    <Image
+                      src="/icons/heart-icon.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    Marital Status
+                  </span>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-normal'>Single</h4>
+                </li>
+                <li>
+                  <span className='flex items-center gap-1.5 text-gray-1900 mb-1.5 text-xs leading-4 uppercase font-normal'>
+                    <Image
+                      src="/icons/bag-icon.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    Profession
+                  </span>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-normal'>Software Engineer</h4>
+                </li>
+                <li>
+                  <span className='flex items-center gap-1.5 text-gray-1900 mb-1.5 text-xs leading-4 uppercase font-normal'>
+                    <Image
+                      src="/icons/income-wealth.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    Source of Wealth
+                  </span>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-normal'>Employment Income</h4>
+                </li>
+                <li>
+                  <span className='flex items-center gap-1.5 text-gray-1900 mb-1.5 text-xs leading-4 uppercase font-normal'>
+                    <Image
+                      src="/icons/employer.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    Employer
+                  </span>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-normal'>Tech Startup Inc.</h4>
+                </li>
+                <li>
+                  <span className='flex items-center gap-1.5 text-gray-1900 mb-1.5 text-xs leading-4 uppercase font-normal'>
+                    <Image
+                      src="/icons/nationality-icon.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    Nationality
+                  </span>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-normal'>Nigerian</h4>
+                </li>
+              </ul>
+            </div>
+            <div className='bg-white border border-solid border-gray-3600 rounded-lg mt-6'>
+              <div className='flex items-center justify-between border-b border-solid border-gray-3600 px-4 py-5.5'>
+                <h4 className='text-blue-1300 text-sm leading-5 font-bold flex items-center gap-2'>
+                  <Image
+                    src="/icons/ocr-icon.svg"
+                    width={16}
+                    height={16}
+                    alt=""
+                  />
+                  OCR Data Extraction
+                </h4>
+                <span className='text-blue-1300 text-xs leading-4 font-bold inline-flex items-center justify-center border border-solid border-gray-3600 rounded-full h-5.5 px-2.5'>3/6 Validated</span>
+              </div>
+              <div className='border-b border-solid border-gray-3600 flex items-start gap-3 p-3'>
+                <div className='flex-1 w-full'>
+                  <div className='flex items-center gap-2 mb-2'>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal uppercase'>Full Name</p>
+                    <span className='px-1.5 h-4.25 inline-flex items-center pt-0.5 justify-center rounded-full text-[10px] font-bold leading-3.75 border border-solid bg-green-1300/10 border-lightgreen15 text-green-1800'>Validated</span>
+                  </div>
+                  <div className='grid grid-cols-2 gap-2'>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>System Extracted</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono uppercase'>ADEBAYO OKONKWO</h4>
+                    </div>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>User Input</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono'>Adebayo Okonkwo</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-10 h-8 flex items-center justify-center'>
+                  <Image
+                    src="/icons/check-icon.svg"
+                    width={16}
+                    height={16}
                     alt=""
                   />
                 </div>
               </div>
-              <div className='4xl:flex 4xl:w-auto w-full grid sm:grid-cols-4 grid-cols-2 items-center gap-3'>
-                <div className='5xl:w-40 4xl:w-32.5 w-full'>
-                  <CustomSelect
-                    value={status}
-                    className='h-10'
-                    onChange={(e) => setStatus(e.target.value)}
-                    options={[
-                      { label: "All Accounts", value: "All Accounts" },
-                    ]}
+              <div className='border-b border-solid border-gray-3600 flex items-start gap-3 p-3'>
+                <div className='flex-1 w-full'>
+                  <div className='flex items-center gap-2 mb-2'>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal uppercase'>Date of Birth</p>
+                    <span className='px-1.5 h-4.25 inline-flex items-center pt-0.5 justify-center rounded-full text-[10px] font-bold leading-3.75 border border-solid bg-green-1300/10 border-lightgreen15 text-green-1800'>Validated</span>
+                  </div>
+                  <div className='grid grid-cols-2 gap-2'>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>System Extracted</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono uppercase'>15/03/1992</h4>
+                    </div>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>User Input</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono'>15/03/1992</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-10 h-8 flex items-center justify-center'>
+                  <Image
+                    src="/icons/check-icon.svg"
+                    width={16}
+                    height={16}
+                    alt=""
                   />
                 </div>
-                <div className='5xl:w-35 4xl:w-27.5 w-full'>
-                  <CustomSelect
-                    value={status}
-                    className='h-10'
-                    onChange={(e) => setStatus(e.target.value)}
-                    options={[
-                      { label: "All Status", value: "All Status" },
-                    ]}
+              </div>
+              <div className='border-b border-solid border-gray-3600 flex items-start gap-3 p-3'>
+                <div className='flex-1 w-full'>
+                  <div className='flex items-center gap-2 mb-2'>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal uppercase'>Document Number</p>
+                  </div>
+                  <div className='grid grid-cols-2 gap-2'>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>System Extracted</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono uppercase'>A12345678</h4>
+                    </div>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>User Input</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono'>A12345678</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-18 h-8 flex items-center justify-center'>
+                  <span className='text-blue-1300 text-xs leading-4 font-normal bg-gray-1500 border border-solid border-gray-3600 rounded-md w-full h-8 inline-flex items-center justify-center'>Validate</span>
+                </div>
+              </div>
+              <div className='border-b border-solid border-gray-3600 flex items-start gap-3 p-3'>
+                <div className='flex-1 w-full'>
+                  <div className='flex items-center gap-2 mb-2'>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal uppercase'>Expiry Date</p>
+                  </div>
+                  <div className='grid grid-cols-2 gap-2'>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>System Extracted</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono uppercase'>12/2028</h4>
+                    </div>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>User Input</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono'>12/2028</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-18 h-8 flex items-center justify-center'>
+                  <span className='text-blue-1300 text-xs leading-4 font-normal bg-gray-1500 border border-solid border-gray-3600 rounded-md w-full h-8 inline-flex items-center justify-center'>Validate</span>
+                </div>
+              </div>
+              <div className='border-b border-solid border-gray-3600 flex items-start gap-3 p-3'>
+                <div className='flex-1 w-full'>
+                  <div className='flex items-center gap-2 mb-2'>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal uppercase'>Nationality</p>
+                    <span className='px-1.5 h-4.25 inline-flex items-center pt-0.5 justify-center rounded-full text-[10px] font-bold leading-3.75 border border-solid bg-green-1300/10 border-lightgreen15 text-green-1800'>Validated</span>
+                  </div>
+                  <div className='grid grid-cols-2 gap-2'>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>System Extracted</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono uppercase'>NIGERIAN</h4>
+                    </div>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>User Input</p>
+                      <h4 className='text-blue-1300 text-sm leading-5 font-normal font-JetBrainsMono'>Nigerian</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-10 h-8 flex items-center justify-center'>
+                  <Image
+                    src="/icons/check-icon.svg"
+                    width={16}
+                    height={16}
+                    alt=""
                   />
                 </div>
-                <div className='5xl:w-40 4xl:w-32.5 w-full'>
-                  <CustomSelect
-                    value={status}
-                    className='h-10'
-                    onChange={(e) => setStatus(e.target.value)}
-                    options={[
-                      { label: "All Types", value: "All Types" },
-                    ]}
-                  />
+              </div>
+              <div className='flex items-start gap-3 p-3'>
+                <div className='flex-1 w-full'>
+                  <div className='flex items-center gap-2 mb-2'>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal uppercase'>Address</p>
+                    <span className='px-1.5 h-4.25 inline-flex items-center pt-0.5 justify-center rounded-full text-[10px] font-bold leading-3.75 border border-solid bg-yellow-1100/10 border-yellow-1100 text-yellow-1100'>Mismatch</span>
+                  </div>
+                  <div className='grid grid-cols-2 gap-2'>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>System Extracted</p>
+                      <h4 className='text-yellow-1100 text-sm leading-5 font-normal font-JetBrainsMono uppercase'>23 VICTORIA ISL...</h4>
+                    </div>
+                    <div className=''>
+                      <p className='text-gray-1900 text-[10px] leading-3.75 font-normal mb-1.75 uppercase'>User Input</p>
+                      <h4 className='text-yellow-1100 text-sm leading-5 font-normal font-JetBrainsMono'>23 Victoria Island, Lagos</h4>
+                    </div>
+                  </div>
                 </div>
-                <div className="relative 5xl:max-w-55 4xl:max-w-37.5 max-w-full w-full">
-                  <input
-                    type="text"
-                    className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-black-2000 placeholder:text-black-2000 px-4 pl-10 h-9 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-                    placeholder="Date Range"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  <div className="absolute top-1/2 -translate-y-1/2 left-3">
+                <div className='w-18 h-8 flex items-center justify-center'>
+                  <span className='text-blue-1300 text-xs leading-4 font-normal bg-gray-1500 border border-solid border-gray-3600 rounded-md w-full h-8 inline-flex items-center justify-center'>Validate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='flex-1 w-full'>
+            <div className='grid md:grid-cols-2 grid-cols-1 gap-6'>
+              <div className='bg-white border border-solid border-gray-3600 rounded-lg p-4 shadow-4xl'>
+                <RiskScoringCard />
+              </div>
+              <div className='bg-white border border-solid border-gray-3600 rounded-lg p-4 shadow-4xl'>
+                <div className='flex items-center justify-between'>
+                  <h4 className='text-blue-1300 text-sm leading-5 font-bold flex items-center gap-2'>
                     <Image
-                      src="../images/calendar-icon4.svg"
-                      width="16"
-                      height="16"
+                      src="/icons/Watchlist.svg"
+                      width={16}
+                      height={16}
                       alt=""
                     />
+                    Watchlist Screening
+                  </h4>
+                  <Link href={"#"} className='inline-flex items-center justify-center text-blue-1300 text-xs leading-4 font-normal gap-3.5 bg-gray-1500 border border-solid border-gray-3600 rounded-md h-7 px-3'>
+                    <Image
+                      src="/icons/Re-screen.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                    Re-screen
+                  </Link>
+                </div>
+                <div className='mt-4 pb-4'>
+                  <div className='mb-3 flex items-start justify-between bg-green53/5 border border-solid border-green53/20 rounded-lg p-3'>
+                    <div className='flex items-start gap-3'>
+                      <span className='flex items-center justify-center w-4 h-4'>
+                        <Image
+                          src="/icons/check-dark.svg"
+                          width={16}
+                          height={16}
+                          alt=""
+                        />
+                      </span>
+                      <div className=''>
+                        <h4 className='text-blue-1300 text-sm leading-5 font-normal mb-0.5'>PEP (Politically Exposed Person)</h4>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Source: World-Check • Last checked: 2 mins ago</p>
+                      </div>
+                    </div>
+                    <span className='text-green53 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-[21px] px-2.5 bg-green53/10 border border-solid border-green53/20 rounded-full'>CLEAR</span>
+                  </div>
+                  <div className='mb-3 flex items-start justify-between bg-green53/5 border border-solid border-green53/20 rounded-lg p-3'>
+                    <div className='flex items-start gap-3'>
+                      <span className='flex items-center justify-center w-4 h-4'>
+                        <Image
+                          src="/icons/check-dark.svg"
+                          width={16}
+                          height={16}
+                          alt=""
+                        />
+                      </span>
+                      <div className=''>
+                        <h4 className='text-blue-1300 text-sm leading-5 font-normal mb-0.5'>OFAC Sanctions List</h4>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Source: OFAC SDN • Last checked: 2 mins ago</p>
+                      </div>
+                    </div>
+                    <span className='text-green53 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-green53/10 border border-solid border-green53/20 rounded-full'>CLEAR</span>
+                  </div>
+                  <div className='mb-3 flex items-start justify-between bg-green53/5 border border-solid border-green53/20 rounded-lg p-3'>
+                    <div className='flex items-start gap-3'>
+                      <span className='flex items-center justify-center w-4 h-4'>
+                        <Image
+                          src="/icons/check-dark.svg"
+                          width={16}
+                          height={16}
+                          alt=""
+                        />
+                      </span>
+                      <div className=''>
+                        <h4 className='text-blue-1300 text-sm leading-5 font-normal mb-0.5'>UN Sanctions List</h4>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Source: UN Security Council • Last checked: 2 mins
+                          ago</p>
+                      </div>
+                    </div>
+                    <span className='text-green53 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-green53/10 border border-solid border-green53/20 rounded-full'>CLEAR</span>
+                  </div>
+                  <div className='flex items-start justify-between bg-yellow-1100/5 border border-solid border-yellow-1100/20 rounded-lg p-3'>
+                    <div className='flex items-start gap-3'>
+                      <span className='flex items-center justify-center w-4 h-4'>
+                        <Image
+                          src="/images/clock-yellow.svg"
+                          width={16}
+                          height={16}
+                          alt=""
+                        />
+                      </span>
+                      <div className=''>
+                        <h4 className='text-blue-1300 text-sm leading-5 font-normal mb-0.5'>EU Consolidated List</h4>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Source: EU External Action • Last checked:
+                          Checking...</p>
+                      </div>
+                    </div>
+                    <span className='text-yellow-1100 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-yellow-1100/10 border border-solid border-yellow-1100/20 rounded-full'>PENDING</span>
+                  </div>
+                </div>
+                <div className='pt-3 border-t border-solid border-gray-3600'>
+                  <p className='text-gray-1900 text-[10px] leading-3.75 font-normal'>Screening against OFAC, UN, EU, UK HMT sanctions lists and global PEP databases.</p>
+                </div>
+              </div>
+            </div>
+            <div className='mt-6 bg-white border border-solid border-gray-3600 rounded-lg p-4 shadow-4xl'>
+              <h4 className='text-blue-1300 text-sm leading-5 font-bold flex items-center gap-2'>
+                <Image
+                  src="/icons/timeline.svg"
+                  width={16}
+                  height={16}
+                  alt=""
+                />
+                KYC Status Timeline
+              </h4>
+              <div className='mt-4 relative'>
+                <span className='absolute left-2 top-1/2 -translate-y-1/2 bg-gray-3600 w-px h-[98%] flex items-center'></span>
+                <div className='flex items-start gap-2 mb-4 relative z-50'>
+                  <span className='bg-white w-4 h-4 rounded-full flex items-center justify-center'>
+                    <Image
+                      src="/images/clock-yellow.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <ul className='flex items-center gap-2 mb-1'>
+                      <li>
+                        <span className='text-yellow-1100 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-yellow-1100/10 border border-solid border-yellow-1100/20 rounded-full'>PENDING</span>
+                      </li>
+                      <li>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Jan 18, 2024 at 09:15</p>
+                      </li>
+                    </ul>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-normal'>
+                      Awaiting second admin approval
+                    </h4>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal mt-1'>by System</p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-2 mb-4 relative z-50'>
+                  <span className='bg-white w-4 h-4 rounded-full flex items-center justify-center'>
+                    <Image
+                      src="/icons/check-dark.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <ul className='flex items-center gap-2 mb-1'>
+                      <li>
+                        <span className='text-yellow-1100 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-yellow-1100/10 border border-solid border-yellow-1100/20 rounded-full'>APPROVED</span>
+                      </li>
+                      <li>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Jan 17, 2024 at 16:42</p>
+                      </li>
+                    </ul>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-normal'>
+                      First approval granted - documents verified
+                    </h4>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal mt-1'>by Sarah Chen</p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-2 mb-4 relative z-50'>
+                  <span className='bg-white w-4 h-4 rounded-full flex items-center justify-center'>
+                    <Image
+                      src="/images/warning-yellow.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <ul className='flex items-center gap-2 mb-1'>
+                      <li>
+                        <span className='text-yellow-1100 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-yellow-1100/10 border border-solid border-yellow-1100/20 rounded-full'>UPDATED</span>
+                      </li>
+                      <li>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Jan 17, 2024 at 14:20</p>
+                      </li>
+                    </ul>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-normal'>
+                      User resubmitted proof of address
+                    </h4>
+                  </div>
+                </div>
+                <div className='flex items-start gap-2 mb-4 relative z-50'>
+                  <span className='bg-white w-4 h-4 rounded-full flex items-center justify-center'>
+                    <Image
+                      src="/icons/cross-round-red.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <ul className='flex items-center gap-2 mb-1'>
+                      <li>
+                        <span className='text-red-1300 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-red-1300/10 border border-solid border-red-1300/20 rounded-full'>REJECTED</span>
+                      </li>
+                      <li>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Jan 16, 2024 at 18:30</p>
+                      </li>
+                    </ul>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-normal'>
+                      Proof of address was blurry and unreadable
+                    </h4>
+                    <p className='text-gray-1900 text-xs leading-4 font-normal mt-1'>by Michael Adeyemi</p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-2 mb-4 relative z-50'>
+                  <span className='bg-white w-4 h-4 rounded-full flex items-center justify-center'>
+                    <Image
+                      src="/icons/submitted-icon.svg"
+                      width={16}
+                      height={16}
+                      alt=""
+                    />
+                  </span>
+                  <div className='flex-1 w-full'>
+                    <ul className='flex items-center gap-2 mb-1'>
+                      <li>
+                        <span className='text-blue-1300 font-bold text-[10px] leading-3.75 inline-flex items-center justify-center uppercase h-5.25 px-2.5 bg-blue-1300/10 border border-solid border-blue-1300/20 rounded-full'>SUBMITTED</span>
+                      </li>
+                      <li>
+                        <p className='text-gray-1900 text-xs leading-4 font-normal'>Jan 16, 2024 at 14:38</p>
+                      </li>
+                    </ul>
+                    <h4 className='text-blue-1300 text-sm leading-5 font-normal'>
+                      Initial KYC documents submitted
+                    </h4>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='bg-white shadow-4xl mt-6 rounded-lg'>
-              <UserTransactionTable />
+            <div className='mt-6 bg-white border border-solid border-gray-3600 rounded-lg shadow-4xl'>
+              <div className='border-b border-gray-3600 p-4'>
+                <h4 className='text-blue-1300 text-sm leading-5 font-bold flex items-center gap-2'>
+                  <Image
+                    src="/icons/file-board.svg"
+                    width={16}
+                    height={16}
+                    alt=""
+                  />
+                  Audit Log
+                </h4>
+              </div>
+              <div className="w-ful overflow-auto">
+                <table className="2xl:w-full w-300">
+                  <thead className="border-b border-gray-3600">
+                    <tr>
+                      <th className="p-4 text-left text-gray-1900 text-xs leading-4 font-normal">Admin</th>
+                      <th className="p-4 text-left text-gray-1900 text-xs leading-4 font-normal">Action</th>
+                      <th className="p-4 text-left text-gray-1900 text-xs leading-4 font-normal">Notes</th>
+                      <th className="p-4 text-left text-gray-1900 text-xs leading-4 font-normal">Timestamp</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {students.map((student) => (
+                      <tr key={student.id}
+                        className="border-b border-gray-3600 hover:bg-gray-2000/50 transition last:border-b-0"
+                      >
+                        <td className="p-4">
+                          <div className='flex items-center gap-2'>
+                            <span className='text-blue-1300 text-[10px] w-6 h-6 font-normal leading-5 inline-flex items-center justify-center bg-blue-1300/10 rounded-full'>{student.admin.title}</span>
+                            <h4 className='text-blue-1300 flex-1 w-full text-sm leading-5 font-normal'>{student.admin.name}</h4>
+                          </div>
+                        </td>
+
+                        <td className="p-4">
+                          <p className='text-gray-1900 text-xs leading-4 font-normal font-JetBrainsMono uppercase'>
+                            {student.action}
+                          </p>
+                        </td>
+
+                        <td className="p-4">
+                          <p className='text-gray-1900 text-xs leading-4 font-normal'>
+                            {student.notes}
+                          </p>
+                        </td>
+
+                        <td className="p-4">
+                          <p className='text-gray-1900 text-xs leading-4 font-normal'>
+                            {student.timestamp}
+                          </p>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          <div className='xl:max-w-75 w-full bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
-            <h4 className='text-blue-1300 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
-              <Image src="../images/sheild-active.svg"
+        </div>
+      </div>
+      <div className='bg-white  z-50 fixed hidden bottom-0 right-0 xl:w-[calc(100%-287px)] lg:w-[calc(100%-250px)] w-full ml-auto sm:flex 4xl:flex-row flex-col 4xl:gap-0 gap-4 items-center justify-between shadow-7xl border-t border-solid border-gray-3600 py-4 4xl:px-17.5 px-4'>
+        <div className='flex items-center gap-2'>
+          <span className='bg-blue-1300/10 flex items-center justify-center w-10 h-10 rounded-full'>
+            <Image
+              src="/icons/Watchlist.svg"
+              width="20"
+              height="20"
+              alt=""
+            />
+          </span>
+          <div className='flex-1 flex items-center gap-4 w-full'>
+            <div className=''>
+              <h4 className='text-blue-1300 font-bold text-sm leading-5'>KYC Action Hub</h4>
+              <p className='text-gray-1900 font-normal text-xs leading-4'>User ID: USR-2024-00847</p>
+            </div>
+            <span className='text-blue-1300 font-bold text-xs leading-4 inline-flex items-center justify-center gap-1.5 h-6.5 border border-solid border-gray-3600 rounded-full px-2'>
+              <Image
+                src="/images/user-black.svg"
+                width="12"
+                height="12"
+                alt=""
+              />
+              First approval by: Sarah Chen
+            </span>
+          </div>
+        </div>
+        <ul className='flex md:flex-nowrap flex-wrap justify-center items-center gap-3'>
+          <li>
+            <Link href={"#"} className='inline-flex gap-4 items-center justify-center px-4 h-10 border border-solid border-yellow-1100/30 text-yellow-1100 text-sm leading-5 bg-gray-1500 rounded-md'>
+              <Image
+                src="/images/warning-yellow.svg"
                 width="16"
                 height="16"
                 alt=""
               />
-              Administrative Actions
-            </h4>
-            <ul className='mt-3'>
-              <li className='mb-2'>
-                <Link href={"#"} className='text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-blue1400 hover:bg-blue-1400 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
-                  <Image src="../images/eye-icon.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                    className='brightness-1000'
-                  />
-                  Impersonate User
-                </Link>
-              </li>
-              <li className='mb-2'>
-                <Link href={"#"} className='text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-red1700 hover:bg-red1700/90 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
-                  <Image src="../images/freeze-icon.svg"
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                  Freeze Account
-                </Link>
-              </li>
-              <li>
-                <Link href={"#"} className='text-yellow-1100 border border-solid border-yellow-1100/50 text-sm leading-5 font-inter font-medium flex items-center justify-between bg-gray-1600 hover:bg-skyblue2434 transition-all duration-500 ease-in-out rounded-md px-4 h-10'>
-                  <div className='flex items-center gap-2'>
-                    <Image src="../images/filter-yellow.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    Adjust Limits
-                  </div>
-                  <span className='text-yellow-1100 font-inter font-medium text-[10px] leading-5 bg-yellow-1100/10 rounded px-1.5 h-6'>4-Eyes</span>
-                </Link>
-              </li>
-            </ul>
-            <div className='border-t border-b border-solid border-gray-3100 py-3 mt-3'>
-              <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Send Message</h4>
-              <ul className='mt-2 grid grid-cols-2 gap-3'>
-                <li>
-                  <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
-                    <Image src="../images/email-black.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    Email
-                  </Link>
-                </li>
-                <li>
-                  <Link href={"#"} className='w-full inline-flex items-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3100 rounded-md bg-gray-1600 h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
-                    <Image src="../images/puch-icon.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                    Push
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className='pt-3'>
-              <h4 className='text-gray-1900 font-inter font-medium text-xs leading-4 tracking-[-0.3px] uppercase'>Quick Stats</h4>
-              <ul className='grid grid-cols-2 gap-3 mt-2'>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Account Age</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">2y 4mo</p>
-                </li>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Total Txns</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">1,247</p>
-                </li>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Avg. Monthly</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">€3,450</p>
-                </li>
-                <li>
-                  <span className='block text-gray-1900 font-normal text-xs leading-4 mb-0.5'>Support Tickets</span>
-                  <p className="text-blue-1300 font-medium text-sm leading-5">12</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+              Override Status
+            </Link>
+          </li>
+          <li>
+            <Link href={"#"} className='inline-flex gap-4 items-center justify-center px-4 h-10 border border-solid border-red-1300/30 text-red-1300 text-sm leading-5 bg-gray-1500 rounded-md'>
+              <Image
+                src="/icons/cross-round-red.svg"
+                width="16"
+                height="16"
+                alt=""
+              />
+              Reject & Request Re-upload
+            </Link>
+          </li>
+          <li>
+            <Link href={"#"} className='inline-flex gap-4 items-center justify-center px-4 h-10 border border-solid border-green53 text-white text-sm leading-5 bg-green53 rounded-md'>
+              <Image
+                src="/icons/check-dark.svg"
+                width="16"
+                height="16"
+                alt=""
+                className='brightness-10000'
+              />
+              Approve Identity
+              <span className='inline-flex items-center justify-center text-white text-[10px] leading-5 font-bold bg-white/20 rounded-full h-[26px] px-2'>4-Eyes</span>
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );

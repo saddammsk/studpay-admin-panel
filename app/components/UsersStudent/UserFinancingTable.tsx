@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
+import CustomSelect from "@/app/components/CustomSelect";
+import Modal from "@/app/components/Modal";
 
 interface Transaction {
   id: number;
@@ -128,6 +130,13 @@ const transactions: Transaction[] = [
 ];
 
 export default function TransactionTable() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
   return (
     <>
       <div className="overflow-x-auto">
@@ -193,7 +202,7 @@ export default function TransactionTable() {
                 <td className="p-4 text-center">
                   <div className="flex items-center justify-center gap-1">
                     {(txn.status === "Late" || txn.status === "Upcoming") && (
-                      <Link
+                      <Link onClick={() => setIsOpen(true)}
                         href="#"
                         className="inline-flex items-center justify-center border border-solid border-gray-1000 bg-white rounded-md h-7 text-xs leading-4 font-medium text-blue-13 px-2"
                       >
@@ -207,6 +216,138 @@ export default function TransactionTable() {
           </tbody>
         </table>
       </div>
+
+
+      {/****** MANUAL SETTLE Modal *******/}
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        panelClassName="max-w-[520px]  bg-gray-1500 relative sm:overflow-y-hidden sm:h-auto h-full border-0 overflow-y-auto"
+      >
+        <span className='bg-linear-to-r from-royalBlue131 from-0 via-royalBlue131/70 via-50% to-royalBlue131 to-100% h-1.5 block w-full absolute top-0 left-0 rounded-t-xl'></span>
+        <Link onClick={() => setIsOpen(false)} href={"#"} className="flex items-center justify-center rounded-full w-4 h-4 absolute sm:top-4 sm:right-4 top-3 right-3">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className='sm:p-6 p-4'>
+          <div className=''>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-royalBlue132">
+                <Image
+                  src="/icons/sheild-dark-blue2.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+              </div>
+              <h2 className="sm:text-[19.5px] text-base tracking-[-0.5px] font-bold text-blue-1300 leading-7">
+                Manual Installment Settlement
+              </h2>
+            </div>
+            <p className="text-lighrgrey48 text-[13px] font-normal leading-[22.8px]">
+              Securely record a manual payment for this installment.
+            </p>
+            <div className='grid grid-cols-2 gap-3 mt-3'>
+              <div className='flex items-center gap-3 bg-lighrgrey47/50 border border-solid border-lighrgrey49/70 rounded-xl p-3'>
+                <span className='w-4 h-4 flex items-center justify-center'>
+                  <Image
+                    src="/icons/date-icon.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
+                <div className='flex-1 w-full'>
+                  <span className='text-lighrgrey48 text-[11.4px] leading-4 block'>Due Date</span>
+                  <h4 className="text-[13.1px] font-bold text-Black236 leading-5">
+                    Mar 15, 2025
+                  </h4>
+                </div>
+              </div>
+              <div className='flex items-center gap-3 bg-lighrgrey47/50 border border-solid border-lighrgrey49/70 rounded-xl p-3'>
+                <span className='w-4 h-4 flex items-center justify-center'>
+                  <Image
+                    src="/images/doller-icon.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
+                <div className='flex-1 w-full'>
+                  <span className='text-lighrgrey48 text-[11.4px] leading-4 block'>Amount</span>
+                  <h4 className="text-[13.1px] font-bold text-Black236 leading-5">
+                    $468.75
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='mt-4'>
+            <label className='text-blue-1300 block mb-2 font-normal text-[13.5px] leading-5'>Payment Source</label>
+            <CustomSelect
+              className='shadow-57xl'
+              options={[
+                { label: 'How did the student pay?', value: 'How did the student pay?' },
+                { label: '2000', value: '2000' }
+              ]}
+            />
+          </div>
+          <div className='mt-4'>
+            <label className='text-blue-1300 block mb-2 font-normal text-[13.1px] leading-5'>Receipt / Proof of Payment</label>
+            <label className="group cursor-pointer flex flex-col items-center bg-lighrgrey41/30 border border-dashed border-SteelGray/30 rounded-xl p-6.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M35 25V31.6667C35 32.5507 34.6488 33.3986 34.0237 34.0237C33.3986 34.6488 32.5507 35 31.6667 35H8.33333C7.44928 35 6.60143 34.6488 5.97631 34.0237C5.35119 33.3986 5 32.5507 5 31.6667V25" stroke="#737B8C" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M28.3337 13.3333L20.0003 5L11.667 13.3333" stroke="#737B8C" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M20 5V25" stroke="#737B8C" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <p className="text-sm font-normal text-blue1700 text-center mb-1 mt-3">
+                Drop file here or click to upload
+              </p>
+              <p className="text-xs text-SteelGray leading-4 font-normal">
+                PDF, JPG, PNG, DOC up to 10MB
+              </p>
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+            </label>
+          </div>
+          <div className='mt-4'>
+            <label className='text-Black236 block mb-2 font-normal text-[13.5px] leading-5'>Transaction / Reference ID</label>
+            <input type="text" className='text-lighrgrey48 placeholder:text-lighrgrey48 text-[13px] font-normal bg-gray-1800 border border-solid border-lighrgrey49 rounded-[10px] h-10 w-full px-4' placeholder='e.g. TXN-20250315-48291'/>  
+          </div>
+          <div className='mt-4'>
+            <label className='text-Black236 block mb-2 font-normal text-[13.5px] leading-5'>Admin Note <span className='text-red-1300 text-sm'>*</span></label>
+            <textarea className='text-lighrgrey48 placeholder:text-lighrgrey48 text-[13px] font-normal bg-gray-1800 border border-solid border-lighrgrey49 rounded-[10px] h-17.5 w-full px-4 py-2.5' placeholder='Reason for manual settlement...'></textarea> 
+          </div> 
+        </div>
+        <div className="bg-lighrgrey47/30 border-t border-solid border-lighrgrey49/60 px-6 py-4">
+          <ul className="grid sm:grid-cols-2 grid-cols-1 gap-3">
+            <li>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-[10px] text-gray-3800 font-normal text-[13.3px] leading-5 bg-gray-1500 border-solid border-grey-5400 h-10"
+              >
+                Cancel
+              </button>
+            </li>
+            <li>
+              <button
+                className="cursor-pointer opacity-50 gap-2 px-4 flex items-center justify-center w-full hover:bg-royalBlue131/90 hover:border-royalBlue131/90 transition-all duration-500 ease-in-out border rounded-[10px] text-white font-normal text-[13px] leading-5 bg-royalBlue131 border-solid border-royalBlue131 h-10"
+              >
+                <Image
+                  src="/icons/check-paid.svg"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+                Confirm & Mark as Paid
+              </button>
+            </li>
+          </ul>
+        </div>
+
+      </Modal>
 
     </>
   );
