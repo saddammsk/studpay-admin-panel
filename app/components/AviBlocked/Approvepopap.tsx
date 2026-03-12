@@ -220,7 +220,7 @@ export default function ApproveAVIModal() {
               </svg>
             </button>
             {dropdownOpen && (
-              <div className="absolute z-10 top-full left-0 right-0 mt-1 bg-white border border-[#E2E8F0] rounded-xl shadow-lg overflow-hidden">
+              <div className="absolute z-10 top-full left-0 right-0 mt-1 bg-white border border-gray-3900 rounded-xl shadow-lg overflow-hidden">
                 {complianceManagers.map((manager) => (
                   <button
                     key={manager}
@@ -230,8 +230,8 @@ export default function ApproveAVIModal() {
                       setDropdownOpen(false);
                     }}
                     className={`w-full text-left px-4 py-3 text-[14px] transition-colors hover:bg-[#F0FAF6] ${selectedManager === manager
-                      ? "text-[#3DBD8A] font-medium bg-[#F0FAF6]"
-                      : "text-[#1A202C]"
+                      ? "text-green-2200 font-medium bg-white"
+                      : "text-SteelGray"
                       }`}
                   >
                     {manager}

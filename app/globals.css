@@ -1,11 +1,11 @@
  @import "tailwindcss";
-
  @theme inline {
      --font-neulis-sans: "Neulis Sans";
      --font-segoe: "Segoe UI";
      --font-inter: "Inter", sans-serif;
      --font-Graphik: "Graphik";
      --font-publicSans: "Public Sans", sans-serif;
+     --font-JetBrainsMono: "JetBrains Mono", monospace;
      --color-gray-1000: #E5E7EB;
      --color-gray-1100: #4B5563;
      --color-gray-1200: #6B7280;
@@ -63,7 +63,11 @@
      --color-gray-7300: #0F618A;
      --color-gray-7400: #1B294B;
      --color-gray-7500: #F2F4F8;
+<<<<<<< HEAD
      --color-gray-7600: #F7F7F7;
+=======
+     --color-gray-7600: #E8EDF5;
+>>>>>>> 1701c9d07aab7d3b251d3867595ef56f9a94d699
      --color-blue-1000: #0D8CFF;
      --color-red-1000: #EF4444;
      --color-red-1100: #FEE2E2;
@@ -160,8 +164,12 @@
      --color-yellow-2800: #FBBD23;
      --color-yellow-2900: #F0CD75;
      --color-yellow-3000: #FFFAEB;
+<<<<<<< HEAD
      --color-yellow-3100: #FEF3E2;
      --color-yellow-3200: #FEFAE6;
+=======
+     --color-yellow-3100: #FCF3E3;
+>>>>>>> 1701c9d07aab7d3b251d3867595ef56f9a94d699
      --color-brown-1000: #854D0E;
      --color-brown-1100: #EAB308;
      --color-brown-1200: #4D3700;
@@ -264,10 +272,13 @@
      --color-lightgreenNew: #C0FFE1;
      --color-lightgreenNew2: #E7F9F3;
      --color-lightgreenNew3: #EBF9F2;
+     --color-lightgreenNew4: #E5F5EE;
      --color-grey-5300: #686C75;
      --color-grey-5400: #E0E5EB;
      --color-grey5500: #EEEFF2;
      --color-grey5600: #EDEFF2;
+     --color-grey5700: #6C7889;
+     --color-grey5800: #DADFE7;
      --color-lighrgrey34: #CBD5E1;
      --color-lighrgrey35: #E3F5F0;
      --color-lighrgrey36: #EDEFF3;
@@ -276,11 +287,17 @@
      --color-lighrgrey39: #F4F4F5;
      --color-lighrgrey40: #E4E4E7;
      --color-lighrgrey41: #F3F5F6;
+     --color-lighrgrey42: #D1D9E0;
+     --color-lighrgrey43: #EBF1FA;
+     --color-lighrgrey44: #EDF0F3;
+     --color-lighrgrey45: #EEEEEE;
+     --color-lighrgrey46: #F0F6FF;
      --color-yellow1700: #FEF3C7;
      --color-yellow1800: #FEF5E7;
      --color-yellow1900: #864E0E;
      --color-yellow2000: #E7B008;
      --color-yellow2100: #FDE68A;
+     --color-yellow2200: #FEFAE6;
      --color-red2000: #E11D48;
      --color-red2100: #DC2828;
      --color-red2200: #EF4360;
@@ -294,6 +311,11 @@
      --color-green54: #085E41;
      --color-green55: #DEF8EE;
      --color-green56: #F97015;
+     --color-green57: #20B16D;
+     --color-green58: #30A675;
+     --color-green59: #29A356;
+     --color-green60: #257E59;
+     --color-green61: #33CC6B;
      --color-skyblue26: #BEE3F4;
      --color-skyblue27: #F1FAFE;
      --color-OxfordBlue: #1B294B;
@@ -301,6 +323,7 @@
      --color-SteelGray: #737B8C;
      --color-RosePink: #FDE8E8;
      --color-Black234: #17171C;
+     --color-Black235: #121721;
      --color-violet55: #6325F4;
      --color-Orange55: #F7931A;
      --color-Orange57: #FEF0E6;
@@ -313,12 +336,25 @@
      --color-DarkBrown122: #4D3000;
      --color-royalBlue123: #2662D9;
      --color-royalBlue124: #0846AA;
+     --color-royalBlue125: #497BFF;
+     --color-royalBlue126: #5E74FF;
+     --color-royalBlue127: #11BCFF;
+     --color-royalBlue128: #2378E7;
+     --color-royalBlue129: #142952;
+     --color-royalBlue130: #0A5ADB;
      --color-LightSkyBlue: #E7F0FE;
      --color-BurntOrange: #B45309;
      --color-BurntOrange2: #C2410C;
      --color-brown1300: #624004;
-
-
+     --color-ElectricBlue: #12BBFF;
+     --color-violet123: #7547D1;
+     --color-ElectricBlue2: #1D56A5;
+     --color-bgRed12: #FAEBEB;
+     --color-waterblue: #E2ECF8;
+     --color-rosepink22: #FEE7EB;
+     --color-rosepink23: #FBE9E9;
+     --color-darkbrownishOrange: #7A4F05;
+     --color-DarkCrimson: #91081F;
      --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
      --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
      --shadow-5xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
@@ -336,7 +372,6 @@
      --shadow-18xl: 0 1px 2px 0 #FFF;
      --shadow-44xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
      --shadow-45xl: 0 1px 3px 0 rgba(13, 140, 255, 0.15), 0 1px 2px 0 rgba(13, 140, 255, 0.15);
-
      /**** LATEST *****/
      --shadow-46xl: 0 0 0 2px #FFF;
      --shadow-47xl: 0 4px 6px -1px rgba(59, 130, 246, 0.20), 0 2px 4px -2px rgba(59, 130, 246, 0.20);
@@ -359,10 +394,19 @@
      --shadow-65xl: 0 0 0 2px #F8FAFC, 0 0 0 4px #2FA26A;
      --shadow-66xl: 0 25px 50px -12px rgba(19, 23, 32, 0.25);
      --shadow-67xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #25A777;
+<<<<<<< HEAD
+=======
+     --shadow-68xl: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+     --shadow-69xl: 0 0 10px 2px rgba(48, 166, 117, 0.25);
+     --shadow-70xl: 0 0 10px 2px rgba(29, 86, 165, 0.25);
+     --shadow-71xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #2463EB;
+     --shadow-72xl: 0 10px 15px -3px rgba(220, 40, 40, 0.20), 0 4px 6px -4px rgba(220, 40, 40, 0.20);
+     --shadow-73xl: 0 4px 46px 0 rgba(0, 0, 0, 0.08), 0 4px 46px 0 rgba(129, 129, 129, 0.08);
+     --shadow-74xl: 0 1px 2px 0 rgba(20, 24, 31, 0.05);
+     --shadow-75xl: 0 0 0 2px #FFF, 0 0 0 4px #0F1729;
+>>>>>>> 1701c9d07aab7d3b251d3867595ef56f9a94d699
      --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
      --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
-
-
      --breakpoint-xs: 390px;
      --breakpoint-sm: 575px;
      --breakpoint-md: 767px;
@@ -371,9 +415,8 @@
      --breakpoint-2xl: 1365px;
      --breakpoint-4xl: 1600px;
      --breakpoint-5xl: 1800px;
-
  }
-
+ 
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Medium.woff2') format('woff2'), url('/fonts/NeulisSans-Medium.woff') format('woff');
@@ -381,7 +424,7 @@
      font-style: normal;
      font-display: swap;
  }
-
+ 
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-SemiBold.woff2') format('woff2'), url('/fonts/NeulisSans-SemiBold.woff') format('woff');
@@ -389,7 +432,7 @@
      font-style: normal;
      font-display: swap;
  }
-
+ 
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Bold.woff2') format('woff2'), url('/fonts/NeulisSans-Bold.woff') format('woff');
@@ -397,7 +440,7 @@
      font-style: normal;
      font-display: swap;
  }
-
+ 
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Regular.woff2') format('woff2'), url('/fonts/NeulisSans-Regular.woff') format('woff');
@@ -405,7 +448,7 @@
      font-style: normal;
      font-display: swap;
  }
-
+ 
  @font-face {
      font-family: 'Segoe UI';
      src: url('/fonts/SegoeUI.woff2') format('woff2'), url('/fonts/SegoeUI.woff') format('woff');
@@ -413,7 +456,7 @@
      font-style: normal;
      font-display: swap;
  }
-
+ 
  @font-face {
      font-family: 'Graphik';
      src: url('/fonts/Graphik.eot');
@@ -422,66 +465,66 @@
      font-style: normal;
      font-display: swap;
  }
-
+ 
  html {
      overflow: auto !important;
      padding-right: 0px !important;
  }
-
+ 
  .scrollbar-hide::-webkit-scrollbar {
      display: none;
  }
-
+ 
  .scrollbar-hide {
      -ms-overflow-style: none;
      scrollbar-width: none;
  }
-
+ 
  .dashboard-bg {
      background: linear-gradient(135deg, var(--color-grey-98, #FAFAFA) 0%, var(--color-grey-9730, rgba(239, 246, 255, 0.30)) 50%, var(--color-grey-9820, rgba(250, 245, 255, 0.20)) 100%);
  }
-
+ 
  .banner-bg {
      background: linear-gradient(90deg, #0D8CFF 0%, #0D8CFF 50%, #7E22CE 100%);
  }
-
+ 
  .line-bg {
      background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
  }
-
+ 
  .line-bg-2 {
      background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
  }
-
+ 
  .line-bg-3 {
      background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
  }
-
+ 
  .gray-icon {
      filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
  }
-
+ 
  .flag-bg {
      background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
  }
-
+ 
  input[type="date"]::-webkit-calendar-picker-indicator {
      display: none;
      -webkit-appearance: none;
      cursor: pointer;
  }
-
+ 
  input[type="date"] {
      -moz-appearance: textfield;
  }
-
+ 
  .text-gradient {
      background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
      background-clip: text;
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
  }
-
+ 
  .calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
      display: block;
      -webkit-appearance: auto;
@@ -489,56 +532,54 @@
      position: absolute;
      left: 11px;
  }
-
+ 
  .sale-date input[type="date"]::-webkit-calendar-picker-indicator {
      display: block;
      -webkit-appearance: auto;
      cursor: pointer;
  }
-
+ 
  .btn-primary:hover img {
      filter: brightness(300);
  }
-
+ 
  .bg-gradient {
      background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
  }
-
+ 
  .bg-gradient4 {
      background: linear-gradient(116deg, var(--color-cyan-388, rgba(29, 151, 165, 0.08)) 0%, var(--color-azure-453, rgba(23, 145, 207, 0.03)) 100%);
  }
-
+ 
  .bg-gradient5 {
      background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
  }
-
+ 
  .gradient-bg {
      background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
-
  }
-
+ 
  .body-gradient {
      background: linear-gradient(115deg, #DEEFF7 -0.39%, #EBD6F5 50.26%, #DEEFF7 100.91%);
  }
-
+ 
  .customselect .w-4 img {
      filter: brightness(50);
  }
-
+ 
  .card-bg {
      background: linear-gradient(180deg, var(--color-white-solid, #FFF) 0%, var(--color-grey-98, #F9FAFB) 100%);
      background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
  }
-
+ 
  .gradient-new {
      background: linear-gradient(135deg, #6325F4 0%, #B642F0 50%, #256AF4 100%);
  }
-
+ 
  .approve-gradient {
      background: linear-gradient(90deg, rgba(37, 167, 119, 0.05) 0%, rgba(37, 167, 119, 0.00) 100%)
  }
-
+ 
  .card-bg3 {
      background: linear-gradient(90deg, var(--color-azure-4510, rgba(17, 115, 212, 0.10)) 0%, var(--color-grey-94, #E4F4FB) 50%, var(--color-azure-455, rgba(17, 115, 212, 0.05)) 100%);
-
  }

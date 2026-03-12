@@ -92,11 +92,11 @@ export default function DashboardStatsClient({ stats }: { stats: StatItem[] }) {
                 </span>
 
                 <div className="flex items-center gap-2">
-                  <span className={`inline-flex items-center gap-0.5 px-1.5 h-5 text-xs leading-4 ${config.iconbg}`}>
+                  <span className={`inline-flex font-medium text-green-5000 items-center gap-0.5 px-1.5 h-5 text-xs leading-4 ${config.iconbg}`}>
                     <Image src={priceIcon} width={12} height={12} alt="" />
                     {item.change}
                   </span>
-                  <p className={`text-xs font-normal leading-4 ${changeColor}`}>
+                  <p className={`text-xs font-normal leading-4 text-grey-5000`}>
                     {item.pricetext}
                   </p>
                 </div>

@@ -110,7 +110,7 @@ const menuItems = [
 ];
 
 
-const UsersStudentsPage = () => {
+const UsertransactionsPage = () => {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("All Countries");
 
@@ -453,4 +453,4 @@ const UsersStudentsPage = () => {
   );
 };
 
-export default UsersStudentsPage;
+export default UsertransactionsPage;

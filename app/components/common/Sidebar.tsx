@@ -32,7 +32,7 @@ const mainMenu: MenuItem[] = [
   {
     label: "Financing",
     icon: "/images/financing-card.svg",
-    href: "/financing"
+    href: "/global_financing"
   },
   {
     label: "Financing Guaranty",
