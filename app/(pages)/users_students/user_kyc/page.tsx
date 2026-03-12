@@ -307,7 +307,7 @@ const UsersStudentsPage = () => {
                   <CustomSelect
                     value={status}
                     className='h-10'
-                    onChange={(e) => setStatus(e.target.value)}
+                    onChange={setStatus}
                     options={[
                       { label: "All Accounts", value: "All Accounts" },
                     ]}
@@ -317,7 +317,7 @@ const UsersStudentsPage = () => {
                   <CustomSelect
                     value={status}
                     className='h-10'
-                    onChange={(e) => setStatus(e.target.value)}
+                    onChange={setStatus}
                     options={[
                       { label: "All Status", value: "All Status" },
                     ]}
@@ -327,7 +327,7 @@ const UsersStudentsPage = () => {
                   <CustomSelect
                     value={status}
                     className='h-10'
-                    onChange={(e) => setStatus(e.target.value)}
+                    onChange={setStatus}
                     options={[
                       { label: "All Types", value: "All Types" },
                     ]}

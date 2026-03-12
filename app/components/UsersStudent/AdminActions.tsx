@@ -159,7 +159,7 @@ const AdminActions = () => {
         </ul>
       </div>
 
-        {/* <ImpersonateModal 
+        <ImpersonateModal 
         isOpen={activeModal === 'impersonate'} 
         onClose={closeModal} 
         data={modalData}
@@ -183,7 +183,7 @@ const AdminActions = () => {
         isOpen={activeModal === 'push'} 
         onClose={closeModal} 
         data={modalData}
-      /> */}
+      />
     </div>
   );
 };

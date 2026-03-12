@@ -14,7 +14,7 @@ interface ModalProps {
 export default function Modal({ isOpen, onClose, children, actions, panelClassName }: ModalProps) {
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-9999">
-      <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4">
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
         <Dialog.Panel
           className={`w-full border border-solid border-gray-1000 rounded-lg shadow-54xl  ${panelClassName ?? "max-w-140 bg-white "}`}
         >

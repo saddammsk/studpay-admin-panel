@@ -135,7 +135,7 @@ const UsersStudentsPage = () => {
                   <CustomSelect
                     value={filters.bulkAction}
                     className="h-9"
-                    onChange={(e) => setBulkAction(e.target.value)}
+                    onChange={setBulkAction}
                     options={[{ label: "Bulk Actions", value: "Bulk Actions" },
                       { label: "Delete Selected", value: "Delete Selected" },
                       { label: "Update Status", value: "Update Status" },
@@ -204,7 +204,7 @@ const UsersStudentsPage = () => {
             <div className="xl:w-40 lg:w-34 md:w-41.5 w-full">
               <CustomSelect
                 value={filters.country}
-                onChange={(e) => setCountryFilter(e.target.value)}
+                onChange={setCountryFilter}
                 options={[
                   { label: "All Destinations", value: "All Destinations" },
                   { label: "Country", value: "Country" },
@@ -219,7 +219,7 @@ const UsersStudentsPage = () => {
             <div className="xl:w-35 lg:w-34 md:w-41.5 w-full">
               <CustomSelect
                 value={filters.status}
-                onChange={(e) => setStatusFilter(e.target.value)}
+                onChange={setStatusFilter}
                 options={[
                   { label: "All Status", value: "All Status" },
                   { label: "Verified", value: "Verified" },
@@ -231,7 +231,7 @@ const UsersStudentsPage = () => {
             <div className="xl:w-35 lg:w-34 md:w-41.5 w-full">
               <CustomSelect
                 value={filters.score}
-                onChange={(e) => setScoreFilter(e.target.value)}
+                onChange={setScoreFilter}
                 options={[
                   { label: "All Scores", value: "All Scores" },
                   { label: "High Score", value: "High Score" },
@@ -243,7 +243,7 @@ const UsersStudentsPage = () => {
             <div className="xl:w-32.5 lg:w-34 md:w-41.5 w-full">
               <CustomSelect
                 value={filters.plan}
-                onChange={(e) => setPlanFilter(e.target.value)}
+                onChange={setPlanFilter}
                 options={[
                   { label: "All Plans", value: "All Plans" },
                   { label: "Free", value: "Free" },
@@ -255,7 +255,7 @@ const UsersStudentsPage = () => {
             <div className="xl:w-40 lg:w-34 md:w-41.5 w-full">
               <CustomSelect
                 value={filters.source}
-                onChange={(e) => setSourceFilter(e.target.value)}
+                onChange={setSourceFilter}
                 options={[
                   { label: "All Sources", value: "All Sources" },
                   { label: "Internal", value: "Internal" },
