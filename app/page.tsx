@@ -25,10 +25,11 @@ export default async function DashboardPage() {
       <MonthlyLoanOverview />
 
       <div className="flex-1">
-        <div className="mt-8 5xl:flex grid 4xl:grid-cols-3 md:grid-cols-2 grid-cols-1 items-start gap-3">
+        <div className="mt-8 5xl:flex grid 4xl:grid-cols-3 md:grid-cols-2 grid-cols-1 items-start gap-4">
           <LiveEvents />
 
           <FourEyesApprovalQueue />
+
 
           <RiskFraudAlerts />
         </div>
