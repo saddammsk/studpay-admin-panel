@@ -23,6 +23,7 @@ import {
      Sparkles,
      Building2,
 } from "lucide-react";
+import Studentreservationstable from "@/app/components/Studentreservationstable";
 
 const statCards = [
      {
@@ -305,7 +306,6 @@ function page() {
                               </div>
                          ))}
                     </div>
-
                     {/* Boosted Listings Ledger */}
                     <div className="bg-white rounded-xl border border-amber-200 shadow-sm mb-6 overflow-hidden">
                          <div className="flex items-center justify-between bg-gray-1600 px-5 py-4 flex-wrap gap-4 border-b border-amber-100 ">
@@ -400,14 +400,16 @@ function page() {
                          <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1">
                               <button
                                    onClick={() => setActiveTab("manage")}
-                                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${activeTab === "manage" ? "bg-white shadow-sm text-slate-800" : "text-slate-500 hover:text-slate-700"}`}
+                                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${activeTab === "manage" ? "bg-white shadow-sm text-slate-800" : "text-slate-500 hover:text-slate-700"
+                                        }`}
                               >
                                    <Building2 size={16} />
                                    Manage Listings
                               </button>
                               <button
                                    onClick={() => setActiveTab("student")}
-                                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${activeTab === "student" ? "bg-white shadow-sm text-slate-800" : "text-slate-500 hover:text-slate-700"}`}
+                                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${activeTab === "student" ? "bg-white shadow-sm text-slate-800" : "text-slate-500 hover:text-slate-700"
+                                        }`}
                               >
                                    <Euro size={16} />
                                    Student Reservations
@@ -426,122 +428,131 @@ function page() {
                               ))}
                          </div>
                     </div>
-                    {/* Listings Table */}
-                    <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm mb-6 overflow-auto">
 
-                         <table className="2xl:w-full w-[1365px]">
-                              <thead>
-                                   <tr className="border-b border-gray-1000 bg-gray-1600">
-                                        {[
-                                             "Listing ID",
-                                             "Property Name",
-                                             "Location",
-                                             "Price/mo",
-                                             "Landlord",
-                                             "KYC Status",
-                                             "Action",
-                                        ].map((h) => (
-                                             <th
-                                                  key={h}
-                                                  className="text-left text-sm font-semibold text-blue-1300 uppercase tracking-wide px-4 py-3"
-                                             >
-                                                  {h}
-                                             </th>
-                                        ))}
-                                   </tr>
-                              </thead>
-                              <tbody>
-                                   {listings.map((row) => (
-                                        <tr
-                                             key={row.id}
-                                             className="border-b border-gray-1000 hover:bg-slate-50/70 transition-colors"
-                                        >
-                                             <td className="px-5 py-3.5">
-                                                  <span className="mono text-sm font-medium text-gray-1200">
-                                                       {row.id}
-                                                  </span>
-                                             </td>
-                                             <td className="px-5 py-3.5 text-sm font-semibold text-blue-1300">
-                                                  {row.name}
-                                             </td>
-                                             <td className="px-5 py-3.5 text-sm text-gray-1200">
-                                                  {row.location}
-                                             </td>
-                                             <td className="px-5 py-3.5 text-sm font-medium text-blue-1300">
-                                                  {row.price}
-                                             </td>
-                                             <td className="px-5 py-3.5 text-sm text-blue-1300">
-                                                  {row.landlord}
-                                             </td>
-                                             <td className="px-5 py-3.5">
-                                                  <KycBadge status={row.kyc} />
-                                             </td>
-                                             <td className="px-5 py-3.5">
-                                                  <div className="flex items-center gap-2">
-                                                       <KycAction status={row.kyc} />
-                                                       <button className="text-gray-1200 hover:text-slate-700 ml-auto transition-colors">
-                                                            <MoreHorizontal size={16} />
-                                                       </button>
-                                                  </div>
-                                             </td>
-                                        </tr>
-                                   ))}
-                              </tbody>
-                         </table>
+                    <div>
                     </div>
+                    {activeTab === "manage" && (
+                         <div>
+                              <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm mb-6 overflow-auto">
 
-                    {/* Globe + Regions */}
-                    <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden">
-                         <div className="grid md:grid-cols-2">
-                              <div className="flex items-center justify-center py-10 px-8 border-r border-slate-100">
-                                   <GlobeViz />
-                              </div>
-                              <div className="p-7 flex flex-col justify-between">
-                                   <div>
-                                        <div className="flex items-center justify-between mb-5">
-                                             <div>
-                                                  <p className="text-base font-bold text-slate-900">
-                                                       Global Property Intelligence
-                                                  </p>
-                                                  <p className="text-xs text-slate-400 mt-0.5">
-                                                       Top Performing Regions
-                                                  </p>
-                                             </div>
-                                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 border border-green-200">
-                                                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                                                  Live
-                                             </span>
-                                        </div>
-                                        <div className="space-y-3">
-                                             {regions.map((r) => {
-                                                  const max = 523;
-                                                  const pct = Math.round((r.listings / max) * 100);
-                                                  return (
-                                                       <div key={r.country} className="group">
-                                                            <div className="flex items-center justify-between mb-1">
-                                                                 <div className="flex items-center gap-2">
-                                                                      <img src={r.flag} className="w-4" alt="" />
-                                                                      <span className="text-sm font-medium text-slate-700">
-                                                                           {r.country}
-                                                                      </span>
-                                                                 </div>
-                                                                 <span className="text-sm font-normal text-black-2100 mono">
-                                                                      {r.listings} Listings
-                                                                 </span>
+                                   <table className="2xl:w-full w-[1365px]">
+                                        <thead>
+                                             <tr className="border-b border-gray-1000 bg-gray-1600">
+                                                  {[
+                                                       "Listing ID",
+                                                       "Property Name",
+                                                       "Location",
+                                                       "Price/mo",
+                                                       "Landlord",
+                                                       "KYC Status",
+                                                       "Action",
+                                                  ].map((h) => (
+                                                       <th
+                                                            key={h}
+                                                            className="text-left text-sm font-semibold text-blue-1300 uppercase tracking-wide px-4 py-3"
+                                                       >
+                                                            {h}
+                                                       </th>
+                                                  ))}
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                             {listings.map((row) => (
+                                                  <tr
+                                                       key={row.id}
+                                                       className="border-b border-gray-1000 hover:bg-slate-50/70 transition-colors"
+                                                  >
+                                                       <td className="px-5 py-3.5">
+                                                            <span className="mono text-sm font-medium text-gray-1200">
+                                                                 {row.id}
+                                                            </span>
+                                                       </td>
+                                                       <td className="px-5 py-3.5 text-sm font-semibold text-blue-1300">
+                                                            {row.name}
+                                                       </td>
+                                                       <td className="px-5 py-3.5 text-sm text-gray-1200">
+                                                            {row.location}
+                                                       </td>
+                                                       <td className="px-5 py-3.5 text-sm font-medium text-blue-1300">
+                                                            {row.price}
+                                                       </td>
+                                                       <td className="px-5 py-3.5 text-sm text-blue-1300">
+                                                            {row.landlord}
+                                                       </td>
+                                                       <td className="px-5 py-3.5">
+                                                            <KycBadge status={row.kyc} />
+                                                       </td>
+                                                       <td className="px-5 py-3.5">
+                                                            <div className="flex items-center gap-2">
+                                                                 <KycAction status={row.kyc} />
+                                                                 <button className="text-gray-1200 hover:text-slate-700 ml-auto transition-colors">
+                                                                      <MoreHorizontal size={16} />
+                                                                 </button>
                                                             </div>
+                                                       </td>
+                                                  </tr>
+                                             ))}
+                                        </tbody>
+                                   </table>
+                              </div>
+                              <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden">
+                                   <div className="grid md:grid-cols-2">
+                                        <div className="flex items-center justify-center py-10 px-8 border-r border-slate-100">
+                                             <GlobeViz />
+                                        </div>
+                                        <div className="p-7 flex flex-col justify-between">
+                                             <div>
+                                                  <div className="flex items-center justify-between mb-5">
+                                                       <div>
+                                                            <p className="text-base font-bold text-slate-900">
+                                                                 Global Property Intelligence
+                                                            </p>
+                                                            <p className="text-xs text-slate-400 mt-0.5">
+                                                                 Top Performing Regions
+                                                            </p>
                                                        </div>
-                                                  );
-                                             })}
+                                                       <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 border border-green-200">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                                            Live
+                                                       </span>
+                                                  </div>
+                                                  <div className="space-y-3">
+                                                       {regions.map((r) => {
+                                                            const max = 523;
+                                                            const pct = Math.round((r.listings / max) * 100);
+                                                            return (
+                                                                 <div key={r.country} className="group">
+                                                                      <div className="flex items-center justify-between mb-1">
+                                                                           <div className="flex items-center gap-2">
+                                                                                <img src={r.flag} className="w-4" alt="" />
+                                                                                <span className="text-sm font-medium text-slate-700">
+                                                                                     {r.country}
+                                                                                </span>
+                                                                           </div>
+                                                                           <span className="text-sm font-normal text-black-2100 mono">
+                                                                                {r.listings} Listings
+                                                                           </span>
+                                                                      </div>
+                                                                 </div>
+                                                            );
+                                                       })}
+                                                  </div>
+                                             </div>
+                                             <button className="mt-6 w-full flex items-center justify-center gap-2 py-2.5 bg-blue-1000 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors">
+
+                                                  View All Global Property
+                                                  <ArrowUpRight size={14} />
+                                             </button>
                                         </div>
                                    </div>
-                                   <button className="mt-6 w-full flex items-center justify-center gap-2 py-2.5 bg-blue-1000 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors">
-
-                                        View All Global Property
-                                        <ArrowUpRight size={14} />
-                                   </button>
                               </div>
                          </div>
-                    </div>
+                    )}
+                    {activeTab === "student" && (
+                         <div>
+                              <Studentreservationstable></Studentreservationstable>
+                         </div>
+                    )}
                </div>
           </div>
      )

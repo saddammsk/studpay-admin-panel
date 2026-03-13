@@ -3,6 +3,7 @@ import { Public_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import DashboardLayout from "./layout/DashboardLayout";
 import ReduxProvider from "./store/ReduxProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "StudPay",
@@ -37,6 +38,7 @@ export default function RootLayout({
         <ReduxProvider>
         <DashboardLayout>{children}</DashboardLayout>
         </ReduxProvider>
+        <Toaster />
       </body>
     </html>
   );

@@ -1,6 +1,4 @@
 import { create } from "zustand";
-import { RangeValue } from "@react-types/shared";
-import { DateValue } from "@internationalized/date";
 
 export interface Transaction {
   id: number;
@@ -17,13 +15,7 @@ export interface Transaction {
   status: "Completed" | "Pending" | "Failed" | "Reversed";
 }
 
-export type StatusFilter =
-  | "All Status"
-  | "Completed"
-  | "Pending"
-  | "Failed"
-  | "Reversed";
-
+export type StatusFilter = "All Status" | "Completed" | "Pending" | "Failed" | "Reversed";
 export type AccountFilter = "All Accounts" | string;
 export type TypeFilter = "All Types" | string;
 
@@ -52,8 +44,7 @@ interface TransactionState {
   statusFilter: StatusFilter;
   accountFilter: AccountFilter;
   typeFilter: TypeFilter;
-
-  dateRange: RangeValue<DateValue> | null;
+  dateRange: Date | undefined;
 
   isModalOpen: boolean;
   internalNote: string;
@@ -66,8 +57,7 @@ interface TransactionState {
   setStatusFilter: (status: StatusFilter) => void;
   setAccountFilter: (account: AccountFilter) => void;
   setTypeFilter: (type: TypeFilter) => void;
-  setDateRange: (range: RangeValue<DateValue> | null) => void;
-
+  setDateRange: (dateRange: Date | undefined) => void;
   openTransactionModal: (transaction: Transaction) => void;
   closeTransactionModal: () => void;
   setInternalNote: (note: string) => void;
@@ -78,7 +68,7 @@ interface TransactionState {
 const initialTransactions: Transaction[] = [
   {
     id: 1,
-    date: "2024-01-15",
+    date: "Jan 15, 2024",
     time: "14:32:00",
     description: {
       icon: "/icons/amazon-bag.svg",
@@ -92,7 +82,7 @@ const initialTransactions: Transaction[] = [
   },
   {
     id: 2,
-    date: "2024-01-14",
+    date: "Jan 14, 2024",
     time: "09:15:00",
     description: {
       icon: "/icons/amazon-bag.svg",
@@ -105,7 +95,7 @@ const initialTransactions: Transaction[] = [
   },
   {
     id: 3,
-    date: "2024-01-13",
+    date: "Jan 13, 2024",
     time: "16:45:00",
     description: {
       icon: "/icons/card-black.svg",
@@ -119,7 +109,7 @@ const initialTransactions: Transaction[] = [
   },
   {
     id: 4,
-    date: "2024-01-12",
+    date: "Jan 12, 2024",
     time: "11:20:00",
     description: {
       icon: "/icons/amazon-bag.svg",
@@ -133,7 +123,7 @@ const initialTransactions: Transaction[] = [
   },
   {
     id: 5,
-    date: "2024-01-11",
+    date: "Jan 11, 2024",
     time: "08:00:00",
     description: {
       icon: "/icons/transfer-icon.svg",
@@ -146,7 +136,7 @@ const initialTransactions: Transaction[] = [
   },
   {
     id: 6,
-    date: "2024-01-10",
+    date: "Jan 10, 2024",
     time: "13:30:00",
     description: {
       icon: "/icons/building.svg",
@@ -159,7 +149,7 @@ const initialTransactions: Transaction[] = [
   },
   {
     id: 7,
-    date: "2024-01-09",
+    date: "Jan 09, 2024",
     time: "17:45:00",
     description: {
       icon: "/icons/amazon-bag.svg",
@@ -201,7 +191,7 @@ export const useTransactionStore = create<TransactionState>((set, get) => ({
   statusFilter: "All Status",
   accountFilter: "All Accounts",
   typeFilter: "All Types",
-  dateRange: null,
+  dateRange: undefined,
 
   isModalOpen: false,
   internalNote: "",
@@ -219,7 +209,6 @@ export const useTransactionStore = create<TransactionState>((set, get) => ({
   openTransactionModal: (transaction) =>
     set({
       selectedTransaction: transaction,
-      transactionDetail: mockTransactionDetail,
       isModalOpen: true,
       internalNote: "",
     }),
@@ -235,17 +224,10 @@ export const useTransactionStore = create<TransactionState>((set, get) => ({
   setInternalNote: (internalNote) => set({ internalNote }),
 
   filteredTransactions: () => {
-    const {
-      transactions,
-      search,
-      statusFilter,
-      accountFilter,
-      dateRange,
-    } = get();
+    const { transactions, search, statusFilter, accountFilter } = get();
 
     return transactions.filter((txn) => {
       const searchLower = search.toLowerCase();
-
       const matchesSearch =
         !search ||
         txn.description.name.toLowerCase().includes(searchLower) ||
@@ -260,16 +242,7 @@ export const useTransactionStore = create<TransactionState>((set, get) => ({
       const matchesAccount =
         accountFilter === "All Accounts" || txn.account === accountFilter;
 
-      const matchesDate =
-        !dateRange ||
-        (() => {
-          const txnDate = new Date(txn.date);
-          const start = new Date(dateRange.start.toString());
-          const end = new Date(dateRange.end.toString());
-          return txnDate >= start && txnDate <= end;
-        })();
-
-      return matchesSearch && matchesStatus && matchesAccount && matchesDate;
+      return matchesSearch && matchesStatus && matchesAccount;
     });
   },
 }));

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Modal from "@/app/components/Modal";
 import Approvepopap from "@/app/components/AviBlocked/Approvepopap";
-import RejectDossierModal from "@/app/components/AviBlocked/RejectDossierModal";
 import CustomSelect from "@/app/components/CustomSelect";
 
 

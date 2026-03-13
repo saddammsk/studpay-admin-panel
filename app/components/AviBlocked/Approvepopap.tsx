@@ -144,8 +144,7 @@ export default function ApproveAVIModal() {
           </div>
         </div>
       </div>
-
-      {/* Body */}
+ 
       <div className="sm:px-8 sm:py-6 p-4">
         {/* Verification Checklist */}
         <div className="">

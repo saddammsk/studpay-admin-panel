@@ -1,5 +1,12 @@
 "use client";
 import Image from "next/image";
+import { format } from "date-fns";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import CustomSelect from "@/app/components/CustomSelect";
 import AdminActions from "@/app/components/UsersStudent/AdminActions";
 import UserTransactionTable from "@/app/components/UsersStudent/UserTransactionTable";
@@ -78,7 +85,7 @@ const UsersStudentsPage = () => {
                 />
               </div>
             </div>
-            <ul className="space-y-3 flex mt-3 gap-2">
+            <ul className="space-y-3 flex mt-3 gap-2 flex-1">
               <li>
                 <div className="md:w-39 w-full">
                   <CustomSelect
@@ -94,11 +101,12 @@ const UsersStudentsPage = () => {
                 </div>
               </li>
               <li>
+
                 <div className="md:w-35 w-full">
                   <CustomSelect
                     value={statusFilter}
                     className="h-10"
-                    onChange={setStatusFilter}
+                    onChange={()=>setStatusFilter(statusFilter)}
                     options={[
                       { label: "All Status", value: "All Status" },
                       { label: "Completed", value: "Completed" },
@@ -119,19 +127,36 @@ const UsersStudentsPage = () => {
                   />
                 </div>
               </li>
-              <li>
+              <li className="flex-1">
                 <div className="relative flex-1 xl:max-w-md md:max-w-90 md:mb-0 mb-4 max-w-full w-full">
-                  <input
-                    type="date"
-                    className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-black-2000 placeholder:text-black-2000 px-4 pl-10 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-                    placeholder="Date Range"
-                   
-                  />
-                  <div className="absolute top-1/2 -translate-y-1/2 left-3">
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <button
+                        type="button"
+                        className="text-sm flex-1 transition duration-300 font-normal font-neulis-sans px-4 pl-10 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0 text-left flex items-center"
+                      >
+                        {dateRange ? (
+                          <span className="text-black-2000">
+                            {format(dateRange, "MMM dd, yyyy")}
+                          </span>
+                        ) : (
+                          <span className="text-black-2000">Date Range</span>
+                        )}
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={dateRange}
+                        onSelect={setDateRange}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <div className="absolute top-1/2 -translate-y-1/2 left-3 pointer-events-none">
                     <Image
                       src="/images/calendar-icon4.svg"
-                      width="16"
-                      height="16"
+                      width={16}
+                      height={16}
                       alt=""
                     />
                   </div>
