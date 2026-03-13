@@ -308,6 +308,7 @@ export default function UserStudentTable() {
   }, [filters]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(1);
   }, [filters]);
 

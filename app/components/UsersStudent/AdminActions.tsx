@@ -13,7 +13,7 @@ const AdminActions = () => {
 
 
   return (
-    <div className='xl:max-w-75 w-full bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
+    <div className='flex-1 w-full bg-white border border-solid border-gray-3100 rounded-lg shadow-4xl md:p-6 p-4'>
       <h4 className='text-black-1600 font-inter font-semibold text-base leading-6 tracking-[-0.4px] gap-2 flex items-center'>
         <Image 
           src="/images/sheild-active.svg"
@@ -159,7 +159,7 @@ const AdminActions = () => {
         </ul>
       </div>
 
-        {/* <ImpersonateModal 
+        <ImpersonateModal 
         isOpen={activeModal === 'impersonate'} 
         onClose={closeModal} 
         data={modalData}
@@ -183,7 +183,7 @@ const AdminActions = () => {
         isOpen={activeModal === 'push'} 
         onClose={closeModal} 
         data={modalData}
-      /> */}
+      />
     </div>
   );
 };

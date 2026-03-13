@@ -1,3 +1,4 @@
+'use client'
 import CustomSelect from '../CustomSelect'
 
 export const MonthlyActiveUsers = () => {
