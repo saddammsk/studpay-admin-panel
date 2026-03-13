@@ -11,6 +11,8 @@ export interface AviDocument {
   iconBg: string;
   status: DocumentStatus;
   actions: ("view" | "upload" | "approve" | "reject")[];
+  fileName?: string;
+  fileSize?: string;
 }
 
 export interface TimelineEvent {
@@ -71,11 +73,32 @@ interface AviDossierState {
   isRejectModalOpen: boolean;
   rejectingDocumentId: string | null;
   rejectionReason: string;
-
   openRejectModal: (documentId: string) => void;
   closeRejectModal: () => void;
   setRejectionReason: (reason: string) => void;
   confirmRejection: () => void;
+
+  isViewModalOpen: boolean;
+  viewingDocument: AviDocument | null;
+  openViewModal: (documentId: string) => void;
+  closeViewModal: () => void;
+
+  isApproveModalOpen: boolean;
+  approvingDocumentId: string | null;
+  openApproveModal: (documentId: string) => void;
+  closeApproveModal: () => void;
+  confirmApproval: () => void;
+
+  isUploadModalOpen: boolean;
+  uploadingDocumentId: string | null;
+  uploadFileName: string;
+  uploadFileSize: string;
+  uploadProgress: number;
+  isUploading: boolean;
+  openUploadModal: (documentId: string) => void;
+  closeUploadModal: () => void;
+  setUploadFile: (fileName: string, fileSize: string) => void;
+  confirmUpload: () => void;
 
   holdEntry: (id: number) => void;
   resumeEntry: (id: number) => void;
@@ -100,7 +123,7 @@ const initialScheduleEntries: ScheduleEntry[] = [
 export const useAviDossierStore = create<AviDossierState>((set, get) => ({
   student: {
     name: "Marie Dubois",
-    dossierId: "AVI-2024- 0892",
+    dossierId: "AVI-2024-0892",
     university: "Technical University of Munich",
     statusLabel: "Action Required",
     totalBlocked: "€10,356",
@@ -151,6 +174,8 @@ export const useAviDossierStore = create<AviDossierState>((set, get) => ({
       iconBg: "bg-green53/10",
       status: "Approved",
       actions: ["view", "upload"],
+      fileName: "attestation-blocage.pdf",
+      fileSize: "1.2 MB",
     },
     {
       id: "doc-2",
@@ -160,6 +185,8 @@ export const useAviDossierStore = create<AviDossierState>((set, get) => ({
       iconBg: "bg-green53/10",
       status: "Approved",
       actions: ["view", "upload"],
+      fileName: "passport-marie-dubois.pdf",
+      fileSize: "3.4 MB",
     },
     {
       id: "doc-3",
@@ -169,6 +196,8 @@ export const useAviDossierStore = create<AviDossierState>((set, get) => ({
       iconBg: "bg-lighrgrey36",
       status: "Action Required",
       actions: ["view", "approve", "reject", "upload"],
+      fileName: "source-of-funds.pdf",
+      fileSize: "890 KB",
     },
     {
       id: "doc-4",
@@ -177,7 +206,7 @@ export const useAviDossierStore = create<AviDossierState>((set, get) => ({
       icon: "/icons/palne-icon.svg",
       iconBg: "bg-red2100/10",
       status: "Missing",
-      actions: ["approve", "reject", "upload"],
+      actions: ["upload"],
     },
   ],
 
@@ -249,15 +278,156 @@ export const useAviDossierStore = create<AviDossierState>((set, get) => ({
     const { rejectingDocumentId, rejectionReason } = get();
     if (!rejectingDocumentId || !rejectionReason.trim()) return;
 
-    console.log(
-      `Rejecting document ${rejectingDocumentId}: ${rejectionReason}`
-    );
+    const doc = get().documents.find((d) => d.id === rejectingDocumentId);
 
-    set({
+    set((state) => ({
+      documents: state.documents.map((d) =>
+        d.id === rejectingDocumentId
+          ? {
+              ...d,
+              status: "Missing" as DocumentStatus,
+              icon: "/icons/palne-icon.svg",
+              iconBg: "bg-red2100/10",
+              actions: ["upload"] as AviDocument["actions"],
+              fileName: undefined,
+              fileSize: undefined,
+            }
+          : d
+      ),
       isRejectModalOpen: false,
       rejectingDocumentId: null,
       rejectionReason: "",
+    }));
+
+    toast.success("Document Rejected", {
+      description: `${doc?.title ?? "Document"} — ${rejectionReason.trim()}`,
     });
+  },
+
+  isViewModalOpen: false,
+  viewingDocument: null,
+
+  openViewModal: (documentId) => {
+    const doc = get().documents.find((d) => d.id === documentId);
+    if (!doc) return;
+    set({ isViewModalOpen: true, viewingDocument: { ...doc } });
+  },
+
+  closeViewModal: () =>
+    set({ isViewModalOpen: false, viewingDocument: null }),
+
+  isApproveModalOpen: false,
+  approvingDocumentId: null,
+
+  openApproveModal: (documentId) =>
+    set({ isApproveModalOpen: true, approvingDocumentId: documentId }),
+
+  closeApproveModal: () =>
+    set({ isApproveModalOpen: false, approvingDocumentId: null }),
+
+  confirmApproval: () => {
+    const { approvingDocumentId } = get();
+    if (!approvingDocumentId) return;
+
+    const doc = get().documents.find((d) => d.id === approvingDocumentId);
+
+    set((state) => ({
+      documents: state.documents.map((d) =>
+        d.id === approvingDocumentId
+          ? {
+              ...d,
+              status: "Approved" as DocumentStatus,
+              icon: "/icons/sheild-greendark.svg",
+              iconBg: "bg-green53/10",
+              actions: ["view", "upload"] as AviDocument["actions"],
+            }
+          : d
+      ),
+      isApproveModalOpen: false,
+      approvingDocumentId: null,
+    }));
+
+    toast.success("Document Approved", {
+      description: `${doc?.title ?? "Document"} has been approved.`,
+    });
+  },
+
+  isUploadModalOpen: false,
+  uploadingDocumentId: null,
+  uploadFileName: "",
+  uploadFileSize: "",
+  uploadProgress: 0,
+  isUploading: false,
+
+  openUploadModal: (documentId) =>
+    set({
+      isUploadModalOpen: true,
+      uploadingDocumentId: documentId,
+      uploadFileName: "",
+      uploadFileSize: "",
+      uploadProgress: 0,
+      isUploading: false,
+    }),
+
+  closeUploadModal: () =>
+    set({
+      isUploadModalOpen: false,
+      uploadingDocumentId: null,
+      uploadFileName: "",
+      uploadFileSize: "",
+      uploadProgress: 0,
+      isUploading: false,
+    }),
+
+  setUploadFile: (fileName, fileSize) =>
+    set({ uploadFileName: fileName, uploadFileSize: fileSize }),
+
+  confirmUpload: () => {
+    const { uploadingDocumentId, uploadFileName, uploadFileSize } = get();
+    if (!uploadingDocumentId || !uploadFileName) return;
+
+    set({ isUploading: true, uploadProgress: 0 });
+
+    const interval = setInterval(() => {
+      const current = get().uploadProgress;
+      if (current >= 100) {
+        clearInterval(interval);
+
+        const doc = get().documents.find((d) => d.id === uploadingDocumentId);
+        const now = new Date();
+        const formatted = now.toISOString().split("T")[0];
+
+        set((state) => ({
+          documents: state.documents.map((d) =>
+            d.id === uploadingDocumentId
+              ? {
+                  ...d,
+                  status: "Action Required" as DocumentStatus,
+                  subtitle: `Uploaded ${formatted}`,
+                  icon: "/images/wallet-icon.svg",
+                  iconBg: "bg-lighrgrey36",
+                  actions: ["view", "approve", "reject", "upload"] as AviDocument["actions"],
+                  fileName: uploadFileName,
+                  fileSize: uploadFileSize,
+                }
+              : d
+          ),
+          isUploadModalOpen: false,
+          uploadingDocumentId: null,
+          uploadFileName: "",
+          uploadFileSize: "",
+          uploadProgress: 0,
+          isUploading: false,
+        }));
+
+        toast.success("Document Uploaded", {
+          description: `${doc?.title ?? "Document"} — ${uploadFileName}`,
+        });
+
+        return;
+      }
+      set({ uploadProgress: Math.min(current + 20, 100) });
+    }, 200);
   },
 
   holdEntry: (id) =>
@@ -278,13 +448,16 @@ export const useAviDossierStore = create<AviDossierState>((set, get) => ({
       ),
     })),
 
-   copyIban: (iban) => {
-    navigator.clipboard.writeText(iban.replace(/\s/g, "")).then(() => {
-      toast.success("IBAN Copied", {
-        description: iban,
+  copyIban: (iban) => {
+    navigator.clipboard
+      .writeText(iban.replace(/\s/g, ""))
+      .then(() => {
+        toast.success("IBAN Copied", {
+          description: iban,
+        });
+      })
+      .catch(() => {
+        toast.error("Failed to copy IBAN");
       });
-    }).catch(() => {
-      toast.error("Failed to copy IBAN");
-    });
   },
 }));

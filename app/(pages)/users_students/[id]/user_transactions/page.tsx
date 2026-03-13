@@ -32,9 +32,9 @@ const UsersStudentsPage = () => {
   return (
     <div className="font-inter">
       <div className="flex xl:flex-row flex-col items-start gap-4">
-        <div className="xl:w-[calc(100%-300px)] w-full">
+        <div className="xl:w-[calc(100%-300px)] w-full mt-5">
           <div className="mb-6">
-            <h4 className="text-black-2000 font-semibold text-2xl mb-1 leading-8">
+            <h4 className="text-blue-1300 font-inter font-bold text-2xl leading-7">
               User Transaction Ledger
             </h4>
             <p className="text-gray-3800 font-normal text-sm leading-5">

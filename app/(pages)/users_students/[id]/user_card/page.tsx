@@ -205,7 +205,7 @@ const UsersStudentsPage = () => {
           {/* ── Header ── */}
           <div className='flex md:flex-row flex-col md:items-center md:gap-0 gap-4 justify-between mb-6'>
             <div>
-              <h4 className='text-blue-1300 font-inter font-bold text-xl leading-7'>Card Inventory</h4>
+              <h4 className='text-blue-1300 font-inter font-bold text-2xl leading-7'>Card Inventory</h4>
               <p className='text-gray-1900 font-inter font-normal 4xl:text-sm text-xs leading-5'>Manage physical and virtual cards for this customer</p>
             </div>
             <ul className='flex sm:flex-row flex-col items-center gap-2'>
