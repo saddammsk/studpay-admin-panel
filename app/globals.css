@@ -64,6 +64,9 @@
      --color-gray-7400: #1B294B;
      --color-gray-7500: #F2F4F8;
      --color-gray-7600: #F7F7F7;
+     --color-gray-7700: #DCE0E5;
+     --color-gray-7800: #EDF0F2;
+     --color-gray-7900: #E8EBEE;
      --color-blue-1000: #0D8CFF;
      --color-red-1000: #EF4444;
      --color-red-1100: #FEE2E2;
@@ -89,6 +92,7 @@
      --color-black-1300: #1C1E21;
      --color-black-1400: #1D212B;
      --color-black-1500: #161A23;
+     --color-black-1600: #171D26;
      --color-blue-1300: #0F1729;
      --color-blue-1400: #0B64F4;
      --color-blue-1500: #0A91FF;
@@ -311,6 +315,9 @@
      --color-green59: #29A356;
      --color-green60: #257E59;
      --color-green61: #33CC6B;
+     --color-green62: #1DA54F;
+     --color-green63: #1A7F72;
+     --color-green67: #34B277;
      --color-skyblue26: #BEE3F4;
      --color-skyblue27: #F1FAFE;
      --color-OxfordBlue: #1B294B;
@@ -353,6 +360,7 @@
      --color-rosepink23: #FBE9E9;
      --color-darkbrownishOrange: #7A4F05;
      --color-DarkCrimson: #91081F;
+     --color-DeepViolet: #6D28D9;
      --shadow-3xl: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
      --shadow-4xl: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
      --shadow-5xl: 0 1px 3px 0 #0D8CFF, 0 1px 2px 0 #0D8CFF;
@@ -401,8 +409,12 @@
      --shadow-74xl: 0 1px 2px 0 rgba(20, 24, 31, 0.05);
      --shadow-75xl: 0 0 0 2px #FFF, 0 0 0 4px #0F1729;
      --shadow-78xl: 0 0 0 2px #F6F7F9, 0 0 0 4px #1A75E6;
+     --shadow-79xl: 0 0 0 2px #FFF, 0 0 0 4px #FFF;
      --shadow-80xl: 0 1px 3px 0 #FFF, 0 1px 2px -1px #FFF;
      --shadow-81xl: 0 20px 25px -5px rgba(87, 60, 221, 0.10), 0 8px 10px -6px rgba(87, 60, 221, 0.10);
+     --shadow-82xl: 0 0 0 2px #FFF, 0 0 0 4px #020817;
+     --shadow-83xl: 0 0 0 2px #F9FAFB, 0 0 0 4px #1DA578;
+     --shadow-84xl: 0 0 0 2px #DCDFE5;
      --breakpoint-xs: 390px;
      --breakpoint-sm: 575px;
      --breakpoint-md: 767px;
@@ -578,4 +590,8 @@
  
  .card-bg3 {
      background: linear-gradient(90deg, var(--color-azure-4510, rgba(17, 115, 212, 0.10)) 0%, var(--color-grey-94, #E4F4FB) 50%, var(--color-azure-455, rgba(17, 115, 212, 0.05)) 100%);
+ }
+
+ .preview-box {
+     background: linear-gradient(135deg, rgba(59, 130, 246, 0.20) 0%, rgba(59, 130, 246, 0.20) 50%, rgba(237, 240, 242, 0.20) 100%);
  }
