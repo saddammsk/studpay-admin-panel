@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Modal from "@/app/components/Modal";
 import {
      Building2,
 } from "lucide-react";
@@ -104,7 +107,7 @@ const StatCard = ({
      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3">
           <div className="flex items-center justify-between">
                <div className="w-9 h-9 rounded-md bg-blue-50 flex items-center justify-center text-blue-500">
-                    <span className="w-[18px] flex">{icon}</span>
+                    <span className="w-4.5 flex">{icon}</span>
                </div>
                <span className={`text-xs font-semibold ${deltaPositive ? "text-green-1500" : "text-green-1500"}`}>{delta}</span>
           </div>
@@ -164,6 +167,8 @@ const HistoryIcon = () => (
 );
 
 export default function GlobalHousingCommandCenter() {
+     const [isOpen, setIsOpen] = useState(false); /**** MODAL ***/
+     const [isOpen2, setIsOpen2] = useState(false); /**** MODAL ***/
      const [search, setSearch] = useState("");
      const [selected, setSelected] = useState<Set<string>>(new Set());
      const [selectAll, setSelectAll] = useState(false);
@@ -192,144 +197,294 @@ export default function GlobalHousingCommandCenter() {
      };
 
      return (
-          <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:mt-[-45px] mt-[-35px] xl:-m-8 -m-4 font-inter">
-               <div className="bg-white -mx-4 p-6">
-                    <div className='bg-white/80 border-b border-solid border-gray1600/50 backdrop-blur-md fixed w-full z-50 top-0 right-0  xl:pl-72 lg:pl-62.5'>
-                         <div className='flex items-center justify-between md:gap-0 gap-4 py-4.5 xl:px-8 px-4 bg-white border-b border-gray-1000'>
-                              <div className="flex-1 md:block hidden">
-                                   <h1 className="xl:text-[22px] text-lg font-bold text-slate-900 tracking-tight">
-                                        Housing Master Dashboard
-                                   </h1>
-                                   <p className="text-sm text-slate-500 mt-0.5">
-                                        Manage listings, track bookings, and monitor campaign performance
-                                   </p>
-                              </div>
-                              <div className="flex items-center  gap-3">
-                                   <div className="flex items-center gap-2 text-xs text-slate-500 bg-white  rounded-lg px-3 py-2">
-                                        Last sync: 2 min ago
-                                        <span className="w-2 h-2 rounded-full bg-green-1500 block"></span>
+          <>
+               <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:-mt-11.25 -mt-8.75 xl:-m-8 -m-4 font-inter">
+                    <div className="bg-white -mx-4 p-6">
+                         <div className='bg-white/80 border-b border-solid border-gray1600/50 backdrop-blur-md fixed w-full z-50 top-0 right-0  xl:pl-72 lg:pl-62.5'>
+                              <div className='flex items-center justify-between md:gap-0 gap-4 py-4.5 xl:px-8 px-4 bg-white border-b border-gray-1000'>
+                                   <div className="flex-1 md:block hidden">
+                                        <h1 className="xl:text-[22px] text-lg font-bold text-slate-900 tracking-tight">
+                                             Housing Master Dashboard
+                                        </h1>
+                                        <p className="text-sm text-slate-500 mt-0.5">
+                                             Manage listings, track bookings, and monitor campaign performance
+                                        </p>
+                                   </div>
+                                   <div className="flex items-center  gap-3">
+                                        <div className="flex items-center gap-2 text-xs text-slate-500 bg-white  rounded-lg px-3 py-2">
+                                             Last sync: 2 min ago
+                                             <span className="w-2 h-2 rounded-full bg-green-1500 block"></span>
+                                        </div>
                                    </div>
                               </div>
                          </div>
-                    </div>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                         <StatCard icon={<Building2 />} value="1,248" label="Total Properties" delta="+12%" deltaPositive={true} />
-                         <StatCard icon={<GlobeIcon />} value="18" label="Countries" delta="+2" deltaPositive={true} />
-                         <StatCard icon={<TrendIcon />} value="$2.4M" label="Monthly Revenue" delta="+8.3%" deltaPositive={true} />
-                         <StatCard icon={<AlertIcon />} value="34" label="Pending KYC" delta="-5" deltaPositive={false} />
-                    </div>
-
-                    <div className=" py-6 space-y-3">
-                         <h2 className="text-sm font-bold text-black-1400">Landlord 360° Search</h2>
-                         <div className="relative max-w-[448px]">
-                              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                                   <SearchIcon />
-                              </span>
-                              <input
-                                   type="text"
-                                   placeholder="Search landlord by name..."
-                                   value={search}
-                                   onChange={(e) => setSearch(e.target.value)}
-                                   className="w-full pl-9 pr-4 py-2.5 h-10 text-sm border border-gray-1000 rounded-lg bg-white placeholder-gray-2300 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition"
-                              />
+                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                              <StatCard icon={<Building2 />} value="1,248" label="Total Properties" delta="+12%" deltaPositive={true} />
+                              <StatCard icon={<GlobeIcon />} value="18" label="Countries" delta="+2" deltaPositive={true} />
+                              <StatCard icon={<TrendIcon />} value="$2.4M" label="Monthly Revenue" delta="+8.3%" deltaPositive={true} />
+                              <StatCard icon={<AlertIcon />} value="34" label="Pending KYC" delta="-5" deltaPositive={false} />
                          </div>
-                    </div>
 
-                    <div className="bg-white rounded-xl border border-gray-1000 shadow-sm overflow-hidden">
-                         <div className="px-5 py-3.5 border-b border-gray-100 flex items-center gap-3">
-                              <span className="text-sm font-bold text-black-1400">Property Inventory</span>
-                              <span className="text-xs text-gray-2300 leading-[18px] bg-gray-1600 px-2 py-0.5 rounded-md">{filtered.length} listings</span>
+                         <div className=" py-6 space-y-3">
+                              <h2 className="text-sm font-bold text-black-1400">Landlord 360° Search</h2>
+                              <div className="relative max-w-md">
+                                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <SearchIcon />
+                                   </span>
+                                   <input
+                                        type="text"
+                                        placeholder="Search landlord by name..."
+                                        value={search}
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        className="w-full pl-9 pr-4 py-2.5 h-10 text-sm border border-gray-1000 rounded-lg bg-white placeholder-gray-2300 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition"
+                                   />
+                              </div>
                          </div>
-                         <div className="overflow-x-auto">
-                              <table className="w-full text-sm">
-                                   <thead>
-                                        <tr className="border-b border-gray-1000 bg-gray-7600">
-                                             <th className="w-10 px-4 py-3">
-                                                  <label className="flex items-center cursor-pointer">
-                                                       <input
-                                                            type="checkbox"
-                                                            checked={selectAll}
-                                                            onChange={toggleAll}
-                                                            className="peer hidden"
-                                                       />
 
-                                                       <div className="w-4 h-4 border border-royalBlue123 rounded peer-checked:bg-royalBlue123 peer-checked:border-royalBlue123 flex items-center justify-center">
-                                                            <span className="hidden peer-checked:block"> ✓</span>
-                                                       </div>
-                                                  </label>
-                                             </th>
-                                             {["Property ID", "Thumbnail", "Landlord", "Location", "Rent", "Property KYC", "Owner KYC", "Actions"].map((h) => (
-                                                  <th key={h} className="px-4 py-3 text-left text-xs font-normal text-gray-2300 uppercase tracking-wide whitespace-nowrap">
-                                                       {h}
-                                                  </th>
-                                             ))}
-                                        </tr>
-                                   </thead>
-                                   <tbody className="divide-y divide-gray-1000 text-[13px]">
-                                        {filtered.map((p) => (
-                                             <tr
-                                                  key={p.id}
-                                                  className={`hover:bg-blue-50/40 transition-colors ${selected.has(p.id) ? "bg-blue-50/30" : ""}`}
-                                             >
-                                                  <td className="px-4 py-3">
+                         <div className="bg-white rounded-xl border border-gray-1000 shadow-sm overflow-hidden">
+                              <div className="px-5 py-3.5 border-b border-gray-100 flex items-center gap-3">
+                                   <span className="text-sm font-bold text-black-1400">Property Inventory</span>
+                                   <span className="text-xs text-gray-2300 leading-4.5 bg-gray-1600 px-2 py-0.5 rounded-md">{filtered.length} listings</span>
+                              </div>
+                              <div className="overflow-x-auto">
+                                   <table className="w-full text-sm">
+                                        <thead>
+                                             <tr className="border-b border-gray-1000 bg-gray-7600">
+                                                  <th className="w-10 px-4 py-3">
                                                        <label className="flex items-center cursor-pointer">
                                                             <input
                                                                  type="checkbox"
-                                                                 checked={selected.has(p.id)}
-                                                                 onChange={() => toggleOne(p.id)}
+                                                                 checked={selectAll}
+                                                                 onChange={toggleAll}
                                                                  className="peer hidden"
                                                             />
+
                                                             <div className="w-4 h-4 border border-royalBlue123 rounded peer-checked:bg-royalBlue123 peer-checked:border-royalBlue123 flex items-center justify-center">
                                                                  <span className="hidden peer-checked:block"> ✓</span>
                                                             </div>
                                                        </label>
-                                                  </td>
-                                                  <td className="px-4 py-3 font-medium text-black-1400 whitespace-nowrap">{p.id}</td>
-                                                  <td className="px-4 py-3">
-                                                       <div className="w-12 h-9 rounded-md bg-gray-1600 flex items-center justify-center">
-                                                            <Building2 className="w-4 text-gray-2300" />
-                                                       </div>
-                                                  </td>
-                                                  <td className="px-4 py-3">
-                                                       <div className="text-black-1400 font-normal">{p.landlord}</div>
-                                                       <div className="text-xs text-gray-2300">{p.landlordCode}</div>
-                                                  </td>
-                                                  <td className="px-4 py-3">
-                                                       <div className="text-black-1400">{p.location}</div>
-                                                       <div className="text-xs text-gray-2300">{p.country}</div>
-                                                  </td>
-                                                  <td className="px-4 py-3 font-bold text-black-1400 whitespace-nowrap">{p.rent}</td>
-                                                  <td className="px-4 py-3">
-                                                       <KycBadge status={p.propertyKyc} />
-                                                  </td>
-                                                  <td className="px-4 py-3">
-                                                       <KycBadge status={p.ownerKyc} />
-                                                  </td>
-                                                  <td className="px-4 py-3">
-                                                       <div className="flex items-center gap-2">
-                                                            <button className="p-1.5 rounded-md text-gray-2300 hover:text-blue-500 hover:bg-blue-50 transition-colors">
-                                                                 <DocIcon />
-                                                            </button>
-                                                            <button className="p-1.5 rounded-md text-gray-2300 hover:text-blue-500 hover:bg-blue-50 transition-colors">
-                                                                 <HistoryIcon />
-                                                            </button>
-                                                       </div>
-                                                  </td>
+                                                  </th>
+                                                  {["Property ID", "Thumbnail", "Landlord", "Location", "Rent", "Property KYC", "Owner KYC", "Actions"].map((h) => (
+                                                       <th key={h} className="px-4 py-3 text-left text-xs font-normal text-gray-2300 uppercase tracking-wide whitespace-nowrap">
+                                                            {h}
+                                                       </th>
+                                                  ))}
                                              </tr>
-                                        ))}
-                                        {filtered.length === 0 && (
-                                             <tr>
-                                                  <td colSpan={9} className="px-4 py-10 text-center text-gray-400 text-sm">
-                                                       No properties found matching your search.
-                                                  </td>
-                                             </tr>
-                                        )}
-                                   </tbody>
-                              </table>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-1000 text-[13px]">
+                                             {filtered.map((p) => (
+                                                  <tr
+                                                       key={p.id}
+                                                       className={`hover:bg-blue-50/40 transition-colors ${selected.has(p.id) ? "bg-blue-50/30" : ""}`}
+                                                  >
+                                                       <td className="px-4 py-3">
+                                                            <label className="flex items-center cursor-pointer">
+                                                                 <input
+                                                                      type="checkbox"
+                                                                      checked={selected.has(p.id)}
+                                                                      onChange={() => toggleOne(p.id)}
+                                                                      className="peer hidden"
+                                                                 />
+                                                                 <div className="w-4 h-4 border border-royalBlue123 rounded peer-checked:bg-royalBlue123 peer-checked:border-royalBlue123 flex items-center justify-center">
+                                                                      <span className="hidden peer-checked:block"> ✓</span>
+                                                                 </div>
+                                                            </label>
+                                                       </td>
+                                                       <td className="px-4 py-3 font-medium text-black-1400 whitespace-nowrap">{p.id}</td>
+                                                       <td className="px-4 py-3">
+                                                            <div className="w-12 h-9 rounded-md bg-gray-1600 flex items-center justify-center">
+                                                                 <Building2 className="w-4 text-gray-2300" />
+                                                            </div>
+                                                       </td>
+                                                       <td className="px-4 py-3">
+                                                            <div className="text-black-1400 font-normal">{p.landlord}</div>
+                                                            <div className="text-xs text-gray-2300">{p.landlordCode}</div>
+                                                       </td>
+                                                       <td className="px-4 py-3">
+                                                            <div className="text-black-1400">{p.location}</div>
+                                                            <div className="text-xs text-gray-2300">{p.country}</div>
+                                                       </td>
+                                                       <td className="px-4 py-3 font-bold text-black-1400 whitespace-nowrap">{p.rent}</td>
+                                                       <td className="px-4 py-3">
+                                                            <KycBadge status={p.propertyKyc} />
+                                                       </td>
+                                                       <td className="px-4 py-3">
+                                                            <KycBadge status={p.ownerKyc} />
+                                                       </td>
+                                                       <td className="px-4 py-3">
+                                                            <div className="flex items-center gap-2">
+                                                                 <button onClick={() => setIsOpen(true)} className="p-1.5 rounded-md text-gray-2300 hover:text-blue-500 hover:bg-blue-50 transition-colors">
+                                                                      <DocIcon />
+                                                                 </button>
+                                                                 <button onClick={() => setIsOpen2(true)} className="p-1.5 rounded-md text-gray-2300 hover:text-blue-500 hover:bg-blue-50 transition-colors">
+                                                                      <HistoryIcon />
+                                                                 </button>
+                                                            </div>
+                                                       </td>
+                                                  </tr>
+                                             ))}
+                                             {filtered.length === 0 && (
+                                                  <tr>
+                                                       <td colSpan={9} className="px-4 py-10 text-center text-gray-400 text-sm">
+                                                            No properties found matching your search.
+                                                       </td>
+                                                  </tr>
+                                             )}
+                                        </tbody>
+                                   </table>
+                              </div>
                          </div>
                     </div>
                </div>
-          </div>
+               {/****** Activity Log Modal *******/}
+               <Modal
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    panelClassName="max-w-[512px] border-0 rounded-lg! bg-white relative"
+               >
+
+                    <div className='bg-blue-1000 rounded-t-lg flex items-center justify-between px-6 py-4'>
+                         <h4 className='text-white font-inter font-bold text-[15.6px] leading-6 tracking-[-0.4px] flex items-center gap-2'> <Image src="/icons/file-board.svg" width={16} height={16} alt="" className="brightness-10000" /> Activity Log — PROP-1001</h4>
+                         <Link onClick={() => setIsOpen(false)} href={"#"} className="flex items-center justify-center rounded-full w-4 h-4 shadow-79xl  opacity-70">
+                              <Image src="/images/cross-gray.svg" width={16} height={16} alt="" className="brightness-10000" />
+                         </Link>
+                    </div>
+                    <div className="p-6">
+                         <div className="flex items-start gap-3 border-b border-solid border-gray1600 py-4">
+                              <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray1700">
+                                   <Image src="/icons/gender-user-icon.svg" width={16} height={16} alt="" className="brightness-0" />
+                              </span>
+                              <div className="flex-1 flex items-start justify-between w-full">
+                                   <div className="">
+                                        <h4 className="text-black-5100 text-[13.9px] leading-5 font-bold">Admin_John</h4>
+                                        <p className="text-gray1900 text-[13.1px] leading-5 font-normal mt-1.5">Updated Rent Amount</p>
+                                        <ul className="flex items-center gap-2 mt-1.5">
+                                             <li className="text-gray-1400 text-[13.5px] leading-5 font-normal line-through">£1,600</li>
+                                             <li><Image src="/icons/right-arrow-long.svg" width={12} height={12} alt="" /></li>
+                                             <li className="text-black-5100 text-[12.5px] leading-5 font-bold">£1,800</li>
+                                        </ul>
+                                        <p className="text-grey-5000 text-[10.7px] leading-4 font-normal mt-1.5">2025-02-08 14:30</p>
+                                   </div>
+                                   <span className="text-blue800 font-bold text-[11.4px] leading-4 inline-flex items-center justify-center  h-5.5 px-2.5 bg-blue800/10 border border-solid border-blue800/20 rounded-full">update</span>
+                              </div>
+                         </div>
+                         <div className="flex items-start gap-3 border-b border-solid border-gray1600 py-4">
+                              <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray1700">
+                                   <Image src="/icons/camera.svg" width={16} height={16} alt="" className="brightness-0" />
+                              </span>
+                              <div className="flex-1 flex items-start justify-between w-full">
+                                   <div className="">
+                                        <h4 className="text-black-5100 text-[13.9px] leading-5 font-bold">Admin_Sarah</h4>
+                                        <p className="text-gray1900 text-[13.1px] leading-5 font-normal mt-1.5">Uploaded Photos</p>
+                                        <ul className="flex items-center gap-2 mt-1.5">
+                                             <li className="text-gray-1400 text-[13.5px] leading-5 font-normal line-through">3 photos</li>
+                                             <li><Image src="/icons/right-arrow-long.svg" width={12} height={12} alt="" /></li>
+                                             <li className="text-black-5100 text-[12.5px] leading-5 font-bold">5 photos</li>
+                                        </ul>
+                                        <p className="text-grey-5000 text-[10.7px] leading-4 font-normal mt-1.5">2025-02-05 09:00</p>
+                                   </div>
+                                   <span className="text-DeepViolet font-bold text-[11.4px] leading-4 inline-flex items-center justify-center  h-5.5 px-2.5 bg-DeepViolet/10 border border-solid border-DeepViolet/20 rounded-full">upload</span>
+                              </div>
+                         </div>
+                         <div className="flex items-start gap-3 py-4">
+                              <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray1700">
+                                   <Image src="/icons/sheild-check.svg" width={16} height={16} alt="" className="brightness-0" />
+                              </span>
+                              <div className="flex-1 flex items-start justify-between w-full">
+                                   <div className="">
+                                        <h4 className="text-black-5100 text-[13.9px] leading-5 font-bold">System</h4>
+                                        <p className="text-gray1900 text-[13.1px] leading-5 font-normal mt-1.5">Verified Property KYCs</p>
+                                        <ul className="flex items-center gap-2 mt-1.5">
+                                             <li className="text-gray-1400 text-[13.5px] leading-5 font-normal line-through">Pending</li>
+                                             <li><Image src="/icons/right-arrow-long.svg" width={12} height={12} alt="" /></li>
+                                             <li className="text-black-5100 text-[12.5px] leading-5 font-bold">Verified</li>
+                                        </ul>
+                                        <p className="text-grey-5000 text-[10.7px] leading-4 font-normal mt-1.5">2025-01-28 12:00</p>
+                                   </div>
+                                   <span className="text-green-1800 font-bold text-[11.4px] leading-4 inline-flex items-center justify-center  h-5.5 px-2.5 bg-green-1800/10 border border-solid border-green-1800/20 rounded-full">system</span>
+                              </div>
+                         </div>
+                    </div>
+               </Modal>
+               {/****** Document Verification Modal *******/}
+               <Modal
+                    isOpen={isOpen2}
+                    onClose={() => setIsOpen2(false)}
+                    panelClassName="max-w-[512px] border-0 rounded-lg! bg-white relative"
+               >
+
+                    <div className='bg-blue-1000 rounded-t-lg flex items-center justify-between px-6 py-4'>
+                         <h4 className='text-white font-inter font-bold text-[15.6px] leading-6 tracking-[-0.4px] flex items-center gap-2'> <Image src="/images/file-icon2.svg" width={16} height={16} alt="" className="brightness-10000" /> Document Verification</h4>
+                         <Link onClick={() => setIsOpen2(false)} href={"#"} className="flex items-center justify-center rounded-full w-4 h-4 shadow-79xl  opacity-70">
+                              <Image src="/images/cross-gray.svg" width={16} height={16} alt="" className="brightness-10000" />
+                         </Link>
+                    </div>
+                    <div className="border-b border-solid border-gray1600 pt-8 pb-6 px-6">
+                         <div className="flex items-center gap-1.5">
+                              <h4 className="text-black-5100 text-sm leading-5 font-medium">PROP-1001</h4>
+                              <p className="text-green-2800 text-sm leading-4 font-normal flex items-center gap-1">
+                                   <Image src="/icons/location-icon.svg" width={12} height={12} alt="" />
+                                   London, UK
+                              </p>
+                         </div>
+                         <div className="flex items-center gap-4 mt-1">
+                              <p className="text-gray-1400 text-sm leading-5 font-normal flex items-center gap-1">
+                                   <Image src="/icons/user-gray.svg" width={14} height={14} alt="" />
+                                   Rajesh Kumar</p>
+                              <p className="text-gray-1400 text-sm leading-4 font-normal flex items-center gap-1">
+                                   <Image src="/icons/tiket.svg" width={14} height={14} alt="" />
+                                   1,800 GBP/mo
+                              </p>
+                         </div>
+                    </div>
+                    <div className="p-6">
+                         <h4 className="text-green-2800 mb-6 text-xs leading-4 font-medium tracking-[0.6px] uppercase">Ownership Documents</h4>
+                         <div className="flex items-start gap-3 border-b border-solid border-gray1600 py-3">
+                              <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-lightred1300">
+                                   <Image src="/icons/file-red.svg" width={16} height={16} alt="" />
+                              </span>
+                              <div className="flex-1 w-full">
+                                   <h4 className="text-black-5100 text-sm leading-5 font-normal">Ownership Certificate.pdf</h4>
+                                   <p className="text-green-2800 text-xs leading-4 font-normal">2.4 MB · Uploaded 2024-11-15</p>
+                              </div>
+                         </div>
+                         <div className="flex items-start gap-3 border-b border-solid border-gray1600 py-3">
+                              <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-lightred1300">
+                                   <Image src="/icons/file-red.svg" width={16} height={16} alt="" />
+                              </span>
+                              <div className="flex-1 w-full">
+                                   <h4 className="text-black-5100 text-sm leading-5 font-normal">Property Tax Receipt.pdf</h4>
+                                   <p className="text-green-2800 text-xs leading-4 font-normal">1.1 MB · Uploaded 2024-12-01</p>
+                              </div>
+                         </div>
+                         <div className="flex items-start gap-3 py-3">
+                              <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-lightred1300">
+                                   <Image src="/icons/file-red.svg" width={16} height={16} alt="" />
+                              </span>
+                              <div className="flex-1 w-full">
+                                   <h4 className="text-black-5100 text-sm leading-5 font-normal">Land Registry Extract.pdf</h4>
+                                   <p className="text-green-2800 text-xs leading-4 font-normal">3.8 MB · Uploaded 2025-01-20</p>
+                              </div>
+                         </div>
+                    </div>
+                    <div className="p-6 border-t border-solid border-gray1600">
+                         <ul className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                              <li>
+                                   <Link href={"#"} className="flex items-center justify-center shadow-82xl text-black13 text-sm leading-5 font-normal gap-1.5 h-10 rounded-md border border-solid border-gray1600 hover:bg-gray1700">
+                                        <Image src="/icons/refresh-icon2.svg" width={16} height={16} alt="" />
+                                        Request Re-upload
+                                   </Link>
+                              </li>
+                              <li>
+                                   <Link href={"#"} className="flex items-center justify-center text-white text-sm leading-5 font-normal gap-1.5 h-10 rounded-md border border-solid border-green-5000 bg-green-5000 hover:bg-green-1800 hover:border-green-1800">
+                                        <Image src="/icons/check-dark.svg" width={16} height={16} alt="" className="brightness-10000" />
+                                        Approve All
+                                   </Link>
+                              </li>
+                         </ul>
+                    </div>
+               </Modal>
+          </>
      );
 }

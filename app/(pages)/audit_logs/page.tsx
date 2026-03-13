@@ -16,8 +16,7 @@ import {
      X
 } from "lucide-react";
 import { useState } from "react";
-import Image from "next/image";
-import Button from "@/app/components/ui/Button";
+import Image from "next/image"; 
 import CustomSelect from "@/app/components/CustomSelect";
 import StatsCard3 from "@/app/components/StatsCard3";
 import ProgressBar from "@/app/components/ProgressBar";
@@ -154,22 +153,22 @@ function page() {
                                                   <h2 className="text-sm font-bold leading-5 text-black-2000">
                                                        Admin Activity Heatmap
                                                   </h2>
-                                                  <p className="text-[10px] leading-[15px] font-normal text-gray-6400">
+                                                  <p className="text-[10px] leading-3.75 font-normal text-gray-6400">
                                                        Real-time session monitoring
                                                   </p>
                                              </div>
                                              <ul className="flex items-center gap-3">
                                                   <li className="flex items-center gap-1.5">
                                                        <span className="w-2 h-2 rounded-full block bg-green-3700"></span>
-                                                       <h6 className="text-[10px] font-normal leading-[15px] text-gray-6400">Online</h6>
+                                                       <h6 className="text-[10px] font-normal leading-3.75 text-gray-6400">Online</h6>
                                                   </li>
                                                   <li className="flex items-center gap-1.5">
                                                        <span className="w-2 h-2 rounded-full block bg-yellow-1500"></span>
-                                                       <h6 className="text-[10px] font-normal leading-[15px] text-gray-6400">Away</h6>
+                                                       <h6 className="text-[10px] font-normal leading-3.75 text-gray-6400">Away</h6>
                                                   </li>
                                                   <li className="flex items-center gap-1.5">
                                                        <span className="w-2 h-2 rounded-full block bg-gray-6400"></span>
-                                                       <h6 className="text-[10px] font-normal leading-[15px] text-gray-6400">Offline</h6>
+                                                       <h6 className="text-[10px] font-normal leading-3.75 text-gray-6400">Offline</h6>
                                                   </li>
                                              </ul>
                                         </div>
@@ -237,7 +236,7 @@ function page() {
                                                   </h2>
                                              </div>
 
-                                             <button className="flex items-center gap-2 text-xs font-normal py-[7px] rounded-md px-3 bg-gray-1500 border border-gray-1000 text-black-2000 hover:text-gray-900">
+                                             <button className="flex items-center gap-2 text-xs font-normal py-1.75 rounded-md px-3 bg-gray-1500 border border-gray-1000 text-black-2000 hover:text-gray-900">
                                                   <Download size={14} />
                                                   Export for Audit
                                              </button>
@@ -286,7 +285,7 @@ function page() {
                                                        type="date"
                                                        value={timeRange}
                                                        onChange={(e) => setTimeRange(e.target.value)}
-                                                       className="w-full h-9 appearance-auto! pl-9 pr-3 text-sm text-gray-6400 placeholder:text-gray-6400 border border-gray-1000 bg-gray-3700/50 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500 text-gray-600"
+                                                       className="w-full h-9 appearance-auto! pl-9 pr-3 text-sm text-gray-6400 placeholder:text-gray-6400 border border-gray-1000 bg-gray-3700/50 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500"
                                                   />
                                              </div>
                                         </div>
@@ -313,7 +312,7 @@ function page() {
                                              <h2 className="text-sm font-bold leading-5 text-black-2000">
                                                   Forensic Audit Ledger
                                              </h2>
-                                             <p className="text-[10px] leading-[15px] font-normal text-gray-6400">
+                                             <p className="text-[10px] leading-3.75 font-normal text-gray-6400">
                                                   Showing 8 of 2,847 records
                                              </p>
                                         </div>
