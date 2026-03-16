@@ -254,7 +254,7 @@ function ManagementTable() {
                                                             className="w-8 h-8 flex items-center justify-center rounded-md  hover:bg-gray-1600 transition"
                                                        >
                                                             <Image
-                                                                 src="/images/eye-icon.svg"
+                                                                 src="/images/eyes-icon.svg"
                                                                  alt="View"
                                                                  width={16}
                                                                  height={16}

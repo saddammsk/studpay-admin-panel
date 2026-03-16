@@ -394,7 +394,7 @@ const UsersStudentsPage = () => {
                         className="px-3 py-2 hover:bg-gray-1600 inline-flex items-center gap-1.5 text-blue-1300 text-sm leading-5 font-medium cursor-pointer rounded-md transition-all duration-300"
                       >
                         <Image
-                          src="/images/eye-icon.svg"
+                          src="/images/eyes-icon.svg"
                           width="16"
                           height="16"
                           alt=""

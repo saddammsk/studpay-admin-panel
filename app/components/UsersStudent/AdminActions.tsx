@@ -31,7 +31,7 @@ const AdminActions = () => {
             className='w-full text-white text-sm leading-5 font-inter font-medium flex items-center gap-2 bg-blue1400 hover:bg-blue-1400 transition-all duration-500 ease-in-out rounded-md px-4 h-10'
           >
             <Image 
-              src="/images/eye-icon.svg"
+              src="/images/eyes-icon.svg"
               width="16"
               height="16"
               alt=""

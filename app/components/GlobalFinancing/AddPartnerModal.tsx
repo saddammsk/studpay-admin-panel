@@ -116,20 +116,7 @@ interface InputFieldProps {
   type?: string;
 }
 
-function InputField({ label, placeholder, value, onChange, type = "text" }: InputFieldProps) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-gray-600">{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 placeholder:text-gray-300 text-gray-800 transition-all"
-      />
-    </div>
-  );
-}
+
 
 interface BankDetailsStepProps {
   data: FormData;

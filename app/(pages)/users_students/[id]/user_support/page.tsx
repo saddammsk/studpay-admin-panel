@@ -162,11 +162,11 @@ const UsersStudentsPage = () => {
         </div>
       </Modal>
 
-      <Modal isOpen={activeModal === "escalate"} onClose={closeModal} panelClassName="max-w-[520px] bg-white rounded-xl! border-gray-3600! relative h-full overflow-y-auto">
+      <Modal isOpen={activeModal === "escalate"} onClose={closeModal} panelClassName="max-w-[520px] bg-white relative h-full overflow-y-auto">
         <button type="button" onClick={closeModal} className="flex items-center justify-center rounded-lg w-4 h-4 absolute top-4 right-4 cursor-pointer">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="Close" />
         </button>
-        <div className="md:px-6 md:pb-6 md:pt-10 p-4">
+        <div className="md:px-6 md:pb-6 md:pt-10 p-4 ">
           <div className="flex items-center gap-3">
             <span className="bg-blue-1700/20 rounded-xl w-10 h-10 flex items-center justify-center">
               <Image src="/icons/arrow-up-rounded.svg" width={20} height={20} alt="" />

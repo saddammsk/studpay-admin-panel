@@ -102,7 +102,7 @@ const CreditComplianceDocs = () => {
                       className="flex items-center justify-center w-8 h-8 cursor-pointer rounded-md hover:bg-gray-1600 transition-all duration-300"
                     >
                       <Image
-                        src="/images/eye-icon.svg"
+                        src="/images/eyes-icon.svg"
                         width={16}
                         height={16}
                         alt=""

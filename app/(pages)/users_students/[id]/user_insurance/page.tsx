@@ -781,7 +781,7 @@ const UsersStudentsPage = () => {
           <div className="flex items-center gap-3 mb-2">
             <span className="bg-blue1400/10 rounded-lg w-10 h-10 flex items-center justify-center">
               <Image
-                src="../images/eye-icon.svg"
+                src="../images/eyes-icon.svg"
                 width={20}
                 height={20}
                 alt=""

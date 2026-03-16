@@ -545,7 +545,7 @@ const StudSafePage = () => {
         </Link>
         <div className="md:py-8.5 md:px-6 p-4">
           <div className="flex items-center gap-3 mb-2">
-            <span className="bg-blue1400/10 rounded-lg w-10 h-10 flex items-center justify-center"><Image src="/images/eye-icon.svg" width={20} height={20} alt="" /></span>
+            <span className="bg-blue1400/10 rounded-lg w-10 h-10 flex items-center justify-center"><Image src="/images/eyes-icon.svg" width={20} height={20} alt="" /></span>
             <h4 className="text-black-2000 font-semibold text-lg leading-5 tracking-[-0.45px]">Impersonate User</h4>
           </div>
           <p className="text-gray-1900 font-normal text-sm leading-5 mt-1.5">You will view the platform as {student.name}. All actions during impersonation will be logged for audit purposes.</p>

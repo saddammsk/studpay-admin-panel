@@ -488,7 +488,7 @@ made..."></textarea>
                                              <Image src="/images/check-round.svg" width={28} height={28} alt="" />
                                              <h4 className="text-white text-base leading-6 font-normal">Approve Document</h4>
                                         </div>
-                                        <span className="inline-flex items-center text-white text-xs leading-4 gap-1 border border-solid border-white/30 bg-white/20 px-2 h-5.5 rounded-full"><Image src="/images/user-eye-icon.svg" width={16} height={16} alt="" /> 4-Eyes</span>
+                                        <span className="inline-flex items-center text-white text-xs leading-4 gap-1 border border-solid border-white/30 bg-white/20 px-2 h-5.5 rounded-full"><Image src="/images/user-eyes-icon.svg" width={16} height={16} alt="" /> 4-Eyes</span>
                                    </div>
                                    <div className="px-4 h-12 mt-4 flex items-center justify-between bg-gray-1500 border border-solid border-red2100/30 rounded-[10px]">
                                         <div className="flex items-center gap-3">
@@ -514,7 +514,7 @@ made..."></textarea>
                          </div>
                     </div>
                     <div className="bg-gray-6200/50 flex items-center justify-between border-t border-solid border-gray-3600 rounded-b-2xl px-2.5 py-3.5">
-                         <p className="text-gray-1900 text-xs leading-4 flex items-center gap-1"><Image src="/images/eye-icon.svg" width={16} height={16} alt="" /> Last viewed by <span className="text-blue1700 block"> Admin Sarah </span> at <span className="text-blue1700 block">10:15 AM</span> </p>
+                         <p className="text-gray-1900 text-xs leading-4 flex items-center gap-1"><Image src="/images/eyes-icon.svg" width={16} height={16} alt="" /> Last viewed by <span className="text-blue1700 block"> Admin Sarah </span> at <span className="text-blue1700 block">10:15 AM</span> </p>
                          <p className="text-gray-1900 text-xs leading-4 flex items-center gap-2"><Image src="/images/clock-gray.svg" width={14} height={14} alt="" /> Today</p>
                     </div>
 

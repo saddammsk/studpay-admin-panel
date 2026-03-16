@@ -285,7 +285,7 @@ const UsersStudentsPage = () => {
                             className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-md text-blue-1300 font-normal text-sm leading-5 bg-gray-1500 border-solid border-gray-3600 h-9 flex items-center justify-center"
                           >
                             <Image
-                              src="/images/eye-icon.svg"
+                              src="/images/eyes-icon.svg"
                               alt="file"
                               width={16}
                               height={16}

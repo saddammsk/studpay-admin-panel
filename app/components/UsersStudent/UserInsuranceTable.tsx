@@ -106,7 +106,7 @@ export default function UserInsuranceTable() {
                           className="flex items-center justify-center bg-white rounded-md h-8 w-8 hover:bg-gray-100 cursor-pointer transition-all duration-300"
                         >
                           <Image
-                            src="/images/eye-icon.svg"
+                            src="/images/eyes-icon.svg"
                             width={16}
                             height={16}
                             alt="View"

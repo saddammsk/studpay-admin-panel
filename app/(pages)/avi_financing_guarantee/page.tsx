@@ -193,7 +193,7 @@ export default function FinanceAnalytics() {
                                              <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-yellow-1100 py-1 px-2 ">Pending</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
-                                                       <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>
+                                                       <Link href="/"><img src="/images/eyes-icon.svg" alt="" /></Link>
                                                   </li>
                                                   <li>
                                                        <Link href="/" className="text-xs font-medium leading-4 text-gray-2500">Open</Link>
@@ -210,7 +210,7 @@ export default function FinanceAnalytics() {
                                              <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-green-1500 py-1 px-2">Approved</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
-                                                       <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>
+                                                       <Link href="/"><img src="/images/eyes-icon.svg" alt="" /></Link>
                                                   </li>
                                                   <li>
                                                        <Link href="/" className="text-xs font-medium leading-4 text-gray-2500">Open</Link>
@@ -227,7 +227,7 @@ export default function FinanceAnalytics() {
                                              <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-blue-1800 py-1 px-2">Review</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
-                                                       <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>
+                                                       <Link href="/"><img src="/images/eyes-icon.svg" alt="" /></Link>
                                                   </li>
                                                   <li>
                                                        <Link href="/" className="text-xs font-medium leading-4 text-gray-2500">Open</Link>
@@ -244,7 +244,7 @@ export default function FinanceAnalytics() {
                                              <div className="text-xs mb-3 font-medium leading-4 bg-green-1400  text-yellow-1100 py-1 px-2 rounded-full ">Pending</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
-                                                       <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>
+                                                       <Link href="/"><img src="/images/eyes-icon.svg" alt="" /></Link>
                                                   </li>
                                                   <li>
                                                        <Link href="/" className="text-xs font-medium leading-4 text-gray-2500">Open</Link>
@@ -261,7 +261,7 @@ export default function FinanceAnalytics() {
                                              <div className="text-xs mb-3 font-medium leading-4 bg-green-1400 rounded-full text-green-1500 py-1 px-2">Approved</div>
                                              <ul className="flex items-center gap-3">
                                                   <li>
-                                                       <Link href="/"><img src="/images/eye-icon.svg" alt="" /></Link>
+                                                       <Link href="/"><img src="/images/eyes-icon.svg" alt="" /></Link>
                                                   </li>
                                                   <li>
                                                        <Link href="/" className="text-xs font-medium leading-4 text-gray-2500">Open</Link>

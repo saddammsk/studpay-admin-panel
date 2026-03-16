@@ -58,7 +58,7 @@ const AudienceTargeting = () => {
                                           </Link>
                                           <Link href={"#"} className='hover:bg-gray1700 transition-all duration-500 ease-in-out inline-flex items-center justify-center text-black13 font-segoe font-normal text-[13.89px] leading-5 gap-4 border border-solid border-gray1600 rounded-md h-9 px-3.25'>
                                                 <Image
-                                                      src="../images/eye-icon.svg"
+                                                      src="../images/eyes-icon.svg"
                                                       alt=""
                                                       width={16}
                                                       height={16}
