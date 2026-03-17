@@ -8,7 +8,7 @@ type ButtonProps = {
      type?: "button" | "submit" | "reset";
      disabled?: boolean;
      className?: string;
-     iconPosition?: "start" | "end"; // new prop
+     iconPosition?: "start" | "end"; 
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
      type = "button",
      disabled = false,
      className = "",
-     iconPosition = "start", // default icon before label
+     iconPosition = "start",
 }) => {
      return (
           <button

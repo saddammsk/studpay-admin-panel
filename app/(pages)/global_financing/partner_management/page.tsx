@@ -9,9 +9,11 @@ import FinancePartnerTable from '@/app/components/GlobalFinancing/FinancePartner
 
 
 
-
 const PartnerManagementPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+
+
   return (
     <>
       <div className='w-full'>
@@ -115,7 +117,6 @@ const PartnerManagementPage = () => {
               </div>
             </div>
           </div>
-          {/****  *****/}
           <div className='mt-6'>
             <h4 className='text-blue-1300 text-base leading-6 font-semibold mb-3'>Partner Directory</h4>
             <FinancePartnerTable />

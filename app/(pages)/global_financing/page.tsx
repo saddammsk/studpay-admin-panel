@@ -1,218 +1,733 @@
 "use client";
-import { useMemo } from "react";
+
+
+import { create } from "zustand";
 import Image from "next/image";
-import Link from "next/link";
+
 import Modal from "@/app/components/Modal";
-import CustomSelect from "@/app/components/CustomSelect";
-import {
-  useFinancingStore,
-  LOANS,
-  type LoanStatus,
-  type RiskLevel,
-} from "@/app/store/zustand/useGlobalFinancingStore";
+import ProgressBar from "@/app/components/ProgressBar";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
-const statusConfig: Record<LoanStatus, string> = {
-  Active: "bg-green-1300/10 border-lightgreen15 text-green-1800",
-  "Pending Approval": "bg-yellow-1300/10 border-yellow2100 text-BurntOrange",
-  "Under Review": "bg-blue-1700/10 border-blue300 text-blue800",
-  Disbursed: "bg-purple-1100/10 border-purpal12 text-purpal14",
-  Defaulted: "bg-red-1300/10 border-red-1300/20 text-red-1300",
-  Completed: "bg-green-1300/10 border-lightgreen15 text-green-1800",
+
+
+type Status = "Approved" | "Under Review" | "Pending" | "Rejected";
+type DocumentStatus = "Verified" | "Pending";
+type SortField = "id" | "applicant" | "amount" | "sla" | "aiScore" | null;
+type SortDir = "asc" | "desc";
+
+interface CaseItem {
+  id: string;
+  applicant: string;
+  amount: string;
+  amountNum: number;    
+  bank: string;
+  manager: { name: string; phone: string };
+  sla: string;
+  slaNum: number;      
+  status: Status;
+  statusIcon: string;
+  aiScore: number;
+  aiScoreIcon: string;
+}
+
+interface ChatMessage {
+  id: number;
+  author: string;
+  time: string;
+  text: string;
+  side: "left" | "right";
+  internal?: boolean;
+}
+
+interface Document {
+  label: string;
+  status: DocumentStatus;
+}
+
+interface PaymentStat {
+  value: number;
+  label: string;
+  color: string;
+  bg: string;
+}
+
+
+
+const CASES: CaseItem[] = [
+  {
+    id: "STD-2024-001", applicant: "Ahmed Benali",   amount: "€25,000", amountNum: 25000,
+    bank: "Deutsche Bank",    manager: { name: "Klaus Fischer",       phone: "+49 170 123456" },
+    sla: "3d",  slaNum: 3,  status: "Approved",     statusIcon: "/images/checkgreendark.svg",  aiScore: 87, aiScoreIcon: "/icons/aiScoregreen.svg",
+  },
+  {
+    id: "STD-2024-002", applicant: "Marie Dupont",   amount: "€18,500", amountNum: 18500,
+    bank: "BNP Paribas",      manager: { name: "Jean-Pierre Moreau", phone: "+33 6 12345678" },
+    sla: "7d",  slaNum: 7,  status: "Under Review", statusIcon: "/images/clock-yellow.svg",    aiScore: 72, aiScoreIcon: "/icons/aiScoreblue.svg",
+  },
+  {
+    id: "STD-2024-003", applicant: "Carlos Mendes",  amount: "€32,000", amountNum: 32000,
+    bank: "Société Générale", manager: { name: "Isabella Laurent",   phone: "+33 7 98765432" },
+    sla: "12d", slaNum: 12, status: "Pending",       statusIcon: "/icons/warning-dark.svg",    aiScore: 58, aiScoreIcon: "/icons/aiScorered.svg",
+  },
+  {
+    id: "STD-2024-004", applicant: "Fatima Zahra",   amount: "€21,000", amountNum: 21000,
+    bank: "Deutsche Bank",    manager: { name: "Klaus Fischer",       phone: "+49 170 123456" },
+    sla: "1d",  slaNum: 1,  status: "Approved",     statusIcon: "/images/checkgreendark.svg",  aiScore: 93, aiScoreIcon: "/icons/aiScoregreen.svg",
+  },
+  {
+    id: "STD-2024-005", applicant: "Liam O'Brien",   amount: "€15,000", amountNum: 15000,
+    bank: "ABN AMRO",         manager: { name: "Pieter van den Berg", phone: "+31 6 87654321" },
+    sla: "5d",  slaNum: 5,  status: "Under Review", statusIcon: "/images/clock-yellow.svg",    aiScore: 65, aiScoreIcon: "/icons/aiScoreblue.svg",
+  },
+  {
+    id: "STD-2024-006", applicant: "Yuki Tanaka",    amount: "€28,000", amountNum: 28000,
+    bank: "BNP Paribas",      manager: { name: "Sophie Martin",       phone: "+33 6 55443322" },
+    sla: "15d", slaNum: 15, status: "Rejected",     statusIcon: "/images/cross-circle.svg",    aiScore: 34, aiScoreIcon: "/icons/aiScorered.svg",
+  },
+  {
+    id: "STD-2024-007", applicant: "Anna Kowalski",  amount: "€19,500", amountNum: 19500,
+    bank: "Deutsche Bank",    manager: { name: "Markus Weber",        phone: "+49 171 654321" },
+    sla: "2d",  slaNum: 2,  status: "Approved",     statusIcon: "/images/checkgreendark.svg",  aiScore: 88, aiScoreIcon: "/icons/aiScoregreen.svg",
+  },
+];
+
+const PAYMENT_STATS: PaymentStat[] = [
+  { value: 18, label: "On Time", color: "text-green57",      bg: "bg-green57/10"      },
+  { value: 2,  label: "Late",    color: "text-yellow-1100",  bg: "bg-yellow-1100/10"  },
+  { value: 0,  label: "Missed", color: "text-red-1300",     bg: "bg-red-1300/10"     },
+];
+
+const DOCUMENTS: Document[] = [
+  { label: "Student ID",            status: "Verified" },
+  { label: "Proof of Income",       status: "Verified" },
+  { label: "Bank Statement",        status: "Pending"  },
+  { label: "Enrollment Certificate",status: "Verified" },
+];
+
+const INITIAL_CHAT: ChatMessage[] = [
+  { id: 1, author: "Ahmed Hassan", time: "10:23 AM", side: "left",
+    text: "Hello, I tried to pay my housing deposit of €500 but the transaction failed. My bank shows the amount was debited but I didn't receive any confirmation from StudPay." },
+  { id: 2, author: "Sarah (Support)", time: "10:25 AM", side: "right",
+    text: "Hi Ahmed, I'm sorry to hear about this issue. Let me check your transaction details right away. Can you please share the last 4 digits of the card you used?" },
+  { id: 3, author: "Ahmed Hassan", time: "10:27 AM", side: "left",
+    text: "Yes, the card ends with 4521. The transaction was at 9:45 AM today." },
+  { id: 4, author: "Sarah → Finance Team", time: "10:28 AM", side: "right", internal: true,
+    text: "Need to check Stripe logs for transaction around 9:45 AM, card ending 4521. Student claims amount debited but no confirmation. Possible timeout issue?" },
+  { id: 5, author: "Sarah (Support)", time: "10:32 AM", side: "right",
+    text: "Thank you, Ahmed. I can see your transaction in our system. It appears there was a timeout during processing. The payment was actually successful but the confirmation email wasn't sent. I'm processing the booking now and you'll receive confirmation within 5 minutes." },
+];
+
+
+
+const SCORE_CONFIG: Record<number, string> = {
+  87: "bg-lightgreenNew4 text-green58 shadow-69xl",
+  72: "bg-lighrgrey43 text-ElectricBlue2 shadow-70xl",
+  58: "bg-bgRed12 text-red2100",
+  93: "bg-lightgreenNew4 text-green58 shadow-69xl",
+  65: "bg-lighrgrey43 text-ElectricBlue2 shadow-70xl",
+  34: "bg-bgRed12 text-red2100",
+  88: "bg-lightgreenNew4 text-green58 shadow-69xl",
 };
 
-const riskConfig: Record<RiskLevel, string> = {
-  Low: "bg-green-1300/10 border-lightgreen15 text-green-1800",
-  Medium: "bg-yellow-1300/10 border-yellow2100 text-BurntOrange",
-  High: "bg-red-1300/10 border-red-1300/20 text-red-1300",
+const STATUS_CONFIG: Record<Status, string> = {
+  Approved:      "bg-lightgreenNew4 text-green58",
+  "Under Review":"bg-yellow-3100 text-yellow-1100",
+  Pending:       "bg-gray-6100 text-ElectricBlue2",
+  Rejected:      "bg-gray-6100 text-red2100",
 };
 
-const progressColor = (v: number) => {
-  if (v >= 75) return "bg-green57";
-  if (v >= 40) return "bg-yellow-1100";
-  if (v > 0) return "bg-red-1300";
-  return "bg-gray-300";
+const SLA_COLOR: Record<Status, string> = {
+  Approved:      "text-green58",
+  "Under Review":"text-yellow-1100",
+  Pending:       "text-blue-1100",
+  Rejected:      "text-red2100",
 };
 
-export default function FinancingLoanLedgerPage() {
-  const store = useFinancingStore();
-  const {
-    search, statusFilter, riskFilter, partnerFilter,
-    currentPage, itemsPerPage, sortField, sortDirection,
-    detailModalOpen, detailLoan,
-    newAppModalOpen, newAppForm, newAppErrors,
-  } = store;
 
-  const filtered = useMemo(() => {
-    let data = [...LOANS];
-    if (search) {
-      const q = search.toLowerCase();
-      data = data.filter((r) =>
-        r.studentName.toLowerCase().includes(q) ||
-        r.loanId.toLowerCase().includes(q) ||
-        r.university.toLowerCase().includes(q) ||
-        r.partner.toLowerCase().includes(q)
-      );
+
+interface TableStore {
+  isCreditModalOpen: boolean;
+  isAiModalOpen: boolean;
+  selectedCase: CaseItem | null;
+  openCreditModal: (c: CaseItem) => void;
+  openAiModal: (c: CaseItem) => void;
+  closeModals: () => void;
+
+  aiActiveTab: number;
+  setAiActiveTab: (idx: number) => void;
+
+  sortField: SortField;
+  sortDir: SortDir;
+  toggleSort: (field: SortField) => void;
+
+  filterOpen: boolean;
+  filterStatus: Status | "All";
+  filterBank: string;
+  toggleFilterPanel: () => void;
+  setFilterStatus: (s: Status | "All") => void;
+  setFilterBank: (b: string) => void;
+  resetFilters: () => void;
+
+  chatMessages: ChatMessage[];
+  chatInput: string;
+  setChatInput: (v: string) => void;
+  sendMessage: () => void;
+}
+
+const useTableStore = create<TableStore>((set, get) => ({
+  // Modals
+  isCreditModalOpen: false,
+  isAiModalOpen: false,
+  selectedCase: null,
+  openCreditModal: (c) => set({ isCreditModalOpen: true, selectedCase: c }),
+  openAiModal:    (c) => set({ isAiModalOpen: true,     selectedCase: c }),
+  closeModals:    ()  => set({ isCreditModalOpen: false, isAiModalOpen: false }),
+
+  // AI tab
+  aiActiveTab: 0,
+  setAiActiveTab: (idx) => set({ aiActiveTab: idx }),
+
+  // Sort
+  sortField: null,
+  sortDir: "asc",
+  toggleSort: (field) => {
+    const { sortField, sortDir } = get();
+    if (sortField === field) {
+      set({ sortDir: sortDir === "asc" ? "desc" : "asc" });
+    } else {
+      set({ sortField: field, sortDir: "asc" });
     }
-    if (statusFilter !== "All") data = data.filter((r) => r.status === statusFilter);
-    if (riskFilter !== "All") data = data.filter((r) => r.risk === riskFilter);
-    if (partnerFilter !== "All") data = data.filter((r) => r.partner === partnerFilter);
-    if (sortField) {
-      data.sort((a, b) => {
-        if (sortField === "amountNum" || sortField === "repaymentProgress" || sortField === "id") {
-          return sortDirection === "asc" ? a[sortField] - b[sortField] : b[sortField] - a[sortField];
-        }
-        const aV = String(a[sortField]), bV = String(b[sortField]);
-        return sortDirection === "asc" ? aV.localeCompare(bV) : bV.localeCompare(aV);
-      });
-    }
-    return data;
-  }, [search, statusFilter, riskFilter, partnerFilter, sortField, sortDirection]);
+  },
 
-  const totalPages = Math.ceil(filtered.length / itemsPerPage);
-  const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-  const startItem = (currentPage - 1) * itemsPerPage + 1;
-  const endItem = Math.min(currentPage * itemsPerPage, filtered.length);
-  const hasFilters = search !== "" || statusFilter !== "All" || riskFilter !== "All" || partnerFilter !== "All";
+  // Filter
+  filterOpen: false,
+  filterStatus: "All",
+  filterBank: "All",
+  toggleFilterPanel: () => set((s) => ({ filterOpen: !s.filterOpen })),
+  setFilterStatus:   (v) => set({ filterStatus: v }),
+  setFilterBank:     (v) => set({ filterBank: v }),
+  resetFilters:      ()  => set({ filterStatus: "All", filterBank: "All" }),
 
-  const thSort = "px-4 py-3.5 text-blue-1300 text-sm leading-5 font-bold cursor-pointer select-none";
-  const thStatic = "px-4 py-3.5 text-blue-1300 text-sm leading-5 font-bold";
+  // Chat
+  chatMessages: INITIAL_CHAT,
+  chatInput: "",
+  setChatInput: (v) => set({ chatInput: v }),
+  sendMessage: () => {
+    const { chatInput, chatMessages } = get();
+    const trimmed = chatInput.trim();
+    if (!trimmed) return;
+    const newMsg: ChatMessage = {
+      id: Date.now(),
+      author: "Sarah (Support)",
+      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      side: "right",
+      text: trimmed,
+    };
+    set({ chatMessages: [...chatMessages, newMsg], chatInput: "" });
+  },
+}));
+
+
+
+function getSortedFiltered(
+  cases: CaseItem[],
+  sortField: SortField,
+  sortDir: SortDir,
+  filterStatus: Status | "All",
+  filterBank: string
+): CaseItem[] {
+  let result = [...cases];
+
+  if (filterStatus !== "All") result = result.filter((c) => c.status === filterStatus);
+  if (filterBank   !== "All") result = result.filter((c) => c.bank   === filterBank);
+
+  if (sortField) {
+    result.sort((a, b) => {
+      let av: string | number = a[sortField] as string | number;
+      let bv: string | number = b[sortField] as string | number;
+      if (sortField === "amount") { av = a.amountNum; bv = b.amountNum; }
+      if (sortField === "sla")    { av = a.slaNum;    bv = b.slaNum;    }
+      if (typeof av === "number" && typeof bv === "number") {
+        return sortDir === "asc" ? av - bv : bv - av;
+      }
+      return sortDir === "asc"
+        ? String(av).localeCompare(String(bv))
+        : String(bv).localeCompare(String(av));
+    });
+  }
+
+  return result;
+}
+
+
+
+const StatusBadge = ({ status }: { status: DocumentStatus }) => (
+  <span
+    className={`text-xs leading-4 font-normal w-15.75 h-6 rounded-full inline-flex items-center justify-center ${
+      status === "Verified"
+        ? "bg-green57/10 text-green57"
+        : "bg-yellow-1100/10 text-yellow-1100"
+    }`}
+  >
+    {status}
+  </span>
+);
+
+const SortIcon = ({ field }: { field: SortField }) => {
+  const { sortField, sortDir } = useTableStore();
+  const active = sortField === field;
+  return (
+    <span className={`ml-1 inline-flex flex-col text-[8px] leading-none ${active ? "opacity-100" : "opacity-30"}`}>
+      <span className={active && sortDir === "asc"  ? "text-ElectricBlue2" : ""}>▲</span>
+      <span className={active && sortDir === "desc" ? "text-ElectricBlue2" : ""}>▼</span>
+    </span>
+  );
+};
+
+
+const BANKS    = ["All", "Deutsche Bank", "BNP Paribas", "Société Générale", "ABN AMRO"];
+const STATUSES: (Status | "All")[] = ["All", "Approved", "Under Review", "Pending", "Rejected"];
+
+function FilterPanel() {
+  const { filterOpen, filterStatus, filterBank, setFilterStatus, setFilterBank, resetFilters } =
+    useTableStore();
+
+  if (!filterOpen) return null;
+
+  return (
+    <div className="absolute top-12 left-0 z-20 bg-white border border-gray-3100 rounded-xl shadow-lg p-4 w-64">
+      <div className="mb-3">
+        <p className="text-xs font-bold text-grey5700 uppercase mb-2">Status</p>
+        <div className="flex flex-wrap gap-1.5">
+          {STATUSES.map((s) => (
+            <button
+              key={s}
+              onClick={() => setFilterStatus(s)}
+              className={`px-2.5 py-1 rounded-full text-[10px] font-bold transition-all ${
+                filterStatus === s
+                  ? "bg-ElectricBlue2 text-white"
+                  : "bg-gray-6100 text-grey5700 hover:bg-gray-200"
+              }`}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="mb-3">
+        <p className="text-xs font-bold text-grey5700 uppercase mb-2">Bank</p>
+        <select
+          value={filterBank}
+          onChange={(e) => setFilterBank(e.target.value)}
+          className="w-full text-xs border border-gray-3100 rounded-md px-2 py-1.5 outline-none text-black-1300"
+        >
+          {BANKS.map((b) => (
+            <option key={b} value={b}>{b}</option>
+          ))}
+        </select>
+      </div>
+      <button
+        onClick={resetFilters}
+        className="text-xs text-red2100 hover:underline mt-1"
+      >
+        Reset filters
+      </button>
+    </div>
+  );
+}
+
+
+
+function CreditModalContent() {
+  const { selectedCase } = useTableStore();
 
   return (
     <>
-      {/* FILTERS */}
-      <div className="border border-solid border-gray-3600 bg-white rounded-xl p-4 mb-4 shadow-68xl">
-        <div className="2xl:flex items-center gap-3">
-          <div className="relative flex-1 w-full 2xl:mb-0 mb-4">
-            <input
-              type="text"
-              className="text-sm transition duration-300 ring-2 ring-transparent focus:ring-transparent font-normal font-neulis-sans text-gray-1900 placeholder:text-gray-1400 px-4 pl-10 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0"
-              placeholder="Search by loan ID, student, or university..."
-              value={search}
-              onChange={(e) => store.setSearch(e.target.value)}
-            />
-            <div className="absolute top-1/2 -translate-y-1/2 left-3">
-              <Image src="/images/search-icon.svg" width="16" height="16" alt="" />
+      <div>
+        <h4 className="text-blue-1300 font-bold text-lg leading-7">Credit Assessment</h4>
+        <p className="text-gray-1900 font-normal text-sm leading-5 mt-1">
+          Financial breakdown for {selectedCase?.applicant ?? "—"}
+        </p>
+      </div>
+      <div className="mt-6 flex items-center gap-4 bg-gray-7500 rounded-lg p-4">
+        <div className="w-12 h-12 rounded-full bg-blue-2200/10 flex items-center justify-center">
+          <span className="text-lg font-bold text-blue-2200 leading-7">
+            {selectedCase?.applicant.split(" ").map((n) => n[0]).join("").slice(0, 2) ?? "?"}
+          </span>
+        </div>
+        <div>
+          <p className="text-base font-bold text-blue-1300 leading-6">{selectedCase?.applicant}</p>
+          <p className="text-sm text-gray-1900 font-normal leading-5">{selectedCase?.bank}</p>
+        </div>
+      </div>
+      <div className="mt-6 bg-white rounded-lg border border-gray-3600 p-4">
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-sm leading-5 font-normal text-gray-1900 block">Credit Score</span>
+          <span className="text-lg leading-7 font-bold text-green57 block">78/100</span>
+        </div>
+        <ProgressBar value={78} bgColor="bg-gray-7500" barColor="bg-green57" />
+        <p className="text-gray-1900 text-sm leading-5 mt-3">
+          Based on payment history, income stability, and debt levels.
+        </p>
+      </div>
+      <div className="border-t border-solid border-gray-3600 pt-6 mt-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Image src="/images/wallet-blue.svg" width={16} height={16} alt="" />
+          <h2 className="text-sm leading-6 font-bold text-blue-1300">Financial Overview</h2>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-gray-7500 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-1">
+              <Image src="/images/price-arrow-green.svg" width={16} height={16} alt="" />
+              <span className="text-sm leading-4 text-green57 font-normal">Monthly Income</span>
             </div>
+            <p className="text-lg leading-7 font-bold text-blue-1300">€1,200</p>
           </div>
-          <div className="2xl:flex items-center grid sm:grid-cols-4 grid-cols-2 gap-3">
-            <div className="2xl:w-40 w-full">
-              <CustomSelect
-                value={statusFilter}
-                className="h-10"
-                onChange={store.setStatusFilter}
-                options={[
-                  { label: "All Statuses", value: "All" },
-                  { label: "Active", value: "Active" },
-                  { label: "Pending Approval", value: "Pending Approval" },
-                  { label: "Under Review", value: "Under Review" },
-                  { label: "Disbursed", value: "Disbursed" },
-                  { label: "Defaulted", value: "Defaulted" },
-                  { label: "Completed", value: "Completed" },
-                ]}
-              />
+          <div className="bg-gray-7500 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-1">
+              <Image src="/images/price-down-arrow-yellow.svg" width={16} height={16} alt="" />
+              <span className="text-sm leading-4 text-yellow-1100 font-normal">Monthly Expenses</span>
             </div>
-            <div className="2xl:w-36 w-full">
-              <CustomSelect
-                value={riskFilter}
-                className="h-10"
-                onChange={store.setRiskFilter}
-                options={[
-                  { label: "All Risk", value: "All" },
-                  { label: "Low", value: "Low" },
-                  { label: "Medium", value: "Medium" },
-                  { label: "High", value: "High" },
-                ]}
-              />
-            </div>
-            <div className="2xl:w-44 w-full">
-              <CustomSelect
-                value={partnerFilter}
-                className="h-10"
-                onChange={store.setPartnerFilter}
-                options={[
-                  { label: "All Partners", value: "All" },
-                  { label: "EduFund Africa", value: "EduFund Africa" },
-                  { label: "StudyLoan NG", value: "StudyLoan NG" },
-                  { label: "Prodigy Finance", value: "Prodigy Finance" },
-                ]}
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              {hasFilters && (
-                <button type="button" onClick={store.resetFilters} className="text-red-1300 hover:bg-red-1300/10 text-xs font-medium px-3 h-10 rounded-md transition-colors whitespace-nowrap inline-flex items-center gap-1">
-                  <Image src="/images/cross-red.svg" width="12" height="12" alt="" />
-                  Clear
-                </button>
-              )}
-              <button onClick={store.exportCSV} className="inline-flex items-center gap-2 text-black-1000 text-sm border border-gray-3600 rounded-md bg-white h-10 px-3 hover:bg-gray-1500 transition-colors cursor-pointer whitespace-nowrap">
-                <Image src="/images/export-icon4.svg" width="16" height="16" alt="" />
-                Export
-              </button>
-            </div>
+            <p className="text-lg leading-7 font-bold text-blue-1300">€680</p>
           </div>
         </div>
       </div>
+      <div className="bg-gray-7500 rounded-lg p-3 mt-4">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-gray-1900 text-sm leading-5 font-normal block">Debt-to-Income Ratio</span>
+          <span className="text-yellow-1100 text-sm leading-5 font-normal block">56.7%</span>
+        </div>
+        <ProgressBar value={56} bgColor="bg-gray-1500" barColor="bg-yellow-1100" />
+      </div>
+      <div className="border-t border-solid border-gray-3600 pt-6 mt-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Image src="/icons/card-blue2.svg" width={16} height={16} alt="" />
+          <h2 className="text-sm leading-6 font-bold text-blue-1300">Payment History</h2>
+        </div>
+        <div className="grid grid-cols-3 gap-3">
+          {PAYMENT_STATS.map((stat) => (
+            <div key={stat.label} className={`${stat.bg} rounded-lg p-3 flex flex-col items-center`}>
+              <span className={`text-2xl leading-8 font-bold ${stat.color}`}>{stat.value}</span>
+              <span className="text-xs leading-4 text-gray-1900 font-normal">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="border-t border-solid border-gray-3600 pt-6 mt-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Image src="/icons/file-check-blue.svg" width={16} height={16} alt="" />
+          <h2 className="text-sm leading-6 font-bold text-blue-1300">Verification Documents</h2>
+        </div>
+        {DOCUMENTS.map((doc) => (
+          <div key={doc.label} className="flex items-center justify-between bg-gray-7500 rounded-lg p-3 mb-2 last:mb-0">
+            <span className="text-sm text-slate-600 font-medium">{doc.label}</span>
+            <StatusBadge status={doc.status} />
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
 
-      {/* TABLE */}
-      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-68xl">
+
+function AiModalContent() {
+  const {
+    selectedCase,
+    aiActiveTab, setAiActiveTab,
+    chatMessages, chatInput, setChatInput, sendMessage,
+  } = useTableStore();
+
+  return (
+    <>
+      <div className="rounded-xl sm:px-6 sm:py-5 p-4 bg-linear-to-r from-violet123 to-ElectricBlue2">
+        <h4 className="text-white font-bold sm:text-xl text-[17px] leading-7 flex items-center gap-2">
+          <Image src="/icons/white-star.svg" width={20} height={20} alt="" />
+          Fiche Diagnostic — AI Scoring
+        </h4>
+        <p className="text-white/70 font-normal text-sm leading-5 mt-1">
+          {selectedCase?.applicant} • Dossier #{selectedCase?.id} • {selectedCase?.bank} • {selectedCase?.amount}
+        </p>
+      </div>
+
+      <div className="mt-6">
+        <TabGroup selectedIndex={aiActiveTab} onChange={setAiActiveTab}>
+          <TabList className="border-b border-solid border-gray-3100 flex sm:gap-4 gap-2">
+            {["Diagnostic", "Recommendations", "Communication"].map((label) => (
+              <Tab
+                key={label}
+                className={({ selected }) =>
+                  selected
+                    ? "border-b-2 border-solid border-ElectricBlue2 text-ElectricBlue2 sm:text-sm text-xs leading-4 font-normal sm:pl-5 sm:pr-3.5 px-2.5 py-3 focus:outline-none"
+                    : "text-grey5700 border-b-2 border-solid border-transparent sm:text-sm text-xs leading-4 font-normal sm:pl-5 sm:pr-3.5 px-2.5 py-3 hover:text-ElectricBlue2 hover:border-ElectricBlue2 cursor-pointer focus:outline-none"
+                }
+              >
+                {label}
+              </Tab>
+            ))}
+          </TabList>
+
+          <TabPanels>
+            <TabPanel>
+              <div className="mt-6">
+                <div className="flex md:flex-row flex-col xl:gap-19 gap-4">
+                  <div className="xl:max-w-124.25 md:max-w-87.5 max-w-full w-full border border-solid border-gray-3100 rounded-xl bg-white p-6">
+                    <h4 className="text-blue-1200 text-sm leading-5 font-bold text-center">Credit Risk Meter</h4>
+                    <div className="flex items-center justify-center mt-4">
+                      <Image src="/images/Meter-img.png" width={192} height={96} alt="" />
+                    </div>
+                    <div className="text-center mt-4">
+                      <h4 className="text-[36px] leading-10 font-bold text-green58">
+                        {selectedCase?.aiScore ?? "—"}
+                      </h4>
+                      <p className="text-xs leading-4 font-normal text-grey5700 mt-1">
+                        {(selectedCase?.aiScore ?? 0) >= 80 ? "Low Risk" : (selectedCase?.aiScore ?? 0) >= 60 ? "Medium Risk" : "High Risk"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex-1 w-full">
+                    <div className="w-full border border-solid border-gray-3100 rounded-xl bg-white p-6">
+                      <h4 className="text-blue-1200 mb-4 text-sm leading-5 font-bold">Key Scoring Factors</h4>
+                      {[
+                        { label: "Income Stability",    value: 82, color: "text-ElectricBlue2", bg: "bg-lighrgrey43",   bar: "bg-ElectricBlue2" },
+                        { label: "Repayment History",   value: 91, color: "text-green58",       bg: "bg-green58/20",    bar: "bg-green58"       },
+                        { label: "Debt-to-Income Ratio",value: 45, color: "text-yellow-1100",   bg: "bg-yellow-1100/20",bar: "bg-yellow-1100"   },
+                        { label: "Employment Duration", value: 73, color: "text-ElectricBlue2", bg: "bg-lighrgrey43",   bar: "bg-ElectricBlue2" },
+                        { label: "Credit Utilization",  value: 28, color: "text-green58",       bg: "bg-green58/20",    bar: "bg-green58"       },
+                      ].map(({ label, value, color, bg, bar }) => (
+                        <div key={label} className="mb-4 last:mb-0">
+                          <div className="flex items-center justify-between mb-1.5">
+                            <p className="text-blue-1200 text-xs leading-4 font-normal">{label}</p>
+                            <span className={`${color} text-[10px] leading-3.75 ${bg} pt-[1.5px] font-bold rounded-full h-4.75 px-2`}>
+                              {value}%
+                            </span>
+                          </div>
+                          <ProgressBar value={value} barColor={bar} bgColor="bg-gray-6100" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 flex items-start gap-3 bg-lightgreenNew4 border border-solid border-green58/20 rounded-xl p-5">
+                  <span className="flex items-center w-5 h-5.5">
+                    <Image src="/images/checkgreendark.svg" width={20} height={22} alt="" />
+                  </span>
+                  <div className="flex-1 w-full">
+                    <h4 className="text-black-1200 text-sm leading-5 font-normal">Algorithm Verdict: Eligible</h4>
+                    <p className="text-grey5700 text-xs leading-4 font-normal mt-1">
+                      Strong repayment history and stable income. Recommended for accelerated processing with {selectedCase?.bank} Student Plus program.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </TabPanel>
+
+            {/* ── Recommendations ── */}
+            <TabPanel>
+              <div className="pt-6">
+                <p className="text-grey5700 text-sm leading-5 font-normal">AI-recommended bank products ranked by compatibility score.</p>
+                {[
+                  { bank: "Deutsche Bank",    product: "Student Plus Loan",  rate: "3.2%", score: 94, color: "text-green58",      badge: true  },
+                  { bank: "BNP Paribas",      product: "Éducation Flex",     rate: "3.5%", score: 87, color: "text-ElectricBlue2", badge: false },
+                  { bank: "Société Générale", product: "Campus Credit",      rate: "3.8%", score: 79, color: "text-yellow-1100",   badge: false },
+                ].map(({ bank, product, rate, score, color, badge }) => (
+                  <div key={bank} className="mt-4 flex sm:flex-row flex-col sm:items-center items-start sm:gap-0 gap-4 justify-between bg-white border border-solid border-gray-3100 rounded-xl sm:p-6 p-4">
+                    <div className="flex items-center gap-4">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-lighrgrey43">
+                        <Image src="/images/building5.svg" width={20} height={22} alt="" />
+                      </span>
+                      <div>
+                        <h4 className="text-black-1200 text-sm leading-5 font-bold">{bank}</h4>
+                        <p className="text-grey5700 text-xs leading-4 font-normal">{product} • Rate: {rate}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-right">
+                        <h4 className={`text-lg leading-7 font-bold ${color}`}>{score}%</h4>
+                        <p className="text-[10px] leading-3.75 font-normal text-grey5700">Match Score</p>
+                      </div>
+                      {badge && (
+                        <div className="text-white flex items-center justify-center text-[10px] leading-3.75 uppercase font-bold rounded h-5.75 px-2 bg-linear-to-r from-green58 to-green60">
+                          Best Fit
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+
+            {/* ── Communication ── */}
+            <TabPanel>
+              <div className="pt-6">
+                <div className="mb-4 space-y-4 max-h-96 overflow-y-auto pr-1">
+                  {chatMessages.map((msg) => (
+                    <div key={msg.id} className={`flex ${msg.side === "right" ? "justify-end" : "justify-start"}`}>
+                      <div
+                        className={`rounded-2xl py-2.5 px-4 max-w-lg ${
+                          msg.internal
+                            ? "bg-yellow2200 border border-solid border-yellow-1100/30"
+                            : msg.side === "left"
+                            ? "bg-yellow2200"
+                            : "bg-gray-2000"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <h4 className="text-blue-1300/80 text-sm leading-4 font-normal">{msg.author}</h4>
+                          {msg.internal && (
+                            <span className="flex items-center">
+                              <Image src="/icons/lock-yellow.svg" width={12} height={12} alt="" />
+                            </span>
+                          )}
+                          <span className="text-gray-1900 text-xs leading-4 font-normal">{msg.time}</span>
+                        </div>
+                        <p className="text-blue-1300 text-sm leading-5 font-normal mt-1">{msg.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Reply input */}
+                <div className="bg-gray-1500 rounded-lg border border-solid border-gray-3600">
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }}
+                    className="text-gray-1900 placeholder:text-gray-1900 text-sm leading-3.5 font-normal outline-0 w-full px-3 py-2 h-13 bg-transparent"
+                    placeholder="Type your reply..."
+                  />
+                  <div className="flex items-center justify-between border-t border-solid border-gray-3600/50 pt-2 pb-3.5 px-2">
+                    <button className="flex items-center justify-center w-8 h-8">
+                      <Image src="/icons/attachment.svg" width={16} height={16} alt="" />
+                    </button>
+                    <button
+                      onClick={sendMessage}
+                      className="flex items-center justify-center gap-4 bg-blue1400 rounded-md h-9 px-3 text-white text-sm leading-5 hover:opacity-90 transition-opacity"
+                    >
+                      <Image src="/icons/send-icon.svg" width={16} height={16} alt="" className="brightness-200" />
+                      Send Reply
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </TabPanel>
+          </TabPanels>
+        </TabGroup>
+      </div>
+    </>
+  );
+}
+
+
+
+export default function TransactionTable() {
+  const {
+    isCreditModalOpen, isAiModalOpen,
+    openCreditModal, openAiModal, closeModals,
+    sortField, sortDir, toggleSort,
+    filterOpen, filterStatus, filterBank, toggleFilterPanel,
+  } = useTableStore();
+
+  const visibleCases = getSortedFiltered(CASES, sortField, sortDir, filterStatus, filterBank);
+
+  const thCls = (field: SortField) =>
+    `px-4 py-3 text-left text-xs leading-4 font-bold text-grey5700 uppercase cursor-pointer select-none hover:text-ElectricBlue2 transition-colors`;
+
+  return (
+    <>
+      <div className="bg-white border border-solid border-gray-3100 rounded-lg">
+        {/* ── Toolbar ── */}
+        <div className="py-3 px-4 flex items-center justify-between border-b border-solid border-gray-3100 relative">
+          <ul className="flex items-center gap-2">
+            <li className="relative">
+              <button
+                onClick={toggleFilterPanel}
+                className={`flex items-center justify-center text-grey5700 text-xs leading-4 font-normal gap-1.5 rounded-md h-7 px-2.5 transition-colors ${
+                  filterOpen || filterStatus !== "All" || filterBank !== "All"
+                    ? "bg-ElectricBlue2/10 text-ElectricBlue2"
+                    : "bg-gray-6100"
+                }`}
+              >
+                <Image src="/images/filter-icon2.svg" width={12} height={12} alt="" />
+                Filters
+                {(filterStatus !== "All" || filterBank !== "All") && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-ElectricBlue2 ml-0.5" />
+                )}
+              </button>
+              <FilterPanel />
+            </li>
+            <li>
+              <button
+                onClick={() => toggleSort("id")}
+                className="flex items-center justify-center text-grey5700 text-xs leading-4 font-normal gap-1.5 bg-gray-6100 rounded-md h-7 px-2.5 hover:text-ElectricBlue2 transition-colors"
+              >
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path d="M14 10.668L11.333 13.335L8.667 10.668" stroke="#6C7889" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M11.333 13.335V2.668" stroke="#6C7889" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 5.335L4.667 2.668L7.333 5.335" stroke="#6C7889" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4.667 2.668V13.335" stroke="#6C7889" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Sort
+              </button>
+            </li>
+          </ul>
+          <p className="text-grey5700 text-xs leading-4 font-normal">
+            {visibleCases.length} record{visibleCases.length !== 1 ? "s" : ""}
+          </p>
+        </div>
+
+        {/* ── Table ── */}
         <div className="overflow-x-auto">
-          <table className="5xl:w-full w-375">
+          <table className="2xl:w-full w-250">
             <thead>
-              <tr className="border-b border-gray-1000 text-left bg-gray24/30">
-                <th className={thSort} onClick={() => store.setSorting("loanId")}>Loan ID</th>
-                <th className={thSort} onClick={() => store.setSorting("studentName")}>Student</th>
-                <th className={thStatic}>Partner</th>
-                <th className={thSort} onClick={() => store.setSorting("amountNum")}>Amount</th>
-                <th className={thSort} onClick={() => store.setSorting("status")}>Status</th>
-                <th className={thSort} onClick={() => store.setSorting("risk")}>Risk</th>
-                <th className={thStatic}>Repayment</th>
-                <th className={thStatic}>Maturity</th>
-                <th className={thStatic}>Actions</th>
+              <tr className="bg-gray-6100/50">
+                <th className={thCls("id")}     onClick={() => toggleSort("id")}>     Dossier ID    <SortIcon field="id"        /></th>
+                <th className={thCls("applicant")} onClick={() => toggleSort("applicant")}>Applicant <SortIcon field="applicant"/></th>
+                <th className={thCls("amount")} onClick={() => toggleSort("amount")}> Amount        <SortIcon field="amount"    /></th>
+                <th className="px-4 py-3 text-left text-xs leading-4 font-bold text-grey5700 uppercase">Instructing Bank</th>
+                <th className="px-4 py-3 text-left text-xs leading-4 font-bold text-grey5700 uppercase">Case Manager</th>
+                <th className={`px-4 py-3 text-center text-xs leading-4 font-bold text-grey5700 uppercase cursor-pointer hover:text-ElectricBlue2`} onClick={() => toggleSort("sla")}>
+                  SLA (Days) <SortIcon field="sla" />
+                </th>
+                <th className="px-4 py-3 text-center text-xs leading-4 font-bold text-grey5700 uppercase">Status</th>
+                <th className={`px-4 py-3 text-center text-xs leading-4 font-bold text-grey5700 uppercase cursor-pointer hover:text-ElectricBlue2`} onClick={() => toggleSort("aiScore")}>
+                  AI Score <SortIcon field="aiScore" />
+                </th>
               </tr>
             </thead>
+
             <tbody>
-              {paginated.length === 0 ? (
+              {visibleCases.length === 0 ? (
                 <tr>
-                  <td colSpan={9} className="px-4 py-16 text-center text-sm text-gray-1200">No matching loans found</td>
+                  <td colSpan={8} className="px-4 py-8 text-center text-sm text-grey5700">
+                    No records match the current filters.
+                  </td>
                 </tr>
               ) : (
-                paginated.map((item) => (
-                  <tr key={item.id} className="border-b border-gray-1000 hover:bg-gray24/50">
-                    <td className="px-3 py-4">
-                      <span className="text-blue-1300 text-sm leading-5 font-medium">{item.loanId}</span>
+                visibleCases.map((item) => (
+                  <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50 transition last:border-b-0">
+                    <td onClick={() => openCreditModal(item)} className="px-4 py-5 text-sm text-ElectricBlue2 font-normal cursor-pointer">{item.id}</td>
+                    <td onClick={() => openCreditModal(item)} className="px-4 py-5 text-sm leading-5 font-normal text-black-1300 cursor-pointer">{item.applicant}</td>
+                    <td onClick={() => openCreditModal(item)} className="px-4 py-5 text-sm leading-5 font-bold text-black-1300 cursor-pointer">{item.amount}</td>
+                    <td onClick={() => openCreditModal(item)} className="px-4 py-5 text-sm leading-5 font-normal text-black-1300 cursor-pointer">{item.bank}</td>
+                    <td onClick={() => openCreditModal(item)} className="px-4 py-5 cursor-pointer">
+                      <div className="text-xs leading-4 font-normal text-black-1300">{item.manager.name}</div>
+                      <div className="text-[10px] leading-5 font-normal text-grey5700">{item.manager.phone}</div>
                     </td>
-                    <td className="px-3 py-4">
-                      <div className="text-blue-1300 text-sm leading-5 font-normal mb-0.5">{item.studentName}</div>
-                      <div className="text-gray-1200 text-xs leading-4 font-normal">{item.university}</div>
+                    <td onClick={() => openCreditModal(item)} className={`px-4 py-5 text-center text-sm leading-5 font-bold cursor-pointer ${SLA_COLOR[item.status]}`}>
+                      {item.sla}
                     </td>
-                    <td className="px-3 py-4 text-blue-1300 text-sm leading-5 font-normal">{item.partner}</td>
-                    <td className="px-3 py-4 text-blue-1300 text-sm leading-5 font-bold">{item.amount}</td>
-                    <td className="px-3 py-4">
-                      <span className={`px-2.5 h-5.5 inline-flex items-center pt-0.5 justify-center rounded-full text-xs font-normal leading-4 border border-solid ${statusConfig[item.status]}`}>{item.status}</span>
+                    <td onClick={() => openCreditModal(item)} className="px-4 py-5 text-center cursor-pointer">
+                      <span className={`px-2 h-7 text-[10px] font-bold leading-5 rounded-full inline-flex items-center gap-1 ${STATUS_CONFIG[item.status]}`}>
+                        <Image src={item.statusIcon} width={12} height={12} alt="" />
+                        {item.status}
+                      </span>
                     </td>
-                    <td className="px-3 py-4">
-                      <span className={`px-2.5 h-5.5 inline-flex items-center pt-0.5 justify-center rounded-full text-xs font-normal leading-4 border border-solid ${riskConfig[item.risk]}`}>{item.risk}</span>
-                    </td>
-                    <td className="px-3 py-4">
-                      <div className="flex items-center gap-2 min-w-[100px]">
-                        <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                          <div className={`h-full rounded-full transition-all ${progressColor(item.repaymentProgress)}`} style={{ width: `${item.repaymentProgress}%` }} />
-                        </div>
-                        <span className="text-xs leading-4 text-gray-1200 font-medium w-8 text-right">{item.repaymentProgress}%</span>
-                      </div>
-                    </td>
-                    <td className="px-3 py-4 text-gray-1200 text-sm leading-5 font-normal">{item.maturityDate}</td>
-                    <td className="px-3 py-4">
-                      <ul className="flex items-center gap-2 justify-end">
-                        <li>
-                          <button onClick={() => store.openDetailModal(item)} className="group hover:bg-LightSkyBlue rounded-md flex cursor-pointer items-center justify-center w-8 h-8">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path className="group-hover:stroke-royalBlue124" d="M1.37468 8.232C1.31912 8.08232 1.31912 7.91767 1.37468 7.768C1.91581 6.4559 2.83435 5.33402 4.01386 4.5446C5.19336 3.75517 6.58071 3.33374 8.00001 3.33374C9.41932 3.33374 10.8067 3.75517 11.9862 4.5446C13.1657 5.33402 14.0842 6.4559 14.6253 7.768C14.6809 7.91767 14.6809 8.08232 14.6253 8.232C14.0842 9.54409 13.1657 10.666 11.9862 11.4554C10.8067 12.2448 9.41932 12.6663 8.00001 12.6663C6.58071 12.6663 5.19336 12.2448 4.01386 11.4554C2.83435 10.666 1.91581 9.54409 1.37468 8.232Z" stroke="#0F1729" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
-                              <path className="group-hover:stroke-royalBlue124" d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z" stroke="#0F1729" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </button>
-                        </li>
-                      </ul>
+                    <td onClick={() => openAiModal(item)} className="px-4 py-5 text-center cursor-pointer">
+                      <span className={`px-2 py-1 text-xs font-bold rounded-md inline-flex items-center gap-2 justify-center ${SCORE_CONFIG[item.aiScore] ?? "bg-gray-6100 text-gray-700"}`}>
+                        <Image src={item.aiScoreIcon} width={12} height={12} alt="" />
+                        {item.aiScore}
+                      </span>
                     </td>
                   </tr>
                 ))
@@ -220,237 +735,30 @@ export default function FinancingLoanLedgerPage() {
             </tbody>
           </table>
         </div>
-
-        {/* PAGINATION */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-between flex-wrap gap-3 px-4 py-3 border-t border-gray-1000">
-            <p className="text-xs text-gray-1200">Showing {startItem}–{endItem} of {filtered.length}</p>
-            <div className="flex items-center gap-1">
-              <button disabled={currentPage === 1} onClick={() => store.setCurrentPage(currentPage - 1)} className="w-8 h-8 flex items-center justify-center rounded-md text-gray-1200 hover:bg-gray24/50 disabled:opacity-40 disabled:cursor-not-allowed">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                <button key={p} onClick={() => store.setCurrentPage(p)} className={`w-8 h-8 rounded-md text-xs font-medium transition-colors ${currentPage === p ? "bg-blue-1300 text-white" : "text-blue-1300 hover:bg-gray24/50"}`}>{p}</button>
-              ))}
-              <button disabled={currentPage === totalPages} onClick={() => store.setCurrentPage(currentPage + 1)} className="w-8 h-8 flex items-center justify-center rounded-md text-gray-1200 hover:bg-gray24/50 disabled:opacity-40 disabled:cursor-not-allowed">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-              </button>
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* VIEW DETAIL MODAL */}
+      {/* ── Credit Assessment Modal ── */}
       <Modal
-        isOpen={detailModalOpen}
-        onClose={store.closeDetailModal}
-        panelClassName="max-w-[620px] bg-white relative shadow-66xl! overflow-x-auto"
+        isOpen={isCreditModalOpen}
+        onClose={closeModals}
+        panelClassName="max-w-[512px] bg-gray-1500 relative h-full overflow-x-auto md:p-6 p-4"
       >
-        <Link onClick={store.closeDetailModal} href={"#"} className="flex items-center justify-center w-4 h-4 absolute top-4 right-4">
+        <button onClick={closeModals} className="flex items-center justify-center shadow-71xl rounded w-4 h-4 absolute top-4 right-4">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
-        </Link>
-        {detailLoan && (
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="4xl:w-12 w-11 4xl:h-12 h-11 bg-blue-2200/10 rounded-xl flex items-center justify-center">
-                <Image src="/images/wallet-blue.svg" width="24" height="24" alt="" />
-              </div>
-              <div>
-                <h2 className="text-lg leading-7 font-bold text-blue-1300">Loan Details</h2>
-                <p className="text-sm leading-5 text-gray-1200">{detailLoan.loanId}</p>
-              </div>
-            </div>
-
-            <div className="border border-gray-1000 rounded-xl p-4 bg-gray24/30 mb-4">
-              <h3 className="text-sm font-bold text-blue-1300 mb-3">Student Information</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Student Name</p>
-                  <p className="text-sm leading-5 font-medium text-blue-1300">{detailLoan.studentName}</p>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">University</p>
-                  <p className="text-sm leading-5 font-medium text-blue-1300">{detailLoan.university}</p>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Lending Partner</p>
-                  <p className="text-sm leading-5 font-medium text-blue-1300">{detailLoan.partner}</p>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Interest Rate</p>
-                  <p className="text-sm leading-5 font-medium text-blue-1300">{detailLoan.interestRate}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-gray-1000 rounded-xl p-4 bg-gray24/30 mb-4">
-              <h3 className="text-sm font-bold text-blue-1300 mb-3">Financial Details</h3>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Loan Amount</p>
-                  <p className="text-sm leading-5 font-bold text-blue-1300">{detailLoan.amount}</p>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Monthly Payment</p>
-                  <p className="text-sm leading-5 font-bold text-blue-1300">{detailLoan.monthlyPayment}</p>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Disbursed Date</p>
-                  <p className="text-sm leading-5 font-medium text-blue-1300">{detailLoan.disbursedDate}</p>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-0.5">Maturity Date</p>
-                  <p className="text-sm leading-5 font-medium text-blue-1300">{detailLoan.maturityDate}</p>
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <p className="text-xs leading-4 text-gray-1200">Repayment Progress</p>
-                  <p className="text-xs leading-4 font-bold text-blue-1300">{detailLoan.repaymentProgress}%</p>
-                </div>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                  <div className={`h-full rounded-full transition-all ${progressColor(detailLoan.repaymentProgress)}`} style={{ width: `${detailLoan.repaymentProgress}%` }} />
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-gray-1000 rounded-xl p-4 bg-gray24/30">
-              <h3 className="text-sm font-bold text-blue-1300 mb-3">Status</h3>
-              <div className="flex items-center gap-4">
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-1">Loan Status</p>
-                  <span className={`px-2.5 h-5.5 inline-flex items-center pt-0.5 justify-center rounded-full text-xs font-normal leading-4 border border-solid ${statusConfig[detailLoan.status]}`}>{detailLoan.status}</span>
-                </div>
-                <div>
-                  <p className="text-xs leading-4 text-gray-1200 mb-1">Risk Level</p>
-                  <span className={`px-2.5 h-5.5 inline-flex items-center pt-0.5 justify-center rounded-full text-xs font-normal leading-4 border border-solid ${riskConfig[detailLoan.risk]}`}>{detailLoan.risk}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-        <div className="px-6 py-4 bg-gray-1600/50 border-t border-solid border-gray-3900">
-          <button onClick={store.closeDetailModal} className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10">
-            Close
-          </button>
-        </div>
+        </button>
+        <CreditModalContent />
       </Modal>
 
-      {/* NEW APPLICATION MODAL */}
+      {/* ── AI Score Modal ── */}
       <Modal
-        isOpen={newAppModalOpen}
-        onClose={store.closeNewAppModal}
-        panelClassName="max-w-[580px] bg-white relative shadow-66xl! h-full overflow-x-auto"
+        isOpen={isAiModalOpen}
+        onClose={closeModals}
+        panelClassName="max-w-[1365px] bg-white relative md:p-6 p-4 md:h-auto h-full md:overflow-x-hidden overflow-x-auto"
       >
-        <Link onClick={store.closeNewAppModal} href={"#"} className="flex items-center justify-center w-4 h-4 absolute top-4 right-4">
+        <button onClick={closeModals} className="flex items-center justify-center rounded cursor-pointer w-4 h-4 absolute top-2 right-3 z-10">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
-        </Link>
-        <div className="p-6">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="4xl:w-12 w-11 4xl:h-12 h-11 bg-blue-2200/10 rounded-xl flex items-center justify-center">
-              <Image src="/images/plus-icon.svg" width="20" height="20" alt="" />
-            </div>
-            <div>
-              <h2 className="text-lg leading-7 font-bold text-blue-1300">New Loan Application</h2>
-              <p className="text-sm leading-5 text-gray-1200">Submit a new financing application</p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <label className="text-blue-1300 font-normal text-sm leading-5 mb-1.5 block">Student Name <span className="text-red-1300">*</span></label>
-              <input
-                type="text"
-                className={`text-sm font-normal text-gray-1900 placeholder:text-gray-1400 px-4 h-11 bg-gray-1500 border border-solid rounded-md w-full outline-0 ${newAppErrors.studentName ? "border-red-1300 ring-1 ring-red-1300/20" : "border-gray-3600"}`}
-                placeholder="Enter student full name"
-                value={newAppForm.studentName}
-                onChange={(e) => store.setNewAppField("studentName", e.target.value)}
-              />
-              {newAppErrors.studentName && <p className="text-xs text-red-1300 mt-1">{newAppErrors.studentName}</p>}
-            </div>
-
-            <div>
-              <label className="text-blue-1300 font-normal text-sm leading-5 mb-1.5 block">University <span className="text-red-1300">*</span></label>
-              <input
-                type="text"
-                className={`text-sm font-normal text-gray-1900 placeholder:text-gray-1400 px-4 h-11 bg-gray-1500 border border-solid rounded-md w-full outline-0 ${newAppErrors.university ? "border-red-1300 ring-1 ring-red-1300/20" : "border-gray-3600"}`}
-                placeholder="Enter university name"
-                value={newAppForm.university}
-                onChange={(e) => store.setNewAppField("university", e.target.value)}
-              />
-              {newAppErrors.university && <p className="text-xs text-red-1300 mt-1">{newAppErrors.university}</p>}
-            </div>
-
-            <div>
-              <label className="text-blue-1300 font-normal text-sm leading-5 mb-1.5 block">Lending Partner <span className="text-red-1300">*</span></label>
-              <CustomSelect
-                className={`h-11 rounded-md ${newAppErrors.partner ? "border-red-1300 ring-1 ring-red-1300/20" : ""}`}
-                value={newAppForm.partner}
-                onChange={(v) => store.setNewAppField("partner", v)}
-                options={[
-                  { label: "Select partner...", value: "" },
-                  { label: "EduFund Africa", value: "EduFund Africa" },
-                  { label: "StudyLoan NG", value: "StudyLoan NG" },
-                  { label: "Prodigy Finance", value: "Prodigy Finance" },
-                ]}
-              />
-              {newAppErrors.partner && <p className="text-xs text-red-1300 mt-1">{newAppErrors.partner}</p>}
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="text-blue-1300 font-normal text-sm leading-5 mb-1.5 block">Loan Amount <span className="text-red-1300">*</span></label>
-                <input
-                  type="text"
-                  className={`text-sm font-normal text-gray-1900 placeholder:text-gray-1400 px-4 h-11 bg-gray-1500 border border-solid rounded-md w-full outline-0 ${newAppErrors.amount ? "border-red-1300 ring-1 ring-red-1300/20" : "border-gray-3600"}`}
-                  placeholder="€0.00"
-                  value={newAppForm.amount}
-                  onChange={(e) => store.setNewAppField("amount", e.target.value)}
-                />
-                {newAppErrors.amount && <p className="text-xs text-red-1300 mt-1">{newAppErrors.amount}</p>}
-              </div>
-              <div>
-                <label className="text-blue-1300 font-normal text-sm leading-5 mb-1.5 block">Interest Rate</label>
-                <input
-                  type="text"
-                  className="text-sm font-normal text-gray-1900 placeholder:text-gray-1400 px-4 h-11 bg-gray-1500 border border-solid border-gray-3600 rounded-md w-full outline-0"
-                  placeholder="e.g. 4.5%"
-                  value={newAppForm.interestRate}
-                  onChange={(e) => store.setNewAppField("interestRate", e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="text-blue-1300 font-normal text-sm leading-5 mb-1.5 block">Maturity Date <span className="text-red-1300">*</span></label>
-              <input
-                type="date"
-                className={`text-sm font-normal text-gray-1900 px-4 h-11 bg-gray-1500 border border-solid rounded-md w-full outline-0 ${newAppErrors.maturityDate ? "border-red-1300 ring-1 ring-red-1300/20" : "border-gray-3600"}`}
-                value={newAppForm.maturityDate}
-                onChange={(e) => store.setNewAppField("maturityDate", e.target.value)}
-              />
-              {newAppErrors.maturityDate && <p className="text-xs text-red-1300 mt-1">{newAppErrors.maturityDate}</p>}
-            </div>
-          </div>
-        </div>
-        <div className="px-6 py-4 bg-gray-1600/50 border-t border-solid border-gray-3900">
-          <ul className="flex items-center justify-between gap-3">
-            <li>
-              <button onClick={store.closeNewAppModal} className="px-4 cursor-pointer hover:bg-blue1900 hover:text-blue2000 transition-all duration-500 ease-in-out w-full border rounded-md text-gray-3800 font-medium text-sm leading-5 bg-gray-1500 border-solid border-grey-5400 h-10">
-                Cancel
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => { if (store.validateNewApp()) store.closeNewAppModal(); }}
-                className="cursor-pointer sm:px-8 px-5 flex items-center sm:gap-4 gap-3 justify-center w-full transition-all duration-500 ease-in-out border rounded-md text-white font-bold text-sm leading-5 bg-blue-1000 hover:bg-blue800 border-solid border-blue-1000 h-10"
-              >
-                <Image src="/images/plus-icon.svg" width="16" height="16" alt="" className="brightness-10000" />
-                Submit Application
-              </button>
-            </li>
-          </ul>
-        </div>
+        </button>
+        <AiModalContent />
       </Modal>
     </>
   );

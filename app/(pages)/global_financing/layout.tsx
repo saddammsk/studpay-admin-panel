@@ -1,6 +1,7 @@
-'use client'
+"use client";
 import TopBarFinance from "@/app/components/common/TopBarFinance";
 import { useFinancingStore } from "@/app/store/zustand/useGlobalFinancingStore";
+import { usePathname } from "next/navigation";
 import CustomSelect from "@/app/components/CustomSelect";
 import Image from "next/image";
 import Link from "next/link";
@@ -73,12 +74,8 @@ export default function UserLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-
-  const [activeLink, setActiveLink] = useState("Loan Ledger");
+  const pathname = usePathname();
   const openNewAppModal = useFinancingStore((s) => s.openNewAppModal);
-
-
 
   return (
     <div className="flex-1">
@@ -211,37 +208,35 @@ export default function UserLayout({
         </div>
       </div>
 
-      <div className='bg-white my-4 border border-solid border-gray-3600 shadow-68xl p-4 rounded-xl'>
-      <ul className='flex sm:flex-row flex-col items-center md:gap-6 gap-4'>    
-      {menuItems.map(({ name, href, icon, iconActive }) => {
-        const isActive = activeLink === name;
-        return (
-          <li key={name} className="sm:w-auto w-full">
-            <Link
-              href={href}
-              onClick={(e) => {
-                setActiveLink(name);
-              }}
-              className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${
-                isActive
-                  ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
-                  : "text-lightgrey42 bg-gray-1500 border-gray-3600"
-              }`}
-            >
-              <span className="flex items-center justify-center">
-                <Image
-                  src={isActive ? iconActive : icon}
-                  width={16}
-                  height={16}
-                  alt={name}
-                />
-              </span>
-              {name}
-            </Link>
-          </li>
-        );
-      })}
-      </ul>
+      <div className="bg-white my-4 border border-solid border-gray-3600 shadow-68xl p-4 rounded-xl">
+        <ul className="flex sm:flex-row flex-col items-center md:gap-6 gap-4">
+          {menuItems.map(({ name, href, icon, iconActive }) => {
+            const isActive = pathname === href;
+
+            return (
+              <li key={name} className="sm:w-auto w-full">
+                <Link
+                  href={href}
+                  className={`inline-flex sm:justify-start justify-center md:w-48 sm:w-auto w-full items-center h-10 px-3 gap-2 font-inter font-normal text-sm leading-5 relative rounded-md border border-solid ${
+                    isActive
+                      ? "text-white border-ElectricBlue bg-linear-to-r from-royalBlue125 via-royalBlue126 to-royalBlue127"
+                      : "text-lightgrey42 bg-gray-1500 border-gray-3600"
+                  }`}
+                >
+                  <span className="flex items-center justify-center">
+                    <Image
+                      src={isActive ? iconActive : icon}
+                      width={16}
+                      height={16}
+                      alt={name}
+                    />
+                  </span>
+                  {name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
       {children}
     </div>

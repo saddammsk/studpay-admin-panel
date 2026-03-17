@@ -9,7 +9,7 @@ type SelectOption = {
 type CustomSelectProps = {
   options: SelectOption[];
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: ((value: string) => void) | ((e: React.ChangeEvent<HTMLSelectElement>) => void);
   className?: string;
 };
 
@@ -19,11 +19,21 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   onChange,
   className = ""
 }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (onChange) {
+      if (onChange.length === 1) {
+        (onChange as (value: string) => void)(e.target.value);
+      } else {
+        (onChange as (e: React.ChangeEvent<HTMLSelectElement>) => void)(e);
+      }
+    }
+  };
+
   return (
     <div className="relative">
       <select
         value={value}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => onChange?.(e.target.value)}
+        onChange={handleChange}
         className={`appearance-none cursor-pointer text-sm font-normal leading-5 font-neulis-sans text-black13 px-3 h-10 bg-gray-1500 border border-gray-3600 rounded-md w-full outline-0 ${className}`}
       >
         {options.map((option) => (
