@@ -27,7 +27,7 @@ const UsersStudentsPage = () => {
      };
 
      return (
-          <div className='xl:-mt-[123px] md:-mt-[110px]! -mt-24 bg-gray-6700 lg:-m-8 -m-4 '>
+          <div className='xl:-mt-30.75 md:-mt-27.5! -mt-24 bg-gray-6700 lg:-m-8 -m-4 '>
                <GuranteeBar></GuranteeBar>
                <div className='lg:p-8 p-4'>
                     <DashboardStats></DashboardStats>
@@ -44,21 +44,22 @@ const UsersStudentsPage = () => {
                                         />
                                    </div>
                               </div>
-                              <div className="relative w-[130px]">
-                                   <CustomSelect className="w-full  bg-gray-6600 border border-gray-1000"
+                              <div className="relative w-32.5">
+                                   <CustomSelect
+                                        className="w-full bg-gray-6600 border border-gray-1000"
                                         value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
+                                        onChange={(value) => setStatus(value)}
                                         options={[
-                                             { label: "Type ", value: "Type" },
+                                             { label: "Type", value: "Type" },
                                              { label: "Types1", value: "Types1" },
                                              { label: "Types2", value: "Types2" },
                                         ]}
                                    />
                               </div>
-                              <div className="relative w-[130px]">
+                              <div className="relative w-32.5">
                                    <CustomSelect className="w-full bg-gray-6600 border border-gray-1000"
                                         value={status2}
-                                        onChange={(e) => setStatus2(e.target.value)}
+                                        onChange={(value) => setStatus(value)}
                                         options={[
                                              { label: "Risk Score ", value: "All Status" },
                                              { label: "Types1", value: "Types1" },
@@ -66,10 +67,10 @@ const UsersStudentsPage = () => {
                                         ]}
                                    />
                               </div>
-                              <div className="relative w-[160px]">
+                              <div className="relative w-40">
                                    <CustomSelect className="w-full bg-gray-6600 border border-gray-1000"
                                         value={status3}
-                                        onChange={(e) => setStatus3(e.target.value)}
+                                       onChange={(value) => setStatus(value)}
                                         options={[
                                              { label: "Source/Campaign ", value: "Source/Campaign" },
                                              { label: "Types1", value: "Types1" },

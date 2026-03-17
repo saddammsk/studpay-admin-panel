@@ -26,7 +26,7 @@ import StatusCard2 from "@/app/components/StatusCard2";
 import WalletMonitoringTable from "@/app/components/WalletMonitoringTable";
 import { RecentActivity } from "@/app/components/dashboard/RecentActivity";
 import RecentTransactionsTable from "@/app/components/RecentTransactionsTable";
-import { div } from "three/tsl";
+
 
 function page() {
      return (
@@ -93,18 +93,18 @@ function page() {
                                    </span>
 
                                    <div className="flex gap-1">
-                                        <button className="px-3 py-1.5 border border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg bg-black text-white">
+                                        <button className="px-3 py-1.5 border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg bg-black">
                                              All
                                         </button>
-                                        <button className="px-3 py-1.5 border border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg ">
+                                        <button className="px-3 py-1.5 border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg ">
                                              <Bitcoin size={14} />
                                              BTC
                                         </button>
-                                        <button className="px-3 py-1.5 border border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg ">
+                                        <button className="px-3 py-1.5 border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg ">
                                              <Coins size={14} />
                                              ETH
                                         </button>
-                                        <button className="px-3 py-1.5 border border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg ">
+                                        <button className="px-3 py-1.5 border-0 text-sm text-blue-1300 flex items-center gap-3 rounded-lg ">
                                              <Hexagon size={14} />
                                              Stablecoins
                                         </button>

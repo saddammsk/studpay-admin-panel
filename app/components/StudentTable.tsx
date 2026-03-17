@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation"
 import { Flag, ChevronRight } from "lucide-react";
 
 type Student = {
@@ -78,9 +79,11 @@ const badgeStyles = {
 };
 
 export default function StudentTable() {
+     const router = useRouter()
+
      return (
           <div className="w-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-auto">
-               <table className="xl:w-full w-[1200px] text-sm">
+               <table className="xl:w-full w-300 text-sm">
                     <thead className="bg-gray-1600/50 border-b border-gray-1000 text-gray-1200 uppercase text-xs">
                          <tr>
                               <th className="px-4 py-4 text-left">ID</th>
@@ -98,7 +101,8 @@ export default function StudentTable() {
                          {students.map((student) => (
                               <tr
                                    key={student.id}
-                                   className="border-t border-gray-1000 hover:bg-gray-50 transition"
+                                   onClick={() => router.push(`/guarantees/information`)}
+                                   className="border-t border-gray-1000 hover:bg-gray-50 transition cursor-pointer"
                               >
                                    <td className="px-4 py-4 text-gray-1200 text-sm font-normal leading-5">{student.id}</td>
 

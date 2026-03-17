@@ -1,4 +1,5 @@
  @import "tailwindcss";
+
  @theme inline {
      --font-neulis-sans: "Neulis Sans";
      --font-segoe: "Segoe UI";
@@ -424,7 +425,7 @@
      --breakpoint-4xl: 1600px;
      --breakpoint-5xl: 1800px;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Medium.woff2') format('woff2'), url('/fonts/NeulisSans-Medium.woff') format('woff');
@@ -432,7 +433,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-SemiBold.woff2') format('woff2'), url('/fonts/NeulisSans-SemiBold.woff') format('woff');
@@ -440,7 +441,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Bold.woff2') format('woff2'), url('/fonts/NeulisSans-Bold.woff') format('woff');
@@ -448,7 +449,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Neulis Sans';
      src: url('/fonts/NeulisSans-Regular.woff2') format('woff2'), url('/fonts/NeulisSans-Regular.woff') format('woff');
@@ -456,7 +457,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Segoe UI';
      src: url('/fonts/SegoeUI.woff2') format('woff2'), url('/fonts/SegoeUI.woff') format('woff');
@@ -464,7 +465,7 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  @font-face {
      font-family: 'Graphik';
      src: url('/fonts/Graphik.eot');
@@ -473,66 +474,66 @@
      font-style: normal;
      font-display: swap;
  }
- 
+
  html {
      overflow: auto !important;
      padding-right: 0px !important;
  }
- 
+
  .scrollbar-hide::-webkit-scrollbar {
      display: none;
  }
- 
+
  .scrollbar-hide {
      -ms-overflow-style: none;
      scrollbar-width: none;
  }
- 
+
  .dashboard-bg {
      background: linear-gradient(135deg, var(--color-grey-98, #FAFAFA) 0%, var(--color-grey-9730, rgba(239, 246, 255, 0.30)) 50%, var(--color-grey-9820, rgba(250, 245, 255, 0.20)) 100%);
  }
- 
+
  .banner-bg {
      background: linear-gradient(90deg, #0D8CFF 0%, #0D8CFF 50%, #7E22CE 100%);
  }
- 
+
  .line-bg {
      background: linear-gradient(180deg, var(--color-azure-60, #3B82F6) 0%, var(--color-violet-56, #9333EA) 100%);
  }
- 
+
  .line-bg-2 {
      background: linear-gradient(180deg, #22C55E 0%, #2563EB 100%);
  }
- 
+
  .line-bg-3 {
      background: linear-gradient(180deg, #F97316 0%, #DC2626 100%);
  }
- 
+
  .gray-icon {
      filter: invert(44%) sepia(9%) saturate(600%) hue-rotate(180deg) brightness(92%) contrast(88%);
  }
- 
+
  .flag-bg {
      background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
  }
- 
+
  input[type="date"]::-webkit-calendar-picker-indicator {
      display: none;
      -webkit-appearance: none;
      cursor: pointer;
  }
- 
+
  input[type="date"] {
      -moz-appearance: textfield;
  }
- 
+
  .text-gradient {
      background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
      background-clip: text;
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
  }
- 
+
  .calendar-input input[type="date"]::-webkit-calendar-picker-indicator {
      display: block;
      -webkit-appearance: auto;
@@ -540,54 +541,53 @@
      position: absolute;
      left: 11px;
  }
- 
+
  .sale-date input[type="date"]::-webkit-calendar-picker-indicator {
      display: block;
      -webkit-appearance: auto;
      cursor: pointer;
  }
- 
+
  .btn-primary:hover img {
      filter: brightness(300);
  }
- 
+
  .bg-gradient {
      background: linear-gradient(135deg, var(--color-grey-94, #E0E7FF) 0%, var(--color-grey-98, #F8FAFC) 50%, var(--color-grey-93, #DBEAFE) 100%);
  }
- 
+
  .bg-gradient4 {
      background: linear-gradient(116deg, var(--color-cyan-388, rgba(29, 151, 165, 0.08)) 0%, var(--color-azure-453, rgba(23, 145, 207, 0.03)) 100%);
  }
- 
+
  .bg-gradient5 {
      background: linear-gradient(135deg, rgba(255, 255, 255, 0.00) 0%, rgba(23, 145, 207, 0.03) 100%);
  }
- 
+
  .gradient-bg {
      background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
  }
- 
+
  .body-gradient {
      background: linear-gradient(115deg, #DEEFF7 -0.39%, #EBD6F5 50.26%, #DEEFF7 100.91%);
  }
- 
+
  .customselect .w-4 img {
      filter: brightness(50);
  }
- 
+
  .card-bg {
      background: linear-gradient(180deg, var(--color-white-solid, #FFF) 0%, var(--color-grey-98, #F9FAFB) 100%);
-     background: linear-gradient(135deg, rgba(60, 131, 246, 0.10) 0%, rgba(60, 131, 246, 0.05) 100%), #FFF;
  }
- 
+
  .gradient-new {
      background: linear-gradient(135deg, #6325F4 0%, #B642F0 50%, #256AF4 100%);
  }
- 
+
  .approve-gradient {
      background: linear-gradient(90deg, rgba(37, 167, 119, 0.05) 0%, rgba(37, 167, 119, 0.00) 100%)
  }
- 
+
  .card-bg3 {
      background: linear-gradient(90deg, var(--color-azure-4510, rgba(17, 115, 212, 0.10)) 0%, var(--color-grey-94, #E4F4FB) 50%, var(--color-azure-455, rgba(17, 115, 212, 0.05)) 100%);
  }

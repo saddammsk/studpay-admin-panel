@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation"
 import {
      Link2, Copy, CheckCircle2, AlertCircle, AlertTriangle,
      XCircle,
@@ -66,6 +66,7 @@ const wallets: Wallet[] = [
 ];
 
 export default function WalletMonitoringTable() {
+const router = useRouter()
      return (
           <div className="overflow-x-auto bg-white border border-grey-5400 rounded-[10px]">
                <table className="w-full text-sm">
@@ -90,14 +91,14 @@ export default function WalletMonitoringTable() {
                                              : "High";
 
                               return (
-                                   <tr
+                                   <tr onClick={() => router.push(`/crupto_wallet/wallet_investigation`)}
                                         key={index}
                                         className="border-b border-grey-5400 last:border-none hover:bg-gray-50 transition"
                                    >
                                         <td className="py-3 px-4">
                                              <div className="flex items-center gap-2">
                                                   <Link2 size={14} className="text-blue1400" />
-                                                  <span className="font-medium text-sm font-normal text-black-1300 truncate max-w-[110px]">
+                                                  <span className="text-sm font-normal text-black-1300 truncate max-w-27.5">
                                                        {wallet.address}
                                                   </span>
                                                   <Copy

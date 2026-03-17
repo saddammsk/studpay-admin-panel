@@ -45,7 +45,7 @@ function page() {
                          </div>
                          <StatsCard4></StatsCard4>
                          <div className="flex flex-wrap items-center gap-3 my-6">
-                              <div className="relative max-w-[448px] w-full">
+                              <div className="relative max-w-md w-full">
                                    <input type="text" className='text-sm font-normal text-gray-1900 placeholder:text-gray-1900 px-4 pl-10 h-10 bg-gray-6600 border border-gray-1000 rounded-md w-full outline-0' placeholder='Search by Student ID, Name, or Policy ID...' />
                                    <div className='absolute top-1/2 -translate-y-1/2 left-3'>
                                         <Image
@@ -56,10 +56,10 @@ function page() {
                                         />
                                    </div>
                               </div>
-                              <div className="relative w-[200px]">
+                              <div className="relative w-50">
                                    <CustomSelect className="w-full  bg-gray-6600 border border-gray-1000"
                                         value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
+                                        onChange={(value) => setStatus(value)}
                                         options={[
                                              { label: "All Providers ", value: "All Providers" },
                                              { label: "Types1", value: "Types1" },

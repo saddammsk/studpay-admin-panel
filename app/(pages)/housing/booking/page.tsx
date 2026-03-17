@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useState } from "react";
 import {
@@ -300,9 +301,9 @@ export default function HousingDashboard() {
                     <div className="">
                          <div className="flex items-center justify-between">
                               <div className="flex items-start gap-6">
-                                   <button className="text-gray-400 mt-2 hover:text-gray-600 transition-colors">
+                                   <Link href={"/housing"} className="text-gray-400 mt-2 hover:text-gray-600 transition-colors">
                                         <ArrowLeft className="w-4 h-4 text-blue-1300" />
-                                   </button>
+                                   </Link>
                                    <div>
                                         <div className="flex items-center gap-2">
                                              <h2 className="text-2xl font-bold text-blue-1300">

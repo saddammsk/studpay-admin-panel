@@ -58,12 +58,14 @@ const UsersStudentsPage = () => {
           ],
      };
      return (
-          <div className='xl:-mt-[123px] md:-mt-[110px]! -mt-24 bg-gray-6700 lg:-m-8 -m-4 '>
+          <div className='xl:-mt-30.75 md:-mt-27.5! -mt-24 bg-gray-6700 lg:-m-8 -m-4 '>
                <GuranteeBar></GuranteeBar>
                <div className='lg:p-8 p-4'>
                     <div className="flex items-center flex-wrap gap-5 justify-between mb-6">
                          <div className="flex items-center gap-3 cursor-pointer">
-                              <ArrowLeft className="w-5 h-5 text-blue-1300" />
+                              <Link href={"/guarantees/"}>
+                                   <ArrowLeft className="w-5 h-5 text-blue-1300" />
+                              </Link>
                               <div>
                                    <div className="flex items-center gap-3">
                                         <h1 className="text-2xl text-blue-1300 font-bold">{data.personal.name}</h1>

@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation"
+
 import {
      Smartphone,
      Sofa,
@@ -104,6 +106,8 @@ const statusStyles = {
 };
 
 export default function ServiceInventory() {
+const router = useRouter()
+
      const getIcon = (category: Product["category"]) => {
           switch (category) {
                case "SIM":
@@ -119,7 +123,7 @@ export default function ServiceInventory() {
 
      return (
           <div className="w-full  overflow-auto">
-               <table className="2xl:w-full w-[1300px] text-sm">
+               <table className="2xl:w-full w-325 text-sm">
 
                     {/* Header */}
                     <thead className="bg-gray-6900/50 border-b border-gray-1000 text-gray-1200 uppercase text-xs">
@@ -137,7 +141,7 @@ export default function ServiceInventory() {
                     {/* Body */}
                     <tbody>
                          {products.map((item) => (
-                              <tr
+                              <tr onClick={() => router.push(`/marketplace/vendor`)}
                                    key={item.id}
                                    className="border-t border-gray-1000 hover:bg-gray-50 transition"
                               >

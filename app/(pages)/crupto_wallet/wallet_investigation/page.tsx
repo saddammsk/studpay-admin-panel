@@ -36,7 +36,7 @@ function page() {
                     <div className="p-6">
                          <div className="flex items-baseline justify-between mb-8 flex-wrap gap-4">
                               <div className="flex items-start gap-4 md:flex-nowrap flex-wrap">
-                                   <Link href="/" className="w-10 h-10 rounded-lg flex items-center justify-center bg-gray-1500 border border-grey-5400">
+                                   <Link href="/crupto_wallet" className="w-10 h-10 rounded-lg flex items-center justify-center bg-gray-1500 border border-grey-5400">
                                         <img src="/images/left-arrow3.svg" alt="" />
                                    </Link>
                                    <div>
@@ -185,7 +185,7 @@ function page() {
                                                             className="text-white justify-center font-medium bg-blue-1000 py-2.5!"
                                                             iconSrc="/images/export-icon.svg"
                                                        />
-                                                       <div className="relative w-full 2xl:max-w-[250px] max-w-[180px]">
+                                                       <div className="relative w-full 2xl:max-w-62.5 max-w-45">
                                                             <input type="text" className='text-sm font-normal font-neulis-sans text-white placeholder:text-white px-4 pl-10 h-9 bg-blue-1300  rounded-xl w-full outline-0' placeholder='Search by hash or address...' />
                                                             <div className='absolute top-1/2 -translate-y-1/2 left-3'>
                                                                  <Image className="brightness-[40]"
@@ -197,9 +197,9 @@ function page() {
                                                             </div>
                                                        </div>
                                                        <div className="relative customselect">
-                                                            <CustomSelect className="text-white rounded-[10px]! min-w-[130px] bg-blue-1300! pl-10!"
+                                                            <CustomSelect className="text-white rounded-[10px]! min-w-32.5 bg-blue-1300! pl-10!"
                                                                  value={status}
-                                                                 onChange={(e) => setStatus(e.target.value)}
+                                                                 onChange={(value) => setStatus(value)}
                                                                  options={[
                                                                       { label: "All Risks", value: "All Risks" },
                                                                       { label: "Active", value: "active" },
@@ -211,9 +211,9 @@ function page() {
                                                             </div>
                                                        </div>
                                                        <div className="relative customselect">
-                                                            <CustomSelect className="text-white rounded-[10px]! min-w-[130px] bg-blue-1300! "
+                                                            <CustomSelect className="text-white rounded-[10px]! min-w-32.5 bg-blue-1300! "
                                                                  value={status2}
-                                                                 onChange={(e) => setStatus2(e.target.value)}
+                                                                 onChange={(value) => setStatus(value)}
                                                                  options={[
                                                                       { label: "All Types", value: "All Types" },
                                                                       { label: "Active", value: "active" },

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation"
 import { Heart, Plane, Shield } from "lucide-react";
 
 type Policy = {
@@ -79,9 +80,10 @@ const badgeStyles = {
 };
 
 export default function PolicyTable() {
+     const router = useRouter()
      return (
           <div className="w-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-auto">
-               <table className="xl:w-full w-[1400px] text-sm">
+               <table className="xl:w-full w-350 text-sm">
                     <thead className="bg-gray-1600/50 border-b border-gray-1000 text-gray-1200 uppercase text-xs">
                          <tr>
                               <th className="px-4 py-4 text-left">Policy ID</th>
@@ -97,7 +99,7 @@ export default function PolicyTable() {
 
                     <tbody>
                          {policies.map((policy) => (
-                              <tr
+                              <tr  onClick={() => router.push(`/insurance_hub/insurance`)}
                                    key={policy.id}
                                    className="border-t border-gray-1000 hover:bg-gray-50 transition"
                               >

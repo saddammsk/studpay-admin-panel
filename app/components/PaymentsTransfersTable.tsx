@@ -222,7 +222,7 @@ export default function PaymentsTransfersTable() {
           <div className="relative max-w-52.75 w-full">
             <CustomSelect className="w-full pl-9 bg-gray-6600 border border-gray-1000"
               value={status}
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(value) => setStatus(value)}
               options={[
                 { label: "Export Master Ledger ", value: "Export Master Ledger" },
                 { label: "Master Ledger2", value: "Master Ledger1" },
@@ -281,7 +281,7 @@ export default function PaymentsTransfersTable() {
             <div className="relative xl:w-28 w-full">
               <CustomSelect className="w-full text-center bg-gray-1500 border border-grey-5400"
                 value={status}
-                onChange={(e) => setStatus(e.target.value)}
+                onChange={(value) => setStatus(value)}
                 options={[
                   { label: "All…  ", value: "All…" },
                   { label: "Stripe", value: "Stripe" },
@@ -292,7 +292,7 @@ export default function PaymentsTransfersTable() {
             <div className="relative xl:w-28 w-full">
               <CustomSelect className="w-full  bg-gray-1500 border border-grey-5400"
                 value={status}
-                onChange={(e) => setStatus(e.target.value)}
+                onChange={(value) => setStatus(value)}
                 options={[
                   { label: "All Status ", value: "All Status" },
                   { label: "Active", value: "Active" },
@@ -304,7 +304,7 @@ export default function PaymentsTransfersTable() {
             <div className="relative xl:w-28 w-full">
               <CustomSelect className="w-full  bg-gray-1500 border border-grey-5400"
                 value={status}
-                onChange={(e) => setStatus(e.target.value)}
+                onChange={(value) => setStatus(value)}
                 options={[
                   { label: "All Risk ", value: "All Risk" },
                   { label: "Low", value: "Low" },
@@ -316,7 +316,7 @@ export default function PaymentsTransfersTable() {
             <div className="relative xl:w-28 w-full">
               <CustomSelect className="w-full  bg-gray-1500 border border-grey-5400"
                 value={status}
-                onChange={(e) => setStatus(e.target.value)}
+                onChange={(value) => setStatus(value)}
                 options={[
                   { label: "All Countries ", value: "All Countries" },
                   { label: "EUR", value: "EUR" },
@@ -416,7 +416,7 @@ export default function PaymentsTransfersTable() {
             <p className='text-gray-1900 font-inter font-normal sm:text-sm text-xs leading-5'>Showing 8 of 8 accounts</p>
             <ul className='flex items-center gap-2'>
               <li>
-                <Link href={"#"} className='text-blue-1300 opacity-50 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-[42px] inline-flex items-center justify-center'>
+                <Link href={"#"} className='text-blue-1300 opacity-50 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-10.5 inline-flex items-center justify-center'>
                   <Image
                     src="../icons/left-arrow.svg"
                     width='16'
@@ -435,7 +435,7 @@ export default function PaymentsTransfersTable() {
                 <Link href={"#"} className='text-black-2000 hover:bg-lightgreen17 hover:text-white sm:text-sm text-xs leading-5 font-normal border border-solid border-grey-5400 bg-gray-1500 rounded-md h-9 w-9 inline-flex items-center justify-center'>3</Link>
               </li>
               <li>
-                <Link href={"#"} className='text-blue-1300 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-[42px] inline-flex items-center justify-center'>
+                <Link href={"#"} className='text-blue-1300 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-10.5 inline-flex items-center justify-center'>
                   <Image
                     src="../icons/right-arrow2.svg"
                     width='16'

@@ -119,11 +119,11 @@ export default function NetworkMap() {
                .data(nodes)
                .enter()
                .append("circle")
-               .attr("r", d => 8 + d.users * 2)
-               .attr("fill", d => getColor(d.status))
+               .attr("r", (d: { users: number; }) => 8 + d.users * 2)
+               .attr("fill", (d: { status: string; }) => getColor(d.status))
                .attr("stroke", "#fff")
                .attr("stroke-width", 2)
-               .attr("filter", d =>
+               .attr("filter", (d: { status: string; }) =>
                     d.status === "sos"
                          ? "drop-shadow(0px 0px 12px red)"
                          : "none"

@@ -27,35 +27,44 @@ const mainMenu: MenuItem[] = [
 ];
 
 const ServicesMenu: MenuItem[] = [
-  { label: "Housing", icon: "/images/house-icon.svg", href: "/house" },
+  { label: "Housing", icon: "/images/house-icon.svg", href: "/housing" },
   { label: "Guarantees", icon: "/images/shield-dark.svg", href: "/guarantees" },
-  { label: "Insurance", icon: "/images/insurance-paper.svg", href: "/insurance" },
+  { label: "Insurance", icon: "/images/insurance-paper.svg", href: "/insurance_hub" },
   { label: "Marketplace", icon: "/images/marketplace-icon.svg", href: "/marketplace" },
-  { label: "Cashback & Rewards", icon: "/images/gift-box-icon.svg", href: "/cashback_reward" },
+  { label: "Cashback & Rewards", icon: "/images/gift-box-icon.svg", href: "/cashback_rewards" },
 ];
 
 const SafetyMenu: MenuItem[] = [
-  { label: "Risk & Fraud", icon: "/images/risk-icon.svg", href: "/risk_fraud" },
-  { label: "Crypto Wallet", icon: "/images/crypto-icon.svg", href: "/crypto_wallet" },
+  { label: "Risk & Fraud", icon: "/images/risk-icon.svg", href: "/risk_fraud_command_center" },
+  { label: "Crypto Wallet", icon: "/images/crypto-icon.svg", href: "/crupto_wallet" },
   { label: "Stud Safe", icon: "/images/stud-pin.svg", href: "/stud_safe" },
   { label: "Audit Logs", icon: "/images/audit-building.svg", href: "/audit_logs" },
 ];
-
+const studsafeMenu: MenuItem[] = [
+  { label: "Dashboard StudSafe", icon: "/images/dashboard-studSafe.svg", href: "/stud_safe_vault_manager" },
+  { label: "Live Monitoring", icon: "/images/live-location.svg", href: "/live_monitoring" },
+  { label: "Alerts & Incidents", icon: "/images/Alert-Incidents.svg", href: "/alerts_incidents" },
+  { label: "Users & Contacts", icon: "/images/users-contacts.svg", href: "/users_contacts" },
+  { label: "Inactivity Rules", icon: "/images/inactivity-rules.svg", href: "/inactivity_rules" },
+  { label: "History & Positions", icon: "/images/history.svg", href: "/history_positions" },
+];
 const platformMenu: MenuItem[] = [
   { label: "Support Inbox", icon: "/images/index-sms.svg", href: "/support_inbox" },
   { label: "Partnerships", icon: "/images/partnership-icon.svg", href: "/partnerships" },
   { label: "Content CMS", icon: "/images/speaker.svg", href: "/content_cms" },
 ];
 
+
+
 const GlobalMenu: MenuItem[] = [
   { label: "Finance Analytics", icon: "/images/fx-price-arrow.svg", href: "/finance_analytics" },
   { label: "User Activity Insights", icon: "/images/Insights-icon.svg", href: "/user_activity_insights" },
   { label: "Country-Based Stats", icon: "/images/country-stats-icon.svg", href: "/country_based_stats" },
-  { label: "Sale view", icon: "/images/sale-view-icon.svg", href: "/sale_view" },
+  { label: "Sale view", icon: "/images/sale-view-icon.svg", href: "/sales_view" },
 ];
 
 const SettingMenu: MenuItem[] = [
-  { label: "Settings", icon: "/images/setting-icon.svg", href: "/setting" },
+  { label: "Settings", icon: "/images/setting-icon.svg", href: "/platform_settings" },
   { label: "Support", icon: "/images/support-info.svg", href: "/support" },
 ];
 
@@ -99,7 +108,7 @@ const MenuSection = ({ title, items, collapsed, renderMenu }: MenuSectionProps) 
       {/* Animated collapse */}
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          open ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-150 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <ul className="space-y-0.5">{renderMenu(items)}</ul>
@@ -134,7 +143,7 @@ const Sidebar = () => {
             <img
               src={item.icon}
               alt={item.label}
-              className={`flex-shrink-0 ${isActive ? "filter brightness-0 invert" : ""}`}
+              className={`shrink-0 ${isActive ? "filter brightness-0 invert" : ""}`}
             />
             {!collapsed && <span>{item.label}</span>}
           </Link>
@@ -146,7 +155,7 @@ const Sidebar = () => {
   return (
     <div
       className={`fixed top-0 overflow-y-auto scrollbar-hide z-1000 h-screen lg:left-0 bg-white border-r border-gray-1000
-        ${collapsed ? "w-[72px]" : "xl:max-w-[288px] w-full max-w-62.5"}
+        ${collapsed ? "w-18" : "xl:max-w-[288px] w-full max-w-62.5"}
         ${isOpen ? "left-0" : "-left-full"}`}
     >
       {/* Header */}
@@ -162,7 +171,7 @@ const Sidebar = () => {
           )}
 
           <button
-            className="cursor-pointer w-7 h-7 flex items-center justify-center hover:bg-gray-1600 rounded-lg flex-shrink-0"
+            className="cursor-pointer w-7 h-7 flex items-center justify-center hover:bg-gray-1600 rounded-lg shrink-0"
             onClick={() => {
               setCollapsed();
               if (window.innerWidth < 1024) {
@@ -186,6 +195,7 @@ const Sidebar = () => {
         <MenuSection title="Financial Services" items={mainMenu} collapsed={collapsed} renderMenu={renderMenu} />
         <MenuSection title="Marketplace & Services" items={ServicesMenu} collapsed={collapsed} renderMenu={renderMenu} />
         <MenuSection title="Compliance & Safety" items={SafetyMenu} collapsed={collapsed} renderMenu={renderMenu} />
+        <MenuSection title="StudSafe" items={studsafeMenu} collapsed={collapsed} renderMenu={renderMenu} />
         <MenuSection title="Platform Management" items={platformMenu} collapsed={collapsed} renderMenu={renderMenu} />
         <MenuSection title="Global Insights" items={GlobalMenu} collapsed={collapsed} renderMenu={renderMenu} />
       </div>
@@ -199,7 +209,7 @@ const Sidebar = () => {
             className={`flex items-center gap-3 ${collapsed ? "justify-center" : ""}`}
             title={collapsed ? "Admin" : undefined}
           >
-            <span className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center">
               <img
                 src="/images/admin-img.png"
                 alt=""

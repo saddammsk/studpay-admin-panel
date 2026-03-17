@@ -2,7 +2,7 @@
 'use client'
 import TopBar from "@/app/components/common/TopBar";
 import Link from "next/link";
-import Image from "next/image"; 
+import Image from "next/image";
 import StatsCards from "@/app/components/StatsCards";
 import AlertsTable from "@/app/components/AlertsTable";
 function page() {
@@ -48,7 +48,7 @@ function page() {
                          <AlertsTable></AlertsTable>
                     </div>
                </div>
-               
+
           </>
      )
 }

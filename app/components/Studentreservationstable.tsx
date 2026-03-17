@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation"
 import { MoreHorizontal, User, Home, CreditCard, Calendar } from "lucide-react";
 
 type PipelineStatus =
@@ -55,11 +55,14 @@ const PipelineIndicator = ({ status }: { status: PipelineStatus }) => {
      );
 };
 
+
+
 export default function StudentReservationsTable() {
+     const router = useRouter()
      return (
           <div className="bg-white rounded-xl border border-gray-1000 shadow-sm overflow-hidden">
                <div className="overflow-x-auto">
-                    <table className="w-full min-w-[1300px]">
+                    <table className="w-full min-w-325">
                          <thead>
                               <tr className="border-b border-slate-100 bg-gray-1600">
                                    {["Reservation ID", "Student", "Property", "Landlord", "Booking Fee", "Pipeline Status", "Move-in Date", ""].map((h) => (
@@ -71,21 +74,21 @@ export default function StudentReservationsTable() {
                          </thead>
                          <tbody>
                               {reservations.map((row) => (
-                                   <tr key={row.id} className="border-b border-gray-1000 last:border-0 hover:bg-slate-50/50 transition-colors">
+                                   <tr onClick={() => router.push("/housing/booking")} key={row.id} className="border-b border-gray-1000 last:border-0 hover:bg-slate-50/50 transition-colors">
                                         <td className="px-4 py-4">
                                              <span className="text-sm font-medium text-gray-1200 font-mono">{row.id}</span>
                                         </td>
                                         <td className="px-5 py-4">
                                              <div className="flex items-center gap-2">
                                                   <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-1600">
-                                                       <User size={14} className="text-gray-1200 flex-shrink-0" />
+                                                       <User size={14} className="text-gray-1200 shrink-0" />
                                                   </div>
                                                   <span className="text-sm font-semibold text-blue-1300">{row.student}</span>
                                              </div>
                                         </td>
                                         <td className="px-5 py-4">
                                              <div className="flex items-center gap-2">
-                                                  <Home size={14} className="text-gray-1200 flex-shrink-0" />
+                                                  <Home size={14} className="text-gray-1200 shrink-0" />
                                                   <span className="text-sm text-blue-1300">{row.property}</span>
                                              </div>
                                         </td>
@@ -94,7 +97,7 @@ export default function StudentReservationsTable() {
                                         </td>
                                         <td className="px-5 py-4">
                                              <div className="flex items-center gap-1.5">
-                                                  <CreditCard size={14} className="text-green-1600 flex-shrink-0" />
+                                                  <CreditCard size={14} className="text-green-1600 shrink-0" />
                                                   <span className="text-sm font-semibold text-green-1600">{row.bookingFee}</span>
                                              </div>
                                         </td>
@@ -103,7 +106,7 @@ export default function StudentReservationsTable() {
                                         </td>
                                         <td className="px-5 py-4">
                                              <div className="flex items-center gap-1.5">
-                                                  <Calendar size={13} className="text-gray-1200 flex-shrink-0" />
+                                                  <Calendar size={13} className="text-gray-1200 shrink-0" />
                                                   <span className="text-sm text-gray-1200">{row.moveInDate}</span>
                                              </div>
                                         </td>

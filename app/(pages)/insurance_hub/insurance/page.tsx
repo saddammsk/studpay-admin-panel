@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import TopBar from "@/app/components/common/TopBar";
 import { Clock, ChevronDown, AlertTriangle, CheckCheckIcon, Check } from "lucide-react";
 
@@ -133,10 +133,10 @@ function page() {
                          <div className="bg-white border my-6 border-gray-1000 rounded-lg p-4">
                               <div className="flex 2xl:flex-nowrap flex-wrap items-center justify-between gap-5">
                                    <div className="space-y-4 2xl:w-auto w-full">
-                                        <button className="flex items-center gap-2 text-sm text-gray-1200">
+                                        <Link href={"/insurance_hub"} className="flex items-center gap-2 text-sm text-gray-1200">
                                              <ArrowLeft className="w-4 h-4" />
                                              Back to Applications
-                                        </button>
+                                        </Link>
 
                                         <div className="flex items-center gap-4">
                                              <div className="w-14 h-14 rounded-full bg-blue-1000/10 text-blue-1000 flex items-center justify-center font-semibold">

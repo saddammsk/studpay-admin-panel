@@ -24,6 +24,7 @@ import {
      Building2,
 } from "lucide-react";
 import Studentreservationstable from "@/app/components/Studentreservationstable";
+import Link from "next/link";
 
 const statCards = [
      {
@@ -176,8 +177,8 @@ const KycBadge = ({ status }: { status: string }) => {
           );
      if (status === "Pending")
           return (
-               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-1600 text-[#624004] border border-yellow-1100/20">
-                    <Clock className="text-[#624004]" size={14} />
+               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-1600 text-brown1300 border border-yellow-1100/20">
+                    <Clock className="text-brown1300" size={14} />
                     Pending
                </span>
           );
@@ -198,9 +199,9 @@ const KycAction = ({ status }: { status: string }) => {
           );
      if (status === "Pending")
           return (
-               <button className="px-3 py-1.5 text-sm font-semibold bg-blue-3000 text-white rounded-md hover:bg-blue-700 transition-colors">
+               <Link href={"/housing/property_verification"} className="px-3 py-1.5 text-sm font-semibold bg-blue-3000 text-white rounded-md hover:bg-blue-700 transition-colors">
                     Verify
-               </button>
+               </Link>
           );
      return (
           <button className="px-3 py-1.5 text-sm font-semibold border border-gray-1000 bg-gray-1500 text-blue-1300 rounded-md hover:bg-slate-200 transition-colors">
@@ -211,7 +212,7 @@ const KycAction = ({ status }: { status: string }) => {
 
 const GlobeViz = () => (
      <div className="relative w-72 h-72 mx-auto">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 shadow-inner border border-slate-200/80">
+          <div className="absolute inset-0 rounded-full bg-linear-to-br from-slate-100 via-slate-200 to-slate-300 shadow-inner border border-slate-200/80">
                <div className="absolute inset-2 rounded-full border border-slate-300/40" />
                <div className="absolute inset-6 rounded-full border border-slate-300/30" />
                {[
@@ -242,7 +243,7 @@ function page() {
      const [activeTab, setActiveTab] = useState<"manage" | "student">("manage");
 
      return (
-          <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:mt-[-45px] mt-[-35px] xl:-m-8 -m-4 font-inter">
+          <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:-mt-11.25 -mt-8.75 xl:-m-8 -m-4 font-inter">
                <div className='bg-white/80 border-b border-solid border-gray1600/50 backdrop-blur-md fixed w-full z-50 top-0 right-0  xl:pl-72 lg:pl-62.5'>
                     <div className='flex items-center justify-between md:gap-0 gap-4 py-4.5 xl:px-8 px-4 bg-white border-b border-gray-1000'>
                          <div className="flex-1 md:block hidden">
@@ -282,7 +283,7 @@ function page() {
                                              {card.label}
                                         </p>
                                         <div
-                                             className={`w-11 h-11 rounded-lg flex items-center justify-center ${card.iconBg} flex-shrink-0`}
+                                             className={`w-11 h-11 rounded-lg flex items-center justify-center ${card.iconBg} shrink-0`}
                                         >
                                              <card.icon size={17} className={card.iconColor} />
                                         </div>
@@ -327,7 +328,7 @@ function page() {
                               </span>
                          </div>
                          <div className="overflow-auto">
-                              <table className="2xl:w-full w-[1365px]">
+                              <table className="2xl:w-full w-341.25">
                                    <thead>
                                         <tr className="border-b border-gray-1000 bg-gray-1600">
                                              {[
@@ -377,7 +378,7 @@ function page() {
                                                        {row.budget}
                                                   </td>
                                                   <td className="px-5 py-3.5 text-sm font-semibold text-green-1600 ">
-                                                       <div className="py-1 px-3 rounded-full bg-gray-1600 w-fit min-w-[33px]">  {row.bookings}</div>
+                                                       <div className="py-1 px-3 rounded-full bg-gray-1600 w-fit min-w-8.25">  {row.bookings}</div>
                                                   </td>
                                                   <td className="px-5 py-3.5">
                                                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-green-1600">
@@ -435,7 +436,7 @@ function page() {
                          <div>
                               <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm mb-6 overflow-auto">
 
-                                   <table className="2xl:w-full w-[1365px]">
+                                   <table className="2xl:w-full w-341.25">
                                         <thead>
                                              <tr className="border-b border-gray-1000 bg-gray-1600">
                                                   {[

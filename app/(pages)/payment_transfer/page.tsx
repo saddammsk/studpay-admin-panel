@@ -172,7 +172,7 @@ const UsersStudentsPage = () => {
               <div className="relative xl:w-35 w-full">
                 <CustomSelect className="w-full bg-gray-6600 border border-gray-1000"
                   value={status}
-                  onChange={(e) => setStatus(e.target.value)}
+                  onChange={(value) => setStatus(value)}
                   options={[
                     { label: "All Providers ", value: "All Providers" },
                     { label: "Stripe", value: "Stripe" },
@@ -183,7 +183,7 @@ const UsersStudentsPage = () => {
               <div className="relative xl:w-35 w-full">
                 <CustomSelect className="w-full  bg-gray-6600 border border-gray-1000"
                   value={status}
-                  onChange={(e) => setStatus(e.target.value)}
+                  onChange={(value) => setStatus(value)}
                   options={[
                     { label: "All Currencies ", value: "All Currencies" },
                     { label: "Currencies1", value: "Currencies1" },
@@ -194,7 +194,7 @@ const UsersStudentsPage = () => {
               <div className="relative xl:w-35 w-full">
                 <CustomSelect className="w-full  bg-gray-6600 border border-gray-1000"
                   value={status}
-                  onChange={(e) => setStatus(e.target.value)}
+                  onChange={(value) => setStatus(value)}
                   options={[
                     { label: "All Levels ", value: "All Levels" },
                     { label: "Levels1", value: "Levels1" },
@@ -207,7 +207,7 @@ const UsersStudentsPage = () => {
               <div className="relative xl:w-35 w-full">
                 <CustomSelect className="w-full  bg-gray-6600 border border-gray-1000"
                   value={status}
-                  onChange={(e) => setStatus(e.target.value)}
+                  onChange={(value) => setStatus(value)}
                   options={[
                     { label: "Status ", value: "Status" },
                     { label: "Completed", value: "Completed" },

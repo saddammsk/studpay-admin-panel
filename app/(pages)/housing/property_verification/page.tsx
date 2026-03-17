@@ -20,18 +20,13 @@ import {
      Sofa,
      Ban,
      PawPrint,
-     Users,
-     FileText,
-     ExternalLink,
-     ChevronLeft,
-     ChevronRight,
+     Users, 
+     ExternalLink, 
      GraduationCap,
-     Shield,
-     History,
-     CheckCircle2,
-     Circle,
+     Shield, 
      File
 } from "lucide-react";
+import Link from "next/link";
 
 const documents = [
      { name: "Government ID (Passport)", status: "verified" },
@@ -130,9 +125,9 @@ export default function PropertyVerification() {
                </div>
                <div className="bg-white py-6 md:px-8 px-4">
                     <div className="flex items-start gap-3 mb-6">
-                         <button className="mt-1 w-8 h-8 flex items-center justify-center  transition-colors flex-shrink-0">
+                         <Link href={"/housing"} className="mt-1 w-8 h-8 flex items-center justify-center  transition-colors flex-shrink-0">
                               <ArrowLeft size={15} className="text-slate-600" />
-                         </button>
+                         </Link>
                          <div className="flex-1 min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
                                    <h1 className="text-xl md:text-2xl font-bold text-blue-1300 tracking-tight">
