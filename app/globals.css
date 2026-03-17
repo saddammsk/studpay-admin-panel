@@ -517,13 +517,8 @@
  .flag-bg {
      background: linear-gradient(90deg, var(--color-azure-53, #0D8CFF) 0%, var(--color-azure-42, #0A70CC) 100%);
  }
-<<<<<<< HEAD
-
- input[type="date"]::-webkit-calendar-picker-indicator {
-=======
  
 input[type="date"]::-webkit-calendar-picker-indicator {
->>>>>>> aa5b3b19756ce9f4e28ae427abdf70b1f4bf9588
      display: none;
      -webkit-appearance: none;
      cursor: pointer;
@@ -533,8 +528,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
      -moz-appearance: textfield;
  }
 
-<<<<<<< HEAD
-=======
  .date-input::-webkit-calendar-picker-indicator {
      display: block !important;
      -webkit-appearance: initial !important;
@@ -542,7 +535,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
  }
 
 
->>>>>>> aa5b3b19756ce9f4e28ae427abdf70b1f4bf9588
  .text-gradient {
      background: linear-gradient(99deg, #0B91FE 0%, #4B73FF 100%);
      background-clip: text;

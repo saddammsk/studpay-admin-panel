@@ -2,38 +2,35 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Button from "@/app/components/ui/Button";
-import CustomSelect from "@/app/components/CustomSelect";
-
 
 
 const menuItems2 = [
   {
     name: "API Keys",
     href: "/global_financing/financing_api_console",
-    icon: "../../icons/api-key.svg",
-    iconActive: "../../icons/api-key-active.svg",
+    icon: "/icons/api-key.svg",
+    iconActive: "/icons/api-key-active.svg",
     active: false,
   },
   {
     name: "Access Control",
     href: "/global_financing/financing_api_console/api_access_control",
-    icon: "../../icons/access-icon.svg",
-    iconActive: "../../icons/access-icon-active.svg",
+    icon: "/icons/access-icon.svg",
+    iconActive: "/icons/access-icon-active.svg",
     active: false,
   },
   {
     name: "Monitoring",
     href: "/global_financing/financing_api_console/monitoring",
-    icon: "../../icons/monitoring-icon.svg",
-    iconActive: "../../icons/monitoring-icon-active.svg",
+    icon: "/icons/monitoring-icon.svg",
+    iconActive: "/icons/monitoring-icon-active.svg",
     active: false,
   },
   {
     name: "Emergency",
     href: "/global_financing/financing_api_console/emergency",
-    icon: "../../icons/Emergency-icon.svg",
-    iconActive: "../../icons/Emergency-icon-active.svg",
+    icon: "/icons/Emergency-icon.svg",
+    iconActive: "/icons/Emergency-icon-active.svg",
     active: true,
   },
 ];

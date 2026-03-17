@@ -11,8 +11,7 @@ const UsersStudentsPage = () => {
   const results = filteredGuarantees();
 
   return (
-    <div>
-      {/* ── Stat Cards ── */}
+    <div className="w-full">
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-4">
         <div className="bg-white flex items-start justify-between shadow-4xl border border-solid border-gray-3600 rounded-xl p-6">
           <div className="flex-1 w-full">

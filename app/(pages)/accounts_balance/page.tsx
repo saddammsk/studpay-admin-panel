@@ -1,5 +1,4 @@
 "use client";
-import { useState } from 'react' 
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import CustomSelect from "@/app/components/CustomSelect"; 
@@ -7,14 +6,11 @@ import AccountBalanceTable from '@/app/components/AccountsBalance/AccountBalance
 
 
 
-
 const UsersStudentsPage = () => {
-  const [status, setStatus] = useState<string>("All Countries");
 
   return (
     <>
       <div className='font-inter'>
-        {/**** MOBILE SHOW ****/}
         <ul className='md:hidden flex items-center justify-end mb-4 gap-1'>
           <li>
             <CustomSelect
@@ -34,8 +30,7 @@ const UsersStudentsPage = () => {
             />
           </li>
         </ul>
-        {/**** MOBILE SHOW ****/}
-        <div className=''>
+        <div className='flex-1'>
           <p className='text-SteelGray text-sm leading-5 font-medium tracking-[0.7px] uppercase mb-4'>Global Liquidity Overview</p>
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
             <div className="bg-lightgreen17/5 rounded-xl border border-solid border-grey-5400 border-l-4 border-l-lightgreen17 p-5 shadow-74xl">
@@ -66,7 +61,7 @@ const UsersStudentsPage = () => {
                 </div>
                 <p className='text-lightgreen17 text-xs leading-4 font-medium flex items-center gap-1'>
                   <Image
-                    src="../images/price-arrow-green.svg"
+                    src="/images/price-arrow-green.svg"
                     width='14'
                     height='14'
                     alt=""
@@ -88,7 +83,7 @@ const UsersStudentsPage = () => {
               <div className='flex items-start justify-between max-w-92.75 w-full'>
                 <div className="w-10 h-10 bg-yellow-1100/10 rounded-lg flex items-center justify-center">
                   <Image
-                    src="../images/warning-yellow.svg"
+                    src="/images/warning-yellow.svg"
                     width='20'
                     height='20'
                     alt=""
@@ -96,7 +91,7 @@ const UsersStudentsPage = () => {
                 </div>
                 <p className='text-red2100 text-xs leading-4 font-medium flex items-center gap-1'>
                   <Image
-                    src="../images/price-arrow-red.svg"
+                    src="/images/price-arrow-red.svg"
                     width='14'
                     height='14'
                     alt=""
@@ -118,7 +113,7 @@ const UsersStudentsPage = () => {
               <div className='flex items-start justify-between max-w-92.75 w-full'>
                 <div className="w-10 h-10 bg-red1600/10 rounded-lg flex items-center justify-center">
                   <Image
-                    src="../icons/Frozen-icon.svg"
+                    src="/icons/Frozen-icon.svg"
                     width='20'
                     height='20'
                     alt=""

@@ -1,238 +1,141 @@
 "use client";
-import { useState } from "react";
 
-import Link from "next/link";
-import Image from "next/image";
-import ToggleSwitch from "@/app/components/ToggleSwitch";
+import { useFxStore } from "@/app/store/zustand/useFxManagementStore";
+import ToggleSwitch from "./ToggleSwitch";
+import Pagination from "./FXManagement/Pagination";
+import EditModal from "./FXManagement/Editmodal";
 
 type PaymentStatus = "Basic" | "Premium" | "VIP";
 
-interface Payment {
-  id: number;
-  currency: string;
-  status: PaymentStatus;
-  markup: string;
-  weekendRule: boolean;
-  spread: string;
-  limit: string;
-  action: string;
-}
+const statusConfig: Record<PaymentStatus, string> = {
+  Basic: "bg-blue-50 text-blue-700",
+  Premium: "bg-green-50 text-green-700",
+  VIP: "bg-amber-50 text-amber-700",
+};
 
-const initialPayments: Payment[] = [
-  {
-    id: 1,
-    currency: "EUR/USD",
-    status: "Basic",
-    markup: "1.50%",
-    weekendRule: true,
-    spread: "+0.50%",
-    limit: "$5,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 2,
-    currency: "EUR/USD",
-    status: "Premium",
-    markup: "0.80%",
-    weekendRule: true,
-    spread: "+0.30%",
-    limit: "$25,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 3,
-    currency: "EUR/USD",
-    status: "VIP",
-    markup: "0.30%",
-    weekendRule: false,
-    spread: "—",
-    limit: "$100,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 4,
-    currency: "EUR/PKR",
-    status: "Basic",
-    markup: "2.00%",
-    weekendRule: true,
-    spread: "+0.80%",
-    limit: "$3,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 5,
-    currency: "EUR/PKR",
-    status: "Premium",
-    markup: "1.20%",
-    weekendRule: true,
-    spread: "+0.50%",
-    limit: "$15,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 6,
-    currency: "EUR/PKR",
-    status: "VIP",
-    markup: "0.50%",
-    weekendRule: false,
-    spread: "—",
-    limit: "$50,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 7,
-    currency: "USD/GBP",
-    status: "Basic",
-    markup: "1.20%",
-    weekendRule: true,
-    spread: "+0.40%",
-    limit: "$5,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 8,
-    currency: "USD/GBP",
-    status: "Premium",
-    markup: "0.60%",
-    weekendRule: true,
-    spread: "+0.20%",
-    limit: "$30,000",
-    action: "/icons/edit-icon.svg",
-  },
-  {
-    id: 9,
-    currency: "USD/GBP",
-    status: "VIP",
-    markup: "0.25%",
-    weekendRule: false,
-    spread: "—",
-    limit: "$150,000",
-    action: "/icons/edit-icon.svg",
-  },
-];
-
-const statusConfig = {
-  Basic: {
-    classes: "bg-gray1700 text-blue-1300",
-  },
-  Premium: {
-    classes: "bg-gray1700 text-blue-2200",
-  },
-  VIP: {
-    classes: "bg-yellow1800 text-lightgreen17",
-  },
-} as const;
+const formatMarkup = (v: string) => `${Number(v).toFixed(2)}%`;
+const formatSpread = (v: string) => (v ? `+${Number(v).toFixed(2)}%` : "—");
+const formatLimit = (v: string) =>
+  v ? `$${Number(v).toLocaleString("en-US")}` : "—";
 
 export default function FxManagementTable() {
-  const [payments, setPayments] = useState(initialPayments);
+  const {
+    payments,
+    tablePage,
+    tablePageSize,
+    totalTablePages,
+    paginatedPayments,
+    setTablePage,
+    toggleWeekend,
+    openEdit,
+  } = useFxStore();
 
-  const toggleWeekendRule = (id: number) => {
-    setPayments((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, weekendRule: !item.weekendRule }
-          : item
-      )
-    );
-  };
+  const rows = paginatedPayments();
+  const total = payments.length;
+  const pages = totalTablePages();
 
   return (
-    <div>
-      <div className="mt-6 bg-white border border-gray-3600 rounded-lg overflow-x-auto">
-        <div className="p-4 border-b border-solid border-gray-3600">
-          <h4 className="text-black-2000 text-lg leading-7 font-bold">
-            Markup & Fee Engine
+    <>
+      <div className="mt-6 bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div className="px-5 py-4 border-b border-gray-200">
+          <h4 className="text-gray-900 text-base font-semibold leading-6">
+            Markup &amp; Fee Engine
           </h4>
-          <p className="text-gray-1900 text-sm leading-5 font-normal">
+          <p className="text-gray-500 text-sm leading-5 mt-0.5">
             Configure conversion rules by user plan
           </p>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="5xl:w-full w-325">
+          <table className="w-full min-w-[640px]">
             <thead>
-              <tr className="bg-gray-1800">
-                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
-                  Currency Pair
-                </th>
-                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
-                  User Plan
-                </th>
-                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
-                  Markup %
-                </th>
-                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
-                  Weekend Rule
-                </th>
-                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
-                  Weekend Spread
-                </th>
-                <th className="px-4 py-3 text-left text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
-                  Daily Limit
-                </th>
-                <th className="px-4 py-3 text-right text-gray-1900 font-inter font-bold text-xs leading-4 uppercase">
+              <tr className="bg-gray-50 border-b border-gray-200">
+                {["Currency Pair", "User Plan", "Markup %", "Weekend Rule", "Weekend Spread", "Daily Limit"].map(
+                  (heading) => (
+                    <th
+                      key={heading}
+                      className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide"
+                    >
+                      {heading}
+                    </th>
+                  )
+                )}
+                <th className="px-5 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">
                   Actions
                 </th>
               </tr>
             </thead>
-
-            <tbody>
-              {payments.map((item) => (
-                <tr
-                  key={item.id}
-                  className="border-b border-gray1600 hover:bg-gray1700/50 transition last:border-b-0"
-                >
-                  <td className="px-4 py-5 text-blue-1300 text-sm leading-5 font-normal">
+            <tbody className="divide-y divide-gray-100">
+              {rows.map((item) => (
+                <tr key={item.id} className="hover:bg-gray-50/60 transition-colors">
+                  <td className="px-5 py-4 text-sm font-medium text-blue-600">
                     {item.currency}
                   </td>
-
-                  <td className="px-4 py-5">
+                  <td className="px-5 py-4">
                     <span
-                      className={`inline-flex items-center rounded-full justify-center font-inter font-medium text-xs leading-4 px-2.5 h-5.5 ${statusConfig[item.status].classes}`}
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusConfig[item.status]}`}
                     >
                       {item.status}
                     </span>
                   </td>
-
-                  <td className="px-4 py-5 text-blue-2200 text-sm leading-5 font-normal">
-                    {item.markup}
+                  <td className="px-5 py-4 text-sm text-gray-700">
+                    {formatMarkup(item.markup)}
                   </td>
-
-                  <td className="px-4 py-5">
+                  <td className="px-5 py-4">
                     <ToggleSwitch
                       checked={item.weekendRule}
-                      className="bg-blue-2200"
-                      onChange={() => toggleWeekendRule(item.id)}
+                      onChange={() => toggleWeekend(item.id)}
                     />
                   </td>
-
-                  <td className="px-4 py-5 text-blue-1300 text-sm leading-5 font-normal">
-                    {item.spread}
+                  <td className="px-5 py-4 text-sm text-gray-500">
+                    {formatSpread(item.spread)}
                   </td>
-
-                  <td className="px-4 py-5 text-blue-1300 text-sm leading-5 font-normal">
-                    {item.limit}
+                  <td className="px-5 py-4 text-sm text-gray-700">
+                    {formatLimit(item.limit)}
                   </td>
-
-                  <td className="px-4 py-5">
-                    <Link
-                      className="flex items-center justify-center w-8 h-8 ml-auto"
-                      href="#"
-                    >
-                      <Image
-                        src={item.action}
-                        width={16}
-                        height={16}
-                        alt="edit"
-                      />
-                    </Link>
+                  <td className="px-5 py-4">
+                    <div className="flex justify-end">
+                      <button
+                        type="button"
+                        onClick={() => openEdit(item.id)}
+                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-400 transition-colors hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600"
+                        aria-label={`Edit ${item.currency} ${item.status}`}
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H2v-3L11.5 2.5z" />
+                        </svg>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        {pages > 1 && (
+          <div className="border-t border-gray-200">
+            <Pagination
+              page={tablePage}
+              totalPages={pages}
+              totalItems={total}
+              pageSize={tablePageSize}
+              onPageChange={setTablePage}
+            />
+          </div>
+        )}
       </div>
-    </div>
+
+      <EditModal />
+    </>
   );
 }
