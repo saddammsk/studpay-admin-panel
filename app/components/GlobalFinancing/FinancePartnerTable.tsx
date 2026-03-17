@@ -3,195 +3,24 @@ import { useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import Modal from "@/app/components/Modal";
-import ProgressBar from "@/app/components/ProgressBar";
+import { usePartnerStore } from "@/app/store/zustand/usePartnerStore";
+import OnboardPartnerModal from "@/app/components/GlobalFinancing/AddPartnerModal";
 
-interface CaseItem {
-  id: string
-  bank: {
-    title: string
-    name: string
-    subtitle: string
-  },
-  account: {
-    name: string
-    icon: string
-    email: string
-  },
-  status: "Active" | "Pending Legal Review" | "Suspended",
-  loan: number
-  portfolioHealth: {
-    approved: number,
-    pending: number,
-  }
-
-}
-
-const cases: CaseItem[] = [
-  {
-    id: "1",
-    bank: {
-      title: "DB",
-      name: "Deutsche Bank",
-      subtitle: "Germany"
-    },
-    account: {
-      name: "Klaus Müller",
-      icon: "/icons/email23.svg",
-      email: "k.mueller@db.com",
-    },
-    status: "Active",
-    loan: 412,
-    portfolioHealth: {
-      approved: 78,
-      pending: 22
-    }
-  },{
-    id: "2",
-    bank: {
-      title: "CO",
-      name: "Commerzbank",
-      subtitle: "Germany"
-    },
-    account: {
-      name: "Anna Schmidt",
-      icon: "/icons/email23.svg",
-      email: "a.schmidt@commerzbank.com",
-    },
-    status: "Active",
-    loan: 287,
-    portfolioHealth: {
-      approved: 82,
-      pending: 18
-    }
-  },{
-    id: "3",
-    bank: {
-      title: "IG",
-      name: "ING Group",
-      subtitle: "Netherlands"
-    },
-    account: {
-      name: "Pieter van Dijk",
-      icon: "/icons/email23.svg",
-      email: "p.vandijk@ing.com",
-    },
-    status: "Active",
-    loan: 198,
-    portfolioHealth: {
-      approved: 71,
-      pending: 29
-    }
-  },{
-    id: "4",
-    bank: {
-      title: "BP",
-      name: "BNP Paribas",
-      subtitle: "France"
-    },
-    account: {
-      name: "Claire Dubois",
-      icon: "/icons/email23.svg",
-      email: "c.dubois@bnpparibas.com",
-    },
-    status: "Pending Legal Review",
-    loan: 54,
-    portfolioHealth: {
-      approved: 65,
-      pending: 35
-    }
-  },
-  {
-    id: "5",
-    bank: {
-      title: "SA",
-      name: "Santander",
-      subtitle: "Spain"
-    },
-    account: {
-      name: "Miguel Torres",
-      icon: "/icons/email23.svg",
-      email: "m.torres@santander.com",
-    },
-    status: "Active",
-    loan: 321,
-    portfolioHealth: {
-      approved: 76,
-      pending: 24
-    }
-  },
-  {
-    id: "6",
-    bank: {
-      title: "UN",
-      name: "UniCredit",
-      subtitle: "Italy"
-    },
-    account: {
-      name: "Luca Romano",
-      icon: "/icons/email23.svg",
-      email: "l.romano@unicredit.eu",
-    },
-    status: "Suspended",
-    loan: 89,
-    portfolioHealth: {
-      approved: 43,
-      pending: 57
-    }
-  },{
-    id: "7",
-    bank: {
-      title: "RB",
-      name: "Raiffeisen Bank",
-      subtitle: "Austria"
-    },
-    account: {
-      name: "Eva Huber",
-      icon: "/icons/email23.svg",
-      email: "e.huber@raiffeisen.at",
-    },
-    status: "Active",
-    loan: 156,
-    portfolioHealth: {
-      approved: 80,
-      pending: 20
-    }
-  },{
-    id: "8",
-    bank: {
-      title: "BA",
-      name: "Barclays",
-      subtitle: "United Kingdom"
-    },
-    account: {
-      name: "James Whitfield",
-      icon: "/icons/email23.svg",
-      email: "j.whitfield@barclays.co.uk",
-    },
-    status: "Pending Legal Review",
-    loan: 42,
-    portfolioHealth: {
-      approved: 69,
-      pending: 31
-    }
-  },
-
-]
-
-const statusConfig: any = {
+const statusConfig: Record<string, string> = {
   Active: "bg-lightgreenNew4 text-green58",
   "Pending Legal Review": "bg-yellow-3100 text-yellow-1100",
   Suspended: "bg-gray-6100 text-red2100",
 }
 
-
-
 export default function TransactionTable() {
+  const { partners, isAddModalOpen, openAddModal, closeAddModal } = usePartnerStore();
   const [isOpen, setIsOpen] = useState(false);
 
 
   return (
     <>
       <div className="bg-white border border-solid border-gray-3100 rounded-lg">
+       
         <div className="overflow-x-auto">
           <table className="2xl:w-full w-250">
             <thead>
@@ -205,7 +34,7 @@ export default function TransactionTable() {
             </thead>
 
             <tbody>
-              {cases.map((item) => (
+              {partners.map((item) => (
                 <tr key={item.id} onClick={() => setIsOpen(true)} className="border-b border-gray-200 hover:bg-gray-50 transition last:border-b-0">
                   <td className="p-4 text-sm text-ElectricBlue2 font-normal">
                     <div className='flex items-center gap-3'>
@@ -266,7 +95,7 @@ export default function TransactionTable() {
         </div>
       </div>
 
-      {/* MODAL */}
+      {/* Row detail modal */}
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -275,8 +104,19 @@ export default function TransactionTable() {
         <Link onClick={() => setIsOpen(false)} href={"#"} className="flex items-center justify-center shadow-71xl rounded w-4 h-4 absolute top-4 right-4">
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
         </Link>
+      </Modal>
 
-      </Modal >
+      {/* Onboard new partner modal */}
+      <Modal
+        isOpen={isAddModalOpen}
+        onClose={closeAddModal}
+        panelClassName="max-w-[512px] bg-white relative overflow-y-auto md:p-6 p-4"
+      >
+        <button onClick={closeAddModal} className="flex items-center justify-center shadow-71xl rounded w-6 h-6 absolute top-4 right-4 hover:bg-gray-100 transition-all">
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="Close" />
+        </button>
+        <OnboardPartnerModal />
+      </Modal>
     </>
   );
 }

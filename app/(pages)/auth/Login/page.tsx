@@ -163,7 +163,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     onChange={(e) => handleInputChange('password', e.target.value)}
                     iconSrc="/images/lock-icon.svg"
                     passwordToggleIconSrc={{
-                      show: '/images/eye-icon.svg',
+                      show: '/images/eyes-icon.svg',
                       hide: '/images/eye-off-icon.svg',
                     }}
                     ClassName="rounded-2xl border-2 bg-white h-14.75"

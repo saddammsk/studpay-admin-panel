@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Modal from "@/app/components/Modal";
@@ -31,7 +32,15 @@ const statusConfig: Record<
   },
 };
 
+const formatFileSize = (bytes: number): string => {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+};
+
 const UsersStudentsPage = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const {
     student,
     summaryCards,
@@ -45,7 +54,41 @@ const UsersStudentsPage = () => {
     closeRejectModal,
     setRejectionReason,
     confirmRejection,
+    isViewModalOpen,
+    viewingDocument,
+    openViewModal,
+    closeViewModal,
+    isApproveModalOpen,
+    approvingDocumentId,
+    openApproveModal,
+    closeApproveModal,
+    confirmApproval,
+    isUploadModalOpen,
+    uploadingDocumentId,
+    uploadFileName,
+    uploadFileSize,
+    uploadProgress,
+    isUploading,
+    openUploadModal,
+    closeUploadModal,
+    setUploadFile,
+    confirmUpload,
   } = useAviDossierStore();
+
+  const approvingDocument = approvingDocumentId
+    ? documents.find((d) => d.id === approvingDocumentId)
+    : null;
+
+  const uploadingDocument = uploadingDocumentId
+    ? documents.find((d) => d.id === uploadingDocumentId)
+    : null;
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadFile(file.name, formatFileSize(file.size));
+    e.target.value = "";
+  };
 
   return (
     <div className="font-inter">
@@ -237,9 +280,12 @@ const UsersStudentsPage = () => {
                     <ul className="flex flex-wrap items-center gap-2 mt-4">
                       {doc.actions.includes("view") && (
                         <li>
-                          <button className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-md text-blue-1300 font-normal text-sm leading-5 bg-gray-1500 border-solid border-gray-3600 h-9 flex items-center justify-center">
+                          <button
+                            onClick={() => openViewModal(doc.id)}
+                            className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-md text-blue-1300 font-normal text-sm leading-5 bg-gray-1500 border-solid border-gray-3600 h-9 flex items-center justify-center"
+                          >
                             <Image
-                              src="/images/eye-icon.svg"
+                              src="/images/eyes-icon.svg"
                               alt="file"
                               width={16}
                               height={16}
@@ -250,7 +296,10 @@ const UsersStudentsPage = () => {
                       )}
                       {doc.actions.includes("approve") && (
                         <li>
-                          <button className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-md text-green53 font-normal text-sm leading-5 bg-gray-1500 border-solid border-green53/30 h-9 flex items-center justify-center">
+                          <button
+                            onClick={() => openApproveModal(doc.id)}
+                            className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-md text-green53 font-normal text-sm leading-5 bg-gray-1500 border-solid border-green53/30 h-9 flex items-center justify-center"
+                          >
                             <Image
                               src="/images/chackdarkgreen.svg"
                               alt="file"
@@ -279,7 +328,10 @@ const UsersStudentsPage = () => {
                       )}
                       {doc.actions.includes("upload") && (
                         <li>
-                          <button className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-[10px] text-blue-1300 font-normal text-sm leading-5 bg-gray-1500 border-solid border-gray-3600 h-9 flex items-center justify-center">
+                          <button
+                            onClick={() => openUploadModal(doc.id)}
+                            className="px-3 gap-2 cursor-pointer transition-all duration-500 ease-in-out w-full border rounded-[10px] text-blue-1300 font-normal text-sm leading-5 bg-gray-1500 border-solid border-gray-3600 h-9 flex items-center justify-center"
+                          >
                             <Image
                               src="/icons/upload-icon.svg"
                               alt="file"
@@ -421,15 +473,25 @@ const UsersStudentsPage = () => {
           <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
         </Link>
         <div className="md:p-6 p-4">
-          <h4 className="text-black-2000 font-semibold text-lg leading-7 tracking-[-0.45px]">
-            Reject Document
-          </h4>
+          <div className="flex items-center gap-3 mb-1">
+            <span className="bg-red2100/10 rounded-lg w-10 h-10 flex items-center justify-center">
+              <Image
+                src="/images/closeRed.svg"
+                width={20}
+                height={20}
+                alt=""
+              />
+            </span>
+            <h4 className="text-black-2000 font-semibold text-lg leading-7 tracking-[-0.45px]">
+              Reject Document
+            </h4>
+          </div>
           <p className="text-gray-3800 font-normal text-sm leading-5 mt-1.5">
             Please provide a reason for rejecting this document. The student
             will be notified.
           </p>
           <textarea
-            className="text-gray-1900 font-normal px-3.5 py-2.5 outline-0 text-sm leading-5 placeholder:text-gray-1900 border border-solid border-gray-3600 rounded-md shadow-59xl w-full h-25 mt-6"
+            className="text-gray-1900 font-normal px-3.5 py-2.5 outline-0 text-sm leading-5 placeholder:text-gray-1900 border border-solid border-gray-3600 rounded-md w-full h-25 mt-6 resize-none"
             placeholder="Enter rejection reason..."
             value={rejectionReason}
             onChange={(e) => setRejectionReason(e.target.value)}
@@ -446,9 +508,353 @@ const UsersStudentsPage = () => {
             <li>
               <button
                 onClick={confirmRejection}
-                className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-red2100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-red2100 border-solid border-red2100 h-10"
+                disabled={!rejectionReason.trim()}
+                className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-red2100/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-red2100 border-solid border-red2100 h-10 disabled:opacity-50 disabled:cursor-not-allowed"
               >
+                <Image
+                  src="/images/closeRed.svg"
+                  width={14}
+                  height={14}
+                  alt=""
+                  className="brightness-10000"
+                />
                 Confirm Rejection
+              </button>
+            </li>
+          </ul>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={isViewModalOpen}
+        onClose={closeViewModal}
+        panelClassName="max-w-[640px] bg-gray-1500 relative"
+      >
+        <Link
+          onClick={closeViewModal}
+          href={"#"}
+          className="flex items-center justify-center rounded-lg w-4 h-4 absolute top-4 right-4 z-10"
+        >
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className="md:p-6 p-4">
+          {viewingDocument && (
+            <>
+              <div className="flex items-center gap-3 mb-4">
+                <span
+                  className={`${viewingDocument.iconBg} rounded-lg w-10 h-10 flex items-center justify-center`}
+                >
+                  <Image
+                    src={viewingDocument.icon}
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
+                </span>
+                <div>
+                  <h4 className="text-black-2000 font-semibold text-lg leading-7 tracking-[-0.45px]">
+                    {viewingDocument.title}
+                  </h4>
+                  {viewingDocument.subtitle && (
+                    <p className="text-gray-3800 font-normal text-xs leading-4 mt-0.5">
+                      {viewingDocument.subtitle}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center gap-3 mb-4">
+                <span
+                  className={`${statusConfig[viewingDocument.status].textColor} gap-1.5 font-medium text-xs leading-64 border border-solid ${statusConfig[viewingDocument.status].borderColor} ${statusConfig[viewingDocument.status].bgColor} h-5.5 inline-flex items-center justify-center rounded-full px-2`}
+                >
+                  <strong
+                    className={`${statusConfig[viewingDocument.status].dotColor} rounded-full w-1.5 h-1.5 flex items-center`}
+                  ></strong>
+                  {viewingDocument.status}
+                </span>
+                {viewingDocument.fileName && (
+                  <span className="text-gray-1900 text-xs leading-4 font-normal">
+                    {viewingDocument.fileName}
+                    {viewingDocument.fileSize &&
+                      ` (${viewingDocument.fileSize})`}
+                  </span>
+                )}
+              </div>
+              <div className="bg-white border border-solid border-gray-3600 rounded-lg overflow-hidden">
+                <div className="flex items-center justify-between px-4 py-3 border-b border-solid border-gray-3600">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/images/file-black.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                    <span className="text-blue-1300 text-sm font-medium">
+                      {viewingDocument.fileName ?? "document.pdf"}
+                    </span>
+                  </div>
+                  <button className="text-blue1400 text-xs font-medium hover:underline cursor-pointer">
+                    Download
+                  </button>
+                </div>
+                <div className="h-80 flex flex-col items-center justify-center bg-lighrgrey36/30">
+                  <Image
+                    src="/images/file-black.svg"
+                    width={48}
+                    height={48}
+                    alt=""
+                    className="opacity-20 mb-3"
+                  />
+                  <p className="text-gray-1900 text-sm font-normal">
+                    PDF Preview
+                  </p>
+                  <p className="text-gray-1900 text-xs font-normal mt-1 opacity-60">
+                    Document preview will be displayed here
+                  </p>
+                </div>
+              </div>
+              <ul className="flex items-center justify-end gap-3 mt-4">
+                <li>
+                  <button
+                    onClick={closeViewModal}
+                    className="px-4 cursor-pointer hover:bg-lighrgrey37 hover:text-blue-1300 transition-all duration-500 ease-in-out w-full border rounded-md text-blue1700 font-normal text-sm leading-5 bg-gray-1800 border-solid border-gray-3900 h-10"
+                  >
+                    Close
+                  </button>
+                </li>
+              </ul>
+            </>
+          )}
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={isApproveModalOpen}
+        onClose={closeApproveModal}
+        panelClassName="max-w-[512px] bg-gray-1500 relative"
+      >
+        <Link
+          onClick={closeApproveModal}
+          href={"#"}
+          className="flex items-center justify-center rounded-lg w-4 h-4 absolute top-4 right-4"
+        >
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className="md:p-6 p-4">
+          <div className="flex items-center gap-3 mb-1">
+            <span className="bg-green53/10 rounded-lg w-10 h-10 flex items-center justify-center">
+              <Image
+                src="/images/chackdarkgreen.svg"
+                width={20}
+                height={20}
+                alt=""
+              />
+            </span>
+            <h4 className="text-black-2000 font-semibold text-lg leading-7 tracking-[-0.45px]">
+              Approve Document
+            </h4>
+          </div>
+          <p className="text-gray-3800 font-normal text-sm leading-5 mt-3">
+            Are you sure you want to approve{" "}
+            <strong className="text-blue-1300 font-semibold">
+              {approvingDocument?.title}
+            </strong>
+            ? This action will mark the document as verified and compliant.
+          </p>
+          {approvingDocument?.fileName && (
+            <div className="flex items-center gap-3 mt-4 bg-white border border-solid border-gray-3600 rounded-md px-3 py-2.5">
+              <Image
+                src="/images/file-black.svg"
+                width={16}
+                height={16}
+                alt=""
+              />
+              <div className="flex-1">
+                <p className="text-blue-1300 text-sm font-medium leading-4">
+                  {approvingDocument.fileName}
+                </p>
+                {approvingDocument.fileSize && (
+                  <p className="text-gray-1900 text-xs leading-4 mt-0.5">
+                    {approvingDocument.fileSize}
+                  </p>
+                )}
+              </div>
+              <span className="text-green53 gap-1.5 font-medium text-xs border border-solid border-green53/20 bg-green53/10 h-5.5 inline-flex items-center justify-center rounded-full px-2">
+                <strong className="bg-green53 rounded-full w-1.5 h-1.5 flex items-center"></strong>
+                PDF
+              </span>
+            </div>
+          )}
+          <ul className="flex items-center justify-end gap-3 mt-6">
+            <li>
+              <button
+                onClick={closeApproveModal}
+                className="px-4 cursor-pointer hover:bg-lighrgrey37 hover:text-blue-1300 transition-all duration-500 ease-in-out w-full border rounded-md text-blue1700 font-normal text-sm leading-5 bg-gray-1800 border-solid border-gray-3900 h-10"
+              >
+                Cancel
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={confirmApproval}
+                className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-green53/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-green53 border-solid border-green53 h-10"
+              >
+                <Image
+                  src="/images/chackdarkgreen.svg"
+                  width={14}
+                  height={14}
+                  alt=""
+                  className="brightness-10000"
+                />
+                Confirm Approval
+              </button>
+            </li>
+          </ul>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={isUploadModalOpen}
+        onClose={closeUploadModal}
+        panelClassName="max-w-[512px] bg-gray-1500 relative"
+      >
+        <Link
+          onClick={closeUploadModal}
+          href={"#"}
+          className="flex items-center justify-center rounded-lg w-4 h-4 absolute top-4 right-4"
+        >
+          <Image src="/images/cross-gray.svg" width={16} height={16} alt="" />
+        </Link>
+        <div className="md:p-6 p-4">
+          <div className="flex items-center gap-3 mb-1">
+            <span className="bg-blue1400/10 rounded-lg w-10 h-10 flex items-center justify-center">
+              <Image
+                src="/icons/upload-icon.svg"
+                width={20}
+                height={20}
+                alt=""
+              />
+            </span>
+            <h4 className="text-black-2000 font-semibold text-lg leading-7 tracking-[-0.45px]">
+              Upload Document
+            </h4>
+          </div>
+          <p className="text-gray-3800 font-normal text-sm leading-5 mt-1.5">
+            Upload a new file for{" "}
+            <strong className="text-blue-1300 font-semibold">
+              {uploadingDocument?.title}
+            </strong>
+            . Accepted format: PDF (max 10MB).
+          </p>
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".pdf"
+            onChange={handleFileSelect}
+            className="hidden"
+          />
+
+          {!uploadFileName ? (
+            <div
+              onClick={() => fileInputRef.current?.click()}
+              className="mt-4 border-2 border-dashed border-gray-3600 rounded-lg p-8 flex flex-col items-center justify-center cursor-pointer hover:border-blue1400 hover:bg-blue1400/5 transition-all duration-300"
+            >
+              <span className="bg-lighrgrey36 rounded-full w-12 h-12 flex items-center justify-center mb-3">
+                <Image
+                  src="/icons/upload-icon.svg"
+                  width={24}
+                  height={24}
+                  alt=""
+                  className="opacity-50"
+                />
+              </span>
+              <p className="text-blue-1300 text-sm font-medium">
+                Click to upload or drag and drop
+              </p>
+              <p className="text-gray-1900 text-xs font-normal mt-1">
+                PDF up to 10MB
+              </p>
+            </div>
+          ) : (
+            <div className="mt-4 bg-white border border-solid border-gray-3600 rounded-lg p-4">
+              <div className="flex items-center gap-3">
+                <span className="bg-red2100/10 rounded-lg w-10 h-10 flex items-center justify-center">
+                  <Image
+                    src="/images/file-black.svg"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
+                </span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-blue-1300 text-sm font-medium leading-4 truncate">
+                    {uploadFileName}
+                  </p>
+                  <p className="text-gray-1900 text-xs leading-4 mt-0.5">
+                    {uploadFileSize}
+                  </p>
+                </div>
+                {!isUploading && (
+                  <button
+                    onClick={() => {
+                      setUploadFile("", "");
+                    }}
+                    className="cursor-pointer"
+                  >
+                    <Image
+                      src="/images/cross-gray.svg"
+                      width={14}
+                      height={14}
+                      alt=""
+                    />
+                  </button>
+                )}
+              </div>
+              {isUploading && (
+                <div className="mt-3">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-gray-1900 text-xs font-medium">
+                      Uploading...
+                    </span>
+                    <span className="text-blue1400 text-xs font-semibold">
+                      {uploadProgress}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-3600 rounded-full h-1.5">
+                    <div
+                      className="bg-blue1400 h-1.5 rounded-full transition-all duration-200 ease-out"
+                      style={{ width: `${uploadProgress}%` }}
+                    ></div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          <ul className="flex items-center justify-end gap-3 mt-6">
+            <li>
+              <button
+                onClick={closeUploadModal}
+                disabled={isUploading}
+                className="px-4 cursor-pointer hover:bg-lighrgrey37 hover:text-blue-1300 transition-all duration-500 ease-in-out w-full border rounded-md text-blue1700 font-normal text-sm leading-5 bg-gray-1800 border-solid border-gray-3900 h-10 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Cancel
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={confirmUpload}
+                disabled={!uploadFileName || isUploading}
+                className="cursor-pointer px-4 flex items-center justify-center w-full hover:bg-blue1400/90 transition-all duration-500 ease-in-out border rounded-md text-white font-normal gap-2 text-sm leading-5 bg-blue1400 border-solid border-blue1400 h-10 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Image
+                  src="/icons/upload-icon.svg"
+                  width={14}
+                  height={14}
+                  alt=""
+                  className="brightness-10000"
+                />
+                {isUploading ? "Uploading..." : "Upload Document"}
               </button>
             </li>
           </ul>

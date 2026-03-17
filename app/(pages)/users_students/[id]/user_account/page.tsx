@@ -27,7 +27,7 @@ const UsersStudentsPage = () => {
               </div>
               <button className="w-6 h-6 cursor-pointer flex items-center justify-center">
                 <Image
-                  src="/images/eye-icon.svg"
+                  src="/images/eyes-icon.svg"
                   width="24"
                   height="24"
                   alt=""

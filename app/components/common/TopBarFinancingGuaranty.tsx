@@ -45,7 +45,7 @@ const TopBar = () => {
                               <li>
                                    <Button onClick={() => { }}
                                         iconSrc="/images/plus-icon.svg"
-                                        label="Add Guarantyr"
+                                        label="Add Guaranty"
                                         className="text-white text-sm font-normal gap-4 h-9 px-3! bg-lightgreen17 hover:bg-lightgreen17/90 rounded-md border border-solid border-gray1600 m-0!"
                                    />
                               </li>

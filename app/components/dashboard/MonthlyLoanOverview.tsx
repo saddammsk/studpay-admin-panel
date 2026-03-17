@@ -1,7 +1,7 @@
 
-import { MonthlyActiveUsers } from "./MonthlyActiveUsers";
 import { LoansOverviews } from "./LoansOverviews";
 import { LoanApplications } from "./LoanApplications";
+import MonthlyActiveUsers from "./MonthlyActiveUsers";
 
 export default function MonthlyLoanOverview() {
 
@@ -14,10 +14,8 @@ export default function MonthlyLoanOverview() {
         </div>
 
         <div className="4xl:w-[37%] 2xl:w-[40%] w-full 2xl:block grid md:grid-cols-2 grid-cols-1 gap-4">
-          {/* Loads Overviews Component */}
           <LoansOverviews/>
 
-          {/* Loan Applications Status Component */}
          <LoanApplications/>
         </div>
       </div>

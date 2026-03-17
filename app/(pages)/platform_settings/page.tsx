@@ -120,8 +120,8 @@ export default function FinanceAnalytics() {
                                 placeholder="Enter current password"
                                 ClassName='rounded-[10px]! pl-3! bg-green-2100!'
                                 passwordToggleIconSrc={{
-                                    show: '/images/eye-icon.svg',
-                                    hide: '/images/eye-icon.svg',
+                                    show: '/images/eyes-icon.svg',
+                                    hide: '/images/eyes-icon.svg',
                                 }}
                             />
                             <InputField
@@ -130,8 +130,8 @@ export default function FinanceAnalytics() {
                                 placeholder="Enter new password"
                                 ClassName='rounded-[10px]! pl-3! bg-green-2100!'
                                 passwordToggleIconSrc={{
-                                    show: '/images/eye-icon.svg',
-                                    hide: '/images/eye-icon.svg',
+                                    show: '/images/eyes-icon.svg',
+                                    hide: '/images/eyes-icon.svg',
                                 }}
                             />
                             <InputField

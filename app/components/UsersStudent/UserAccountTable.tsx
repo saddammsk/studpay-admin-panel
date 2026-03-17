@@ -40,7 +40,7 @@ function RowDropdown({ payment }: { payment: Payment }) {
             onClick={() => setViewingPayment(payment)}
             className="w-full flex items-center gap-2.5 px-3 py-2 text-black-1600 font-inter text-sm hover:bg-gray-1600 transition-colors"
           >
-            <Image src="/images/eye-icon.svg" width={14} height={14} alt="" />
+            <Image src="/images/eyes-icon.svg" width={14} height={14} alt="" />
             View Details
           </button>
           <button

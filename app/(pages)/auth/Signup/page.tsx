@@ -181,7 +181,7 @@ const isFormIncomplete =
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
                       passwordToggleIconSrc={{
-                        show: '/images/eye-icon.svg',
+                        show: '/images/eyes-icon.svg',
                         hide: '/images/eye-off-icon.svg',
                       }}
                     />
@@ -200,7 +200,7 @@ const isFormIncomplete =
                       value={formData.confirmPassword}
                       onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                       passwordToggleIconSrc={{
-                        show: '/images/eye-icon.svg',
+                        show: '/images/eyes-icon.svg',
                         hide: '/images/eye-off-icon.svg',
                       }}
                     />

@@ -240,7 +240,7 @@ export default function PotsMonitoringTable() {
                     <li>
                       <Link href={"#"} className="flex items-center justify-center w-8 h-8">
                         <Image
-                          src="/images/eye-icon.svg"
+                          src="/images/eyes-icon.svg"
                           width={16}
                           height={16}
                           alt="view"

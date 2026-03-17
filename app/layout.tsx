@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body  className={`bg-gray-1500 ${inter.variable} ${publicSans.variable} ${JetBrainsMono.variable} antialiased`}
+      <body  className={`bg-gray-1500 font-inter ${inter.variable} ${publicSans.variable} ${JetBrainsMono.variable} antialiased`}
       >
         <ReduxProvider>
         <DashboardLayout>{children}</DashboardLayout>

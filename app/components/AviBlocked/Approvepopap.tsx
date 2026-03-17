@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { CheckCircle2, User, Shield } from "lucide-react";
+import ManagerDropdown from "./ManagerDropdown";
 
 interface ChecklistItem {
   id: string;
@@ -103,7 +104,6 @@ export default function ApproveAVIModal() {
 
   return (
     <div>
-      {/* Header */}
       <div className="sm:px-8 sm:py-6 p-4 border-b border-solid border-gray23 approve-gradient font-inter">
         <div className="flex items-center gap-3">
           <div className="w-11 h-11 rounded-xl bg-green-2200/10 flex items-center justify-center">
@@ -146,7 +146,6 @@ export default function ApproveAVIModal() {
       </div>
  
       <div className="sm:px-8 sm:py-6 p-4">
-        {/* Verification Checklist */}
         <div className="">
           <div className="flex items-center gap-2 mb-4">
             <CheckCircle2 size={16} className="text-[#3DBD8A]" />
@@ -166,7 +165,6 @@ export default function ApproveAVIModal() {
           </div>
         </div>
 
-        {/* 4-Eyes Warning */}
         <div className="mt-6">
           <div className="bg-yellow-1100/10 border border-yellow-1100/30 rounded-xl p-4 flex items-start gap-3">
             <Image
@@ -187,7 +185,6 @@ export default function ApproveAVIModal() {
           </div>
         </div>
 
-        {/* Select Compliance Manager */}
         <div className="mt-6">
           <div className="flex items-center gap-2 mb-3">
             <User size={15} className="text-[#3DBD8A]" />
@@ -195,53 +192,13 @@ export default function ApproveAVIModal() {
               Select Compliance Manager
             </h3>
           </div>
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className={`w-full text-left px-3 h-12 border rounded-md text-sm leading-5 flex items-center justify-between transition-all duration-150 ${selectedManager
-                ? "border-green-2200 text-blue1700 bg-white"
-                : "border-gray-3900 text-blue1700 bg-white"
-                } hover:border-green-2200/60`}
-            >
-              <span>
-                {selectedManager || "Choose a compliance manager for sign-off"}
-              </span>
-              <svg
-                className={`w-4 h-4 text-[#94A3B8] transition-transform duration-150 ${dropdownOpen ? "rotate-180" : ""
-                  }`}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            {dropdownOpen && (
-              <div className="absolute z-10 top-full left-0 right-0 mt-1 bg-white border border-gray-3900 rounded-xl shadow-lg overflow-hidden">
-                {complianceManagers.map((manager) => (
-                  <button
-                    key={manager}
-                    type="button"
-                    onClick={() => {
-                      setSelectedManager(manager);
-                      setDropdownOpen(false);
-                    }}
-                    className={`w-full text-left px-4 py-3 text-[14px] transition-colors hover:bg-[#F0FAF6] ${selectedManager === manager
-                      ? "text-green-2200 font-medium bg-white"
-                      : "text-SteelGray"
-                      }`}
-                  >
-                    {manager}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+        <ManagerDropdown
+          complianceManagers={complianceManagers}
+          selectedManager={selectedManager}
+          setSelectedManager={setSelectedManager}
+        />
         </div>
 
-        {/* Internal Approval Remarks */}
         <div className="mt-6">
           <h3 className="text-sm mb-3 font-bold leading-5 text-blue1700 uppercase tracking-[0.7px]">
             Internal Approval Remarks

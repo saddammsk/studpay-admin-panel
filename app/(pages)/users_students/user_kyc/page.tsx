@@ -241,7 +241,7 @@ const UsersStudentsPage = () => {
                     </li>
                   </ul>
                   <Link href={"#"} className='inline-flex items-center justify-center gap-2 text-blue-1300 font-inter font-normal text-sm leading-5 border border-solid border-gray-3600 rounded-md bg-white h-9 px-3 hover:bg-gray-3600 transition-all duration-500 ease-in-out'>
-                    <Image src="../images/eye-icon.svg" width="16" height="16" alt="" />
+                    <Image src="../images/eyes-icon.svg" width="16" height="16" alt="" />
                     View ID Documents
                   </Link>
                 </div>
