@@ -36,7 +36,7 @@ const ServicesMenu: MenuItem[] = [
 
 const SafetyMenu: MenuItem[] = [
   { label: "Risk & Fraud", icon: "/images/risk-icon.svg", href: "/risk_fraud_command_center" },
-  { label: "Crypto Wallet", icon: "/images/crypto-icon.svg", href: "/crupto_wallet" },
+  { label: "Crypto Wallet", icon: "/images/crypto-icon.svg", href: "/crypto_wallet" },
   { label: "Stud Safe", icon: "/images/stud-pin.svg", href: "/stud_safe" },
   { label: "Audit Logs", icon: "/images/audit-building.svg", href: "/audit_logs" },
 ];

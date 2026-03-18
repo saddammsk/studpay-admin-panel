@@ -2,29 +2,20 @@
 'use client'
 import TopBar from "@/app/components/common/TopBar";
 import Link from "next/link";
-import Image from "next/image";
 import {
      AlertTriangle,
-     ShieldAlert,
-     Smartphone,
-     Globe,
-     FileText,
-     Shield,
+  
      Activity,
-     UserCog,
      Fuel,
      Wallet,
-     Receipt,
-     CreditCard,
+
      Bitcoin,
      Hexagon,
      Coins,
 } from "lucide-react";
 
-import ProgressBar from "@/app/components/ProgressBar";
 import StatusCard2 from "@/app/components/StatusCard2";
 import WalletMonitoringTable from "@/app/components/WalletMonitoringTable";
-import { RecentActivity } from "@/app/components/dashboard/RecentActivity";
 import RecentTransactionsTable from "@/app/components/RecentTransactionsTable";
 
 

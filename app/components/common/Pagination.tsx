@@ -30,7 +30,7 @@ export default function Pagination({
         <button
           onClick={() => onPageChange(page - 1)}
           disabled={page === 1}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="flex h-8 w-8 items-center bg-white justify-center rounded-lg border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M8.5 3L5 7l3.5 4" />
@@ -44,7 +44,7 @@ export default function Pagination({
             className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium transition-colors ${
               p === page
                 ? "bg-blue-600 text-white border border-blue-600"
-                : "border border-gray-200 text-gray-600 hover:bg-gray-50"
+                : "border border-gray-200 text-gray-600 bg-white hover:bg-gray-50"
             }`}
           >
             {p}
@@ -54,7 +54,7 @@ export default function Pagination({
         <button
           onClick={() => onPageChange(page + 1)}
           disabled={page === totalPages}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="flex h-8 w-8 items-center justify-center bg-white rounded-lg border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5.5 3L9 7l-3.5 4" />

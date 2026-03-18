@@ -1,301 +1,234 @@
 import { create } from "zustand";
-import { toast } from "sonner";
 
-export type LeaseStatus = "Active Lease" | "Terminated" | "Pending Termination";
+export type KycStatus = "Verified" | "Pending" | "Rejected";
+export type CampaignSource = "Univ-Promotion" | "Summer-Special" | "Early-Bird" | "";
+export type ReservationStatus = "Confirmed" | "Pending" | "Cancelled";
+export type SortDir = "asc" | "desc" | null;
 
-export type DocumentVerification = "verified" | "pending" | "expired";
-
-export interface HousingDocument {
+export interface BoostedListing {
   id: string;
-  title: string;
-  subtitle: string;
-  date: string;
-  fileSize: string;
-  verification: DocumentVerification;
+  name: string;
+  landlord: string;
+  campaign: string;
+  campaignColor: string;
+  budget: string;
+  bookings: number;
+  roi: string;
 }
 
-export type PaymentStatus = "Paid" | "Pending" | "Overdue" | "Scheduled";
-
-export interface PaymentRecord {
+export interface Listing {
   id: string;
-  month: string;
+  name: string;
+  location: string;
+  city: string;
+  price: string;
+  landlord: string;
+  kyc: KycStatus;
+  status: string;
+  campaign: CampaignSource;
+}
+
+export interface Reservation {
+  id: string;
+  student: string;
+  email: string;
+  property: string;
+  location: string;
+  checkIn: string;
+  checkOut: string;
   amount: string;
-  status: PaymentStatus;
-  paidDate?: string;
+  status: ReservationStatus;
 }
 
-interface HousingInfo {
-  propertyName: string;
-  address: string;
-  room: string;
-  leaseStart: string;
-  leaseEnd: string;
-  monthlyRent: string;
-  leaseStatus: LeaseStatus;
-  securityDeposit: string;
-  coverageAmount: string;
-  guaranteeProvider: string;
-  policyNumber: string;
-  coverageType: string;
-  annualPremium: string;
+export interface ListingFilters {
+  city: string;
+  status: string;
+  campaign: string;
+  search: string;
 }
+
+export interface ListingSort {
+  field: keyof Listing | null;
+  dir: SortDir;
+}
+
+const boostedListingsData: BoostedListing[] = [
+  { id: "LST-001", name: "Modern Studio Apartment", landlord: "Hans Müller",   campaign: "Univ-Promotion", campaignColor: "bg-gray-1600 text-blue-1300", budget: "€450", bookings: 12, roi: "267%" },
+  { id: "LST-002", name: "Cozy 2BR near Campus",    landlord: "Anna Schmidt",  campaign: "Summer-Special", campaignColor: "bg-gray-1600 text-blue-1300", budget: "€320", bookings: 8,  roi: "175%" },
+  { id: "LST-003", name: "Luxury Penthouse Suite",  landlord: "Michael Weber", campaign: "Early-Bird",     campaignColor: "bg-gray-1600 text-blue-1300", budget: "€680", bookings: 15, roi: "221%" },
+  { id: "LST-004", name: "Student Shared House",    landlord: "Laura Fischer", campaign: "Univ-Promotion", campaignColor: "bg-gray-1600 text-blue-1300", budget: "€280", bookings: 9,  roi: "321%" },
+];
+
+const listingsData: Listing[] = [
+  { id: "LST-101", name: "Bright Studio near TU Berlin", location: "Berlin, Charlottenburg",    city: "Berlin",    price: "€650",  landlord: "Thomas Braun",    kyc: "Verified", status: "Active",   campaign: "Univ-Promotion"  },
+  { id: "LST-102", name: "Spacious 3BR Family Apt",       location: "Munich, Schwabing",          city: "Munich",    price: "€1450", landlord: "Maria Hoffmann",  kyc: "Pending",  status: "Active",   campaign: ""                },
+  { id: "LST-103", name: "Minimalist Loft Downtown",      location: "Frankfurt, Sachsenhausen",   city: "Frankfurt", price: "€890",  landlord: "Klaus Richter",   kyc: "Verified", status: "Active",   campaign: "Early-Bird"      },
+  { id: "LST-104", name: "Garden View Apartment",         location: "Hamburg, Eimsbüttel",        city: "Hamburg",   price: "€780",  landlord: "Sabine Wolf",     kyc: "Rejected", status: "Inactive", campaign: ""                },
+  { id: "LST-105", name: "Modern 2BR with Balcony",       location: "Berlin, Prenzlauer Berg",    city: "Berlin",    price: "€1100", landlord: "Peter Schneider", kyc: "Pending",  status: "Active",   campaign: ""                },
+  { id: "LST-106", name: "Cozy Attic Room",               location: "Munich, Maxvorstadt",        city: "Munich",    price: "€520",  landlord: "Julia Becker",    kyc: "Verified", status: "Active",   campaign: "Summer-Special"  },
+  { id: "LST-107", name: "Historic City Centre Flat",     location: "Frankfurt, Altstadt",        city: "Frankfurt", price: "€960",  landlord: "Erik Vogel",      kyc: "Verified", status: "Active",   campaign: "Univ-Promotion"  },
+  { id: "LST-108", name: "Riverside Studio",              location: "Hamburg, HafenCity",         city: "Hamburg",   price: "€870",  landlord: "Nina Krause",     kyc: "Pending",  status: "Active",   campaign: ""                },
+];
+
+const reservationsData: Reservation[] = [
+  { id: "RES-001", student: "Priya Sharma",   email: "priya@student.de",   property: "Modern Studio Apartment",  location: "Berlin",    checkIn: "2025-04-01", checkOut: "2025-09-30", amount: "€3,900",  status: "Confirmed"  },
+  { id: "RES-002", student: "Amit Verma",     email: "amit@uni.de",        property: "Cozy 2BR near Campus",     location: "Munich",    checkIn: "2025-05-01", checkOut: "2025-10-31", amount: "€2,560",  status: "Pending"    },
+  { id: "RES-003", student: "Sophie Martin",  email: "sophie@edu.fr",      property: "Minimalist Loft Downtown", location: "Frankfurt", checkIn: "2025-03-15", checkOut: "2025-08-14", amount: "€4,450",  status: "Confirmed"  },
+  { id: "RES-004", student: "James O'Brien",  email: "james@ox.ac.uk",     property: "Luxury Penthouse Suite",   location: "Berlin",    checkIn: "2025-06-01", checkOut: "2025-11-30", amount: "€5,100",  status: "Confirmed"  },
+  { id: "RES-005", student: "Yuki Tanaka",    email: "yuki@waseda.jp",     property: "Cozy Attic Room",          location: "Munich",    checkIn: "2025-04-15", checkOut: "2025-07-14", amount: "€1,560",  status: "Cancelled"  },
+  { id: "RES-006", student: "Ahmed El-Sayed", email: "ahmed@cairo.edu",    property: "Student Shared House",     location: "Hamburg",   checkIn: "2025-05-01", checkOut: "2025-08-31", amount: "€1,120",  status: "Pending"    },
+  { id: "RES-007", student: "Clara Schmidt",  email: "clara@fh-berlin.de", property: "Bright Studio near TU",    location: "Berlin",    checkIn: "2025-03-01", checkOut: "2025-08-31", amount: "€3,900",  status: "Confirmed"  },
+  { id: "RES-008", student: "Luca Rossi",     email: "luca@polimi.it",     property: "Modern 2BR with Balcony",  location: "Berlin",    checkIn: "2025-07-01", checkOut: "2025-12-31", amount: "€6,600",  status: "Pending"    },
+];
+
+const defaultListingFilters = (): ListingFilters => ({ city: "", status: "", campaign: "", search: "" });
 
 interface HousingState {
-  housing: HousingInfo;
-  documents: HousingDocument[];
-  payments: PaymentRecord[];
+  boostedListings: BoostedListing[];
 
-  isTerminateModalOpen: boolean;
-  isTerminating: boolean;
-  openTerminateModal: () => void;
-  closeTerminateModal: () => void;
-  confirmTerminate: () => void;
+  listings: Listing[];
+  listingFilters: ListingFilters;
+  listingSort: ListingSort;
+  listingPage: number;
+  listingPageSize: number;
+  selectedListing: Listing | null;
 
-  isRecordPaymentModalOpen: boolean;
-  recordPaymentMonth: string;
-  recordPaymentAmount: string;
-  isRecordingPayment: boolean;
-  openRecordPaymentModal: () => void;
-  closeRecordPaymentModal: () => void;
-  setRecordPaymentMonth: (month: string) => void;
-  setRecordPaymentAmount: (amount: string) => void;
-  confirmRecordPayment: () => void;
+  reservations: Reservation[];
+  reservationFilters: { status: string; search: string };
+  reservationPage: number;
+  reservationPageSize: number;
+  selectedReservation: Reservation | null;
 
-  isContactLandlordModalOpen: boolean;
-  contactSubject: string;
-  contactMessage: string;
-  isSendingMessage: boolean;
-  openContactLandlordModal: () => void;
-  closeContactLandlordModal: () => void;
-  setContactSubject: (subject: string) => void;
-  setContactMessage: (message: string) => void;
-  confirmContactLandlord: () => void;
+  activeTab: "manage" | "student";
 
-  isViewDocumentModalOpen: boolean;
-  viewingDocumentId: string | null;
-  openViewDocumentModal: (documentId: string) => void;
-  closeViewDocumentModal: () => void;
-  downloadDocument: (documentId: string) => void;
+  setActiveTab: (tab: "manage" | "student") => void;
 
-  isInsurancePolicyModalOpen: boolean;
-  openInsurancePolicyModal: () => void;
-  closeInsurancePolicyModal: () => void;
+  setListingFilter: <K extends keyof ListingFilters>(key: K, value: string) => void;
+  resetListingFilters: () => void;
+  setListingSort: (field: keyof Listing) => void;
+  setListingPage: (p: number) => void;
+  openListingDetail: (id: string) => void;
+  closeListingDetail: () => void;
+
+  filteredListings: () => Listing[];
+  paginatedListings: () => Listing[];
+  totalListingPages: () => number;
+
+  setReservationFilter: <K extends keyof HousingState["reservationFilters"]>(key: K, value: string) => void;
+  setReservationPage: (p: number) => void;
+  openReservationDetail: (id: string) => void;
+  closeReservationDetail: () => void;
+
+  filteredReservations: () => Reservation[];
+  paginatedReservations: () => Reservation[];
+  totalReservationPages: () => number;
 }
 
-export const useHousingStore = create<HousingState>((set, get) => ({
-  housing: {
-    propertyName: "Student Residence Lyon",
-    address: "45 Rue de la République, 69002 Lyon, France",
-    room: "Room 402",
-    leaseStart: "Sept 1, 2024",
-    leaseEnd: "Aug 31, 2025",
-    monthlyRent: "€650",
-    leaseStatus: "Active Lease",
-    securityDeposit: "1,200",
-    coverageAmount: "€15,600",
-    guaranteeProvider: "StudPay Guarantee",
-    policyNumber: "MRH-2024-98765",
-    coverageType: "Comprehensive",
-    annualPremium: "€89.00",
+export const useHousingStore = create<HousingState>()((set, get) => ({
+  boostedListings: boostedListingsData,
+
+  listings: listingsData,
+  listingFilters: defaultListingFilters(),
+  listingSort: { field: null, dir: null },
+  listingPage: 1,
+  listingPageSize: 6,
+  selectedListing: null,
+
+  reservations: reservationsData,
+  reservationFilters: { status: "", search: "" },
+  reservationPage: 1,
+  reservationPageSize: 5,
+  selectedReservation: null,
+
+  activeTab: "manage",
+
+  setActiveTab: (tab) => set({ activeTab: tab }),
+
+  setListingFilter: (key, value) =>
+    set((s) => ({ listingFilters: { ...s.listingFilters, [key]: value }, listingPage: 1 })),
+
+  resetListingFilters: () => set({ listingFilters: defaultListingFilters(), listingPage: 1 }),
+
+  setListingSort: (field) =>
+    set((s) => {
+      const same = s.listingSort.field === field;
+      const nextDir: SortDir = same
+        ? s.listingSort.dir === "asc" ? "desc" : s.listingSort.dir === "desc" ? null : "asc"
+        : "asc";
+      return { listingSort: { field, dir: nextDir } };
+    }),
+
+  setListingPage: (p) => set({ listingPage: p }),
+
+  openListingDetail: (id) => {
+    const item = get().listings.find((l) => l.id === id) ?? null;
+    set({ selectedListing: item });
   },
 
-  documents: [
-    {
-      id: "hdoc-1",
-      title: "Lease Agreement",
-      subtitle: "Bail",
-      date: "Sept 1, 2024",
-      fileSize: "2.4 MB",
-      verification: "verified",
-    },
-    {
-      id: "hdoc-2",
-      title: "Inventory Report",
-      subtitle: "État des Lieux",
-      date: "Sept 1, 2024",
-      fileSize: "8.1 MB",
-      verification: "verified",
-    },
-    {
-      id: "hdoc-3",
-      title: "Rent Receipt - January",
-      subtitle: "Quittance",
-      date: "Jan 5, 2025",
-      fileSize: "156 KB",
-      verification: "verified",
-    },
-    {
-      id: "hdoc-4",
-      title: "Rent Receipt - December",
-      subtitle: "Quittance",
-      date: "Dec 5, 2024",
-      fileSize: "154 KB",
-      verification: "verified",
-    },
-    {
-      id: "hdoc-5",
-      title: "Insurance Certificate",
-      subtitle: "Attestation d'Assurance",
-      date: "Sept 15, 2024",
-      fileSize: "342 KB",
-      verification: "pending",
-    },
-  ],
+  closeListingDetail: () => set({ selectedListing: null }),
 
-  payments: [
-    { id: "pay-1", month: "September 2024", amount: "€650", status: "Paid", paidDate: "2024-09-01" },
-    { id: "pay-2", month: "October 2024", amount: "€650", status: "Paid", paidDate: "2024-10-01" },
-    { id: "pay-3", month: "November 2024", amount: "€650", status: "Paid", paidDate: "2024-11-01" },
-    { id: "pay-4", month: "December 2024", amount: "€650", status: "Paid", paidDate: "2024-12-01" },
-    { id: "pay-5", month: "January 2025", amount: "€650", status: "Paid", paidDate: "2025-01-05" },
-    { id: "pay-6", month: "February 2025", amount: "€650", status: "Pending" },
-    { id: "pay-7", month: "March 2025", amount: "€650", status: "Scheduled" },
-  ],
-
-  isTerminateModalOpen: false,
-  isTerminating: false,
-
-  openTerminateModal: () => set({ isTerminateModalOpen: true, isTerminating: false }),
-
-  closeTerminateModal: () => set({ isTerminateModalOpen: false, isTerminating: false }),
-
-  confirmTerminate: () => {
-    set({ isTerminating: true });
-
-    setTimeout(() => {
-      set((state) => ({
-        housing: { ...state.housing, leaseStatus: "Terminated" },
-        isTerminateModalOpen: false,
-        isTerminating: false,
-      }));
-
-      toast.success("Lease Terminated", {
-        description: "The lease termination process has been initiated. Security deposit review is pending.",
+  filteredListings: () => {
+    const { listings, listingFilters, listingSort } = get();
+    let result = listings.filter((l) => {
+      if (listingFilters.city     && l.city     !== listingFilters.city)     return false;
+      if (listingFilters.status   && l.kyc      !== listingFilters.status)   return false;
+      if (listingFilters.campaign && l.campaign !== listingFilters.campaign) return false;
+      if (listingFilters.search) {
+        const q = listingFilters.search.toLowerCase();
+        if (!l.name.toLowerCase().includes(q) && !l.landlord.toLowerCase().includes(q) && !l.location.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    });
+    if (listingSort.field && listingSort.dir) {
+      result = [...result].sort((a, b) => {
+        const av = a[listingSort.field!];
+        const bv = b[listingSort.field!];
+        const cmp = av < bv ? -1 : av > bv ? 1 : 0;
+        return listingSort.dir === "asc" ? cmp : -cmp;
       });
-    }, 1500);
+    }
+    return result;
   },
 
-  isRecordPaymentModalOpen: false,
-  recordPaymentMonth: "",
-  recordPaymentAmount: "€650",
-  isRecordingPayment: false,
+  paginatedListings: () => {
+    const { listingPage, listingPageSize } = get();
+    const all = get().filteredListings();
+    return all.slice((listingPage - 1) * listingPageSize, listingPage * listingPageSize);
+  },
 
-  openRecordPaymentModal: () => {
-    const { payments } = get();
-    const nextPending = payments.find((p) => p.status === "Pending" || p.status === "Scheduled");
-    set({
-      isRecordPaymentModalOpen: true,
-      recordPaymentMonth: nextPending?.month ?? "",
-      recordPaymentAmount: nextPending?.amount ?? "€650",
-      isRecordingPayment: false,
+  totalListingPages: () =>
+    Math.max(1, Math.ceil(get().filteredListings().length / get().listingPageSize)),
+
+  setReservationFilter: (key, value) =>
+    set((s) => ({ reservationFilters: { ...s.reservationFilters, [key]: value }, reservationPage: 1 })),
+
+  setReservationPage: (p) => set({ reservationPage: p }),
+
+  openReservationDetail: (id) => {
+    const item = get().reservations.find((r) => r.id === id) ?? null;
+    set({ selectedReservation: item });
+  },
+
+  closeReservationDetail: () => set({ selectedReservation: null }),
+
+  filteredReservations: () => {
+    const { reservations, reservationFilters } = get();
+    return reservations.filter((r) => {
+      if (reservationFilters.status && r.status !== reservationFilters.status) return false;
+      if (reservationFilters.search) {
+        const q = reservationFilters.search.toLowerCase();
+        if (!r.student.toLowerCase().includes(q) && !r.property.toLowerCase().includes(q)) return false;
+      }
+      return true;
     });
   },
 
-  closeRecordPaymentModal: () =>
-    set({
-      isRecordPaymentModalOpen: false,
-      recordPaymentMonth: "",
-      recordPaymentAmount: "",
-      isRecordingPayment: false,
-    }),
-
-  setRecordPaymentMonth: (month) => set({ recordPaymentMonth: month }),
-
-  setRecordPaymentAmount: (amount) => set({ recordPaymentAmount: amount }),
-
-  confirmRecordPayment: () => {
-    const { recordPaymentMonth } = get();
-    if (!recordPaymentMonth) return;
-
-    set({ isRecordingPayment: true });
-
-    setTimeout(() => {
-      const now = new Date().toISOString().split("T")[0];
-
-      set((state) => ({
-        payments: state.payments.map((p) =>
-          p.month === recordPaymentMonth
-            ? { ...p, status: "Paid" as PaymentStatus, paidDate: now }
-            : p
-        ),
-        isRecordPaymentModalOpen: false,
-        recordPaymentMonth: "",
-        recordPaymentAmount: "",
-        isRecordingPayment: false,
-      }));
-
-      toast.success("Payment Recorded", {
-        description: `Rent for ${recordPaymentMonth} has been marked as paid.`,
-      });
-    }, 1000);
+  paginatedReservations: () => {
+    const { reservationPage, reservationPageSize } = get();
+    const all = get().filteredReservations();
+    return all.slice((reservationPage - 1) * reservationPageSize, reservationPage * reservationPageSize);
   },
 
-  isContactLandlordModalOpen: false,
-  contactSubject: "",
-  contactMessage: "",
-  isSendingMessage: false,
-
-  openContactLandlordModal: () =>
-    set({
-      isContactLandlordModalOpen: true,
-      contactSubject: "",
-      contactMessage: "",
-      isSendingMessage: false,
-    }),
-
-  closeContactLandlordModal: () =>
-    set({
-      isContactLandlordModalOpen: false,
-      contactSubject: "",
-      contactMessage: "",
-      isSendingMessage: false,
-    }),
-
-  setContactSubject: (subject) => set({ contactSubject: subject }),
-
-  setContactMessage: (message) => set({ contactMessage: message }),
-
-  confirmContactLandlord: () => {
-    const { contactSubject, contactMessage } = get();
-    if (!contactSubject.trim() || !contactMessage.trim()) return;
-
-    set({ isSendingMessage: true });
-
-    setTimeout(() => {
-      set({
-        isContactLandlordModalOpen: false,
-        contactSubject: "",
-        contactMessage: "",
-        isSendingMessage: false,
-      });
-
-      toast.success("Message Sent", {
-        description: "Your support ticket has been created. The landlord will be notified.",
-      });
-    }, 1000);
-  },
-
-  isViewDocumentModalOpen: false,
-  viewingDocumentId: null,
-
-  openViewDocumentModal: (documentId) =>
-    set({ isViewDocumentModalOpen: true, viewingDocumentId: documentId }),
-
-  closeViewDocumentModal: () =>
-    set({ isViewDocumentModalOpen: false, viewingDocumentId: null }),
-
-  downloadDocument: (documentId) => {
-    const doc = get().documents.find((d) => d.id === documentId);
-    if (!doc) return;
-
-    toast.success("Download Started", {
-      description: `${doc.title} (${doc.fileSize}) is being downloaded.`,
-    });
-  },
-
-  isInsurancePolicyModalOpen: false,
-
-  openInsurancePolicyModal: () => set({ isInsurancePolicyModalOpen: true }),
-
-  closeInsurancePolicyModal: () => set({ isInsurancePolicyModalOpen: false }),
+  totalReservationPages: () =>
+    Math.max(1, Math.ceil(get().filteredReservations().length / get().reservationPageSize)),
 }));

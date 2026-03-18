@@ -41,7 +41,7 @@ const overviewCards = [
     change: "+3.7%",
     note: "vs yesterday",
     positive: true,
-    iconSrc: "../images/price-arrow-green.svg",
+    iconSrc: "/images/price-arrow-green.svg",
     iconBg: "bg-rosepink23",
   },
 ];
@@ -109,7 +109,7 @@ const SavingPotsPage = () => {
                 <p className="text-gray-1900 text-sm leading-5 font-medium mb-2 uppercase">{card.label}</p>
                 <h4 className="text-black-2000 text-2xl leading-8 font-bold">{card.value}</h4>
                 <span className="inline-flex items-center gap-1 mt-1">
-                  <Image src="../images/price-arrow-green.svg" width={14} height={14} alt="" />
+                  <Image src="/images/price-arrow-green.svg" width={14} height={14} alt="" />
                   <p className="flex items-center gap-1 text-green-1600 text-xs leading-4 font-medium">
                     {card.change}{" "}
                     <span className="text-gray-2300 block">{card.note}</span>

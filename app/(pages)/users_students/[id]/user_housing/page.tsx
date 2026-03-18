@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Modal from "@/app/components/Modal";
 import AdminActions from "@/app/components/UsersStudent/AdminActions";
-import { useHousingStore } from "@/app/store/zustand/Usehousingstore";
+import { useHousingStore } from "@/app/store/zustand/UseUserHousingStore";
 
 const UsersStudentsPage = () => {
   const {

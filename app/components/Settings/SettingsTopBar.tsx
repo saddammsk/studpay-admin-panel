@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"; 
-import Button from "../ui/Button";
 import { NotificationsDropdown } from "@/app/components/NotificationsDropdown";
-import CustomSelect from "@/app/components/CustomSelect";
 import { useSidebarStore } from "@/app/store/zustand/useSidebarStore";
+import SearchSettings from "./SearchSettings";
 
-const TopBar = () => {
+const SettingsTopBar = () => {
   const toggleSidebar = useSidebarStore((state: any) => state.toggle);
    const { collapsed } = useSidebarStore();
 
@@ -16,35 +15,24 @@ const TopBar = () => {
         <div className="flex-1 flex items-center gap-4">
           <div className="">
             <h1 className="font-semibold font-inter sm:text-2xl text-lg leading-8 tracking-[-0.6px]">
-              Global Financing
+              Platform Settings
             </h1>
             <p className="text-gray-1900 font-inter font-normal sm:text-sm text-xs leading-5">
-              Manage loan applications and pipeline
+              Configure your platform identity & security
             </p>
           </div>
         </div>
         <div className="flex items-center md:gap-4 gap-1">
           <ul className="flex items-center md:gap-4 gap-1">
             <li className="md:block hidden">
-              <CustomSelect
-                className="h-9! w-34! text-gray-1900!"
-                options={[
-                  { label: "Last 30 days", value: "Last 30 days" },
-                  { label: "2000", value: "2000" },
-                ]}
-              />
+             <SearchSettings/>
             </li>
             <li>
               <NotificationsDropdown />
             </li>
 
             <li className="md:block hidden">
-              <Button
-                onClick={() => {}}
-                iconSrc="/images/plus-icon.svg"
-                label="New Application"
-                className="text-white text-sm font-normal gap-2 h-9 px-3! bg-blue-1000 hover:bg-blue800 rounded-md border border-solid border-gray1600 m-0!"
-              />
+               <img src="/images/live-label.svg" className="" alt="menu" />
             </li>
           </ul>
           <button onClick={toggleSidebar} className="lg:hidden">
@@ -56,4 +44,4 @@ const TopBar = () => {
   );
 };
 
-export default TopBar;
+export default SettingsTopBar;

@@ -179,7 +179,6 @@ if (target.closest("button, a, input")) return;
                 <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Status</th>
                 <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Risk</th>
                 <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Last Reconciliation</th>
-                <th className="px-4 py-3"></th>
               </tr>
             </thead>
 

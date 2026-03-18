@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import GuranteeBar from '@/app/components/GuranteeBar';
 
-const UsersStudentsPage = () => {
+const GuaranteesDetailPage = () => {
      const data = {
           id: "STU-2024-001",
           status: "Approved" as const,
@@ -265,4 +265,4 @@ const UsersStudentsPage = () => {
      );
 };
 
-export default UsersStudentsPage;
+export default GuaranteesDetailPage;

@@ -1,141 +1,125 @@
 "use client";
-
-import React from "react";
+import { Fragment } from "react";
+import { Menu } from "@headlessui/react";
 import { MoreHorizontal } from "lucide-react";
-
-type Campaign = {
-     id: string;
-     campaign: string;
-     type: "Cashback" | "Points" | "Voucher";
-     rule: string;
-     cap: string;
-     status: "Live" | "Paused";
-};
-
-const campaigns: Campaign[] = [
-     {
-          id: "1",
-          campaign: "Early Bird Rent",
-          type: "Cashback",
-          rule: "5% on first rent payment",
-          cap: "€50",
-          status: "Live",
-     },
-     {
-          id: "2",
-          campaign: "Referral Bonus",
-          type: "Points",
-          rule: "500 pts per referral",
-          cap: "Unlimited",
-          status: "Live",
-     },
-     {
-          id: "3",
-          campaign: "SIM Activation",
-          type: "Voucher",
-          rule: "€10 voucher on activation",
-          cap: "€10",
-          status: "Live",
-     },
-     {
-          id: "4",
-          campaign: "Welcome Bundle",
-          type: "Cashback",
-          rule: "3% on bundle purchase",
-          cap: "€30",
-          status: "Paused",
-     },
-     {
-          id: "5",
-          campaign: "Insurance Signup",
-          type: "Points",
-          rule: "1000 pts on signup",
-          cap: "1000 pts",
-          status: "Live",
-     },
-     {
-          id: "6",
-          campaign: "Monthly Spender",
-          type: "Cashback",
-          rule: "2% on €500+ spend",
-          cap: "€25",
-          status: "Paused",
-     },
-];
+import { useCashbackStore } from "@/app/store/zustand/useCashbackStore";
 
 const typeStyles = {
-     Cashback: "bg-blue-1000/10 text-blue-1000",
-     Points: "bg-gray-7200 text-gray-7300",
-     Voucher: "bg-green-1600/10 text-green-1600",
+  Cashback: "bg-blue-1000/10 text-blue-1000",
+  Points: "bg-gray-7200 text-gray-7300",
+  Voucher: "bg-green-1600/10 text-green-1600",
 };
 
 const statusStyles = {
-     Live: "bg-green-1600/10 text-green-1600",
-     Paused: "bg-gray-2100 text-gray-1200",
+  Live: "bg-green-1600/10 text-green-1600",
+  Paused: "bg-gray-2100 text-gray-1200",
 };
 
 export default function CampaignTable() {
-     return (
-          <div className="w-full overflow-auto">
-               <table className="4xl:w-full w-[700px] text-sm">
+  const { campaigns } = useCashbackStore();
 
-                    {/* Header */}
-                    <thead className="border-b border-gray-1000 text-gray-1200 uppercase text-xs">
-                         <tr>
-                              <th className="px-4 py-4 text-left">Campaign</th>
-                              <th className="px-4 py-4 text-left">Type</th>
-                              <th className="px-4 py-4 text-left">Rule</th>
-                              <th className="px-4 py-4 text-left">Max Cap</th>
-                              <th className="px-4 py-4 text-left">Status</th>
-                              <th className="px-4 py-4 text-right"></th>
-                         </tr>
-                    </thead>
+  return (
+    <div className="w-full overflow-auto">
+      <table className="4xl:w-full w-[700px] text-sm">
+        <thead className="border-b border-gray-1000 text-gray-1200 uppercase text-xs">
+          <tr>
+            <th className="px-4 py-4 text-left">Campaign</th>
+            <th className="px-4 py-4 text-left">Type</th>
+            <th className="px-4 py-4 text-left">Rule</th>
+            <th className="px-4 py-4 text-left">Max Cap</th>
+            <th className="px-4 py-4 text-left">Status</th>
+            <th className="px-4 py-4 text-right"></th>
+          </tr>
+        </thead>
 
-                    {/* Body */}
-                    <tbody>
-                         {campaigns.map((item) => (
-                              <tr
-                                   key={item.id}
-                                   className="border-t border-gray-1000 hover:bg-gray-50 transition"
+        <tbody>
+          {campaigns.map((item) => (
+            <Menu as={Fragment} key={item.id}>
+              {({ open }) => (
+                <>
+                  {/* Main Row */}
+                  <tr className="border-t border-gray-1000 hover:bg-gray-50 transition">
+                    <td className="px-4 py-4 text-blue-1300 font-medium">
+                      {item.campaign}
+                    </td>
+
+                    <td className="px-4 py-4">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs ${typeStyles[item.type]}`}
+                      >
+                        {item.type}
+                      </span>
+                    </td>
+
+                    <td className="px-4 py-4 text-gray-1200">{item.rule}</td>
+
+                    <td className="px-4 py-4 text-blue-1300 font-medium">
+                      {item.cap}
+                    </td>
+
+                    <td className="px-4 py-4">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs ${statusStyles[item.status]}`}
+                      >
+                        {item.status}
+                      </span>
+                    </td>
+
+                    <td className="px-4 py-4 text-right">
+                      <Menu
+                        as="div"
+                        className="relative inline-block text-left"
+                      >
+                        <Menu.Button className="p-1">
+                          <MoreHorizontal className="w-4 h-4" />
+                        </Menu.Button>
+
+                        <Menu.Items className="absolute right-0 mt-2 w-36 origin-top-right bg-white border border-gray-200 rounded-lg shadow-lg focus:outline-none z-50">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`block w-full text-left px-3 py-2 text-sm ${
+                                  active ? "bg-gray-100" : ""
+                                }`}
                               >
-                                   {/* Campaign */}
-                                   <td className="px-4 py-4 text-blue-1300 font-medium">
-                                        {item.campaign}
-                                   </td>
+                                View
+                              </button>
+                            )}
+                          </Menu.Item>
 
-                                   {/* Type */}
-                                   <td className="px-4 py-4">
-                                        <span
-                                             className={`px-3 py-1 rounded-full text-xs ${typeStyles[item.type]}`}
-                                        >
-                                             {item.type}
-                                        </span>
-                                   </td>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`block w-full text-left px-3 py-2 text-sm ${
+                                  active ? "bg-gray-100" : ""
+                                }`}
+                              >
+                                Edit
+                              </button>
+                            )}
+                          </Menu.Item>
 
-                                   {/* Rule */}
-                                   <td className="px-4 py-4 text-gray-1200">{item.rule}</td>
-
-                                   {/* Cap */}
-                                   <td className="px-4 py-4 text-blue-1300 font-medium">{item.cap}</td>
-
-                                   {/* Status */}
-                                   <td className="px-4 py-4">
-                                        <span
-                                             className={`px-3 py-1 rounded-full text-xs ${statusStyles[item.status]}`}
-                                        >
-                                             {item.status}
-                                        </span>
-                                   </td>
-
-                                   {/* Menu */}
-                                   <td className="px-4 py-4 text-right text-gray-1200">
-                                        <MoreHorizontal className="w-4 h-4 cursor-pointer" />
-                                   </td>
-                              </tr>
-                         ))}
-                    </tbody>
-
-               </table>
-          </div>
-     );
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`block w-full text-left px-3 py-2 text-sm text-red-600 ${
+                                  active ? "bg-red-50" : ""
+                                }`}
+                              >
+                                Delete
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      </Menu>
+                    </td>
+                  </tr>
+                </>
+              )}
+            </Menu>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
