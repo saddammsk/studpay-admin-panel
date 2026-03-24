@@ -33,33 +33,66 @@ export default function CountryWalletChart() {
         <BarChart
           layout="vertical"
           data={data}
-          margin={{ top: 10, right: 30, left: 20, bottom: 20 }}
+          margin={{ top: 20, right: 60, left: 20, bottom: 20 }}
+          barCategoryGap="30%"
         >
-          <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+          {/* Grid */}
+          <CartesianGrid strokeDasharray="3 3" horizontal vertical={false} />
 
+          {/* Bottom Axis (Wallet €) */}
           <XAxis
             type="number"
-            domain={[0, 3200]}
+            xAxisId="wallet"
+            domain={[0, 3500]}
             tick={{ fontSize: 12 }}
+            tickFormatter={(v) => `€${v}`}
           />
 
+          {/* Top Axis (Housing %) */}
+          <XAxis
+            type="number"
+            xAxisId="rate"
+            orientation="top"
+            domain={[0, 12]}
+            tick={{ fontSize: 12 }}
+            tickFormatter={(v) => `${v}%`}
+          />
+
+          {/* Y Axis */}
           <YAxis
             type="category"
             dataKey="country"
             tick={{ fontSize: 14 }}
           />
 
-          <Tooltip />
+          {/* Tooltip */}
+          <Tooltip
+            formatter={(value: number, name: string) => {
+              if (name === "Housing Rate %") return `${value}%`;
+              return `€${value}`;
+            }}
+            contentStyle={{
+              borderRadius: "8px",
+              border: "none",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            }}
+          />
+
+          {/* Legend */}
           <Legend />
 
+          {/* Wallet Bar */}
           <Bar
+            xAxisId="wallet"
             dataKey="avgWallet"
             fill="#1F8A8A"
             radius={[0, 10, 10, 0]}
             name="Avg Wallet Size"
           />
 
+          {/* Housing Bar */}
           <Bar
+            xAxisId="rate"
             dataKey="housingRate"
             fill="#22C55E"
             radius={[0, 10, 10, 0]}

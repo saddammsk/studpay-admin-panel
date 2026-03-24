@@ -4,14 +4,16 @@ import Image from "next/image";
 import StudentGlobe from "@/app/components/StudentGlobe";
 import CountryWalletChart from "@/app/components/CountryWalletChart";
 import CountryPerformance from "@/app/components/CountryPerformance";
+import TopBar from "@/app/components/common/TopBar";
 
 export default function FinanceAnalytics() {
 
     return (
         <div className="font-inter  md:-m-8 -m-4">
+               <TopBar />
             <div className="flex items-center justify-between  md:p-6 p-4">
                 <div>
-                    <h6 className="text-sm font-bold leading-5 text-black-2000">Country-Based Intelligence</h6>
+                    <h6 className="text-2xl font-bold leading-5 text-black-2000">Country-Based Intelligence</h6>
                     <h6 className="text-sm font-normal leading-5 text-gray-3800">Global Operations Command Center</h6>
                 </div>
                 <form action="" className="flex items-center gap-4">

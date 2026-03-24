@@ -9,6 +9,7 @@ import PolicyTable from '@/app/components/PolicyTable';
 import { useInsuranceHubStore } from "@/app/store/zustand/useInsuranceHubStore";
 import { exportToCSV } from "@/app/utils/exportToCSV";
 import NewPolicyModal from "@/app/components/Insurance/NewPolicyModal";
+import InsuranceTopbar from "@/app/components/InsuranceHub/InsuranceTopbar";
 
 export default function InsurancePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,12 +20,12 @@ export default function InsurancePage() {
 
   return (
     <div>
-      <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
-        <TopBar />
+      <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -mt-12! -m-4 font-inter">
+        <InsuranceTopbar />
         <div className="p-6">
           <div className="flex items-center justify-between flex-wrap gap-5 mb-6">
             <div className="xl:flex-1">
-              <h6 className="text-xl font-bold leading-7 text-black-1600">Insurance Hub</h6>
+              <h6 className="text-2xl font-bold leading-7 text-black-1600">Insurance Hub</h6>
               <p className="text-sm font-normal leading-5 text-gray-1900">Manage student insurance policies and applications</p>
             </div>
 

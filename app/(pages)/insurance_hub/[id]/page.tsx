@@ -79,9 +79,10 @@ export default function PolicyDetailPage() {
                       <span className="flex items-center gap-1 border-r border-gray-500 pr-4">
                         <Mail className="w-4 h-4" /> Contact Student
                       </span>
-                      <span className="flex items-center gap-1 text-gray-5000">
-                        <Phone className="w-4 h-4" /> —
-                      </span>
+                    
+                      <a className="flex items-center gap-1 text-gray-5000" href="tel:++49 123 456 789">
+                       <Phone className="w-4 h-4" /> +49 123 456 789
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -251,7 +252,7 @@ export default function PolicyDetailPage() {
             </div>
           </div>
 
-          <div className="w-full mt-9 2xl:-mx-6 gap-5 flex items-center flex-wrap justify-between border-b bg-white/95 p-4 border border-gray-7000">
+          <div className="w-full mt-9  gap-5 flex items-center flex-wrap justify-between border-b bg-white/95 p-4 border border-gray-7000">
             <div className="flex items-center gap-2 text-sm text-gray-5000 cursor-pointer">
               <Clock size={16} className="text-gray-500" />
               <span className="font-medium">Audit Log</span>

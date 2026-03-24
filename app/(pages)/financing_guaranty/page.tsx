@@ -76,7 +76,7 @@ const UsersStudentsPage = () => {
           {/* Guaranty Type */}
           <div className="relative sm:w-45 w-full">
             <CustomSelect
-              className="w-full text-center bg-gray-6600 border border-gray-1000"
+              className="w-full bg-gray-6600 border border-gray-1000 pl-8"
               value={filters.guarantyType}
               onChange={(value: string) => setFilter("guarantyType", value)}
               options={[

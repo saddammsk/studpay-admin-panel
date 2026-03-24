@@ -30,7 +30,7 @@ export default function AuditLogsPage() {
 
   return (
     <div>
-      <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:-m-8 -m-4 font-inter">
+      <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:-m-8 xl:-mt-12! -m-4 font-inter">
         <TopBar />
         <div className="bg-gray-1500/60">
 

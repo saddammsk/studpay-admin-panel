@@ -1,455 +1,279 @@
 "use client";
-import { useState } from 'react'
 
-import Link from "next/link";
-import Image from "next/image";
-import CustomSelect from "@/app/components/CustomSelect";
+import { useMemo, useRef, useEffect } from "react";
+import { usePaymentsStore } from "@/app/store/zustand/Usepaymentsstore";
+import type { PaymentStatus, RiskLevel, TransactionType, Provider, SortField } from "@/app/store/zustand/Usepaymentsstore";
 
-type PaymentStatus = "Active" | "Pending" | "Frozen";
-type RiskStatus = "Low" | "Medium" | "High";
+const statusStyles: Record<PaymentStatus, { pill: string; dot: string }> = {
+  Completed: { pill: "bg-emerald-50 text-emerald-600 border border-emerald-200", dot: "bg-emerald-500" },
+  Pending: { pill: "bg-amber-50 text-amber-600 border border-amber-200", dot: "bg-amber-500" },
+  "On Hold": { pill: "bg-slate-100 text-slate-500 border border-slate-200", dot: "bg-slate-400" },
+  Failed: { pill: "bg-red-50 text-red-500 border border-red-200", dot: "bg-red-500" },
+  Refunded: { pill: "bg-blue-50 text-blue-500 border border-blue-200", dot: "bg-blue-400" },
+};
 
+const riskStyles: Record<RiskLevel, { pill: string; icon: string }> = {
+  Low: { pill: "bg-emerald-50 text-emerald-600", icon: "✓" },
+  Medium: { pill: "bg-amber-50 text-amber-600", icon: "!" },
+  High: { pill: "bg-red-50 text-red-500", icon: "⊗" },
+};
 
+const typeStyles: Record<TransactionType, { pill: string; icon: string }> = {
+  Card: { pill: "bg-violet-50 text-violet-600 border border-violet-100", icon: "▭" },
+  P2P: { pill: "bg-cyan-50 text-cyan-600 border border-cyan-100", icon: "⇄" },
+  FX: { pill: "bg-indigo-50 text-indigo-600 border border-indigo-100", icon: "⊕" },
+  Fee: { pill: "bg-slate-50 text-slate-500 border border-slate-100", icon: "≡" },
+};
 
-interface Payment {
-  id: number;
-  userid: string;
-  student: {
-    name: string;
-    email: string;
-  },
-  currency: {
-    flag: string;
-    name: string;
-  },
-  balance: string;
-  available: string;
-  hold: string;
-  status: PaymentStatus;
-  risk: RiskStatus
-  reconciliation: string;
-  actions: string;
-}
+const providerStyles: Record<Provider, string> = {
+  Stripe: "text-violet-600 border border-violet-100 bg-violet-50",
+  Adyen: "text-emerald-600 border border-emerald-100 bg-emerald-50",
+};
 
-
-const payments: Payment[] = [
-  {
-    id: 1,
-    userid: "USR-2024-78542",
-    student: {
-      name: "Mohammed Ahmed Khan",
-      email: "m.ahmed@student.edu.pk",
-    },
-    currency: {
-      flag: "/icons/eur-icon.svg",
-      name: "EUR",
-    },
-    balance: "€12,450.75",
-    available: "€11,250.75",
-    hold: "€1,200.00",
-    status: "Active",
-    risk: "Low",
-    reconciliation: "2024-01-15 09:30",
-    actions: "",
-  }, {
-    id: 2,
-    userid: "USR-2024-78541",
-    student: {
-      name: "Sarah Johnson",
-      email: "s.johnson@uni.edu",
-    },
-    currency: {
-      flag: "/icons/usd.svg",
-      name: "USD",
-    },
-    balance: "$8,325.50",
-    available: "$8,325.50",
-    hold: "—",
-    status: "Active",
-    risk: "Low",
-    reconciliation: "2024-01-15 08:45",
-    actions: "",
-  }, {
-    id: 3,
-    userid: "USR-2024-78540",
-    student: {
-      name: "Li Wei Chen",
-      email: "l.chen@student.cn",
-    },
-    currency: {
-      flag: "/icons/eur-icon.svg",
-      name: "EUR",
-    },
-    balance: "€45,200.00",
-    available: "€35,200.00",
-    hold: "€10,000.00",
-    status: "Frozen",
-    risk: "High",
-    reconciliation: "2024-01-14 16:20",
-    actions: "",
-  }, {
-    id: 4,
-    userid: "USR-2024-78539",
-    student: {
-      name: "Emma Müller",
-      email: "e.muller@stud.de",
-    },
-    currency: {
-      flag: "/icons/eur-icon.svg",
-      name: "EUR",
-    },
-    balance: "€3,450.25",
-    available: "€3,450.25",
-    hold: "—",
-    status: "Active",
-    risk: "Low",
-    reconciliation: "2024-01-15 10:15",
-    actions: "",
-  }, {
-    id: 5,
-    userid: "USR-2024-78538",
-    student: {
-      name: "Ahmed Al-Rashid",
-      email: "a.rashid@edu.ae",
-    },
-    currency: {
-      flag: "/icons/usd.svg",
-      name: "USD",
-    },
-    balance: "$28,750.00",
-    available: "$23,750.00",
-    hold: "$5,000.00",
-    status: "Pending",
-    risk: "Medium",
-    reconciliation: "2024-01-13 14:00",
-    actions: "",
-  }, {
-    id: 6,
-    userid: "USR-2024-78537",
-    student: {
-      name: "Maria Garcia",
-      email: "m.garcia@uni.es",
-    },
-    currency: {
-      flag: "/icons/eur-icon.svg",
-      name: "EUR",
-    },
-    balance: "€6,780.90",
-    available: "€6,780.90",
-    hold: "—",
-    status: "Active",
-    risk: "Low",
-    reconciliation: "2024-01-15 07:30",
-    actions: "",
-  }, {
-    id: 7,
-    userid: "USR-2024-78536",
-    student: {
-      name: "James O'Connor",
-      email: "j.oconnor@student.ie",
-    },
-    currency: {
-      flag: "/icons/eur-icon.svg",
-      name: "EUR",
-    },
-    balance: "€15,420.00",
-    available: "€12,420.00",
-    hold: "€3,000.00",
-    status: "Active",
-    risk: "Medium",
-    reconciliation: "2024-01-14 11:45",
-    actions: "",
-  }, {
-    id: 8,
-    userid: "USR-2024-78535",
-    student: {
-      name: "Fatima Hassan",
-      email: "f.hassan@uni.eg",
-    },
-    currency: {
-      flag: "/icons/usd.svg",
-      name: "USD",
-    },
-    balance: "$9,200.50",
-    available: "$9,200.50",
-    hold: "—",
-    status: "Frozen",
-    risk: "High",
-    reconciliation: "2024-01-12 09:00",
-    actions: "",
-  },
+const columns: { label: string; field: SortField | null }[] = [
+  { label: "Transaction ID", field: "txnId" },
+  { label: "Student", field: null },
+  { label: "Type", field: null },
+  { label: "Amount", field: "amountRaw" },
+  { label: "Date & Time", field: "datetime" },
+  { label: "Status", field: "status" },
+  { label: "Risk", field: "risk" },
+  { label: "Last Admin Action", field: null },
+  { label: "Provider", field: null },
 ];
 
-
-const statusConfig = {
-  Active: {
-    classes: "bg-lightgreen18 border-lightgreen17/20 text-lightgreen17",
-  },
-  Pending: {
-    classes: "bg-yellow-1100/10 border-yellow-1100/20 text-yellow-1100",
-  },
-  Frozen: {
-    classes: "bg-red-1300/10 border-red-1300/20 text-red-1300",
-  },
-} as const;
-
-const RiskConfig = {
-  Low: {
-    classes: "bg-green57/10  text-green57",
-  },
-  Medium: {
-    classes: "bg-yellow-1100/10 text-yellow-1100",
-  },
-  High: {
-    classes: "bg-red-1300/10 text-red-1300",
-  },
-} as const;
-
-
-
-
-export default function PaymentsTransfersTable() {
-  const [status, setStatus] = useState<string>("All Countries");
-
-
+function IndeterminateCheckbox({
+  checked,
+  indeterminate,
+  onChange,
+}: {
+  checked: boolean;
+  indeterminate: boolean;
+  onChange: () => void;
+}) {
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (ref.current) ref.current.indeterminate = indeterminate;
+  }, [indeterminate]);
   return (
-    <div>
-      <div className="mt-6 bg-white border border-gray-3600 rounded-lg overflow-x-auto">
-        <div className='p-4 flex sm:flex-row flex-col sm:items-center items-start sm:gap-0 gap-4 justify-between'>
-          <div className=''>
-            <h4 className='text-black-2000 text-lg leading-7 font-semibold'>Master Accounts Ledger</h4>
-            <p className='text-SteelGray text-sm leading-5 font-normal'>Click any row to view detailed 360° Account Profile</p>
-          </div>
-          <div className="relative max-w-52.75 w-full">
-            <CustomSelect className="w-full pl-9 bg-gray-6600 border border-gray-1000"
-              value={status}
-              onChange={(value: string) => setStatus(value)}
-              options={[
-                { label: "Export Master Ledger ", value: "Export Master Ledger" },
-                { label: "Master Ledger2", value: "Master Ledger1" },
-                { label: "Master Ledger3", value: "Master Ledger2" },
-              ]}
-            />
-            <span className='flex items-center justify-center absolute top-1/2 -translate-y-1/2 left-3'>
-              <Image
-                src="/icons/download-icon.svg"
-                width='16'
-                height='16'
-                alt=""
-              />
-            </span>
-          </div>
-        </div>
-        <div className="bg-gray-2000 border-t border-b border-solid border-grey-5400 p-4 flex xl:flex-row flex-col flex-wrap items-center gap-3 4xl:flex-1">
-          <div className="flex-1 flex items-center gap-3 w-full">
-            <div className='relative flex-1 w-full'>
-              <input type="text" className='text-sm font-normal text-SteelGray placeholder:text-SteelGray px-4 pl-9 h-10 bg-gray-1500 border border-grey-5400 rounded-md w-full outline-0' placeholder='Search by Transaction ID, Student Name...' />
-              <div className='absolute top-1/2 -translate-y-1/2 left-3'>
-                <Image
-                  src="/icons/search-dark.svg"
-                  width='16'
-                  height='16'
-                  alt=""
-                />
-              </div>
-            </div>
-            <Link href={"#"} className='flex items-center'>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clipPath="url(#clip0_2076_9634)">
-                  <path
-                    d="M14.6663 2H1.33301L6.66634 8.30667V12.6667L9.33301 14V8.30667L14.6663 2Z"
-                    stroke="#737B8C"
-                    strokeWidth="1.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_2076_9634">
-                    <rect width="16" height="16" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </Link>
-          </div>
-          <div className='xl:flex grid sm:grid-cols-4 grid-cols-2 xl:w-auto w-full items-center gap-3'>
-            <div className="relative xl:w-28 w-full">
-              <CustomSelect className="w-full text-center bg-gray-1500 border border-grey-5400"
-                value={status}
-                onChange={(value: string) => setStatus(value)}
-                options={[
-                  { label: "All…  ", value: "All…" },
-                  { label: "Stripe", value: "Stripe" },
-                  { label: "Adyen", value: "Adyen" },
-                ]}
-              />
-            </div>
-            <div className="relative xl:w-28 w-full">
-              <CustomSelect className="w-full  bg-gray-1500 border border-grey-5400"
-                value={status}
-                onChange={(value: string) => setStatus(value)}
-                options={[
-                  { label: "All Status ", value: "All Status" },
-                  { label: "Active", value: "Active" },
-                  { label: "Frozen", value: "Frozen" },
-                  { label: "Pending", value: "Pending" },
-                ]}
-              />
-            </div>
-            <div className="relative xl:w-28 w-full">
-              <CustomSelect className="w-full  bg-gray-1500 border border-grey-5400"
-                value={status}
-                onChange={(value: string) => setStatus(value)}
-                options={[
-                  { label: "All Risk ", value: "All Risk" },
-                  { label: "Low", value: "Low" },
-                  { label: "High", value: "High" },
-                  { label: "Medium", value: "Medium" },
-                ]}
-              />
-            </div>
-            <div className="relative xl:w-28 w-full">
-              <CustomSelect className="w-full  bg-gray-1500 border border-grey-5400"
-                value={status}
-                onChange={(value: string) => setStatus(value)}
-                options={[
-                  { label: "All Countries ", value: "All Countries" },
-                  { label: "EUR", value: "EUR" },
-                  { label: "USD", value: "USD" },
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="5xl:w-full w-325">
-            <thead>
-              <tr className="bg-gray-1800">
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">User ID</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Student Name</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Currency</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Total Balance</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Available</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">On Hold</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Status</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Risk</th>
-                <th className="px-4 py-3 text-left text-SteelGray font-inter font-semibold text-xs leading-4 uppercase">Last Reconciliation</th>
-                <th className="px-4 py-3"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {payments.map((item) => (
-                <tr
-                  key={item.id}
-                  className="border-b border-gray1600 hover:bg-gray1700/50 transition last:border-b-0"
-                >
-                  <td className="px-4 py-5 text-black-2000 text-[13.8px] leading-5 font-medium">
-                    {item.userid}
-                  </td>
-                  <td className="px-4 py-5">
-                    <h4 className='text-black-2000 text-sm leading-5 font-medium'>{item.student.name}</h4>
-                    <p className='text-SteelGray text-xs leading-4 font-normal'>{item.student.email}</p>
-                  </td>
-                  <td className="px-4 py-5">
-                    <div className='flex items-center gap-1.5'>
-                      <Image
-                        src={item.currency.flag}
-                        width={40}
-                        height={20}
-                        alt=""
-                      />
-                      <span className='inline-flex items-center text-black-2000 text-xs leading-4 font-medium bg-gray-2000 rounded-md h-5 px-2'>{item.currency.name}</span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-5 text-black-2000 text-sm leading-5 font-medium">
-                    {item.balance}
-                  </td>
-                  <td className="px-4 py-5 text-lightgreen17 text-sm leading-5 font-normal">
-                    {item.available}
-                  </td>
-                  <td className="px-4 py-5 text-SteelGray text-sm leading-5 font-normal">
-                    {item.hold}
-                  </td>
-
-                  <td className="px-4 py-5">
-                    <span
-                      className={`inline-flex gap-1.5 items-center rounded-full justify-center font-inter font-medium text-xs leading-4 px-2.5 h-5 ${statusConfig[item.status].classes}`}
-                    >
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full ${item.status === "Active"
-                          ? "bg-green57"
-                          : item.status === "Pending"
-                            ? "bg-yellow-1100"
-                            : item.status === "Frozen"
-                              ? "bg-red-1300"
-                              : "bg-gray-400"
-                          }`}
-                      ></span>
-                      {item.status}
-                    </span>
-                  </td>
-
-                  <td className="px-4 py-5">
-                    <span className={`font-inter font-normal text-xs leading-4 rounded-md px-2 h-6 gap-1.5 inline-flex items-center justify-center ${RiskConfig[item.risk].classes}`}>
-                      {item.risk}
-                    </span>
-                  </td>
-
-                  <td className="px-4 py-5 text-SteelGray text-sm leading-5 font-normal">
-                    {item.reconciliation}
-                  </td>
-                  <td className="px-4 py-5">
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className='bg-gray-7500/30 rounded-b-lg border-t border-solid border-gray-3600 px-4 py-3'>
-          <div className='flex sm:flex-row flex-col sm:gap-0 gap-4 items-center justify-between'>
-            <p className='text-gray-1900 font-inter font-normal sm:text-sm text-xs leading-5'>Showing 8 of 8 accounts</p>
-            <ul className='flex items-center gap-2'>
-              <li>
-                <Link href={"#"} className='text-blue-1300 opacity-50 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-10.5 inline-flex items-center justify-center'>
-                  <Image
-                    src="/icons/left-arrow.svg"
-                    width='16'
-                    height='16'
-                    alt=""
-                  />
-                </Link>
-              </li>
-              <li>
-                <Link href={"#"} className='text-black-2000 hover:bg-lightgreen17 hover:text-white sm:text-sm text-xs leading-5 font-normal border border-solid border-grey-5400 bg-gray-1500 rounded-md h-9 w-9 inline-flex items-center justify-center'>1</Link>
-              </li>
-              <li>
-                <Link href={"#"} className='text-black-2000 hover:bg-lightgreen17 hover:text-white sm:text-sm text-xs leading-5 font-normal border border-solid border-grey-5400 bg-gray-1500 rounded-md h-9 w-9 inline-flex items-center justify-center'>2</Link>
-              </li>
-              <li>
-                <Link href={"#"} className='text-black-2000 hover:bg-lightgreen17 hover:text-white sm:text-sm text-xs leading-5 font-normal border border-solid border-grey-5400 bg-gray-1500 rounded-md h-9 w-9 inline-flex items-center justify-center'>3</Link>
-              </li>
-              <li>
-                <Link href={"#"} className='text-blue-1300 sm:text-sm text-xs leading-5 font-normal border border-solid border-gray-3600 bg-gray-1500 rounded-md h-9 w-10.5 inline-flex items-center justify-center'>
-                  <Image
-                    src="/icons/right-arrow2.svg"
-                    width='16'
-                    height='16'
-                    alt=""
-                  />
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <input
+      ref={ref}
+      type="checkbox"
+      checked={checked}
+      onChange={onChange}
+      className="w-4 h-4 rounded border-slate-300 accent-violet-600 cursor-pointer"
+    />
   );
 }
 
+export default function PaymentsTransfersTable() {
+  const transactions = usePaymentsStore((s) => s.transactions);
+  const page = usePaymentsStore((s) => s.page);
+  const pageSize = usePaymentsStore((s) => s.pageSize);
+  const sortField = usePaymentsStore((s) => s.sortField);
+  const sortDir = usePaymentsStore((s) => s.sortDir);
+  const search = usePaymentsStore((s) => s.search);
+  const filterProvider = usePaymentsStore((s) => s.filterProvider);
+  const filterCurrency = usePaymentsStore((s) => s.filterCurrency);
+  const filterRisk = usePaymentsStore((s) => s.filterRisk);
+  const filterStatus = usePaymentsStore((s) => s.filterStatus);
+  const openMenu = usePaymentsStore((s) => s.openMenu);
 
+  const setPage = usePaymentsStore((s) => s.setPage);
+  const setSort = usePaymentsStore((s) => s.setSort);
+  const setOpenMenu = usePaymentsStore((s) => s.setOpenMenu);
+  const toggleRow = usePaymentsStore((s) => s.toggleRow);
+  const toggleAll = usePaymentsStore((s) => s.toggleAll);
+
+  const filtered = useMemo(() => {
+    return transactions
+      .filter((t) => {
+        const q = search.toLowerCase();
+        const matchSearch =
+          q === "" ||
+          t.txnId.toLowerCase().includes(q) ||
+          t.student.name.toLowerCase().includes(q) ||
+          t.student.email.toLowerCase().includes(q);
+        const matchProvider = filterProvider === "All Providers" || t.provider === filterProvider;
+        const matchCurrency = filterCurrency === "All Currencies" || t.currency === filterCurrency;
+        const matchRisk = filterRisk === "All Levels" || t.risk === filterRisk;
+        const matchStatus = filterStatus === "Status" || t.status === filterStatus;
+        return matchSearch && matchProvider && matchCurrency && matchRisk && matchStatus;
+      })
+      .sort((a, b) => {
+        const dir = sortDir === "asc" ? 1 : -1;
+        if (sortField === "amountRaw") return (a.amountRaw - b.amountRaw) * dir;
+        return (a[sortField] as string).localeCompare(b[sortField] as string) * dir;
+      });
+  }, [transactions, search, filterProvider, filterCurrency, filterRisk, filterStatus, sortField, sortDir]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const paginated = filtered.slice((page - 1) * pageSize, page * pageSize);
+  const filteredIds = useMemo(() => filtered.map((t) => t.id), [filtered]);
+  const allSelected = filtered.length > 0 && filtered.every((t) => t.selected);
+  const someSelected = filtered.some((t) => t.selected);
+  const isIndeterminate = someSelected && !allSelected;
+
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[1100px]">
+          <thead>
+            <tr className="bg-slate-50 border-b border-slate-100">
+              <th className="w-10 px-4 py-3">
+                <IndeterminateCheckbox
+                  checked={allSelected}
+                  indeterminate={isIndeterminate}
+                  onChange={() => toggleAll(filteredIds, allSelected)}
+                />
+              </th>
+              {columns.map(({ label, field }) => (
+                <th
+                  key={label}
+                  onClick={() => field && setSort(field)}
+                  className={`px-4 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap select-none ${field ? "cursor-pointer hover:text-slate-600" : ""}`}
+                >
+                  <span className="inline-flex items-center">
+                    {label}
+                    {field && (
+                      <span className="ml-1 inline-flex flex-col gap-px opacity-40">
+                        <span className={`block w-0 h-0 border-l-[4px] border-r-[4px] border-b-[5px] border-transparent border-b-current ${sortField === field && sortDir === "asc" ? "!opacity-100" : ""}`} />
+                        <span className={`block w-0 h-0 border-l-[4px] border-r-[4px] border-t-[5px] border-transparent border-t-current ${sortField === field && sortDir === "desc" ? "!opacity-100" : ""}`} />
+                      </span>
+                    )}
+                  </span>
+                </th>
+              ))}
+              <th className="px-4 py-3 w-10" />
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-50">
+            {paginated.length === 0 ? (
+              <tr>
+                <td colSpan={11} className="px-4 py-16 text-center text-sm text-slate-400">
+                  No transactions found.
+                </td>
+              </tr>
+            ) : (
+              paginated.map((t) => (
+                <tr
+                  key={t.id}
+                  className={`group hover:bg-slate-50/70 transition-colors ${t.selected ? "bg-violet-50/40" : ""}`}
+                >
+                  <td className="px-4 py-4">
+                    <input
+                      type="checkbox"
+                      checked={t.selected}
+                      onChange={() => toggleRow(t.id)}
+                      className="w-4 h-4 rounded border-slate-300 accent-violet-600 cursor-pointer"
+                    />
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className="font-mono text-[12.5px] font-medium text-slate-700">{t.txnId}</span>
+                  </td>
+                  <td className="px-4 py-4">
+                    <div className="font-medium text-sm text-slate-800 leading-tight">{t.student.name}</div>
+                    <div className="text-xs text-slate-400 mt-0.5">{t.student.email}</div>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md ${typeStyles[t.type].pill}`}>
+                      <span className="text-[11px]">{typeStyles[t.type].icon}</span>
+                      {t.type}
+                    </span>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className="font-mono text-sm font-semibold text-slate-800">{t.amount}</span>
+                  </td>
+                  <td className="px-4 py-4">
+                    <div className="text-sm text-slate-700 tabular-nums">{t.datetime.split(" ")[0]}</div>
+                    <div className="font-mono text-[11px] text-slate-400">{t.datetime.split(" ")[1]}</div>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ${statusStyles[t.status].pill}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${statusStyles[t.status].dot}`} />
+                      {t.status}
+                    </span>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={`inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-md ${riskStyles[t.risk].pill}`}>
+                      <span className="text-[10px] font-bold">{riskStyles[t.risk].icon}</span>
+                      {t.risk}
+                    </span>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className="text-sm text-slate-500 max-w-[180px] truncate block">{t.lastAdminAction}</span>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-md ${providerStyles[t.provider]}`}>
+                      {t.provider}
+                    </span>
+                  </td>
+                  <td className="px-4 py-4 relative">
+                    <button
+                      onClick={() => setOpenMenu(openMenu === t.id ? null : t.id)}
+                      className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <circle cx="5" cy="12" r="1.5" />
+                        <circle cx="12" cy="12" r="1.5" />
+                        <circle cx="19" cy="12" r="1.5" />
+                      </svg>
+                    </button>
+                    {openMenu === t.id && (
+                      <div className="absolute right-4 top-12 z-20 w-44 bg-white border border-slate-200 rounded-xl shadow-lg py-1.5">
+                        {["View Details", "Flag for Review", "Freeze Account", "Download Receipt"].map((action) => (
+                          <button
+                            key={action}
+                            onClick={() => setOpenMenu(null)}
+                            className="w-full text-left px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                          >
+                            {action}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="px-4 py-3 border-t border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="text-xs text-slate-400">
+          Showing {filtered.length === 0 ? 0 : (page - 1) * pageSize + 1}–{Math.min(page * pageSize, filtered.length)} of {filtered.length} transactions
+        </p>
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setPage(Math.max(1, page - 1))}
+            disabled={page === 1}
+            className="h-8 px-3 text-xs font-medium border border-slate-200 rounded-lg text-slate-500 hover:bg-white hover:text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            Previous
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+            <button
+              key={p}
+              onClick={() => setPage(p)}
+              className={`h-8 w-8 text-xs font-medium rounded-lg border transition-colors ${page === p ? "bg-slate-800 text-white border-slate-800" : "border-slate-200 text-slate-500 hover:bg-white hover:text-slate-700"}`}
+            >
+              {p}
+            </button>
+          ))}
+          <button
+            onClick={() => setPage(Math.min(totalPages, page + 1))}
+            disabled={page === totalPages || totalPages === 0}
+            className="h-8 px-3 text-xs font-medium border border-slate-200 rounded-lg text-slate-500 hover:bg-white hover:text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      {openMenu !== null && (
+        <div className="fixed inset-0 z-10" onClick={() => setOpenMenu(null)} />
+      )}
+    </div>
+  );
+}

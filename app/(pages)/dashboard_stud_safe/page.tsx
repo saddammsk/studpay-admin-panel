@@ -5,14 +5,20 @@ import Link from "next/link";
 import ASAChart from "@/app/components/ASAChart";
 import RadialProgress from "@/app/components/RadialProgress";
 import ProgressBar from "@/app/components/ProgressBar";
-function page() {
+
+
+
+function DashboardStudSafePage() {
+
+
+
      return (
-          <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
+          <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 xl:-mt-12! -m-4 font-inter">
                <TopBar></TopBar>
                <div className="p-6">
                     <div className="flex items-center justify-between flex-wrap gap-5 mb-6">
                          <div className="xl:flex-1">
-                              <h6 className="text-xl font-bold leading-7 text-black-1600">Safety Command Center</h6>
+                              <h6 className="text-2xl font-bold leading-7 text-black-1600">Safety Command Center</h6>
                               <p className="text-sm font-normal leading-5 text-gray-1900">Real-time student safety monitoring</p>
                          </div>
                          <div className="text-sm font-normal leading-5 text-gray-5000 flex items-center gap-2">
@@ -20,10 +26,7 @@ function page() {
                               System Online
                          </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                         <span className="w-1 h-5 bg-blue-3000 rounded-full block"></span>
-                         <h6 className="text-lg font-bold leading-7 text-black-2600">Campaign Visibility Metrics</h6>
-                    </div>
+                
                     <div className="grid 2xl:grid-cols-4 md:grid-cols-2 gap-4 mt-4 mb-6">
                          <div className="bg-white border  border-gray-1000 shadow-13xl rounded-2xl 4xl:p-6 pr-[18px] p-3">
                               <div className="flex items-start justify-between">
@@ -84,16 +87,7 @@ function page() {
                     </div>
                     <div className="flex xl:flex-nowrap flex-wrap gap-4 mb-5">
                          <div className="xl:w-8/12 w-full">
-                              <div className="border py-5 px-4 border-gray-5100 bg-white rounded-xl shadow-14xl">
-                                   <div className="flex pb-3 items-center justify-between">
-                                        <div>
-                                             <h6 className="text-base font-bold leading-6 text-black-2600">Safety Heatmap</h6>
-                                             <p className="text-sm font-normal leading-5 text-gray-1200">Real-time risk distribution</p>
-                                        </div>
-                                        <Link href="/" className="flex items-center gap-1.5 text-xs font-normal leading-4 text-black-2700 py-1.5 px-2.5 bg-gray-5200 rounded-[10px]"><img src="/images/expend-icon.svg" alt="" /> Focus Mode</Link>
-                                   </div>
-                                   <ASAChart></ASAChart>
-                              </div>
+                              <ASAChart></ASAChart>
                          </div>
                          <div className="xl:w-4/12 w-full">
                               <div className="border p-4 border-gray-5100 bg-white rounded-xl shadow-14xl">
@@ -222,7 +216,7 @@ function page() {
                     <div className="grid md:grid-cols-2 gap-4">
                          <div className="border py-5 px-4 border-gray-5100 bg-white rounded-xl shadow-14xl">
                               <div className="">
-                                   <h6 className="text-xl font-bold leading-7 text-black-1600">Trust Network Health</h6>
+                                   <h6 className="text-2xl font-bold leading-7 text-black-1600">Trust Network Health</h6>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Trusted contacts setup completion</p>
                               </div>
                               <div className="flex justify-center my-4">
@@ -241,7 +235,7 @@ function page() {
                          </div>
                          <div className="border py-5 px-4 border-gray-5100 bg-white rounded-xl shadow-14xl">
                               <div className="mb-4">
-                                   <h6 className="text-xl font-bold leading-7 text-black-1600">GPS Compliance Status</h6>
+                                   <h6 className="text-2xl font-bold leading-7 text-black-1600">GPS Compliance Status</h6>
                                    <p className="text-sm font-normal leading-5 text-gray-1900">Permission distribution</p>
                               </div>
                               <div className="mb-3">
@@ -276,4 +270,4 @@ function page() {
      )
 }
 
-export default page
+export default DashboardStudSafePage

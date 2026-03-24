@@ -41,7 +41,7 @@ const SafetyMenu: MenuItem[] = [
   { label: "Audit Logs", icon: "/images/audit-building.svg", href: "/audit_logs" },
 ];
 const studsafeMenu: MenuItem[] = [
-  { label: "Dashboard StudSafe", icon: "/images/dashboard-studSafe.svg", href: "/stud_safe_vault_manager" },
+  { label: "Dashboard StudSafe", icon: "/images/dashboard-studSafe.svg", href: "/dashboard_stud_safe" },
   { label: "Live Monitoring", icon: "/images/live-location.svg", href: "/live_monitoring" },
   { label: "Alerts & Incidents", icon: "/images/Alert-Incidents.svg", href: "/alerts_incidents" },
   { label: "Users & Contacts", icon: "/images/users-contacts.svg", href: "/users_contacts" },

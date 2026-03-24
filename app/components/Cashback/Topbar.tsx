@@ -37,7 +37,7 @@ const TopBar = () => {
      const basePath = "/" + pathname.split("/")[1];
 
      const pageData = pageConfig[basePath] || {
-          title: "",
+          title: "Dashboard",
           showSearch: false,
      };
      return (
@@ -47,10 +47,8 @@ const TopBar = () => {
                     <div className="flex-1 flex items-center gap-4">
                          <div className=''>
                               <h1 className="font-semibold font-inter text-2xl leading-8 tracking-[-0.6px]">
-                                   {pageData.title}
                               </h1>
                               <p className='text-gray-1900 font-inter font-normal text-sm leading-5'>
-                                   {pageData.description}
                               </p>
                          </div>
                          <div className='md:block hidden flex-1'>

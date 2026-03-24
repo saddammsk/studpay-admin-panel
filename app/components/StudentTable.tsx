@@ -120,7 +120,7 @@ export default function StudentTable() {
       </div>
 
       {pages > 1 && (
-        <div className="mt-4">
+        <div className="flex-1">
           <Pagination
             page={page}
             totalPages={pages}

@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import * as React from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
 type Country = {
@@ -21,116 +23,178 @@ const countries: Country[] = [
   { name: "Australia", value: 4200, lat: -25.2744, lng: 133.7751 },
 ];
 
+const GLOBE_RADIUS = 1.5;
+
+function latLngToVec3(lat: number, lng: number, r: number): THREE.Vector3 {
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lng + 180) * (Math.PI / 180);
+  return new THREE.Vector3(
+    -r * Math.sin(phi) * Math.cos(theta),
+    r * Math.cos(phi),
+    r * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+function buildArc(
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  segments = 64,
+  lift = 0.45
+): THREE.BufferGeometry {
+  const mid = from.clone().add(to).normalize().multiplyScalar(GLOBE_RADIUS + lift);
+  const curve = new THREE.QuadraticBezierCurve3(from, mid, to);
+  const points = curve.getPoints(segments);
+  return new THREE.BufferGeometry().setFromPoints(points);
+}
+
 export default function StudentGlobe() {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [autoRotate, setAutoRotate] = useState(true);
 
   useEffect(() => {
     if (!mountRef.current) return;
 
-    const width = mountRef.current.clientWidth;
-    const height = 600;
+    const el = mountRef.current;
+    const width = el.clientWidth || 800;
+    const height = el.clientHeight || 600;
 
     const scene = new THREE.Scene();
+
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.z = 4;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
-    mountRef.current.appendChild(renderer.domElement);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    el.appendChild(renderer.domElement);
 
-    // Label renderer
     const labelRenderer = new CSS2DRenderer();
     labelRenderer.setSize(width, height);
     labelRenderer.domElement.style.position = "absolute";
     labelRenderer.domElement.style.top = "0";
-    mountRef.current.appendChild(labelRenderer.domElement);
+    labelRenderer.domElement.style.pointerEvents = "none";
+    el.appendChild(labelRenderer.domElement);
 
-    // Globe wireframe
-    const geometry = new THREE.SphereGeometry(1.5, 64, 64);
-    const material = new THREE.MeshBasicMaterial({
-      color: "#7aa6b8",
-      wireframe: true,
-      transparent: true,
-      opacity: 0.6,
-    });
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.enablePan = false;
+    controls.minDistance = 2.5;
+    controls.maxDistance = 6;
+    controls.autoRotate = autoRotate;
+    controls.autoRotateSpeed = 0.6;
 
-    const globe = new THREE.Mesh(geometry, material);
+    const globe = new THREE.Mesh(
+      new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64),
+      new THREE.MeshBasicMaterial({ color: "#3d6b7a" })
+    );
     scene.add(globe);
 
-    // Outer glow ring
-    const glowGeometry = new THREE.SphereGeometry(1.65, 64, 64);
-    const glowMaterial = new THREE.MeshBasicMaterial({
-      color: "#8fd3ff",
-      transparent: true,
-      opacity: 0.2,
-    });
+    const wireframe = new THREE.Mesh(
+      new THREE.SphereGeometry(GLOBE_RADIUS + 0.003, 48, 48),
+      new THREE.MeshBasicMaterial({
+        color: "#6aabbd",
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35,
+      })
+    );
+    scene.add(wireframe);
 
-    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+    const glow = new THREE.Mesh(
+      new THREE.SphereGeometry(GLOBE_RADIUS + 0.18, 64, 64),
+      new THREE.MeshBasicMaterial({
+        color: "#a8dce8",
+        transparent: true,
+        opacity: 0.18,
+        side: THREE.BackSide,
+      })
+    );
     scene.add(glow);
 
-    // Convert lat/lng to 3D position
-    const latLngToVector3 = (lat: number, lng: number, radius: number) => {
-      const phi = (90 - lat) * (Math.PI / 180);
-      const theta = (lng + 180) * (Math.PI / 180);
+    countries.forEach((c) => {
+      const pos = latLngToVec3(c.lat, c.lng, GLOBE_RADIUS + 0.02);
 
-      return new THREE.Vector3(
-        -radius * Math.sin(phi) * Math.cos(theta),
-        radius * Math.cos(phi),
-        radius * Math.sin(phi) * Math.sin(theta)
+      const dot = new THREE.Mesh(
+        new THREE.CircleGeometry(0.03, 32),
+        new THREE.MeshBasicMaterial({ color: "#ffffff" })
       );
-    };
-
-    // Add labels
-    countries.forEach((country) => {
-      const position = latLngToVector3(country.lat, country.lng, 1.6);
+      dot.position.copy(pos);
+      dot.lookAt(scene.position);
+      scene.add(dot);
 
       const div = document.createElement("div");
-      div.style.background = "white";
-      div.style.padding = "4px 8px";
-      div.style.borderRadius = "6px";
-      div.style.fontSize = "12px";
-      div.style.color = "#0b4f6c";
-      div.style.boxShadow = "0 2px 6px rgba(0,0,0,0.15)";
-      div.innerHTML = `${country.name} <strong>${country.value.toLocaleString()}</strong>`;
+      div.style.cssText = `
+        background: rgba(255,255,255,0.92);
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        color: #0b4f6c;
+        white-space: nowrap;
+      `;
+      div.innerHTML = `${c.name}: ${c.value.toLocaleString()}`;
 
       const label = new CSS2DObject(div);
-      label.position.copy(position);
+      label.position.copy(latLngToVec3(c.lat, c.lng, GLOBE_RADIUS + 0.15));
       scene.add(label);
     });
 
-    // Animation
+    const pairs: [number, number][] = [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+    ];
+
+    pairs.forEach(([a, b]) => {
+      const from = latLngToVec3(countries[a].lat, countries[a].lng, GLOBE_RADIUS);
+      const to = latLngToVec3(countries[b].lat, countries[b].lng, GLOBE_RADIUS);
+
+      const arc = new THREE.Line(
+        buildArc(from, to),
+        new THREE.LineBasicMaterial({ color: "#4dd9ec", transparent: true, opacity: 0.6 })
+      );
+
+      scene.add(arc);
+    });
+
+    el.addEventListener("mouseenter", () => (controls.autoRotate = false));
+    el.addEventListener("mouseleave", () => (controls.autoRotate = autoRotate));
+
+    let frameId: number;
     const animate = () => {
-      requestAnimationFrame(animate);
-      globe.rotation.y += 0.002;
-      glow.rotation.y += 0.002;
+      frameId = requestAnimationFrame(animate);
+      controls.update();
       renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
     };
-
     animate();
 
-    return () => {
-      mountRef.current?.removeChild(renderer.domElement);
-      mountRef.current?.removeChild(labelRenderer.domElement);
+    const onResize = () => {
+      const w = el.clientWidth;
+      const h = el.clientHeight || 600;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+      labelRenderer.setSize(w, h);
     };
-  }, []);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", onResize);
+      renderer.dispose();
+      if (el.contains(renderer.domElement)) el.removeChild(renderer.domElement);
+      if (el.contains(labelRenderer.domElement)) el.removeChild(labelRenderer.domElement);
+    };
+  }, [autoRotate]);
 
   return (
-    <div className="relative w-full flex justify-center">
-      <div ref={mountRef} className="relative w-full max-w-[800px]" />
+    <div className="relative w-full rounded-2xl overflow-hidden p-5">
+    
+   
+      <div ref={mountRef} className="w-full" style={{ height: 560 }} />
 
-      {/* Legend */}
-      <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-md text-sm">
-        <h4 className="font-semibold mb-2">Student Flow</h4>
-        <div className="flex items-center gap-2 mb-1">
-          <div className="w-6 h-[2px] bg-[#0b4f6c]" />
-          High Volume
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-[2px] bg-gray-300]" />
-          Low Volume
-        </div>
-      </div>
     </div>
   );
 }

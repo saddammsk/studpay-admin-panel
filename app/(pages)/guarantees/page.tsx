@@ -23,7 +23,7 @@ const UsersStudentsPage = () => {
   const hasFilters = Object.values(filters).some(Boolean);
 
   return (
-    <div className="xl:-mt-30.75 md:-mt-27.5! -mt-24 bg-gray-6700 lg:-m-8 -m-4">
+    <div className="xl:-mt-32 md:-mt-30! -mt-24 bg-gray-6700 lg:-m-8 -m-4">
       <GuranteeBar />
       <div className="lg:p-8 p-4">
         <DashboardStats />
@@ -69,9 +69,9 @@ const UsersStudentsPage = () => {
               />
             </div>
 
-            <div className="relative w-40">
+            <div className="relative">
               <CustomSelect
-                className="w-full bg-gray-6600 border border-gray-1000"
+                className="w-full bg-gray-6600 border border-gray-1000 pr-6"
                 value={filters.source}
                 onChange={(value: string) => setSourceFilter(value === "Source/Campaign" ? "" : value)}
                 options={[
@@ -103,7 +103,7 @@ const UsersStudentsPage = () => {
             {hasFilters && (
               <button
                 onClick={resetFilters}
-                className="inline-flex items-center justify-center text-sm text-gray-1200 hover:text-red-500 h-9 px-3 rounded-md border border-gray-1000 bg-gray-6600 transition-colors"
+                className="inline-flex items-center justify-center text-sm text-red-500 h-9 px-3 rounded-md transition-colors"
               >
                 Clear
               </button>

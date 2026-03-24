@@ -1,10 +1,10 @@
 'use client'
-import TopBar from "@/app/components/common/TopBar";
 import Link from "next/link";
 import Image from "next/image";
 import StatsCards from "@/app/components/StatsCards";
 import AlertsTable from "@/app/components/AlertsTable";
 import { useRiskFraudStore } from "@/app/store/zustand/useRiskFraudStore";
+import TopBar from "@/app/components/RiskFraud/Topbar";
 
 export default function RiskFraudPage() {
   const { search, setSearch, filteredAlerts } = useRiskFraudStore();
@@ -12,12 +12,12 @@ export default function RiskFraudPage() {
 
   return (
     <>
-      <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
+      <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 xl:-mt-12! -m-4 font-inter">
         <TopBar />
         <div className="p-6">
           <div className="flex items-center justify-between flex-wrap gap-5 mb-6">
             <div className="xl:flex-1">
-              <h6 className="text-xl font-bold leading-7 text-black-1600">
+              <h6 className="text-2xl font-bold leading-7 text-black-1600">
                 Risk & Fraud Command Center
               </h6>
               <p className="text-sm font-normal leading-5 text-gray-1900">

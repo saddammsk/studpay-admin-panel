@@ -1,6 +1,5 @@
 'use client'
 import { useState } from "react";
-import TopBar from "@/app/components/common/TopBar";
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "lucide-react";
@@ -8,6 +7,7 @@ import DashboardStats2 from "@/app/components/DashboardStats2";
 import ServiceInventory from "@/app/components/ServiceInventory";
 import OrdersTable from "@/app/components/OrdersTable";
 import AddProductModal from "@/app/components/MarketPlace/AddProductModal";
+import TopBar from "@/app/components/MarketPlace/Topbar";
 
 export default function MarketplacePage() {
   const [modalOpen, setModalOpen] = useState(false);

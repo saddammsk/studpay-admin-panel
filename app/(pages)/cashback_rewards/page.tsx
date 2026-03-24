@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
-import TopBar from "@/app/components/common/TopBar";
 import Modal from "@/app/components/Modal";
 import CustomSelect from "@/app/components/CustomSelect";
 import InputField from "@/app/components/InputField";
@@ -10,6 +9,7 @@ import CampaignTable from "@/app/components/CampaignTable";
 import Image from "next/image";
 import RewardTransaction from "@/app/components/RewardTransaction";
 import { useCashbackStore } from "@/app/store/zustand/useCashbackStore";
+import TopBar from "@/app/components/Cashback/Topbar";
 
 const CashbackIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -35,7 +35,6 @@ export default function CashbackRewardsPage() {
       <div className="bg-[url(/images/body-bg.png)] bg-cover p-4 bg-no-repeat xl:-mt-11.25 -mt-8.75 xl:-m-8 -m-4 font-inter">
         <TopBar />
         <div>
-          {/* Header */}
           <div className="flex mb-6 items-center flex-wrap gap-4 justify-between">
             <div className="flex items-start gap-3">
               <div className="flex items-center justify-center bg-blue-2800/10 rounded-lg w-11 h-11">
@@ -55,7 +54,6 @@ export default function CashbackRewardsPage() {
             </button>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
             <CashbackStatsCard title="Total Cashback Paid"   value="€47,892.50" subtitle="+12.3%"       subtitleColor="text-lightgreen17" icon={<CashbackIcon />}          iconBg="bg-blue-1700/20 text-blue-1700" />
             <CashbackStatsCard title="Pending Approvals"     value="34"         subtitle="5 urgent"     subtitleColor="text-blue-1000"    icon={<Clock size={18} />}         iconBg="bg-blue-1700/10 text-blue-1700" />
@@ -63,9 +61,7 @@ export default function CashbackRewardsPage() {
             <CashbackStatsCard title="Referrals Converted"   value="1,248"      subtitle="+8.7%"        subtitleColor="text-lightgreen17" icon={<Users size={18} />}         iconBg="bg-lightgreen17/10 text-lightgreen17" />
           </div>
 
-          {/* Tables */}
           <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-            {/* Campaigns */}
             <div className="border border-gray-7100/50 mt-6 bg-white rounded-lg">
               <div className="flex py-7 px-5 items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -84,7 +80,6 @@ export default function CashbackRewardsPage() {
               <CampaignTable />
             </div>
 
-            {/* Transactions */}
             <div className="border border-gray-7100/50 mt-6 bg-white rounded-lg">
               <div className="flex py-7 px-5 items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -112,7 +107,6 @@ export default function CashbackRewardsPage() {
         </div>
       </div>
 
-      {/* ── Manual Credit Modal ── */}
       <Modal
         isOpen={isCreditModalOpen}
         onClose={closeCreditModal}
@@ -226,7 +220,6 @@ export default function CashbackRewardsPage() {
         </div>
       </Modal>
 
-      {/* ── Create Campaign Modal ── */}
       <Modal
         isOpen={isCampaignModalOpen}
         onClose={closeCampaignModal}
@@ -247,9 +240,7 @@ export default function CashbackRewardsPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 mt-8">
-            {/* LEFT — form */}
             <div className="lg:col-span-2 col-span-1 space-y-6">
-              {/* Campaign Basics */}
               <div className="border border-solid border-gray-3100 rounded-[10px] p-6">
                 <div>
                   <h2 className="text-black-1600 font-bold text-lg leading-7 mb-1 tracking-[-0.45px] flex items-center gap-2">
@@ -303,7 +294,6 @@ export default function CashbackRewardsPage() {
                 </div>
               </div>
 
-              {/* Eligibility Rules */}
               <div className="border border-solid border-gray-3100 rounded-[10px] p-6">
                 <div>
                   <h2 className="text-black-1600 font-bold text-lg leading-7 mb-1 tracking-[-0.45px] flex items-center gap-2">
@@ -338,7 +328,6 @@ export default function CashbackRewardsPage() {
                 </div>
               </div>
 
-              {/* Reward Logic */}
               <div className="border border-solid border-gray-3100 rounded-[10px] p-6">
                 <div>
                   <h2 className="text-black-1600 font-bold text-lg leading-7 mb-1 tracking-[-0.45px] flex items-center gap-2">
@@ -420,7 +409,6 @@ export default function CashbackRewardsPage() {
                 </div>
               </div>
 
-              {/* Submit Buttons */}
               <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
                 <button
                   onClick={saveCampaignDraft}
@@ -439,7 +427,6 @@ export default function CashbackRewardsPage() {
               </div>
             </div>
 
-            {/* RIGHT — preview + summary */}
             <div className="space-y-6">
               <div className="border border-solid border-gray-3100 rounded-[10px] p-6">
                 <div>

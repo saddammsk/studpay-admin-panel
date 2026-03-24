@@ -10,6 +10,7 @@ import {
     setStatusFilter,
 } from "@/app/store/slices/UsersStudentsSlice";
 import LeadsTable from '@/app/components/LeadsTable';
+import TopBar from '@/app/components/common/TopBar';
 
 export default function FinanceAnalytics() {
     const dispatch = useAppDispatch();
@@ -21,7 +22,8 @@ export default function FinanceAnalytics() {
 
 
     return (
-        <div className="font-inter bg-gradient md:-m-8 -m-4 md:p-6 p-4">
+        <div className="font-inter bg-gradient md:-m-8 md:-mt-12! -m-4 md:p-6 p-4">
+            <TopBar />
             <div className='flex items-center gap-4 flex-wrap'>
                 <div className='flex items-center gap-2'>
                     <h6 className='text-sm font-normal leading-5 text-gray-1900'>Today:</h6>
@@ -49,7 +51,7 @@ export default function FinanceAnalytics() {
                 </div>
             </div>
             <div className='grid xl:grid-cols-4 md:grid-cols-2 gap-4 mb-6'>
-                <div className='p-4 flex items-center gap-4 border border-golden-1000/20 rounded-xl  shadow-11xl'>
+                <div className='p-4 flex items-center gap-4 border border-golden-1000/20 rounded-xl bg-white  shadow-11xl'>
                     <div className='w-11 h-11 flex items-center justify-center rounded-xl bg-golden-1000/10'>
                         <img src="/images/dollar-golden-icon.svg" alt="" />
                     </div>
@@ -58,7 +60,7 @@ export default function FinanceAnalytics() {
                         <h5 className='text-xl font-bold text-black-1600'>€847,320 <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
-                <div className='p-4 flex items-center gap-4 border border-blue-1400/20 rounded-xl  shadow-11xl'>
+                <div className='p-4 flex items-center gap-4 border border-blue-1400/20 rounded-xl bg-white  shadow-11xl'>
                     <div className='w-11 h-11 flex items-center justify-center rounded-xl bg-blue-1400/10'>
                         <img src="/images/timer-icon2.svg" alt="" />
                     </div>
@@ -67,7 +69,7 @@ export default function FinanceAnalytics() {
                         <h5 className='text-xl font-bold text-black-1600'>2.4h <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
-                <div className='p-4 flex items-center gap-4 border border-gray-3100 rounded-xl  shadow-11xl'>
+                <div className='p-4 flex items-center gap-4 border border-gray-3100 rounded-xl bg-white  shadow-11xl'>
                     <div className='w-11 h-11 flex items-center justify-center rounded-xl bg-gray-3700'>
                         <img src="/images/cart-icon.svg" alt="" />
                     </div>
@@ -76,7 +78,7 @@ export default function FinanceAnalytics() {
                         <h5 className='text-xl font-bold text-black-1600'>127 <span className='text-xs text-green-2000'>+12.5%</span></h5>
                     </div>
                 </div>
-                <div className='p-4 flex items-center gap-4 border border-gray-3100 rounded-xl  shadow-11xl'>
+                <div className='p-4 flex items-center gap-4 border border-gray-3100 rounded-xl bg-white  shadow-11xl'>
                     <div className='w-11 h-11 flex items-center justify-center rounded-xl bg-gray-3700'>
                         <img src="/images/icon-1.svg" alt="" />
                     </div>
@@ -129,7 +131,7 @@ export default function FinanceAnalytics() {
                         />
                         <div className="absolute top-1/2 -translate-y-1/2 left-3">
                             <Image
-                                src="../images/search-icon.svg"
+                                src="/images/search-icon.svg"
                                 width="16"
                                 height="16"
                                 alt=""
@@ -137,7 +139,7 @@ export default function FinanceAnalytics() {
                         </div>
                     </div>
                     <div className='relative'>
-                        <CustomSelect className='bg-gray-1800! h-8! border pl-9! border-gray-3100!'
+                        <CustomSelect className='bg-gray-1800! h-8! pr-8 border pl-9! border-gray-3100!'
                             value={filters.country}
                             onChange={(e) => dispatch(setCountryFilter(e.target.value))}
                             options={[

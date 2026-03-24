@@ -1,6 +1,6 @@
 
 'use client'
-import TopBar from "@/app/components/common/TopBar";
+import TopBar from "@/app/components/RiskFraud/Topbar";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -16,9 +16,14 @@ import {
 
 import ProgressBar from "@/app/components/ProgressBar";
 
-function page() {
+
+function RiskFraudDetailPage() {
+
+
+
+
      return (
-          <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 -m-4 font-inter">
+          <div className="bg-[url(/images/body-bg.png)] bg-cover bg-no-repeat xl:-m-8 xl:-mt-12! -m-4 font-inter">
                <TopBar></TopBar>
                <div className="p-6">
                     <div className="bg-white rounded-xl  border border-gray-3600 flex-wrap gap-5 p-6 flex justify-between">
@@ -495,4 +500,4 @@ function page() {
      )
 }
 
-export default page
+export default RiskFraudDetailPage

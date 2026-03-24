@@ -6,12 +6,12 @@ import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import Link from "next/link";
 import SparklineChart2 from "@/app/components/SparklineChart2";
-import { LineChart2 } from "@/app/components/LineChart2";
 import Funnel from "@/app/components/Funnel";
 import UsageBubbleChart from "@/app/components/UsageBubbleChart";
 import CohortHeatmap from "@/app/components/CohortHeatmap";
 import SoftAreaChart from "@/app/components/SoftAreaChart";
-function page() {
+import { DateRangePicker } from "@/app/components/DateRangePicker";
+function UserActivityInsights() {
      const [status, setStatus] = useState<string>("all");
      const [status2, setStatus2] = useState<string>("All Countries");
      const [status3, setStatus3] = useState<string>("EUR (€)");
@@ -21,37 +21,23 @@ function page() {
                <TopBar></TopBar>
                <div className="flex xl:flex-nowrap flex-wrap xl:gap-0 gap-4 items-center bg-white justify-between 2xl:p-6 p-4">
                     <div className="xl:flex-1">
-                         <h6 className="text-xl font-bold leading-7 text-black-1600">Finance Analytics</h6>
-                         <p className="text-sm font-normal leading-5 text-gray-1900">Executive Dashboard • Real-time Insights</p>
+                         <h6 className="text-2xl font-bold leading-7 text-black-1600">User Activity & Behavioral Insights</h6>
+                         <p className="text-sm font-normal leading-5 text-gray-1900">Executive analytics dashboard</p>
                     </div>
                     <form action="" className="flex flex-wrap items-center gap-3">
                          <div className="relative">
                               <input type="text" className='text-sm font-normal font-neulis-sans text-gray-1400 placeholder:text-gray-1400 px-4 pl-10 h-9 bg-white border border-gray1600 rounded-xl w-full outline-0' placeholder='Search metrics...' />
                               <div className='absolute top-1/2 -translate-y-1/2 left-3'>
                                    <Image
-                                        src="../images/search-icon.svg"
+                                        src="/images/search-icon.svg"
                                         width='16'
                                         height='16'
                                         alt=""
                                    />
                               </div>
                          </div>
-                         <div
-                              className="relative cursor-pointer"
-                         >
-                              <div className="absolute left-3 block top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none">
-                                   <Image
-                                        src="../images/calendar.svg"
-                                        alt=""
-                                        width={16}
-                                        height={16}
-                                   />
-                              </div>
-                              <input
-                                   type="date"
-                                   className="w-full appearance-none bg-gray-1800 pl-10 pr-3 border border-solid border-gray1600 rounded-md font-neulis-sans font-normal text-sm leading-5 h-9 cursor-pointer outline-0 focus:ring-0 focus:ring-transparent"
-                              />
-                         </div>
+                      <DateRangePicker
+                          />
                          <Link href="/" className="bg-gray-1800 border border-gray-1000 w-10 h-10 rounded-xl flex items-center justify-center">
                               <img src="/images/recycle-icon2.svg" alt="" />
                          </Link>
@@ -177,11 +163,11 @@ function page() {
                          <div className="mt-8">
                               <Funnel></Funnel>
                               <div className="border-t border-gray-1000 pt-6 mt-8 grid md:grid-cols-3 gap-6">
-                                   <div className="card-bg rounded-xl border border-blue1400/10 text-center py-4">
-                                        <h4 className="text-[30px] font-bold leading-9 text-gradient10 mb-1">19.3%</h4>
+                                   <div className="bg-blue1400/10 rounded-xl border border-blue1400/10 text-center py-4">
+                                        <h4 className="text-[30px] font-bold leading-9 text-blue1400 mb-1">19.3%</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Overall Conversion</p>
                                    </div>
-                                   <div className="card-bg2 rounded-xl border border-blue1400/10 text-center py-4">
+                                   <div className="bg-red-1300/10 rounded-xl border border-blue1400/10 text-center py-4">
                                         <h4 className="text-[30px] font-bold leading-9 text-red-1300 mb-1">KYC</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Biggest Drop-off</p>
                                    </div>
@@ -223,7 +209,7 @@ function page() {
                               </div>
                               <div className="flex items-center gap-6">
                                    <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full block circle-bg1"></div>
+                                        <div className="w-3 h-3 rounded-full block bg-blue-1000"></div>
                                         <h6 className="text-xs font-normal leading-4 text-gray-1200">High</h6>
                                    </div>
                                    <div className="flex items-center gap-2">
@@ -239,16 +225,16 @@ function page() {
                          <div className="mt-8">
                               <SoftAreaChart></SoftAreaChart>
                               <div className="border-t border-gray-1000 pt-6 mt-8 grid md:grid-cols-3 gap-6">
-                                   <div className="card-bg4 rounded-xl border border-blue1400/10 text-center py-4">
+                                   <div className="bg-blue1400/10 rounded-xl border border-blue1400/10 text-center py-4">
                                         <h4 className="text-2xl font-bold leading-8 text-black-1600 mb-1">8.0K</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Active Now</p>
                                    </div>
-                                   <div className="card-bg5 rounded-xl border border-blue1400/10 text-center py-4">
+                                   <div className="bg-skyblue23/10 rounded-xl border border-blue1400/10 text-center py-4">
                                         <h4 className="text-2xl font-bold leading-8 text-black-1600 mb-1">12</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Countries</p>
                                    </div>
-                                   <div className="card-bg3 rounded-xl border border-blue1400/10 text-center py-4">
-                                        <h4 className="text-2xl font-bold leading-8 text-gradient10 mb-1">London</h4>
+                                   <div className="bg-lightgreen17/10 rounded-xl border border-blue1400/10 text-center py-4">
+                                        <h4 className="text-2xl font-bold leading-8 text-blue1400 mb-1">London</h4>
                                         <p className="text-xs font-normal leading-4 text-gray-1200">Top Region</p>
                                    </div>
                               </div>
@@ -259,4 +245,4 @@ function page() {
      )
 }
 
-export default page
+export default UserActivityInsights
